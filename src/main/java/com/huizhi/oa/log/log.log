@@ -49,3 +49,745 @@
 2019-02-17 09:47:30com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
 2019-02-17 09:47:30com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
 2019-02-17 09:47:30com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} connected
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} created
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} query executed. 107.312503 millis. SELECT 1 FROM DUAL
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} open
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} Header: [1]
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} closed
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} closed
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} connected
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} created
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} query executed. 21.0116 millis. SELECT 1 FROM DUAL
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} open
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} Header: [1]
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} closed
+2019-02-17 14:24:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} closed
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} connected
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} created
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} query executed. 21.907599 millis. SELECT 1 FROM DUAL
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} open
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} Header: [1]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} closed
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} closed
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} connected
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} created
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} query executed. 21.355066 millis. SELECT 1 FROM DUAL
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} open
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} Header: [1]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} closed
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} closed
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} connected
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} created
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} query executed. 20.378001 millis. SELECT 1 FROM DUAL
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} open
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} Header: [1]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} closed
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} closed
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} created. select * from userinfo
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.480611 millis. select * from userinfo
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 14:24:34com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} connected
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} created
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} query executed. 108.019489 millis. SELECT 1 FROM DUAL
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} open
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} Header: [1]
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} closed
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} closed
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} connected
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} created
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} query executed. 21.185253 millis. SELECT 1 FROM DUAL
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} open
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} Header: [1]
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} closed
+2019-02-17 14:45:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} connected
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} created
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} query executed. 22.415332 millis. SELECT 1 FROM DUAL
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} open
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} Header: [1]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} connected
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} created
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} query executed. 21.112293 millis. SELECT 1 FROM DUAL
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} open
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} Header: [1]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} connected
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} created
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} query executed. 20.82344 millis. SELECT 1 FROM DUAL
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} open
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} Header: [1]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} created. SELECT count(0) FROM userinfo
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.879544 millis. SELECT count(0) FROM userinfo
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [count(0)]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} created. select * from userinfo LIMIT ? 
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [3]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 21.181413 millis. select * from userinfo LIMIT ? 
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} open
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} closed
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 14:45:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 26.06418 millis. SELECT count(0) FROM userinfo
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50007} open
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50007} Header: [count(0)]
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50007} Result: [6]
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50007} closed
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [3]
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 21.352932 millis. select * from userinfo LIMIT ? 
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50008} open
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50008} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50008} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50008} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50008} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50008} closed
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 14:45:42com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 14:49:08com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} closed
+2019-02-17 14:49:08com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} closed
+2019-02-17 14:49:08com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} closed
+2019-02-17 14:49:08com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} closed
+2019-02-17 14:49:08com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} closed
+2019-02-17 14:49:08com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} closed
+2019-02-17 14:49:08com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} closed
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} connected
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} created
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} query executed. 102.540242 millis. SELECT 1 FROM DUAL
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} open
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} Header: [1]
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} closed
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} closed
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} connected
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} created
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} query executed. 44.002077 millis. SELECT 1 FROM DUAL
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} open
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} Header: [1]
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} closed
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} closed
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} connected
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} created
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} query executed. 20.990266 millis. SELECT 1 FROM DUAL
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} open
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} Header: [1]
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} closed
+2019-02-17 14:55:32com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} closed
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} connected
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} created
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} query executed. 22.332558 millis. SELECT 1 FROM DUAL
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} open
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} Header: [1]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} closed
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} closed
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} connected
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} created
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} query executed. 21.847865 millis. SELECT 1 FROM DUAL
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} open
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} Header: [1]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} closed
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} closed
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} created. SELECT count(0) FROM userinfo
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.81853 millis. SELECT count(0) FROM userinfo
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [count(0)]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} created. select * from userinfo LIMIT ? 
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [3]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 23.42653 millis. select * from userinfo LIMIT ? 
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} open
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} closed
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 14:55:33com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} connected
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} created
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} query executed. 146.937838 millis. SELECT 1 FROM DUAL
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} open
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} Header: [1]
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} closed
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} closed
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} connected
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} created
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} query executed. 22.315065 millis. SELECT 1 FROM DUAL
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} open
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} Header: [1]
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} closed
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} closed
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} connected
+2019-02-17 15:03:55com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} created
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} query executed. 21.443386 millis. SELECT 1 FROM DUAL
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} open
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} Header: [1]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} closed
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} closed
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} connected
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} created
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} query executed. 20.436454 millis. SELECT 1 FROM DUAL
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} open
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} Header: [1]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} closed
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} closed
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} connected
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} created
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} query executed. 24.136076 millis. SELECT 1 FROM DUAL
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} open
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} Header: [1]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} closed
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} closed
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} created. SELECT count(0) FROM userinfo
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.515598 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [count(0)]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} created. select * from userinfo LIMIT ? 
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [3]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 23.803703 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} open
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} closed
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:03:56com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:07:56com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} connected
+2019-02-17 15:07:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} created
+2019-02-17 15:07:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} query executed. 100.041259 millis. SELECT 1 FROM DUAL
+2019-02-17 15:07:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} open
+2019-02-17 15:07:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} Header: [1]
+2019-02-17 15:07:56com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} closed
+2019-02-17 15:07:56com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} closed
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} connected
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} created
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} query executed. 22.542905 millis. SELECT 1 FROM DUAL
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} open
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} Header: [1]
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} closed
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} closed
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} connected
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} created
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} query executed. 21.471119 millis. SELECT 1 FROM DUAL
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} open
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} Header: [1]
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} closed
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} closed
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} connected
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} created
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} query executed. 20.377574 millis. SELECT 1 FROM DUAL
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} open
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} Header: [1]
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} closed
+2019-02-17 15:07:57com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} closed
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} connected
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} created
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} query executed. 20.740667 millis. SELECT 1 FROM DUAL
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} open
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} Header: [1]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} closed
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} closed
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} created. SELECT count(0) FROM userinfo
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 21.661412 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [count(0)]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} created. select * from userinfo LIMIT ? 
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [3]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 21.796666 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} open
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} closed
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:07:58com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} connected
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} created
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} query executed. 109.462473 millis. SELECT 1 FROM DUAL
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} open
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} Header: [1]
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} closed
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} closed
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} connected
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} created
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} query executed. 22.161039 millis. SELECT 1 FROM DUAL
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} open
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} Header: [1]
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} closed
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} closed
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} connected
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} created
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} query executed. 21.521466 millis. SELECT 1 FROM DUAL
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} open
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} Header: [1]
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} closed
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} closed
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} connected
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} created
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} query executed. 21.112293 millis. SELECT 1 FROM DUAL
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} open
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} Header: [1]
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} closed
+2019-02-17 15:13:04com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} closed
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} connected
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} created
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} query executed. 23.48797 millis. SELECT 1 FROM DUAL
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} open
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} Header: [1]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} closed
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} closed
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} created. SELECT count(0) FROM userinfo
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 24.626316 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [count(0)]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} created. select * from userinfo LIMIT ? 
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 24.817888 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} open
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} closed
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:13:05com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} connected
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} created
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} query executed. 112.122737 millis. SELECT 1 FROM DUAL
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} open
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} Header: [1]
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} closed
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} closed
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} connected
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} created
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} query executed. 20.314427 millis. SELECT 1 FROM DUAL
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} open
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} Header: [1]
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} closed
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} closed
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} connected
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} created
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} query executed. 20.496614 millis. SELECT 1 FROM DUAL
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} open
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} Header: [1]
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} closed
+2019-02-17 15:17:41com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} closed
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} connected
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} created
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} query executed. 21.859385 millis. SELECT 1 FROM DUAL
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} open
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} Header: [1]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} closed
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} closed
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} connected
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} created
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} query executed. 21.764666 millis. SELECT 1 FROM DUAL
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} open
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} Header: [1]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} closed
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} closed
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} created. SELECT count(0) FROM userinfo
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 23.273784 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [count(0)]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} created. select * from userinfo LIMIT ? 
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [3]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.577465 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} open
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} closed
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:17:42com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} connected
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} created
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} query executed. 108.159435 millis. SELECT 1 FROM DUAL
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} open
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} Header: [1]
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10001, stmt-20000, rs-50000} closed
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10001, stmt-20000} closed
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} connected
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} created
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} query executed. 20.7364 millis. SELECT 1 FROM DUAL
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} open
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} Header: [1]
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10002, stmt-20001, rs-50001} closed
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10002, stmt-20001} closed
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} connected
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} created
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} query executed. 20.834534 millis. SELECT 1 FROM DUAL
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} open
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} Header: [1]
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10003, stmt-20002, rs-50002} closed
+2019-02-17 15:18:37com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10003, stmt-20002} closed
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} connected
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} created
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} query executed. 21.023547 millis. SELECT 1 FROM DUAL
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} open
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} Header: [1]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10004, stmt-20003, rs-50003} closed
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10004, stmt-20003} closed
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} connected
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} created
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} query executed. 21.614053 millis. SELECT 1 FROM DUAL
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} open
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} Header: [1]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20004, rs-50004} closed
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20004} closed
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} created. SELECT count(0) FROM userinfo
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 21.637519 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [count(0)]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} created. select * from userinfo LIMIT ? 
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.052665 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} open
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50006} closed
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:18:38com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20007} created
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20007, rs-50007} query executed. 22.154638 millis. SELECT 1 FROM DUAL
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20007, rs-50007} open
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20007, rs-50007} Header: [1]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, stmt-20007, rs-50007} closed
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, stmt-20007} closed
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 20.8964 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50008} open
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50008} Header: [count(0)]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50008} Result: [6]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50008} closed
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.635064 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} open
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50009} closed
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:22com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.061199 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50010} open
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50010} Header: [count(0)]
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50010} Result: [6]
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50010} closed
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:23com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.554424 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} open
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50011} closed
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.229731 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50012} open
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50012} Header: [count(0)]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50012} Result: [6]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50012} closed
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.201998 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} open
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50013} closed
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 21.474106 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50014} open
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50014} Header: [count(0)]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50014} Result: [6]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50014} closed
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.408505 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} open
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50015} closed
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:24com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.290745 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50016} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50016} Header: [count(0)]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50016} Result: [6]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50016} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.549731 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50017} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 21.851706 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50018} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50018} Header: [count(0)]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50018} Result: [6]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50018} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.95165 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50019} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.319758 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50020} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50020} Header: [count(0)]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50020} Result: [6]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50020} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.360291 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50021} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.052238 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50022} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50022} Header: [count(0)]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50022} Result: [6]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50022} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 21.420346 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50023} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.718691 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50024} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50024} Header: [count(0)]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50024} Result: [6]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50024} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 21.493733 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} open
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50025} closed
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:25com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 22.134158 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50026} open
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50026} Header: [count(0)]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50026} Result: [6]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50026} closed
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.350478 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} open
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50027} closed
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-connect
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Parameters : []
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} Types : []
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} executed. 21.628132 millis. SELECT count(0) FROM userinfo
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50028} open
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50028} Header: [count(0)]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50028} Result: [6]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20005, rs-50028} closed
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Parameters : [10]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} Types : [INTEGER]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} executed. 22.318905 millis. select * from userinfo LIMIT ? 
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} open
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} Header: [userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} Result: [122, 叶gay, 46458d, 15172333202, 8951463, sadsa5485, 54, 人妖, 武汉市, 0]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} Result: [123, 王洪山, 123, 12345678910, 3705656, 54464, 24, 男, 武汉市洪山区, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} Result: [125, 张三, 156, 1234655555, 4545648, 68468, 26, 男, 湖北省仙桃市, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} Result: [888, 赵玲, 4648998, 22266654871, 48489, sadad@.qq, 29, 女, 武汉市武昌区, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} Result: [5955, 秦OK, 88484, 15272332202, 464489, dsdw56565, 31, 女, 汉川市, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} Result: [496849, 李四, 4489s, 55544469871, 5161884, 153a, 35, 男, 武汉市江夏区, 1]
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50029} closed
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2019-02-17 15:20:26com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle

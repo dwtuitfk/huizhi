@@ -1,5 +1,7 @@
 package com.huizhi.oa.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.dao.UserinfoMapper;
 import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
@@ -50,5 +52,12 @@ public class UserinfoServiceImpl implements UserinfoService {
     @Override
     public List<Userinfo> getAllUserinfo() {
         return userinfoMapper.getAllUserinfo();
+    }
+
+    @Override
+    public PageInfo<Userinfo> selectStudentsALL(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Userinfo> list = userinfoMapper.getAllUserinfo();
+        return new PageInfo<>(list);
     }
 }
