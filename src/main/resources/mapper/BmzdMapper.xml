@@ -37,4 +37,10 @@
       </if>
     </trim>
   </insert>
+
+  <select id="getAllBmzd" resultType="com.huizhi.oa.entity.Bmzd">
+    select * from bmzd
+  </select>
+
+
 </mapper>

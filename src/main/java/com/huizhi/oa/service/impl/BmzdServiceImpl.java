@@ -6,6 +6,8 @@ import com.huizhi.oa.service.BmzdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * created by dwtuitfk on 2019/2/17.
  */
@@ -22,5 +24,11 @@ public class BmzdServiceImpl implements BmzdService {
     @Override
     public int insertSelective(Bmzd record) {
         return bmzdMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Bmzd> getAllBmzd() {
+        List<Bmzd> list = bmzdMapper.getAllBmzd();
+        return list;
     }
 }
