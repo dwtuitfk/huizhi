@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huizhi.oa.dao.MeethouseMapper">
+  <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Meethouse">
+    <id column="mh_id" jdbcType="INTEGER" property="mhId" />
+    <result column="mh_name" jdbcType="VARCHAR" property="mhName" />
+    <result column="mh_address" jdbcType="VARCHAR" property="mhAddress" />
+    <result column="mh_state" jdbcType="INTEGER" property="mhState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mh_id, mh_name, mh_address, mh_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from meethouse
+    where mh_id = #{mhId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from meethouse
+    where mh_id = #{mhId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huizhi.oa.entity.Meethouse">
+    insert into meethouse (mh_id, mh_name, mh_address, 
+      mh_state)
+    values (#{mhId,jdbcType=INTEGER}, #{mhName,jdbcType=VARCHAR}, #{mhAddress,jdbcType=VARCHAR}, 
+      #{mhState,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Meethouse">
+    insert into meethouse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mhId != null">
+        mh_id,
+      </if>
+      <if test="mhName != null">
+        mh_name,
+      </if>
+      <if test="mhAddress != null">
+        mh_address,
+      </if>
+      <if test="mhState != null">
+        mh_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mhId != null">
+        #{mhId,jdbcType=INTEGER},
+      </if>
+      <if test="mhName != null">
+        #{mhName,jdbcType=VARCHAR},
+      </if>
+      <if test="mhAddress != null">
+        #{mhAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="mhState != null">
+        #{mhState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huizhi.oa.entity.Meethouse">
+    update meethouse
+    <set>
+      <if test="mhName != null">
+        mh_name = #{mhName,jdbcType=VARCHAR},
+      </if>
+      <if test="mhAddress != null">
+        mh_address = #{mhAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="mhState != null">
+        mh_state = #{mhState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where mh_id = #{mhId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Meethouse">
+    update meethouse
+    set mh_name = #{mhName,jdbcType=VARCHAR},
+      mh_address = #{mhAddress,jdbcType=VARCHAR},
+      mh_state = #{mhState,jdbcType=INTEGER}
+    where mh_id = #{mhId,jdbcType=INTEGER}
+  </update>
+</mapper>

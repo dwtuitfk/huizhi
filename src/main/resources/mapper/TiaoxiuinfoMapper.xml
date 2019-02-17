@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huizhi.oa.dao.TiaoxiuinfoMapper">
+  <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Tiaoxiuinfo">
+    <id column="tx_id" jdbcType="INTEGER" property="txId" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="tx_starttime" jdbcType="TIMESTAMP" property="txStarttime" />
+    <result column="tx_overtime" jdbcType="TIMESTAMP" property="txOvertime" />
+    <result column="tx_reason" jdbcType="VARCHAR" property="txReason" />
+    <result column="tx_userId" jdbcType="INTEGER" property="txUserid" />
+    <result column="tx_state" jdbcType="INTEGER" property="txState" />
+    <result column="tx_checkAd" jdbcType="VARCHAR" property="txCheckad" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tx_id, userId, tx_starttime, tx_overtime, tx_reason, tx_userId, tx_state, tx_checkAd
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tiaoxiuinfo
+    where tx_id = #{txId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tiaoxiuinfo
+    where tx_id = #{txId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huizhi.oa.entity.Tiaoxiuinfo">
+    insert into tiaoxiuinfo (tx_id, userId, tx_starttime, 
+      tx_overtime, tx_reason, tx_userId, 
+      tx_state, tx_checkAd)
+    values (#{txId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{txStarttime,jdbcType=TIMESTAMP}, 
+      #{txOvertime,jdbcType=TIMESTAMP}, #{txReason,jdbcType=VARCHAR}, #{txUserid,jdbcType=INTEGER}, 
+      #{txState,jdbcType=INTEGER}, #{txCheckad,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Tiaoxiuinfo">
+    insert into tiaoxiuinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="txId != null">
+        tx_id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="txStarttime != null">
+        tx_starttime,
+      </if>
+      <if test="txOvertime != null">
+        tx_overtime,
+      </if>
+      <if test="txReason != null">
+        tx_reason,
+      </if>
+      <if test="txUserid != null">
+        tx_userId,
+      </if>
+      <if test="txState != null">
+        tx_state,
+      </if>
+      <if test="txCheckad != null">
+        tx_checkAd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="txId != null">
+        #{txId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="txStarttime != null">
+        #{txStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txOvertime != null">
+        #{txOvertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txReason != null">
+        #{txReason,jdbcType=VARCHAR},
+      </if>
+      <if test="txUserid != null">
+        #{txUserid,jdbcType=INTEGER},
+      </if>
+      <if test="txState != null">
+        #{txState,jdbcType=INTEGER},
+      </if>
+      <if test="txCheckad != null">
+        #{txCheckad,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huizhi.oa.entity.Tiaoxiuinfo">
+    update tiaoxiuinfo
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="txStarttime != null">
+        tx_starttime = #{txStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txOvertime != null">
+        tx_overtime = #{txOvertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txReason != null">
+        tx_reason = #{txReason,jdbcType=VARCHAR},
+      </if>
+      <if test="txUserid != null">
+        tx_userId = #{txUserid,jdbcType=INTEGER},
+      </if>
+      <if test="txState != null">
+        tx_state = #{txState,jdbcType=INTEGER},
+      </if>
+      <if test="txCheckad != null">
+        tx_checkAd = #{txCheckad,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tx_id = #{txId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Tiaoxiuinfo">
+    update tiaoxiuinfo
+    set userId = #{userid,jdbcType=INTEGER},
+      tx_starttime = #{txStarttime,jdbcType=TIMESTAMP},
+      tx_overtime = #{txOvertime,jdbcType=TIMESTAMP},
+      tx_reason = #{txReason,jdbcType=VARCHAR},
+      tx_userId = #{txUserid,jdbcType=INTEGER},
+      tx_state = #{txState,jdbcType=INTEGER},
+      tx_checkAd = #{txCheckad,jdbcType=VARCHAR}
+    where tx_id = #{txId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huizhi.oa.dao.MeetinfoMapper">
+  <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Meetinfo">
+    <id column="m_id" jdbcType="INTEGER" property="mId" />
+    <result column="m_title" jdbcType="VARCHAR" property="mTitle" />
+    <result column="m_content" jdbcType="VARCHAR" property="mContent" />
+    <result column="mh_id" jdbcType="INTEGER" property="mhId" />
+    <result column="m_people" jdbcType="VARCHAR" property="mPeople" />
+    <result column="m_starttime" jdbcType="TIMESTAMP" property="mStarttime" />
+    <result column="m_state" jdbcType="INTEGER" property="mState" />
+    <result column="m_overtime" jdbcType="TIMESTAMP" property="mOvertime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    m_id, m_title, m_content, mh_id, m_people, m_starttime, m_state, m_overtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from meetinfo
+    where m_id = #{mId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from meetinfo
+    where m_id = #{mId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huizhi.oa.entity.Meetinfo">
+    insert into meetinfo (m_id, m_title, m_content, 
+      mh_id, m_people, m_starttime, 
+      m_state, m_overtime)
+    values (#{mId,jdbcType=INTEGER}, #{mTitle,jdbcType=VARCHAR}, #{mContent,jdbcType=VARCHAR}, 
+      #{mhId,jdbcType=INTEGER}, #{mPeople,jdbcType=VARCHAR}, #{mStarttime,jdbcType=TIMESTAMP}, 
+      #{mState,jdbcType=INTEGER}, #{mOvertime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Meetinfo">
+    insert into meetinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
+        m_id,
+      </if>
+      <if test="mTitle != null">
+        m_title,
+      </if>
+      <if test="mContent != null">
+        m_content,
+      </if>
+      <if test="mhId != null">
+        mh_id,
+      </if>
+      <if test="mPeople != null">
+        m_people,
+      </if>
+      <if test="mStarttime != null">
+        m_starttime,
+      </if>
+      <if test="mState != null">
+        m_state,
+      </if>
+      <if test="mOvertime != null">
+        m_overtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
+        #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="mTitle != null">
+        #{mTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="mContent != null">
+        #{mContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mhId != null">
+        #{mhId,jdbcType=INTEGER},
+      </if>
+      <if test="mPeople != null">
+        #{mPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="mStarttime != null">
+        #{mStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mState != null">
+        #{mState,jdbcType=INTEGER},
+      </if>
+      <if test="mOvertime != null">
+        #{mOvertime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huizhi.oa.entity.Meetinfo">
+    update meetinfo
+    <set>
+      <if test="mTitle != null">
+        m_title = #{mTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="mContent != null">
+        m_content = #{mContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mhId != null">
+        mh_id = #{mhId,jdbcType=INTEGER},
+      </if>
+      <if test="mPeople != null">
+        m_people = #{mPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="mStarttime != null">
+        m_starttime = #{mStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mState != null">
+        m_state = #{mState,jdbcType=INTEGER},
+      </if>
+      <if test="mOvertime != null">
+        m_overtime = #{mOvertime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Meetinfo">
+    update meetinfo
+    set m_title = #{mTitle,jdbcType=VARCHAR},
+      m_content = #{mContent,jdbcType=VARCHAR},
+      mh_id = #{mhId,jdbcType=INTEGER},
+      m_people = #{mPeople,jdbcType=VARCHAR},
+      m_starttime = #{mStarttime,jdbcType=TIMESTAMP},
+      m_state = #{mState,jdbcType=INTEGER},
+      m_overtime = #{mOvertime,jdbcType=TIMESTAMP}
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+</mapper>

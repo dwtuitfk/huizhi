@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huizhi.oa.dao.NoticeinfoMapper">
+  <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Noticeinfo">
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="n_title" jdbcType="VARCHAR" property="nTitle" />
+    <result column="n_time" jdbcType="TIMESTAMP" property="nTime" />
+    <result column="n_content" jdbcType="VARCHAR" property="nContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    n_id, userId, n_title, n_time, n_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from noticeinfo
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from noticeinfo
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huizhi.oa.entity.Noticeinfo">
+    insert into noticeinfo (n_id, userId, n_title, 
+      n_time, n_content)
+    values (#{nId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{nTitle,jdbcType=VARCHAR}, 
+      #{nTime,jdbcType=TIMESTAMP}, #{nContent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Noticeinfo">
+    insert into noticeinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        n_id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="nTitle != null">
+        n_title,
+      </if>
+      <if test="nTime != null">
+        n_time,
+      </if>
+      <if test="nContent != null">
+        n_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="nTitle != null">
+        #{nTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="nTime != null">
+        #{nTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nContent != null">
+        #{nContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huizhi.oa.entity.Noticeinfo">
+    update noticeinfo
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="nTitle != null">
+        n_title = #{nTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="nTime != null">
+        n_time = #{nTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nContent != null">
+        n_content = #{nContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Noticeinfo">
+    update noticeinfo
+    set userId = #{userid,jdbcType=INTEGER},
+      n_title = #{nTitle,jdbcType=VARCHAR},
+      n_time = #{nTime,jdbcType=TIMESTAMP},
+      n_content = #{nContent,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>

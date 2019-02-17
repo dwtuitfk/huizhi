@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huizhi.oa.dao.JurinfoMapper">
+  <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Jurinfo">
+    <id column="jurId" jdbcType="INTEGER" property="jurid" />
+    <result column="fName" jdbcType="VARCHAR" property="fname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    jurId, fName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jurinfo
+    where jurId = #{jurid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jurinfo
+    where jurId = #{jurid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huizhi.oa.entity.Jurinfo">
+    insert into jurinfo (jurId, fName)
+    values (#{jurid,jdbcType=INTEGER}, #{fname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Jurinfo">
+    insert into jurinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jurid != null">
+        jurId,
+      </if>
+      <if test="fname != null">
+        fName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jurid != null">
+        #{jurid,jdbcType=INTEGER},
+      </if>
+      <if test="fname != null">
+        #{fname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huizhi.oa.entity.Jurinfo">
+    update jurinfo
+    <set>
+      <if test="fname != null">
+        fName = #{fname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jurId = #{jurid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Jurinfo">
+    update jurinfo
+    set fName = #{fname,jdbcType=VARCHAR}
+    where jurId = #{jurid,jdbcType=INTEGER}
+  </update>
+</mapper>

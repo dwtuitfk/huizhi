@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huizhi.oa.dao.HouseapplyinfoMapper">
+  <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Houseapplyinfo">
+    <id column="ha_id" jdbcType="INTEGER" property="haId" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="ha_startTime" jdbcType="TIMESTAMP" property="haStarttime" />
+    <result column="ha_reason" jdbcType="VARCHAR" property="haReason" />
+    <result column="ha_userId" jdbcType="INTEGER" property="haUserid" />
+    <result column="ha_mh_id" jdbcType="INTEGER" property="haMhId" />
+    <result column="ha_state" jdbcType="INTEGER" property="haState" />
+    <result column="ha_checkAd" jdbcType="VARCHAR" property="haCheckad" />
+    <result column="ha_m_id" jdbcType="INTEGER" property="haMId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ha_id, userId, ha_startTime, ha_reason, ha_userId, ha_mh_id, ha_state, ha_checkAd, 
+    ha_m_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from houseapplyinfo
+    where ha_id = #{haId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from houseapplyinfo
+    where ha_id = #{haId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huizhi.oa.entity.Houseapplyinfo">
+    insert into houseapplyinfo (ha_id, userId, ha_startTime, 
+      ha_reason, ha_userId, ha_mh_id, 
+      ha_state, ha_checkAd, ha_m_id
+      )
+    values (#{haId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{haStarttime,jdbcType=TIMESTAMP}, 
+      #{haReason,jdbcType=VARCHAR}, #{haUserid,jdbcType=INTEGER}, #{haMhId,jdbcType=INTEGER}, 
+      #{haState,jdbcType=INTEGER}, #{haCheckad,jdbcType=VARCHAR}, #{haMId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Houseapplyinfo">
+    insert into houseapplyinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="haId != null">
+        ha_id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="haStarttime != null">
+        ha_startTime,
+      </if>
+      <if test="haReason != null">
+        ha_reason,
+      </if>
+      <if test="haUserid != null">
+        ha_userId,
+      </if>
+      <if test="haMhId != null">
+        ha_mh_id,
+      </if>
+      <if test="haState != null">
+        ha_state,
+      </if>
+      <if test="haCheckad != null">
+        ha_checkAd,
+      </if>
+      <if test="haMId != null">
+        ha_m_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="haId != null">
+        #{haId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="haStarttime != null">
+        #{haStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="haReason != null">
+        #{haReason,jdbcType=VARCHAR},
+      </if>
+      <if test="haUserid != null">
+        #{haUserid,jdbcType=INTEGER},
+      </if>
+      <if test="haMhId != null">
+        #{haMhId,jdbcType=INTEGER},
+      </if>
+      <if test="haState != null">
+        #{haState,jdbcType=INTEGER},
+      </if>
+      <if test="haCheckad != null">
+        #{haCheckad,jdbcType=VARCHAR},
+      </if>
+      <if test="haMId != null">
+        #{haMId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huizhi.oa.entity.Houseapplyinfo">
+    update houseapplyinfo
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="haStarttime != null">
+        ha_startTime = #{haStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="haReason != null">
+        ha_reason = #{haReason,jdbcType=VARCHAR},
+      </if>
+      <if test="haUserid != null">
+        ha_userId = #{haUserid,jdbcType=INTEGER},
+      </if>
+      <if test="haMhId != null">
+        ha_mh_id = #{haMhId,jdbcType=INTEGER},
+      </if>
+      <if test="haState != null">
+        ha_state = #{haState,jdbcType=INTEGER},
+      </if>
+      <if test="haCheckad != null">
+        ha_checkAd = #{haCheckad,jdbcType=VARCHAR},
+      </if>
+      <if test="haMId != null">
+        ha_m_id = #{haMId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ha_id = #{haId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Houseapplyinfo">
+    update houseapplyinfo
+    set userId = #{userid,jdbcType=INTEGER},
+      ha_startTime = #{haStarttime,jdbcType=TIMESTAMP},
+      ha_reason = #{haReason,jdbcType=VARCHAR},
+      ha_userId = #{haUserid,jdbcType=INTEGER},
+      ha_mh_id = #{haMhId,jdbcType=INTEGER},
+      ha_state = #{haState,jdbcType=INTEGER},
+      ha_checkAd = #{haCheckad,jdbcType=VARCHAR},
+      ha_m_id = #{haMId,jdbcType=INTEGER}
+    where ha_id = #{haId,jdbcType=INTEGER}
+  </update>
+</mapper>

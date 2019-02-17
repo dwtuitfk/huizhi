@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huizhi.oa.dao.CarapplyinfoMapper">
+  <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Carapplyinfo">
+    <id column="ca_id" jdbcType="VARCHAR" property="caId" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="ca_startTime" jdbcType="TIMESTAMP" property="caStarttime" />
+    <result column="ca_overTime" jdbcType="TIMESTAMP" property="caOvertime" />
+    <result column="ca_c_id" jdbcType="VARCHAR" property="caCId" />
+    <result column="ca_reason" jdbcType="VARCHAR" property="caReason" />
+    <result column="ca_userId" jdbcType="INTEGER" property="caUserid" />
+    <result column="ca_state" jdbcType="INTEGER" property="caState" />
+    <result column="ca_checkAd" jdbcType="VARCHAR" property="caCheckad" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ca_id, userId, ca_startTime, ca_overTime, ca_c_id, ca_reason, ca_userId, ca_state, 
+    ca_checkAd
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from carapplyinfo
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from carapplyinfo
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.huizhi.oa.entity.Carapplyinfo">
+    insert into carapplyinfo (ca_id, userId, ca_startTime, 
+      ca_overTime, ca_c_id, ca_reason, 
+      ca_userId, ca_state, ca_checkAd
+      )
+    values (#{caId,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{caStarttime,jdbcType=TIMESTAMP}, 
+      #{caOvertime,jdbcType=TIMESTAMP}, #{caCId,jdbcType=VARCHAR}, #{caReason,jdbcType=VARCHAR}, 
+      #{caUserid,jdbcType=INTEGER}, #{caState,jdbcType=INTEGER}, #{caCheckad,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Carapplyinfo">
+    insert into carapplyinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="caId != null">
+        ca_id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="caStarttime != null">
+        ca_startTime,
+      </if>
+      <if test="caOvertime != null">
+        ca_overTime,
+      </if>
+      <if test="caCId != null">
+        ca_c_id,
+      </if>
+      <if test="caReason != null">
+        ca_reason,
+      </if>
+      <if test="caUserid != null">
+        ca_userId,
+      </if>
+      <if test="caState != null">
+        ca_state,
+      </if>
+      <if test="caCheckad != null">
+        ca_checkAd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="caId != null">
+        #{caId,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="caStarttime != null">
+        #{caStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caOvertime != null">
+        #{caOvertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caCId != null">
+        #{caCId,jdbcType=VARCHAR},
+      </if>
+      <if test="caReason != null">
+        #{caReason,jdbcType=VARCHAR},
+      </if>
+      <if test="caUserid != null">
+        #{caUserid,jdbcType=INTEGER},
+      </if>
+      <if test="caState != null">
+        #{caState,jdbcType=INTEGER},
+      </if>
+      <if test="caCheckad != null">
+        #{caCheckad,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huizhi.oa.entity.Carapplyinfo">
+    update carapplyinfo
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="caStarttime != null">
+        ca_startTime = #{caStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caOvertime != null">
+        ca_overTime = #{caOvertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caCId != null">
+        ca_c_id = #{caCId,jdbcType=VARCHAR},
+      </if>
+      <if test="caReason != null">
+        ca_reason = #{caReason,jdbcType=VARCHAR},
+      </if>
+      <if test="caUserid != null">
+        ca_userId = #{caUserid,jdbcType=INTEGER},
+      </if>
+      <if test="caState != null">
+        ca_state = #{caState,jdbcType=INTEGER},
+      </if>
+      <if test="caCheckad != null">
+        ca_checkAd = #{caCheckad,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Carapplyinfo">
+    update carapplyinfo
+    set userId = #{userid,jdbcType=INTEGER},
+      ca_startTime = #{caStarttime,jdbcType=TIMESTAMP},
+      ca_overTime = #{caOvertime,jdbcType=TIMESTAMP},
+      ca_c_id = #{caCId,jdbcType=VARCHAR},
+      ca_reason = #{caReason,jdbcType=VARCHAR},
+      ca_userId = #{caUserid,jdbcType=INTEGER},
+      ca_state = #{caState,jdbcType=INTEGER},
+      ca_checkAd = #{caCheckad,jdbcType=VARCHAR}
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+</mapper>

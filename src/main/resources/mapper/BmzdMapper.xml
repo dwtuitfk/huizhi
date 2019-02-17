@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huizhi.oa.dao.BmzdMapper">
+  <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Bmzd">
+    <result column="bmzdId" jdbcType="INTEGER" property="bmzdid" />
+    <result column="depName" jdbcType="INTEGER" property="depname" />
+    <result column="depNamemc" jdbcType="VARCHAR" property="depnamemc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.huizhi.oa.entity.Bmzd">
+    insert into bmzd (bmzdId, depName, depNamemc
+      )
+    values (#{bmzdid,jdbcType=INTEGER}, #{depname,jdbcType=INTEGER}, #{depnamemc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Bmzd">
+    insert into bmzd
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bmzdid != null">
+        bmzdId,
+      </if>
+      <if test="depname != null">
+        depName,
+      </if>
+      <if test="depnamemc != null">
+        depNamemc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bmzdid != null">
+        #{bmzdid,jdbcType=INTEGER},
+      </if>
+      <if test="depname != null">
+        #{depname,jdbcType=INTEGER},
+      </if>
+      <if test="depnamemc != null">
+        #{depnamemc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
