@@ -12,7 +12,7 @@ public class EmailinfoServiceImpl<service> implements EmailinfoService {
 
     @Override
     public int deleteByPrimaryKey(String eId) {
-        return 0;
+        return emailinfoService.deleteByPrimaryKey(eId);
     }
 
     @Override
