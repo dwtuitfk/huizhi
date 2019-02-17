@@ -2,6 +2,8 @@ package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Noticeinfo;
 
+import java.util.List;
+
 public interface NoticeinfoMapper {
     int deleteByPrimaryKey(Integer nId);
 
@@ -14,4 +16,7 @@ public interface NoticeinfoMapper {
     int updateByPrimaryKeySelective(Noticeinfo record);
 
     int updateByPrimaryKey(Noticeinfo record);
+
+    //查询所有公告信息
+    List<Noticeinfo> getAllNoticeinfo();
 }

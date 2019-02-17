@@ -2,6 +2,8 @@ package com.huizhi.oa.service;
 
 import com.huizhi.oa.entity.Noticeinfo;
 
+import java.util.List;
+
 public interface NoticeinfoService {
     int deleteByPrimaryKey(Integer nId);
 
@@ -14,4 +16,8 @@ public interface NoticeinfoService {
     int updateByPrimaryKeySelective(Noticeinfo record);
 
     int updateByPrimaryKey(Noticeinfo record);
+
+    //查询所有公告信息
+    List<Noticeinfo> getAllNoticeinfo();
+
 }
