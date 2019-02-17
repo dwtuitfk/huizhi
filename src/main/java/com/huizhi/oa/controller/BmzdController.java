@@ -22,12 +22,6 @@ public class BmzdController {
     @Autowired
     private BmzdService bmzdService;
 
-/*    @RequestMapping("/getalldep")
-    @ResponseBody
-    public ResultMap<List<Bmzd>> getalldep(Integer page, Integer limit) throws Exception {
-        PageHelper.startPage(page==null?1:page, limit);
-        List<Bmzd> list=bmzdService.getAllBmzd();
-        PageInfo<Bmzd> pageinfo=new PageInfo<>(list);
-        return new ResultMap<List<Bmzd>>("",list,0,(int)pageinfo.getTotal());
-    }*/
+
+
 }

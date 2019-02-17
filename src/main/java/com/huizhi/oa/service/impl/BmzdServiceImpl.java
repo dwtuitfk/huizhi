@@ -1,5 +1,7 @@
 package com.huizhi.oa.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.dao.BmzdMapper;
 import com.huizhi.oa.entity.Bmzd;
 import com.huizhi.oa.service.BmzdService;
@@ -31,4 +33,6 @@ public class BmzdServiceImpl implements BmzdService {
         List<Bmzd> list = bmzdMapper.getAllBmzd();
         return list;
     }
+
+
 }

@@ -10,4 +10,5 @@ public interface BmzdService {
     int insertSelective(Bmzd record);
 
     List<Bmzd> getAllBmzd();
+
 }
