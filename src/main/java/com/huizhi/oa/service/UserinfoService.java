@@ -1,5 +1,6 @@
 package com.huizhi.oa.service;
 
+import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Userinfo;
 
 import java.util.List;
@@ -19,4 +20,7 @@ public interface UserinfoService {
 
     //查询所有用户信息
     List<Userinfo> getAllUserinfo();
+
+    //LagUI分页显示
+    PageInfo<Userinfo> selectStudentsALL(Integer pageNum, Integer pageSize);
 }
