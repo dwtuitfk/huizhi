@@ -17,26 +17,26 @@ public class EmailinfoServiceImpl<service> implements EmailinfoService {
 
     @Override
     public int insert(Emailinfo record) {
-        return 0;
+        return emailinfoService.insert(record);
     }
 
     @Override
     public int insertSelective(Emailinfo record) {
-        return 0;
+        return emailinfoService.insertSelective(record);
     }
 
     @Override
     public Emailinfo selectByPrimaryKey(String eId) {
-        return null;
+        return emailinfoService.selectByPrimaryKey(eId);
     }
 
     @Override
     public int updateByPrimaryKeySelective(Emailinfo record) {
-        return 0;
+        return emailinfoService.updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKey(Emailinfo record) {
-        return 0;
+        return emailinfoService.updateByPrimaryKey(record);
     }
 }
