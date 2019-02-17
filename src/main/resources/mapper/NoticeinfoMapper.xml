@@ -91,7 +91,7 @@
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
 
-  <select id="getAllNoticeinfo" resultType="com.huizhi.oa.entity.Noticeinfo">
+  <select id="getAllNoticeinfo" resultType="Noticeinfo">
     select n_id, userId, n_title, n_time, n_content from noticeinfo
   </select>
 
