@@ -1,4 +1,4 @@
-package com.huizhi.oa.controller;
+package com.huizhi.oa.controller.system;
 
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Userinfo;
@@ -24,21 +24,14 @@ public class UserinfoController {
     private UserinfoService userinfoService;
 
     @RequestMapping("/user")
-    public String demo() {
-        return "system/userinfo";
+    public String user() {
+        return "pages/userTree/userinfo";
     }
 
     @ResponseBody
-    @RequestMapping("userinfoall")
-    public List<Userinfo> userinfo(){
-        List<Userinfo> list = userinfoService.getAllUserinfo();
-        return list;
-    }
-
-    @ResponseBody
-    @RequestMapping("userinfopage")
-    public Object selectStudentsALL(@RequestParam("page") Integer pageNum, @RequestParam("limit") Integer pageSize) {
-        PageInfo<Userinfo> list = userinfoService.selectStudentsALL(pageNum,pageSize);
+    @RequestMapping("selectUserinfoALL")
+    public Object selectUserinfoALL(@RequestParam("page") Integer pageNum, @RequestParam("limit") Integer pageSize) {
+        PageInfo<Userinfo> list = userinfoService.selectUserinfoALL(pageNum,pageSize);
         int count = (int) list.getTotal();
         //TODO isCommition字段数据库不存在，后期报错再改
         LayUIResult result = LayUIResult.build(0, "", list); // 这个是我返回的数据格式，可以可以自己定义

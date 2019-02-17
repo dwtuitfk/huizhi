@@ -34,5 +34,12 @@ public class BmzdServiceImpl implements BmzdService {
         return list;
     }
 
+    @Override
+    public PageInfo<Bmzd> selectBmzdALL(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Bmzd> list = bmzdMapper.getAllBmzd();
+        return new PageInfo<>(list);
+    }
+
 
 }

@@ -22,5 +22,5 @@ public interface UserinfoService {
     List<Userinfo> getAllUserinfo();
 
     //LagUI分页显示
-    PageInfo<Userinfo> selectStudentsALL(Integer pageNum, Integer pageSize);
+    PageInfo<Userinfo> selectUserinfoALL(Integer pageNum, Integer pageSize);
 }
