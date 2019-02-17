@@ -1410,3 +1410,10 @@
 2019-02-17 15:40:15com.alibaba.druid.filter.logging.Log4jFilter.resultSetLog(Log4jFilter.java:142) Log4jFilter.java DEBUG {conn-10005, pstmt-20006, rs-50057} closed
 2019-02-17 15:40:15com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} clearParameters. 
 2019-02-17 15:40:15com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} pool-recycle
+2019-02-17 15:46:28com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10001} closed
+2019-02-17 15:46:28com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10002} closed
+2019-02-17 15:46:28com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10003} closed
+2019-02-17 15:46:28com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10004} closed
+2019-02-17 15:46:28com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20005} closed
+2019-02-17 15:46:28com.alibaba.druid.filter.logging.Log4jFilter.statementLog(Log4jFilter.java:137) Log4jFilter.java DEBUG {conn-10005, pstmt-20006} closed
+2019-02-17 15:46:28com.alibaba.druid.filter.logging.Log4jFilter.connectionLog(Log4jFilter.java:132) Log4jFilter.java DEBUG {conn-10005} closed
