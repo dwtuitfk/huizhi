@@ -43,5 +43,20 @@ public class UserzdServiceImpl implements UserzdService {
         return new PageInfo<>(list);
     }
 
+    @Override
+    public int updateUserzd(Userzd record) {
+        return userzdMapper.updateUserzd(record);
+    }
+
+    @Override
+    public Userzd getUserzd(int userzdid) {
+        return userzdMapper.getUserzd(userzdid);
+    }
+
+    @Override
+    public int delMoreUserzd(List<Integer> ids) {
+        return userzdMapper.delMoreUserzd(ids);
+    }
+
 
 }

@@ -4,17 +4,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Bmzd;
 import com.huizhi.oa.service.BmzdService;
-import com.huizhi.oa.util.LayUIResult;
 import com.huizhi.oa.util.ResultMap;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +42,7 @@ public class BmzdController {
     //部门添加
     @RequestMapping("/depAdd")
     public String depAdd() {
-        return "pages/systemTree/depadd";
+        return "pages/systemTree/depAdd";
     }
 
     @RequestMapping("/depAddInfo")
@@ -68,13 +63,13 @@ public class BmzdController {
     public Integer bmzdid2;
 
     //部门修改
-    @RequestMapping("/depUpdate")
+    @RequestMapping("/depUpdata")
     public String depUpdate(Integer bmzdid) {
         bmzdid2=bmzdid;
         System.out.println("------------");
         System.out.println("控制得到：");
         System.out.println(bmzdid2);
-        return "pages/systemTree/depUpdate";
+        return "pages/systemTree/depUpdata";
     }
 
 

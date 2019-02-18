@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>岗位添加</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function(){
+
+            //岗位名称验证
+            $("#rolenamemc").blur(function(){
+                //获取岗位名称文本框的值
+                var rolenamemc=$('#rolenamemc').val();
+                //使用正则表达式 岗位名称由2-4个汉字构成
+                var reg = /^[\u4e00-\u9fa5]{2,8}$/;
+                //判断
+                if(reg.test(rolenamemc)){
+                    $("#rolenamemc_prompt").html("正确").css("color","green");
+                    return true;
+                }else{
+                    $("#rolenamemc_prompt").html("必须是2-8位汉字").css("color","red");
+                    //获得焦点
+                    //$("#rolenamemc").focus();
+                    //将文本内容进行全选
+                    //$("#rolenamemc").select();
+                    return false;
+                }
+            });
+
+
+            //岗位编号验证
+            $("#rolename").blur(function(){
+                //获取岗位编号文本框的值
+                var rolename=$('#rolename').val();
+                //使用正则表达式 岗位编号至少n位数字
+                var reg = /^[0-9]*$/;
+                //判断
+                if(reg.test(rolename)){
+                    $("#rolename_prompt").html("正确").css("color","green");
+                    return true;
+                }else{
+                    $("#rolename_prompt").html("必须是数字").css("color","red");
+                    //获得焦点
+                    //$("#rolename").focus();
+                    //将文本内容进行全选
+                    //$("#rolename").select();
+                    return false;
+                }
+            });
+
+
+            var index = parent.layer.getFrameIndex(window.name);
+
+            //关闭iframe
+            $('#closeIframe').click(function(){
+                var depname=$('#depname').val();
+                var depnamemc=$('#depnamemc').val();
+                $.ajax({
+                    url: "/system/postAddInfo",
+                    type: "POST",
+                    data: {"depname":depname,"depnamemc":depnamemc},
+                    dataType: "json",
+                    success: function(data){
+                        if(data===500){
+                            parent.layer.msg("添加失败", {icon: 5});
+                        }else{
+                            parent.layer.msg("添加成功", {icon: 6});
+                        }
+                    },
+                    error:function(){
+                        parent.layer.msg("系统异常");
+                    },
+
+                });
+
+                parent.layer.close(index);
+
+            });
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+
+<br><br>
+<div class="layui-form-item">
+    <label class="layui-form-label">岗位编号:</label>
+    <div class="layui-input-block">
+        <input type="text" id="rolename" name="depname" lay-verify="depname" autocomplete="off" placeholder="部门编号" class="layui-input" style="width: 200px">
+        <span id="rolename_prompt"></span>
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">岗位名称:</label>
+    <div class="layui-input-block">
+        <input type="text" id="rolenamemc" name="depnamemc" lay-verify="depnamemc" placeholder="部门名称" autocomplete="off" class="layui-input" style="width: 200px">
+        <span id="rolenamemc_prompt"></span>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <button class="layui-btn"  id="closeIframe" lay-submit="" lay-filter="add">添加</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+</div>
+
+
+
+</body>
+</html>
