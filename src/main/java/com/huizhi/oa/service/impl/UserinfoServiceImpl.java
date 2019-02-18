@@ -54,10 +54,4 @@ public class UserinfoServiceImpl implements UserinfoService {
         return userinfoMapper.getAllUserinfo();
     }
 
-    @Override
-    public PageInfo<Userinfo> selectUserinfoALL(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<Userinfo> list = userinfoMapper.getAllUserinfo();
-        return new PageInfo<>(list);
-    }
 }

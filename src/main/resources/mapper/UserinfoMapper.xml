@@ -13,6 +13,7 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="isProhibit" jdbcType="INTEGER" property="isprohibit" />
     <result column="depName" jdbcType="INTEGER" property="depName" />
+
   </resultMap>
   <sql id="Base_Column_List">
     userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit, depName
@@ -161,8 +162,45 @@
     where userId = #{userid,jdbcType=INTEGER}
   </update>
 
-  <select id="getAllUserinfo" resultType="com.huizhi.oa.entity.Userinfo">
-  	select * from userinfo
+
+  <resultMap id="getUserinfoDepname" type="com.huizhi.oa.entity.Userinfo">
+  <id column="userId" jdbcType="INTEGER" property="userid" />
+  <result column="tureName" jdbcType="VARCHAR" property="turename" />
+  <result column="passWord" jdbcType="VARCHAR" property="password" />
+  <result column="phone" jdbcType="CHAR" property="phone" />
+  <result column="qq" jdbcType="VARCHAR" property="qq" />
+  <result column="email" jdbcType="VARCHAR" property="email" />
+  <result column="age" jdbcType="INTEGER" property="age" />
+  <result column="sex" jdbcType="VARCHAR" property="sex" />
+  <result column="address" jdbcType="VARCHAR" property="address" />
+  <result column="isProhibit" jdbcType="INTEGER" property="isprohibit" />
+  <result column="depName" jdbcType="INTEGER" property="depName" />
+
+    <!-- 配置多对一关联 -->
+    <association property="bmzd" javaType="com.huizhi.oa.entity.Bmzd">
+      <id column="bmzdId" property="bmzdid"></id>
+      <result column="depName" property="depname"/>
+      <result column="depNamemc" property="depnamemc"/>
+    </association>
+
+  </resultMap>
+
+  <select id="getAllUserinfo" resultMap="getUserinfoDepname">
+  	select
+  userinfo.userId,
+  userinfo.tureName,
+  userinfo.passWord,
+  userinfo.phone,
+  userinfo.qq,
+  userinfo.email,
+  userinfo.age,
+  userinfo.sex,
+  userinfo.address,
+  userinfo.isProhibit,
+  bmzd.depNamemc
+  from userinfo
+  inner join bmzd on userinfo.depName = bmzd.depName
   </select>
+
 
 </mapper>

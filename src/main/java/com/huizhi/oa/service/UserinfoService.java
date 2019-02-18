@@ -21,6 +21,4 @@ public interface UserinfoService {
     //查询所有用户信息
     List<Userinfo> getAllUserinfo();
 
-    //LagUI分页显示
-    PageInfo<Userinfo> selectUserinfoALL(Integer pageNum, Integer pageSize);
 }

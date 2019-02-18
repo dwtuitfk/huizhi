@@ -23,6 +23,20 @@ public class Userinfo {
 
     private Integer depName;
 
+    private Bmzd bmzd;
+
+    private String getDepnamemc(){
+        return bmzd.getDepnamemc();
+    }
+
+    public Bmzd getBmzd() {
+        return bmzd;
+    }
+
+    public void setBmzd(Bmzd bmzd) {
+        this.bmzd = bmzd;
+    }
+
     public void setDepName(Integer depName) {
         this.depName = depName;
     }

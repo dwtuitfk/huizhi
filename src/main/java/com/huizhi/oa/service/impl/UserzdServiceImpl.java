@@ -37,13 +37,6 @@ public class UserzdServiceImpl implements UserzdService {
     }
 
     @Override
-    public PageInfo<Userzd> selectUserzdALL(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<Userzd> list = userzdMapper.getAllUserzd();
-        return new PageInfo<>(list);
-    }
-
-    @Override
     public int updateUserzd(Userzd record) {
         return userzdMapper.updateUserzd(record);
     }
