@@ -1,5 +1,7 @@
 package com.huizhi.oa.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.dao.NoticeinfoMapper;
 import com.huizhi.oa.entity.Noticeinfo;
 import com.huizhi.oa.service.NoticeinfoService;
@@ -47,5 +49,12 @@ public class NoticeinfoServiceImpl implements NoticeinfoService {
     @Override
     public List<Noticeinfo> getAllNoticeinfo() {
         return noticeinfoMapper.getAllNoticeinfo();
+    }
+
+    @Override
+    public PageInfo<Noticeinfo> selectNoticeinfoALL(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Noticeinfo> list=noticeinfoMapper.getAllNoticeinfo();
+        return new PageInfo<>(list);
     }
 }
