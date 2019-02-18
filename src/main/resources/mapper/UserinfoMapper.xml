@@ -12,9 +12,10 @@
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="isProhibit" jdbcType="INTEGER" property="isprohibit" />
+    <result column="depName" jdbcType="INTEGER" property="depName" />
   </resultMap>
   <sql id="Base_Column_List">
-    userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit
+    userId, tureName, passWord, phone, qq, email, age, sex, address, isProhibit, depName
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -29,11 +30,11 @@
   <insert id="insert" parameterType="com.huizhi.oa.entity.Userinfo">
     insert into userinfo (userId, tureName, passWord, 
       phone, qq, email, age, 
-      sex, address, isProhibit
+      sex, address, isProhibit, depName
       )
     values (#{userid,jdbcType=INTEGER}, #{turename,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{phone,jdbcType=CHAR}, #{qq,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
-      #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{isprohibit,jdbcType=INTEGER}
+      #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{isprohibit,jdbcType=INTEGER}, #{depName,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Userinfo">
@@ -69,6 +70,9 @@
       <if test="isprohibit != null">
         isProhibit,
       </if>
+      <if test="depName != null">
+        depName,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -100,6 +104,9 @@
       </if>
       <if test="isprohibit != null">
         #{isprohibit,jdbcType=INTEGER},
+      </if>
+      <if test="depName != null">
+        #{depName,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -133,6 +140,9 @@
       <if test="isprohibit != null">
         isProhibit = #{isprohibit,jdbcType=INTEGER},
       </if>
+      <if test="depName != null">
+        depName = #{depName,jdbcType=INTEGER},
+      </if>
     </set>
     where userId = #{userid,jdbcType=INTEGER}
   </update>
@@ -146,7 +156,8 @@
       age = #{age,jdbcType=INTEGER},
       sex = #{sex,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      isProhibit = #{isprohibit,jdbcType=INTEGER}
+      isProhibit = #{isprohibit,jdbcType=INTEGER},
+      depName = #{depName,jdbcType=INTEGER}
     where userId = #{userid,jdbcType=INTEGER}
   </update>
 

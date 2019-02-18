@@ -21,6 +21,16 @@ public class Userinfo {
 
     private Integer isprohibit;
 
+    private Integer depName;
+
+    public void setDepName(Integer depName) {
+        this.depName = depName;
+    }
+
+    public Integer getDepName() {
+        return depName;
+    }
+
     public Integer getUserid() {
         return userid;
     }
