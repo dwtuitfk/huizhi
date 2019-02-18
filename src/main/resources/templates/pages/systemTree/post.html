@@ -107,7 +107,7 @@
                             //向服务端发送删除指令
                             var ids="";
                             for (var i=0;i<data.length;i++) {
-                                ids+=data[i].bmzdid+",";
+                                ids+=data[i].userzdid+",";
                             }
                             $.ajax({
                                 url: "/system/delPost",
@@ -154,7 +154,7 @@
                     $.ajax({
                         type: "POST",
                         url: "/system/delPost",
-                        data: {"ids":data.bmzdid},
+                        data: {"ids":data.userzdid},
                         dataType:"json",
                         success: function (data) {
                             if (data==500) {

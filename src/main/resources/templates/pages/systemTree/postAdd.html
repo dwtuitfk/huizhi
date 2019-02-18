@@ -57,12 +57,12 @@
 
             //关闭iframe
             $('#closeIframe').click(function(){
-                var depname=$('#depname').val();
-                var depnamemc=$('#depnamemc').val();
+                var rolename=$('#rolename').val();
+                var rolenamemc=$('#rolenamemc').val();
                 $.ajax({
                     url: "/system/postAddInfo",
                     type: "POST",
-                    data: {"depname":depname,"depnamemc":depnamemc},
+                    data: {"rolename":rolename,"rolenamemc":rolenamemc},
                     dataType: "json",
                     success: function(data){
                         if(data===500){
@@ -93,14 +93,14 @@
 <div class="layui-form-item">
     <label class="layui-form-label">岗位编号:</label>
     <div class="layui-input-block">
-        <input type="text" id="rolename" name="depname" lay-verify="depname" autocomplete="off" placeholder="部门编号" class="layui-input" style="width: 200px">
+        <input type="text" id="rolename" name="rolename" lay-verify="rolename" autocomplete="off" placeholder="岗位编号" class="layui-input" style="width: 200px">
         <span id="rolename_prompt"></span>
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">岗位名称:</label>
     <div class="layui-input-block">
-        <input type="text" id="rolenamemc" name="depnamemc" lay-verify="depnamemc" placeholder="部门名称" autocomplete="off" class="layui-input" style="width: 200px">
+        <input type="text" id="rolenamemc" name="rolenamemc" lay-verify="rolenamemc" placeholder="岗位名称" autocomplete="off" class="layui-input" style="width: 200px">
         <span id="rolenamemc_prompt"></span>
     </div>
 </div>

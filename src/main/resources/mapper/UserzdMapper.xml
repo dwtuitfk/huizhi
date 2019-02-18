@@ -38,8 +38,28 @@
     </trim>
   </insert>
 
+  <!-- 查询岗位信息的持久化操作 -->
   <select id="getAllUserzd" resultType="com.huizhi.oa.entity.Userzd">
-  	select * from userzd
+  	select userzdId,roleName,roleNamemc from userzd
   </select>
 
+  <!-- 修改岗位信息的持久化操作 -->
+  <update id="updateUserzd" parameterType="com.huizhi.oa.entity.Userzd">
+    UPDATE bmzd SET roleName = #{rolename},roleNamemc=#{rolenamemc} WHERE bmzdId=#{bmzdid}
+  </update>
+
+  <!-- 查询单条岗位信息的持久化操作 -->
+  <select id="getUserzd" resultType="com.huizhi.oa.entity.Userzd" parameterType="java.lang.Integer">
+		SELECT userzdId,roleName,roleNamemc FROM userzd WHERE userzdId=#{userzdid}
+	</select>
+
+  <!-- 删除岗位信息的持久化操作 -->
+  <delete id="delMoreUserzd">
+    delete from userzd where userzdId in
+
+    <foreach item="item" index="index" collection="list"
+             open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
 </mapper>

@@ -39,6 +39,28 @@ public class UserzdController {
     }
     public Integer userzdid2;
 
+
+    //岗位添加
+    @RequestMapping("/postAdd")
+    public String depAdd() {
+        return "pages/systemTree/postAdd";
+    }
+
+    @RequestMapping("/postAddInfo")
+    @ResponseBody
+    public String depAddinfo(Integer rolename,String rolenamemc) {
+        System.out.println(rolename+rolenamemc);
+        Userzd userzd=new Userzd();
+        userzd.setRolename(rolename);
+        userzd.setRolenamemc(rolenamemc);
+        int temp=userzdService.insertSelective(userzd);
+        if (temp>0)
+            return "400";
+        else
+            return "500";
+    }
+
+
     //岗位修改
     @RequestMapping("/postUpdate")
     public String postUpdate(Integer userzdid) {
