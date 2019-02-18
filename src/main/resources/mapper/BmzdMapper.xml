@@ -52,4 +52,15 @@
   <select id="getBmzd" resultType="com.huizhi.oa.entity.Bmzd" parameterType="java.lang.Integer">
 		SELECT bmzdId,depName,depNamemc FROM bmzd WHERE bmzdId=#{bmzdid}
 	</select>
+
+  <!-- 删除部门信息的持久化操作 -->
+  <delete id="delMoreBmzd">
+    delete from bmzd where bmzdid in
+
+    <foreach item="item" index="index" collection="list"
+             open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
 </mapper>

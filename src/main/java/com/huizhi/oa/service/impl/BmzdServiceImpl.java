@@ -51,5 +51,10 @@ public class BmzdServiceImpl implements BmzdService {
         return bmzdMapper.getBmzd(bmzdid);
     }
 
+    @Override
+    public int delMoreBmzd(List<Integer> ids) {
+        return bmzdMapper.delMoreBmzd(ids);
+    }
+
 
 }

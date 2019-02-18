@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -92,9 +93,10 @@ public class BmzdController {
 
     @RequestMapping("/depUpdateInfo")
     @ResponseBody
-    public String depUpdateInfo(Integer depname,String depnamemc) {
-        System.out.println(depname+depnamemc);
+    public String depUpdateInfo(Integer bmzdid,Integer depname,String depnamemc) {
+        System.out.println(bmzdid+depname+depnamemc);
         Bmzd bmzd=new Bmzd();
+        bmzd.setBmzdid(bmzdid);
         bmzd.setDepname(depname);
         bmzd.setDepnamemc(depnamemc);
         int temp=bmzdService.updateBmzd(bmzd);
@@ -105,4 +107,24 @@ public class BmzdController {
     }
 
     //部门删除
+    @RequestMapping("delDep")
+    @ResponseBody
+    public String delDep(String ids) {
+        List<Integer> id=null;
+        if(ids.contains(",")){
+            String []arr=ids.split(",");
+            id=new ArrayList<>();
+            for (String a:arr) {
+                id.add(Integer.parseInt(a));
+            }
+        }else{
+            id=new ArrayList<>();
+            id.add(Integer.parseInt(ids));
+        }
+        int temp=bmzdService.delMoreBmzd(id);
+        if (temp>0)
+            return "400";
+        else
+            return "500";
+    }
 }

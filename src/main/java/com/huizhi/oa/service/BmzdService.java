@@ -17,4 +17,6 @@ public interface BmzdService {
     int updateBmzd(Bmzd record);
 
     Bmzd getBmzd(int bmzdid);
+
+    int delMoreBmzd(List<Integer> ids);
 }

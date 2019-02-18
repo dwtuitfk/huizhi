@@ -110,10 +110,39 @@
                         if(data.length === 0){
                             layer.msg('请选择一行');
                         } else {
-                            layer.confirm('真的删除行么', function(index){
-                                data.del(); //删除对应行（tr）的DOM结构
+                            layer.confirm('真的删除么', function(index){
+
                                 layer.close(index);
                                 //向服务端发送删除指令
+                                var ids="";
+                                for (var i=0;i<data.length;i++) {
+                                    ids+=data[i].bmzdid+",";
+                                }
+                                $.ajax({
+                                    url: "/system/delDep",
+                                    type: "POST",
+                                    data: {"ids":ids},
+                                    dataType: "json",
+                                    success: function(data){
+                                        if(data===500){
+                                            layer.msg("删除失败", {icon: 5});
+                                        }else{
+                                            layer.msg("删除成功", {icon: 6});
+                                            table.reload('idTest', {
+                                                where: { //设定异步数据接口的额外参数，任意设
+
+                                                }
+                                                ,page: {
+                                                    curr: 1 //重新从第 1 页开始
+                                                }
+                                            });
+                                        }
+                                    },
+                                    error:function(){
+                                        layer.msg("系统异常");
+                                    },
+
+                                });
                             });
                         }
                         break;
@@ -128,25 +157,28 @@
             if(layEvent === 'detail'){
               layer.msg('查看操作');
             } else if(layEvent === 'del'){
-                //var xh = data['xh'];
               layer.confirm('真的删除行么', function(index){
-                  data.del(); //删除对应行（tr）的DOM结构
-                  layer.close(index);
+                  console.log(obj);
+                  console.log(data);
                  $.ajax({
                     type: "POST",
-                    url: "delstu.do",
-                    data: "xh="+xh,
-                    success: function (msg) {
-                        if (msg > 0) {
+                    url: "/system/delDep",
+                    data: {"ids":data.bmzdid},
+                    dataType:"json",
+                    success: function (data) {
+                        if (data==500) {
+                            layer.msg("删除失败", {icon: 5});
+                        } else {
                             //删除这一行
                             obj.del();
                             //关闭弹框
                             layer.close(index);
                             layer.msg("删除成功", {icon: 6});
-                        } else {
-                            layer.msg("删除失败", {icon: 5});
                         }
-                    }
+                    },
+                     error:function(){
+                         parent.layer.msg("系统异常");
+                     }
                 });
 
               });
@@ -161,7 +193,20 @@
                 });
             }
            });
+
+
+/*        //监听单元格编辑
+        table.on('edit(demo)', function(obj){
+            var value = obj.value //得到修改后的值
+                ,data = obj.data //得到所在行所有键值
+                ,field = obj.field; //得到字段
+            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+        });*/
+
+
 });
 </script>
+
+
 </body>
 </html>
