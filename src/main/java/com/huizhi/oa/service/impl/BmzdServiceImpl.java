@@ -41,5 +41,15 @@ public class BmzdServiceImpl implements BmzdService {
         return new PageInfo<>(list);
     }
 
+    @Override
+    public int updateBmzd(Bmzd record) {
+        return bmzdMapper.updateBmzd(record);
+    }
+
+    @Override
+    public Bmzd getBmzd(int bmzdid) {
+        return bmzdMapper.getBmzd(bmzdid);
+    }
+
 
 }

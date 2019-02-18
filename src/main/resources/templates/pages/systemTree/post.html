@@ -20,7 +20,7 @@
 
 <table class="layui-table" id="list" lay-filter="list"  lay-even="" lay-skin="row" style="margin:0px 0px;"></table>
 
-<!--<div id="page1"></div>-->
+<div id="page1"></div>
 
 
 <script type="text/html" id="toolbarDemo">
@@ -85,7 +85,7 @@
             table.render({
                 elem: '#list',
                 data: res,//数据接口,
-                page: true,
+                page: false,
                 title: '部门管理',
                 toolbar: '#toolbarDemo',
                 cols: [[ //表头

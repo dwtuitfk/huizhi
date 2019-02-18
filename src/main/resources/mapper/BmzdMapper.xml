@@ -38,9 +38,18 @@
     </trim>
   </insert>
 
+  <!-- 查询所有部门信息的持久化操作 -->
   <select id="getAllBmzd" resultType="com.huizhi.oa.entity.Bmzd">
-    select * from bmzd
+    select bmzdId,depName,depNamemc from bmzd
   </select>
 
+  <!-- 修改部门信息的持久化操作 -->
+  <update id="updateBmzd" parameterType="com.huizhi.oa.entity.Bmzd">
+    UPDATE bmzd SET depName = #{depname},depNamemc=#{depnamemc} WHERE bmzdId=#{bmzdid}
+  </update>
 
+  <!-- 查询单条部门信息的持久化操作 -->
+  <select id="getBmzd" resultType="com.huizhi.oa.entity.Bmzd" parameterType="java.lang.Integer">
+		SELECT bmzdId,depName,depNamemc FROM bmzd WHERE bmzdId=#{bmzdid}
+	</select>
 </mapper>
