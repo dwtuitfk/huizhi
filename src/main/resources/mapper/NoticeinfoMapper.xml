@@ -91,8 +91,10 @@
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
 
-  <select id="getAllNoticeinfo" resultType="Noticeinfo">
-    select n_id, userId, n_title, n_time, n_content from noticeinfo
+  <select id="getAllNoticeinfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from noticeinfo
   </select>
 
 </mapper>
