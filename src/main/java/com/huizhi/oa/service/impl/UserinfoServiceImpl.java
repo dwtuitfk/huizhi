@@ -55,7 +55,7 @@ public class UserinfoServiceImpl implements UserinfoService {
     }
 
     @Override
-    public PageInfo<Userinfo> selectStudentsALL(Integer pageNum, Integer pageSize) {
+    public PageInfo<Userinfo> selectUserinfoALL(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Userinfo> list = userinfoMapper.getAllUserinfo();
         return new PageInfo<>(list);

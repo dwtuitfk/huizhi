@@ -37,4 +37,9 @@
       </if>
     </trim>
   </insert>
+
+  <select id="getAllUserzd" resultType="com.huizhi.oa.entity.Userzd">
+  	select * from userzd
+  </select>
+
 </mapper>

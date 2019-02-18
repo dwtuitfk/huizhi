@@ -1,5 +1,6 @@
 package com.huizhi.oa.service;
 
+import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Bmzd;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface BmzdService {
     int insertSelective(Bmzd record);
 
     List<Bmzd> getAllBmzd();
+
+    PageInfo<Bmzd> selectBmzdALL(Integer pageNum, Integer pageSize);
 }
