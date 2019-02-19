@@ -51,10 +51,4 @@ public class NoticeinfoServiceImpl implements NoticeinfoService {
         return noticeinfoMapper.getAllNoticeinfo();
     }
 
-    @Override
-    public PageInfo<Noticeinfo> selectNoticeinfoALL(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        List<Noticeinfo> list=noticeinfoMapper.getAllNoticeinfo();
-        return new PageInfo<>(list);
-    }
 }

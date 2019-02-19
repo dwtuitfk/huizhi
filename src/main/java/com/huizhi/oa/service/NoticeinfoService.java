@@ -22,6 +22,6 @@ public interface NoticeinfoService {
     List<Noticeinfo> getAllNoticeinfo();
 
     //LayUI分页显示
-    PageInfo<Noticeinfo> selectNoticeinfoALL(Integer pageNum, Integer pageSize);
+//    PageInfo<Noticeinfo> selectNoticeinfoALL(Integer pageNum, Integer pageSize);
 
 }
