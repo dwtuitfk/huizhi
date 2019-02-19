@@ -1,5 +1,7 @@
 package com.huizhi.oa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Noticeinfo {
@@ -8,7 +10,7 @@ public class Noticeinfo {
     private Integer userid;
 
     private String nTitle;
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date nTime;
 
     private String nContent;
