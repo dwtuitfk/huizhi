@@ -122,4 +122,13 @@ public class BmzdController {
         else
             return "500";
     }
+
+
+    //部门
+    @RequestMapping("selectDep")
+    @ResponseBody
+    public List<Bmzd> selectDep(){
+        List<Bmzd> list =bmzdService.getAllBmzd();
+        return list;
+    }
 }

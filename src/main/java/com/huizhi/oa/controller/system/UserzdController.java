@@ -121,5 +121,15 @@ public class UserzdController {
         else
             return "500";
     }
+
+    //岗位
+    @RequestMapping("selectPost")
+    @ResponseBody
+    public List<Userzd> selectPost(){
+        List<Userzd> list = userzdService.getAllUserzd();
+        return list;
+    }
+
+
 }
 

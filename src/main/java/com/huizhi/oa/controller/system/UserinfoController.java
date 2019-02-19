@@ -2,7 +2,6 @@ package com.huizhi.oa.controller.system;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.huizhi.oa.entity.Bmzd;
 import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
 import com.huizhi.oa.util.LayUIResult;
@@ -41,4 +40,26 @@ public class UserinfoController {
         PageInfo<Userinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Userinfo>>("",list,0,(int)pageinfo.getTotal());
     }
+
+    //用户添加
+    @RequestMapping("/userInfoAdd")
+    public String depAdd() {
+        return "pages/userTree/UserInfoAdd";
+    }
+
+/*    @RequestMapping("/depAddInfo")
+    @ResponseBody
+    public String depAddinfo(Userinfo userinfo) {
+        int temp=userinfoService.insertSelective(userinfo);
+        if (temp>0)
+            return "400";
+        else
+            return "500";
+    }*/
+
+
+
+
+    //岗位
+
 }

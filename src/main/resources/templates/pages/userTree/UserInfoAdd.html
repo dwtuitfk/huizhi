@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户添加</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
+
+
+</head>
+
+<script type="text/javascript">
+
+    //重新渲染表单
+    function renderForm(){
+        layui.use('form', function(){
+            var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+            form.render();
+        });
+    }
+
+    $(document).ready(function(){
+
+        //异步获取部门名称
+        $.ajax({
+            type : "get",
+            url : "/system/selectDep",
+            success : function(data) {
+                //alert(data[1].depnamemc);
+                var dep='';
+                $.each(data, function(index,obj) {
+                        dep += '<option value="'+obj.depname+'">'+obj.depnamemc+'</option>';
+                });
+                //alert(dep);
+                $("#depnamemc").append(dep);
+                renderForm();
+                //layui.form.render();
+            },
+        });
+
+        //异步获取岗位名称
+        $.ajax({
+            type : "get",
+            url : "/system/selectPost",
+            success : function(data) {
+                //alert(data[1].rolenamemc);
+                var role='';
+                $.each(data, function(index,obj) {
+                    role += '<option value="'+obj.rolename+'">'+obj.rolenamemc+'</option>';
+                });
+                //alert(role);
+                $("#rolenamemc").append(role);
+                renderForm();
+            },
+        });
+
+        layui.use('form', function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            form.render();
+        });
+
+    });
+</script>
+
+<body>
+<br>
+<div class="weadmin-body">
+    <form class="layui-form">
+
+        <!--职员编号-->
+        <div class="layui-form-item">
+            <label for="userid" class="layui-form-label">
+                <span class="we-red">*</span>职员编号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="userid" name="userid" required="" lay-verify="userid"
+                       autocomplete="off" value="" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--职员姓名-->
+        <div class="layui-form-item">
+            <label for="turename" class="layui-form-label">
+                <span class="we-red">*</span>姓名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="turename" name="turename" required="" lay-verify="turename"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--年龄-->
+        <div class="layui-form-item">
+            <label for="age" class="layui-form-label">
+                <span class="we-red">*</span>年龄
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="age" name="age" required="" lay-verify="age"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--性别-->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="we-red">*</span>性别</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="sex" lay-skin="primary" title="男" checked="" value="男">
+                <input type="checkbox" name="sex" lay-skin="primary" title="女" value="女">
+            </div>
+        </div>
+
+        <!--手机-->
+        <div class="layui-form-item">
+            <label for="phone" class="layui-form-label">
+                <span class="we-red">*</span>手机
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="phone" name="phone" required="" lay-verify="phone"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--QQ-->
+        <div class="layui-form-item">
+            <label for="qq" class="layui-form-label">
+                <span class="we-red">*</span>QQ
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="qq" name="qq" required="" lay-verify="qq"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--地址-->
+        <div class="layui-form-item">
+            <label for="address" class="layui-form-label">
+                <span class="we-red">*</span>地址
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="address" name="address" required="" lay-verify="address"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--邮箱-->
+        <div class="layui-form-item">
+            <label for="email" class="layui-form-label">
+                <span class="we-red">*</span>邮箱
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="email" name="email" required="" lay-verify="email"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--部门-->
+        <div class="layui-form-item">
+            <label for="depnamemc" class="layui-form-label">
+                <span class="we-red">*</span>部门
+            </label>
+            <div class="layui-input-inline">
+
+                <select id="depnamemc">
+                    <option value="-1">--请选择--</option>
+                </select>
+
+            </div>
+        </div>
+
+        <!--岗位-->
+        <div class="layui-form-item">
+            <label for="rolenamemc" class="layui-form-label">
+                <span class="we-red">*</span>职位
+            </label>
+            <div class="layui-input-inline">
+
+                <select id="rolenamemc">
+                    <option value="-1">--请选择--</option>
+                </select>
+
+            </div>
+        </div>
+
+        <!--密码-->
+        <div class="layui-form-item">
+            <label for="pass" class="layui-form-label">
+                <span class="we-red">*</span>密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="password" id="pass" name="password" required="" lay-verify="password"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                6到16个字符
+            </div>
+        </div>
+
+        <!--确认密码-->
+        <div class="layui-form-item">
+            <label for="repass" class="layui-form-label">
+                <span class="we-red">*</span>确认密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="password" id="repass" name="ispassword" required="" lay-verify="ispassword"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <!--是否冻结-->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="we-red">*</span>冻结</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like1[write]" lay-skin="primary" title="是" checked="" value="1">
+                <input type="checkbox" name="like1[read]" lay-skin="primary" title="否" value="0">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="repass" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                添加
+            </button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+
+    layui.use(['form','layer'], function(){
+        var form = layui.form,
+            layer = layui.layer;
+
+        //自定义验证规则
+        form.verify({
+            userid: function(value){
+                if(value.length < 5){
+                    return '职员编号至少得5个字符';
+                }
+            },
+            turename: function(value){
+                if(value.length < 5){
+                    return '姓名至少得2个字符';
+                }
+            }
+            ,age:[/(.+){1,2}$/, '年龄必须2位数字']
+            ,qq: [/(.+){5,11}$/, 'QQ必须5到11位']
+            ,address: function(value){
+                if(value.length < 5){
+                    return '地址至少得3个字符';
+                }
+            }
+            ,password: [/(.+){6,12}$/, '密码必须6到12位']
+            ,ispassword: function(value){
+                if($('#pass').val()!=$('#repass').val()){
+                    return '两次密码不一致';
+                }
+            }
+        });
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            console.log(data);
+            //发异步，把数据提交给php
+            layer.alert("增加成功", {icon: 6},function () {
+                // 获得frame索引
+                var index = parent.layer.getFrameIndex(window.name);
+                //关闭当前frame
+                parent.layer.close(index);
+            });
+            return false;
+        });
+
+    });
+</script>
+</body>
+
+</html>
