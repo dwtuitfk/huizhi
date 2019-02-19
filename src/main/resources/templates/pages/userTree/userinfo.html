@@ -35,6 +35,11 @@
 
 
 <script th:inline="none">
+    //格式转换
+    function createrFormat(o){
+        //var str = JSON.stringify(o);
+        return o;
+    }
 
 
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function(){
@@ -59,6 +64,8 @@
             });
         });
 
+
+
         //执行一个 table 实例
         table.render({
             elem: '#demo'
@@ -74,12 +81,12 @@
                     {type:'checkbox', fixed: 'left'},
                     {field:'userid', title: '职员编号',width:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
                     {field:'turename', title: '姓名',width:'100',style:'vertical-align: middle',align:'center'},
-                    {field:'age', title: '年龄',width:'100',templet: '#type',align:'center'},
-                    {field:'sex', title: '性别',width:'100',align:'center'},
-                    {field:'address', title:'地址',width:'200',align:'center',templet:'#amount'},
+                    {field:'age', title: '年龄',width:'60',templet: '#type',align:'center'},
+                    {field:'sex', title: '性别',width:'60',align:'center'},
+                    {field:'address', title:'地址',width:'150',align:'center',templet:'#amount'},
                     {field:'email', title: '邮箱',width:'150',align:'center'},
                     {field:'phone', title: '电话',width:'150',align:'center'},
-                    {field:'bmzd.depnamemc', title: '部门',width:'150',align:'center'},
+                    {title: '部门',width:'150',align:'center',templet:'<div>{{createrFormat(d.bmzd.depnamemc)}}</div>'},
                     {title: '操作', align:'center',width:'180', toolbar: '#barDemo'}
 
                 ]

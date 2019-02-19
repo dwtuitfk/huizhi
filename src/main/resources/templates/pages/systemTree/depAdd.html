@@ -12,8 +12,8 @@
         $(function(){
 
             //部门名称验证
-        $("#depnamemc").blur(function(){
-            //获取部门名称文本框的值
+            function checkDepnamemc(){
+                //获取部门名称文本框的值
             var depnamemc=$('#depnamemc').val();
             //使用正则表达式 部门名称由2-4个汉字构成
             var reg = /^[\u4e00-\u9fa5]{2,8}$/;
@@ -29,12 +29,12 @@
                 //$("#depnamemc").select();
                 return false;
             }
-        });
+        };
 
 
             //部门编号验证
-            $("#depname").blur(function(){
-                //获取部门编号文本框的值
+            function checkDepname(){
+            //获取部门编号文本框的值
                 var depname=$('#depname').val();
                 //使用正则表达式 部门编号至少n位数字
                 var reg = /^[0-9]*$/;
@@ -50,36 +50,57 @@
                     //$("#depname").select();
                     return false;
                 }
+            };
+
+
+            //使用jQuery
+            $(function(){
+                //部门名称添加失去焦点事件实现验证
+                $("#depnamemc").blur(checkDepnamemc);
+                //部门名称编号添加失去焦点事件实现验证
+                $("#depname").blur(checkDepname);
+                //提交按钮的验证事件
+                $("#closeIframe").click(function(){
+                    if(checkDepnamemc()&&checkDepname()){
+                        var index = parent.layer.getFrameIndex(window.name);
+
+                        //关闭iframe
+                        $('#closeIframe').click(function(){
+                            var depname=$('#depname').val();
+                            var depnamemc=$('#depnamemc').val();
+                            $.ajax({
+                                url: "/system/depAddInfo",
+                                type: "POST",
+                                data: {"depname":depname,"depnamemc":depnamemc},
+                                dataType: "json",
+                                success: function(data){
+                                    if(data===500){
+                                        parent.layer.msg("添加失败", {icon: 5});
+                                    }else{
+                                        parent.layer.msg("添加成功", {icon: 6});
+                                    }
+                                },
+                                error:function(){
+                                    parent.layer.msg("系统异常");
+                                },
+
+                            });
+
+                            parent.layer.close(index);
+
+                        });
+                    }
+                    else{
+                        return false;
+                    }
+                });
             });
 
 
-            var index = parent.layer.getFrameIndex(window.name);
 
-            //关闭iframe
-            $('#closeIframe').click(function(){
-                var depname=$('#depname').val();
-                var depnamemc=$('#depnamemc').val();
-                $.ajax({
-                    url: "/system/depAddInfo",
-                    type: "POST",
-                    data: {"depname":depname,"depnamemc":depnamemc},
-                    dataType: "json",
-                    success: function(data){
-                        if(data===500){
-                            parent.layer.msg("添加失败", {icon: 5});
-                        }else{
-                            parent.layer.msg("添加成功", {icon: 6});
-                        }
-                    },
-                    error:function(){
-                        parent.layer.msg("系统异常");
-                    },
 
-                });
 
-                parent.layer.close(index);
 
-        });
 
         });
 
