@@ -15,7 +15,7 @@ public class Noticeinfo {
 
     private String nContent;
 
-    
+    private Userinfo userinfo;
 
     public Integer getnId() {
         return nId;
