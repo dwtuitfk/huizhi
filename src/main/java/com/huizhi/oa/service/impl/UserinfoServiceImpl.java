@@ -54,4 +54,14 @@ public class UserinfoServiceImpl implements UserinfoService {
         return userinfoMapper.getAllUserinfo();
     }
 
+    @Override
+    public List<Userinfo> getUserRoleDepInfo() {
+        return userinfoMapper.getUserRoleDepInfo();
+    }
+
+    @Override
+    public List<Userinfo> getUserJurInfo() {
+        return userinfoMapper.getUserJurInfo();
+    }
+
 }

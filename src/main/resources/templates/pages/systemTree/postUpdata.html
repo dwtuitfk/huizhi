@@ -19,9 +19,9 @@
                 url:"/system/getPost",
                 dataType:"json",
                 success:function(data){  //data表示返回的数据
-                    $('#bmzdid').val(data.bmzdid);
-                    $('#depname').val(data.depname);
-                    $('#depnamemc').val(data.depnamemc);
+                    $('#userzdid').val(data.userzdid);
+                    $('#rolename').val(data.rolename);
+                    $('#rolenamemc').val(data.rolenamemc);
                 }
             });
 
@@ -31,42 +31,42 @@
 
 
             //岗位名称验证
-            $("#depnamemc").blur(function(){
+            $("#rolenamemc").blur(function(){
                 //获取岗位名称文本框的值
-                var depnamemc=$('#depnamemc').val();
+                var rolenamemc=$('#rolenamemc').val();
                 //使用正则表达式 岗位名称由2-4个汉字构成
                 var reg = /^[\u4e00-\u9fa5]{2,8}$/;
                 //判断
-                if(reg.test(depnamemc)){
-                    $("#depnamemc_prompt").html("正确").css("color","green");
+                if(reg.test(rolenamemc)){
+                    $("#rolenamemc_prompt").html("正确").css("color","green");
                     return true;
                 }else{
-                    $("#depnamemc_prompt").html("必须是2-8位汉字").css("color","red");
+                    $("#rolenamemc_prompt").html("必须是2-8位汉字").css("color","red");
                     //获得焦点
-                    //$("#depnamemc").focus();
+                    //$("#rolenamemc").focus();
                     //将文本内容进行全选
-                    //$("#depnamemc").select();
+                    //$("#rolenamemc").select();
                     return false;
                 }
             });
 
 
             //岗位编号验证
-            $("#depname").blur(function(){
+            $("#rolename").blur(function(){
                 //获取岗位编号文本框的值
-                var depname=$('#depname').val();
+                var rolename=$('#rolename').val();
                 //使用正则表达式 岗位编号至少n位数字
                 var reg = /^[0-9]*$/;
                 //判断
-                if(reg.test(depname)){
-                    $("#depname_prompt").html("正确").css("color","green");
+                if(reg.test(rolename)){
+                    $("#rolename_prompt").html("正确").css("color","green");
                     return true;
                 }else{
-                    $("#depname_prompt").html("必须是数字").css("color","red");
+                    $("#rolename_prompt").html("必须是数字").css("color","red");
                     //获得焦点
-                    //$("#depname").focus();
+                    //$("#rolename").focus();
                     //将文本内容进行全选
-                    //$("#depname").select();
+                    //$("#rolename").select();
                     return false;
                 }
             });
@@ -76,13 +76,13 @@
 
             //关闭iframe
             $('#closeIframe').click(function(){
-                var bmzdid=$('#bmzdid').val();
-                var depname=$('#depname').val();
-                var depnamemc=$('#depnamemc').val();
+                var rolename=$('#rolename').val();
+                var rolenamemc=$('#rolenamemc').val();
+                var userzdid=$('#userzdid').val();
                 $.ajax({
                     url: "/system/postUpdateInfo",
                     type: "POST",
-                    data: {"depname":depname,"depnamemc":depnamemc,"bmzdid":bmzdid},
+                    data: {"rolename":rolename,"rolenamemc":rolenamemc,"userzdid":userzdid},
                     dataType: "json",
                     success: function(data){
                         if(data===500){
@@ -111,24 +111,23 @@
 
 <br><br>
 <div class="layui-form-item">
-
     <input id="bmzdid" type="hidden">
-    <label class="layui-form-label">部门编号:</label>
+    <label class="layui-form-label">岗位编号:</label>
     <div class="layui-input-block">
-        <input type="text" id="depname" name="depname" lay-verify="depname" autocomplete="off" placeholder="部门编号" class="layui-input" style="width: 200px">
-        <span id="depname_prompt"></span>
+        <input type="text" id="rolename" name="rolename" lay-verify="rolename" autocomplete="off" placeholder="岗位编号" class="layui-input" style="width: 200px">
+        <span id="rolename_prompt"></span>
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">部门名称:</label>
+    <label class="layui-form-label">岗位名称:</label>
     <div class="layui-input-block">
-        <input type="text" id="depnamemc" name="depnamemc" lay-verify="depnamemc" placeholder="部门名称" autocomplete="off" class="layui-input" style="width: 200px">
-        <span id="depnamemc_prompt"></span>
+        <input type="text" id="rolenamemc" name="rolenamemc" lay-verify="rolenamemc" placeholder="岗位名称" autocomplete="off" class="layui-input" style="width: 200px">
+        <span id="rolenamemc_prompt"></span>
     </div>
 </div>
 <div class="layui-form-item">
     <div class="layui-input-block">
-        <button class="layui-btn"  id="closeIframe" lay-submit="" lay-filter="updata">添加</button>
+        <button class="layui-btn"  id="closeIframe" lay-submit="" lay-filter="add">修改</button>
         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
 </div>
