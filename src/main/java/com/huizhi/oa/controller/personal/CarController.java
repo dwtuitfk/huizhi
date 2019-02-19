@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,5 +27,24 @@ public class CarController {
         List<Carinfo> list=carinfoService.getAllCarinfo();
         PageInfo<Carinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Carinfo>>("",list,0,(int)pageinfo.getTotal());
+    }
+    /*http://localhost:8080/getAllLicensePlate测试成功*/
+    /*获取了所有车辆牌照*/
+    @ResponseBody
+    @RequestMapping("getAllLicensePlate")
+    public List getAllLicensePlate() throws Exception {
+
+        List<Carinfo> list=carinfoService.getAllCarinfo();
+        List list1 = new ArrayList();
+        list.forEach((p) -> list1.add(p.getcId()));
+        return list1;
+    }
+    /*http://localhost:8080/getAllLicensePlate测试成功*/
+    /*获取了所有车辆牌照*/
+    @ResponseBody
+    @RequestMapping("/addCarApply")
+    public void addCarApply() throws Exception {
+
+        System.out.print("tianja");
     }
 }
