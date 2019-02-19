@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>档案管理</title>
+    <title>职位变更</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
     <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
@@ -70,8 +70,8 @@
         table.render({
             elem: '#demo'
             ,height: 500
-            ,url: '/system/selectUserinfoALL' //数据接口
-            ,title: '部门表'
+            ,url: '/system/selectUserJurALL' //数据接口
+            ,title: '岗位表'
             ,page: true //开启分页
             ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             ,totalRow: false //开启合计行
@@ -79,18 +79,11 @@
 
                 [ //表头
                     {type:'checkbox', fixed: 'left'},
-                    {field:'userid', title: '职员编号',width:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
-                    {field:'turename', title: '姓名',width:'100',style:'vertical-align: middle',align:'center'},
-                    {field:'age', title: '年龄',width:'80',templet: '#type',align:'center',sort: true},
-                    {field:'sex', title: '性别',width:'60',align:'center'},
-                    {field:'address', title:'地址',width:'130',align:'center',templet:'#amount'},
-                    {field:'email', title: '邮箱',width:'120',align:'center'},
-                    {field:'phone', title: '电话',width:'120',align:'center'},
-                    {field:'qq', title: 'QQ号码',width:'100',align:'center'},
-                    {field:'roleNamemc', title: '岗位',width:'120',align:'center'},
-                    {field:'depNamemc', title: '部门',width:'120',align:'center'},
-                    {field:'isprohibit', title: '是否冻结',width:'100',align:'center'},
-                    {title: '操作', align:'center',width:'140', toolbar: '#barDemo'}
+                    {field:'userId',title: '编号',width:'200',align:'center'},
+                    {field:'tureName',title: '姓名',width:'200',align:'center'},
+                    {field:'fName',title: '功能模块',width:'200',align:'center'},
+                    {field:'depNamemc',title: '部门',width:'200',align:'center'},
+                    {title: '操作', align:'center',width:'200', toolbar: '#barDemo'}
 
                 ]
 

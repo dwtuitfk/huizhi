@@ -19,4 +19,10 @@ public interface UserinfoMapper {
 
     //查询所有用户信息
     List<Userinfo> getAllUserinfo();
+
+    //查询所有用户角色
+    List<Userinfo>getUserRoleDepInfo();
+
+    //查询所有用户权限
+    List<Userinfo>getUserJurInfo();
 }

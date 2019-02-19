@@ -1,6 +1,10 @@
 package com.huizhi.oa.entity;
 
-public class Userinfo {
+/**
+ * created by dwtuitfk on 2019/2/19.
+ */
+public class UserRoleDep {
+
     private Integer userid;
 
     private String turename;
@@ -21,25 +25,9 @@ public class Userinfo {
 
     private Integer isprohibit;
 
-    private Integer depName;
+    private String roleNamemc;
 
-    private Bmzd bmzd;
-
-    public Bmzd getBmzd() {
-        return bmzd;
-    }
-
-    public void setBmzd(Bmzd bmzd) {
-        this.bmzd = bmzd;
-    }
-
-    public void setDepName(Integer depName) {
-        this.depName = depName;
-    }
-
-    public Integer getDepName() {
-        return depName;
-    }
+    private String depNamemc;
 
     public Integer getUserid() {
         return userid;
@@ -54,7 +42,7 @@ public class Userinfo {
     }
 
     public void setTurename(String turename) {
-        this.turename = turename == null ? null : turename.trim();
+        this.turename = turename;
     }
 
     public String getPassword() {
@@ -62,7 +50,7 @@ public class Userinfo {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getPhone() {
@@ -70,7 +58,7 @@ public class Userinfo {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getQq() {
@@ -78,7 +66,7 @@ public class Userinfo {
     }
 
     public void setQq(String qq) {
-        this.qq = qq == null ? null : qq.trim();
+        this.qq = qq;
     }
 
     public String getEmail() {
@@ -86,7 +74,7 @@ public class Userinfo {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public Integer getAge() {
@@ -102,7 +90,7 @@ public class Userinfo {
     }
 
     public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+        this.sex = sex;
     }
 
     public String getAddress() {
@@ -110,7 +98,7 @@ public class Userinfo {
     }
 
     public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+        this.address = address;
     }
 
     public Integer getIsprohibit() {
@@ -119,5 +107,21 @@ public class Userinfo {
 
     public void setIsprohibit(Integer isprohibit) {
         this.isprohibit = isprohibit;
+    }
+
+    public String getRoleNamemc() {
+        return roleNamemc;
+    }
+
+    public void setRoleNamemc(String roleNamemc) {
+        this.roleNamemc = roleNamemc;
+    }
+
+    public String getDepNamemc() {
+        return depNamemc;
+    }
+
+    public void setDepNamemc(String depNamemc) {
+        this.depNamemc = depNamemc;
     }
 }
