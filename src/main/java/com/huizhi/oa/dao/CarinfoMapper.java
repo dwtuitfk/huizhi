@@ -2,6 +2,8 @@ package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Carinfo;
 
+import java.util.List;
+
 public interface CarinfoMapper {
     int deleteByPrimaryKey(String cId);
 
@@ -14,4 +16,7 @@ public interface CarinfoMapper {
     int updateByPrimaryKeySelective(Carinfo record);
 
     int updateByPrimaryKey(Carinfo record);
+
+    //查询所有车辆信息
+    List<Carinfo> getAllCarinfo();
 }
