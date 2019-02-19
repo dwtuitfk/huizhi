@@ -1,14 +1,16 @@
 package com.huizhi.oa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Carapplyinfo {
     private String caId;
 
     private Integer userid;
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date caStarttime;
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date caOvertime;
 
     private String caCId;

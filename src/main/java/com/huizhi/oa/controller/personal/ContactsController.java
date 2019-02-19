@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
+@RequestMapping("/")
 public class ContactsController {
     @Autowired
     private UserinfoService userinfoService;
@@ -31,8 +32,6 @@ public class ContactsController {
         PageInfo<Userinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Userinfo>>("",list,0,(int)pageinfo.getTotal());
     }
-
-
     @Autowired
     private BmzdService bmzdService;
     /*http://localhost:8080/getAllEmp?page=1&limit=10测试成功*/

@@ -1,5 +1,7 @@
 package com.huizhi.oa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Leaveinfo {
@@ -7,8 +9,10 @@ public class Leaveinfo {
 
     private Integer userid;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date lStarttime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date lOvertime;
 
     private String lReason;

@@ -21,10 +21,10 @@
 
             //日期
             laydate.render({
-                elem: '#date'
+                elem: '#caStarttime'
             });
             laydate.render({
-                elem: '#date1'
+                elem: '#caOvertime'
             });
 
            /* form.render()*/
@@ -38,7 +38,7 @@
                     $.each(data,function(index,item){
                         /*alert(index);
                         alert(item);*/
-                        $('#licensePlate').append(new Option(item,index));//往下拉菜单里添加元素
+                        $('#caCId').append(new Option(item,index));//往下拉菜单里添加元素
                     })
 
                     form.render("select");//菜单渲染 把内容加载进去
@@ -86,9 +86,15 @@
 <body>
     <form class="layui-form layui-form-pane" action="/addCarApply">
         <div class="layui-form-item">
+            <label class="layui-form-label">申请单单号</label>
+            <div class="layui-input-block">
+                <input type="text" name="caId" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">申请的车辆</label>
             <div class="layui-input-block">
-                <select name="licensePlate" id="licensePlate" lay-filter="licensePlate">
+                <select name="caCId" id="caCId" lay-filter="caCId">
                     <!--<option value="0">奥迪</option>-->
                     <!--<option value="1" selected="">奔驰</option>-->
                     <!--<option value="2">直升机</option>-->
@@ -96,27 +102,27 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">申请人员:</label>
+            <label class="layui-form-label">申请人员</label>
             <div class="layui-input-block">
-                <input type="text" name="applicant" lay-verify="title" autocomplete="off" placeholder="默认当前账号用户" class="layui-input">
+                <input type="text" name="userid" lay-verify="title" autocomplete="off" placeholder="默认当前账号用户" class="layui-input">
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">开始日期:</label>
             <div class="layui-input-inline">
-                <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="caStarttime" id="caStarttime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">结束日期:</label>
             <div class="layui-input-inline">
-                <input type="text" name="date1" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="caOvertime" id="caOvertime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">申请原因:</label>
             <div class="layui-input-block">
-                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                <input type="text" name="caReason" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">

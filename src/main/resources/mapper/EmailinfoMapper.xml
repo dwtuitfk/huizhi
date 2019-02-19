@@ -14,6 +14,11 @@
   <sql id="Base_Column_List">
     e_id, e_title, e_time, e_sendId, e_acceptId, e_copyId, e_content, e_state
   </sql>
+  <select id="getAllEmailInfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emailinfo
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

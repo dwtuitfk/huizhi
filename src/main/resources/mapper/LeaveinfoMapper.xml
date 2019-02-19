@@ -15,6 +15,11 @@
   <sql id="Base_Column_List">
     l_id, userId, l_startTime, l_overTime, l_reason, l_userId, l_state, l_checkAd, l_type
   </sql>
+  <select id="getAllLeaveInfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from leaveinfo
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

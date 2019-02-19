@@ -2,6 +2,8 @@ package com.huizhi.oa.service;
 
 import com.huizhi.oa.entity.Leaveinfo;
 
+import java.util.List;
+
 public interface LeaveinfoService {
     int deleteByPrimaryKey(String lId);
 
@@ -14,4 +16,10 @@ public interface LeaveinfoService {
     int updateByPrimaryKeySelective(Leaveinfo record);
 
     int updateByPrimaryKey(Leaveinfo record);
+
+    /**
+     * 获取所有请假、出差信息
+     * @return
+     */
+    List<Leaveinfo> getAllLeaveInfo();
 }
