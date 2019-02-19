@@ -12,6 +12,9 @@ public interface UserzdService {
 
     List<Userzd> getAllUserzd();
 
-    //LagUI分页显示
-    PageInfo<Userzd> selectUserzdALL(Integer pageNum, Integer pageSize);
+    int updateUserzd(Userzd record);
+
+    Userzd getUserzd(int userzdid);
+
+    int delMoreUserzd(List<Integer> ids);
 }

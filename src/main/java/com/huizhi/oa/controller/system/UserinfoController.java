@@ -1,9 +1,12 @@
 package com.huizhi.oa.controller.system;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.huizhi.oa.entity.Bmzd;
 import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
 import com.huizhi.oa.util.LayUIResult;
+import com.huizhi.oa.util.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,14 +31,13 @@ public class UserinfoController {
         return "pages/userTree/userinfo";
     }
 
+    //档案管理数据分页显示
     @ResponseBody
     @RequestMapping("selectUserinfoALL")
-    public Object selectUserinfoALL(@RequestParam("page") Integer pageNum, @RequestParam("limit") Integer pageSize) {
-        PageInfo<Userinfo> list = userinfoService.selectUserinfoALL(pageNum,pageSize);
-        int count = (int) list.getTotal();
-        //TODO isCommition字段数据库不存在，后期报错再改
-        LayUIResult result = LayUIResult.build(0, "", list); // 这个是我返回的数据格式，可以可以自己定义
-        result.setCount(count); // 尾部以把该封装类贴出来
-        return result;
+    public ResultMap<List<Userinfo>> getalldep(Integer page, Integer limit) throws Exception {
+        PageHelper.startPage(page==null?1:page, limit);
+        List<Userinfo> list=userinfoService.getAllUserinfo();
+        PageInfo<Userinfo> pageinfo=new PageInfo<>(list);
+        return new ResultMap<List<Userinfo>>("",list,0,(int)pageinfo.getTotal());
     }
 }

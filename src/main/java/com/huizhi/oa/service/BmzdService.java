@@ -12,5 +12,9 @@ public interface BmzdService {
 
     List<Bmzd> getAllBmzd();
 
-    PageInfo<Bmzd> selectBmzdALL(Integer pageNum, Integer pageSize);
+    int updateBmzd(Bmzd record);
+
+    Bmzd getBmzd(int bmzdid);
+
+    int delMoreBmzd(List<Integer> ids);
 }

@@ -35,10 +35,18 @@ public class BmzdServiceImpl implements BmzdService {
     }
 
     @Override
-    public PageInfo<Bmzd> selectBmzdALL(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<Bmzd> list = bmzdMapper.getAllBmzd();
-        return new PageInfo<>(list);
+    public int updateBmzd(Bmzd record) {
+        return bmzdMapper.updateBmzd(record);
+    }
+
+    @Override
+    public Bmzd getBmzd(int bmzdid) {
+        return bmzdMapper.getBmzd(bmzdid);
+    }
+
+    @Override
+    public int delMoreBmzd(List<Integer> ids) {
+        return bmzdMapper.delMoreBmzd(ids);
     }
 
 

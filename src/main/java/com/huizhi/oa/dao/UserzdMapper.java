@@ -10,4 +10,10 @@ public interface UserzdMapper {
     int insertSelective(Userzd record);
 
     List<Userzd> getAllUserzd();
+
+    int updateUserzd(Userzd record);
+
+    Userzd getUserzd(int userzdid);
+
+    int delMoreUserzd(List<Integer> ids);
 }
