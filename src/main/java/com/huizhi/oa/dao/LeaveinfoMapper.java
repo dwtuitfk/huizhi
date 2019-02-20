@@ -13,6 +13,9 @@ public interface LeaveinfoMapper {
 
     Leaveinfo selectByPrimaryKey(String lId);
 
+    //<select id="selectLeaveinfo"
+    List<Leaveinfo> selectLeaveinfo(Leaveinfo leaveinfo);
+
     int updateByPrimaryKeySelective(Leaveinfo record);
 
     int updateByPrimaryKey(Leaveinfo record);

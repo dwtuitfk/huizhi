@@ -47,4 +47,9 @@ public class LeaveinfoServiceImpl implements LeaveinfoService {
     public List<Leaveinfo> getAllLeaveInfo() {
         return leaveinfoMapper.getAllLeaveInfo();
     }
+
+    @Override
+    public List<Leaveinfo> selectLeaveinfo(Leaveinfo leaveinfo){
+        return leaveinfoMapper.selectLeaveinfo(leaveinfo);
+    }
 }

@@ -29,42 +29,57 @@ public class AttendanceinfoController {
 
     @ResponseBody
     @RequestMapping("/getAll")
-    public ResultMap<List<Attendanceinfo>> getAllAttendanceinfo(Integer page, Integer limit) throws Exception {
+    public ResultMap<List<Attendanceinfo>> getAllAttendanceinfo(Integer page, Integer limit, Attendanceinfo attendanceinfo) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
+       // attendanceinfo.setUserid(122);
         List<Attendanceinfo> list = attendanceinfoService.selectGetAll();
         PageInfo<Attendanceinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Attendanceinfo>>("",list,0,(int)pageinfo.getTotal());
     }
 
 
-    public List<Attendanceinfo> getAllAttendanceinfo() throws Exception {
-        List<Attendanceinfo> list = attendanceinfoService.selectAttendanceinfo();
-        return list;
-    }
-
-
-
+    @ResponseBody
     @RequestMapping("/add")
-    public int addAttendanceinfo(Attendanceinfo attendanceinfo) throws Exception {
+    public String addAttendanceinfo(Attendanceinfo attendanceinfo) throws Exception {
         Date dt = new Date();
         //最后的aa表示“上午”或“下午”    HH表示24小时制    如果换成hh表示12小时制
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         attendanceinfo.setUserid(123);
+        attendanceinfo.setaId(8);
         System.out.println(dt);
 
-        attendanceinfo.setaAtime(dt);
+       attendanceinfo.setaAtime(dt);
        // attendanceinfo.setaId(15);
        // attendanceinfo.setaAtime(sdf.format(dt));
         int temp = attendanceinfoService.insertSelective(attendanceinfo);
-        return temp;
-    }
+        if (temp>0){
+            return "添加成功";
+        }else{
+            return "添加失败";
+        }
 
+    }
+    @ResponseBody
     @RequestMapping("/update")
-    public int updateAttendanceinfo(Attendanceinfo attendanceinfo) throws Exception {
-        attendanceinfo.setaId(1);
+    public String updateAttendanceinfo(Attendanceinfo attendanceinfo) throws Exception {
+        attendanceinfo.setaId(2);
         attendanceinfo.setUserid(122);
        int temp = attendanceinfoService.updateByPrimaryKeySelective(attendanceinfo);
-       return temp;
+       if(temp>0){
+           return "修改成功";
+
+       }else{
+           return "修改失败";
+       }
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/addSelect")
+    public List<Attendanceinfo> addSelect(Attendanceinfo attendanceinfo) throws Exception {
+        attendanceinfo.setUserid(122);
+        List<Attendanceinfo> list = attendanceinfoService.selectAttendanceinfo(attendanceinfo);
+        return list;
     }
 
 

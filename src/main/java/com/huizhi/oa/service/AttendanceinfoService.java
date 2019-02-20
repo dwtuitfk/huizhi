@@ -15,7 +15,7 @@ public interface AttendanceinfoService {
 
     List<Attendanceinfo> selectGetAll();
 
-    List<Attendanceinfo> selectAttendanceinfo();
+    List<Attendanceinfo> selectAttendanceinfo(Attendanceinfo attendanceinfo);
 
     int updateByPrimaryKeySelective(Attendanceinfo record);
 

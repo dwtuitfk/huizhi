@@ -27,19 +27,9 @@
     select
     <include refid="Base_Column_List" />
     from attendanceinfo where 1=1
-    <if test="aId != null">
-      a_id like #{aId,jdbcType=INTEGER}
-    </if>
     <if test="userid != null">
-      userId like #{userid,jdbcType=INTEGER},
+      and userId = #{userid,jdbcType=INTEGER},
     </if>
-    <if test="aMtime != null">
-      a_mtime like #{aMtime,jdbcType=TIMESTAMP},
-    </if>
-    <if test="aAtime != null">
-      a_atime like #{aAtime,jdbcType=TIMESTAMP},
-    </if>
-
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
