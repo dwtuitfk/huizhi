@@ -3,6 +3,7 @@ package com.huizhi.oa.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Noticeinfo {
     private Integer nId;
@@ -14,8 +15,6 @@ public class Noticeinfo {
     private Date nTime;
 
     private String nContent;
-
-    private Userinfo userinfo;
 
     public Integer getnId() {
         return nId;

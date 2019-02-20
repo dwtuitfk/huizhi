@@ -1,8 +1,9 @@
-package com.huizhi.oa.controller.guoen;
+package com.huizhi.oa.controller.noticemanage;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Noticeinfo;
+import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.NoticeinfoService;
 import com.huizhi.oa.util.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/system")
+@RequestMapping("/noticemanage")
 public class NoticeinfoController {
 
     @Autowired
@@ -116,5 +117,11 @@ public class NoticeinfoController {
             return "500";
     }
 
-
+    //查询职工编号
+    @RequestMapping("/userid")
+    @ResponseBody
+    public List<Userinfo> getAllUserid(){
+        List<Userinfo> list=noticeinfoService.getAllUserid();
+        return list;
+    }
 }

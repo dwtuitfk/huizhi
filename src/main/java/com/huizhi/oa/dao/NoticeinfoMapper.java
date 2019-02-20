@@ -1,6 +1,7 @@
 package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Noticeinfo;
+import com.huizhi.oa.entity.Userinfo;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface NoticeinfoMapper {
 
     //查询所有公告信息
     List<Noticeinfo> getAllNoticeinfo();
+
+    //查询所有用户信息
+    List<Userinfo> getAllUserid();
 }

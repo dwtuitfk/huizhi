@@ -96,5 +96,9 @@
     <include refid="Base_Column_List" />
      from noticeinfo
   </select>
+  <!--查询用户基本信息表中的职工编号-->
+  <select id="getAllUserinfo" resultMap="com.huizhi.oa.entity.Userinfo">
+    select userid from userinfo
+  </select>
 
 </mapper>

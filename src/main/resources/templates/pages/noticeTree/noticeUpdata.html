@@ -14,7 +14,7 @@
             $.ajax({
                 type:"get",
                 //data:  表示服务传递的参数
-                url:"/system/getNotice",
+                url:"/noticemanage/getNotice",
                 dataType:"json",
                 success:function(data){  //data表示返回的数据
                     $('#nId').val(data.nId);
@@ -114,7 +114,7 @@
                 var nTime=$('#nTime').val();
                 var nContent=$('#nContent').val();
                 $.ajax({
-                    url: "/system/noticeUpdateInfo",
+                    url: "/noticemanage/noticeUpdateInfo",
                     type: "POST",
                     data: {"nId":nId,"userid":userid,"nTitle":nTitle,"nTime":nTime,"nContent":nContent},
                     dataType: "json",

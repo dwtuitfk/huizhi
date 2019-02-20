@@ -1,9 +1,9 @@
 package com.huizhi.oa.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
 import com.huizhi.oa.dao.NoticeinfoMapper;
 import com.huizhi.oa.entity.Noticeinfo;
+import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.NoticeinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +49,11 @@ public class NoticeinfoServiceImpl implements NoticeinfoService {
     @Override
     public List<Noticeinfo> getAllNoticeinfo() {
         return noticeinfoMapper.getAllNoticeinfo();
+    }
+
+    @Override
+    public List<Userinfo> getAllUserid() {
+        return noticeinfoMapper.getAllUserid();
     }
 
 }

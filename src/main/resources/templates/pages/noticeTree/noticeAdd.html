@@ -100,7 +100,7 @@
                 var nTime=$('#nTime').val();
                 var nContent=$('#nContent').val();
                 $.ajax({
-                    url: "/system/noticeAddInfo",
+                    url: "/noticemanage/noticeAddInfo",
                     type: "POST",
                     data: {"nId":nId,"userid":userid,"nTitle":nTitle,"nTime":nTime,"nContent":nContent},
                     dataType: "json",

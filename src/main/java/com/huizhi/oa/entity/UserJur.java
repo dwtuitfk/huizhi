@@ -5,7 +5,6 @@ package com.huizhi.oa.entity;
  */
 public class UserJur {
 
-
     private Integer userId;
 
     private String tureName;
