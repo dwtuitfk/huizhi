@@ -13,6 +13,14 @@ public interface LeaveinfoService {
 
     Leaveinfo selectByPrimaryKey(String lId);
 
+
+    /**
+     * 多条件模糊查询信息
+     * @param leaveinfo
+     * @return
+     */
+    List<Leaveinfo> selectLeaveinfo(Leaveinfo leaveinfo);
+
     int updateByPrimaryKeySelective(Leaveinfo record);
 
     int updateByPrimaryKey(Leaveinfo record);

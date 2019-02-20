@@ -2,6 +2,7 @@ package com.huizhi.oa.controller.system;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.huizhi.oa.entity.UserRoleDep;
 import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
 import com.huizhi.oa.util.ResultMap;
@@ -30,12 +31,12 @@ public class UserRoleController {
         //职位变更数据分页显示
         @ResponseBody
         @RequestMapping("selectUserRoleALL")
-        public ResultMap<List<Userinfo>> getallUserRole(Integer page, Integer limit) throws Exception {
+        public ResultMap<List<UserRoleDep>> getallUserRole(Integer page, Integer limit) throws Exception {
             PageHelper.startPage(page==null?1:page, limit);
-            List<Userinfo> list=userinfoService.getAllUserinfo();
-            PageInfo<Userinfo> pageinfo=new PageInfo<>(list);
-            return new ResultMap<List<Userinfo>>("",list,0,(int)pageinfo.getTotal());
+            List<UserRoleDep> list=userinfoService.getAllUserinfo();
+            PageInfo<UserRoleDep> pageinfo=new PageInfo<>(list);
+            return new ResultMap<List<UserRoleDep>>("",list,0,(int)pageinfo.getTotal());
         }
-    }
 
+    }
 

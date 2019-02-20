@@ -1,6 +1,8 @@
 package com.huizhi.oa.service;
 
 import com.github.pagehelper.PageInfo;
+import com.huizhi.oa.entity.UserJur;
+import com.huizhi.oa.entity.UserRoleDep;
 import com.huizhi.oa.entity.Userinfo;
 
 import java.util.List;
@@ -19,11 +21,11 @@ public interface UserinfoService {
     int updateByPrimaryKey(Userinfo record);
 
     //查询所有用户信息
-    List<Userinfo> getAllUserinfo();
-
-    //查询所有用户角色
-    List<Userinfo>getUserRoleDepInfo();
+    List<UserRoleDep> getAllUserinfo();
 
     //查询所有用户权限
-    List<Userinfo>getUserJurInfo();
+    List<UserJur>getUserJurInfo();
+
+    //查询单个用户信息
+    UserRoleDep getUserinfo (Integer userid);
 }

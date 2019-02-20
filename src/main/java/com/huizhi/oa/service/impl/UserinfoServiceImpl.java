@@ -3,6 +3,8 @@ package com.huizhi.oa.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.dao.UserinfoMapper;
+import com.huizhi.oa.entity.UserJur;
+import com.huizhi.oa.entity.UserRoleDep;
 import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,18 +52,18 @@ public class UserinfoServiceImpl implements UserinfoService {
     }
 
     @Override
-    public List<Userinfo> getAllUserinfo() {
+    public List<UserRoleDep> getAllUserinfo() {
         return userinfoMapper.getAllUserinfo();
     }
 
     @Override
-    public List<Userinfo> getUserRoleDepInfo() {
-        return userinfoMapper.getUserRoleDepInfo();
+    public List<UserJur> getUserJurInfo() {
+        return userinfoMapper.getUserJurInfo();
     }
 
     @Override
-    public List<Userinfo> getUserJurInfo() {
-        return userinfoMapper.getUserJurInfo();
+    public UserRoleDep getUserinfo(Integer userid) {
+        return userinfoMapper.getUserinfo(userid);
     }
 
 }

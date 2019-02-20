@@ -11,11 +11,27 @@
     a_id, userId, a_mtime, a_atime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+  select
+  <include refid="Base_Column_List" />
+  from attendanceinfo
+  where a_id = #{aId,jdbcType=INTEGER}
+</select>
+
+  <select id="selectGetAll"  resultMap="BaseResultMap">
+    select
     <include refid="Base_Column_List" />
     from attendanceinfo
-    where a_id = #{aId,jdbcType=INTEGER}
   </select>
+
+  <select id="selectAttendanceinfo" parameterType="com.huizhi.oa.entity.Attendanceinfo"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from attendanceinfo where 1=1
+    <if test="userid != null">
+      and userId = #{userid,jdbcType=INTEGER},
+    </if>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from attendanceinfo
     where a_id = #{aId,jdbcType=INTEGER}
@@ -26,7 +42,7 @@
     values (#{aId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{aMtime,jdbcType=TIMESTAMP}, 
       #{aAtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Attendanceinfo">
+  <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Attendanceinfo" useGeneratedKeys="true" keyProperty="aId">
     insert into attendanceinfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="aId != null">
