@@ -3,6 +3,7 @@ package com.huizhi.oa.controller.personal;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Bmzd;
+import com.huizhi.oa.entity.UserRoleDep;
 import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.BmzdService;
 import com.huizhi.oa.service.UserinfoService;
@@ -26,11 +27,11 @@ public class ContactsController {
     @RequestMapping("getAllContacts")
     /*http://localhost:8080/getAllContacts?page=1&limit=10测试成功*/
     /*获取了所有人员信息*/
-    public ResultMap<List<Userinfo>> getAllContacts(Integer page, Integer limit) throws Exception {
+    public ResultMap<List<UserRoleDep>> getAllContacts(Integer page, Integer limit) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<Userinfo> list=userinfoService.getAllUserinfo();
-        PageInfo<Userinfo> pageinfo=new PageInfo<>(list);
-        return new ResultMap<List<Userinfo>>("",list,0,(int)pageinfo.getTotal());
+        List<UserRoleDep> list=userinfoService.getAllUserinfo();
+        PageInfo<UserRoleDep> pageinfo=new PageInfo<>(list);
+        return new ResultMap<List<UserRoleDep>>("",list,0,(int)pageinfo.getTotal());
     }
     @Autowired
     private BmzdService bmzdService;

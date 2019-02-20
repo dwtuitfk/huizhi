@@ -79,18 +79,18 @@
 
                 [ //表头
                     {type:'checkbox', fixed: 'left'},
-                    {field:'userid', title: '职员编号',width:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
-                    {field:'turename', title: '姓名',width:'100',style:'vertical-align: middle',align:'center'},
-                    {field:'age', title: '年龄',width:'80',templet: '#type',align:'center',sort: true},
-                    {field:'sex', title: '性别',width:'60',align:'center'},
-                    {field:'address', title:'地址',width:'130',align:'center',templet:'#amount'},
-                    {field:'email', title: '邮箱',width:'120',align:'center'},
-                    {field:'phone', title: '电话',width:'120',align:'center'},
-                    {field:'qq', title: 'QQ号码',width:'100',align:'center'},
-                    {field:'roleNamemc', title: '岗位',width:'120',align:'center'},
-                    {field:'depNamemc', title: '部门',width:'120',align:'center'},
-                    {field:'isprohibit', title: '是否冻结',width:'100',align:'center'},
-                    {title: '操作', align:'center',width:'140', toolbar: '#barDemo'}
+                    {field:'userid', title: '职员编号',minWidth:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
+                    {field:'turename', title: '姓名',minWidth:'100',style:'vertical-align: middle',align:'center'},
+                    {field:'age', title: '年龄',minWidth:'80',templet: '#type',align:'center',sort: true},
+                    {field:'sex', title: '性别',minWidth:'60',align:'center'},
+                    {field:'address', title:'地址',minWidth:'130',align:'center',templet:'#amount'},
+                    {field:'email', title: '邮箱',minWidth:'120',align:'center'},
+                    {field:'phone', title: '电话',minWidth:'120',align:'center'},
+                    {field:'qq', title: 'QQ号码',minWidth:'100',align:'center'},
+                    {field:'roleNamemc', title: '岗位',minWidth:'120',align:'center'},
+                    {field:'depNamemc', title: '部门',minWidth:'120',align:'center'},
+                    {field:'isprohibit', title: '是否冻结',minWidth:'100',align:'center'},
+                    {title: '操作', align:'center',minWidth:'140', toolbar: '#barDemo'}
 
                 ]
 
@@ -108,7 +108,7 @@
                         //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                         type: 2,
                         title: "添加用户",
-                        area: ['400px', '430px'],
+                        area: ['430px', '430px'],
                         content: '/system/userInfoAdd' //引用的弹出层的页面层的方式加载修改界面表单
                     });
                     break;
@@ -198,13 +198,13 @@
 
                 });
             } else if(layEvent === 'edit'){
-                //alert(data.bmzdid);
+                //alert(data.userid);
                 layer.open({
                     //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                     type: 2,
-                    title: "修改部门",
-                    area: ['370px', '260px'],
-                    content: '/system/depUpdata?bmzdid='+data.bmzdid //引用的弹出层的页面层的方式加载修改界面表单
+                    title: "修改用户信息",
+                    area: ['430px', '430px'],
+                    content: '/system/userInfoUpdata?userid='+data.userid //引用的弹出层的页面层的方式加载修改界面表单
                 });
             }
         });

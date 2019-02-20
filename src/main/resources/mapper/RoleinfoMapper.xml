@@ -68,4 +68,9 @@
       depName = #{depname,jdbcType=INTEGER}
     where roleId = #{roleid,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllRoleinfo"  resultType="com.huizhi.oa.entity.Roleinfo">
+    select roleid,roleName,depName FROM roleinfo
+  </select>
+
 </mapper>

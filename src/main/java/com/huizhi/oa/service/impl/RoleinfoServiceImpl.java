@@ -6,6 +6,8 @@ import com.huizhi.oa.service.RoleinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * created by dwtuitfk on 2019/2/17.
  */
@@ -44,5 +46,10 @@ public class RoleinfoServiceImpl implements RoleinfoService {
     @Override
     public int updateByPrimaryKey(Roleinfo record) {
         return roleinfoMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Roleinfo> getAllRoleinfo() {
+        return roleinfoMapper.getAllRoleinfo();
     }
 }
