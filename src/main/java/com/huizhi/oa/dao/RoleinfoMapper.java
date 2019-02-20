@@ -2,6 +2,8 @@ package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Roleinfo;
 
+import java.util.List;
+
 public interface RoleinfoMapper {
     int deleteByPrimaryKey(Integer roleid);
 
@@ -14,4 +16,7 @@ public interface RoleinfoMapper {
     int updateByPrimaryKeySelective(Roleinfo record);
 
     int updateByPrimaryKey(Roleinfo record);
+
+    //查询所有角色信息
+    List<Roleinfo> getAllRoleinfo();
 }

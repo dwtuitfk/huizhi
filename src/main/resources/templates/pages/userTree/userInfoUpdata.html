@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>用户添加</title>
+    <title>用户修改</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
     <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
@@ -24,38 +24,85 @@
 
     $(document).ready(function(){
 
-        //异步获取部门名称
+        var depmc;
+        var rolemc;
+
+        //异步查询单条用户信息
         $.ajax({
-            type : "get",
-            url : "/system/selectDep",
-            success : function(data) {
-                //alert(data[1].depnamemc);
-                var dep='';
-                $.each(data, function(index,obj) {
-                        dep += '<option value="'+obj.depname+'">'+obj.depnamemc+'</option>';
+            type:"get",
+            url:"/system/getUser",
+            dataType:"json",
+            success:function(data){
+                $('#userid').val(data.userid);
+                $('#turename').val(data.turename);
+                $('#pass').val(data.password);
+                $('#phone').val(data.phone);
+                $('#qq').val(data.qq);
+                $('#email').val(data.email);
+                $('#age').val(data.age);
+                $('#sex').val(data.sex);
+                $('#address').val(data.address);
+                $('#isprohibit').val(data.isprohibit);
+                depmc = data.depNamemc;
+                rolemc = data.roleNamemc;
+/*                alert(depmc);
+                alert(rolemc);*/
+                //异步获取部门名称
+                $.ajax({
+                    type : "get",
+                    url : "/system/selectDep",
+                    success : function(data) {
+                        //alert(data[1].depnamemc);
+                        //alert(depmc);
+                        var dep='';
+                            $.each(data, function(index,obj) {
+                                if(depmc == obj.depnamemc){
+                                    dep += '<option selected="selected" value="'+obj.depname+'">'+obj.depnamemc+'</option>';
+                                }else{
+                                    dep += '<option value="'+obj.depname+'">'+obj.depnamemc+'</option>';
+                                }
+                            });
+
+                        //alert(dep);
+                        $("#depname").append(dep);
+                        renderForm();
+                        //layui.form.render();
+                    },
                 });
-                //alert(dep);
-                $("#depname").append(dep);
-                renderForm();
-                //layui.form.render();
-            },
+
+
+
+                //异步获取岗位名称
+                $.ajax({
+                    type : "get",
+                    url : "/system/selectPost",
+                    success : function(data) {
+                        var role='';
+                        $.each(data, function(index,obj) {
+                            if(rolemc == obj.rolenamemc){
+                                role += '<option selected="selected" value="'+obj.rolename+'">'+obj.rolenamemc+'</option>';
+                            }else{
+                                role += '<option value="'+obj.rolename+'">'+obj.rolenamemc+'</option>';
+                            }
+                        });
+
+                        //alert(role);
+                        $("#rolename").append(role);
+                        renderForm();
+                    },
+                });
+
+
+
+            }
         });
 
-        //异步获取岗位名称
-        $.ajax({
-            type : "get",
-            url : "/system/selectPost",
-            success : function(data) {
-                //alert(data[1].rolenamemc);
-                var role='';
-                $.each(data, function(index,obj) {
-                    role += '<option value="'+obj.rolename+'">'+obj.rolenamemc+'</option>';
-                });
-                //alert(role);
-                $("#rolename").append(role);
-                renderForm();
-            },
-        });
+
+
+
+
+
+
 
         layui.use('form', function() {
             var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
@@ -68,7 +115,7 @@
 <body>
 <br>
 <div class="weadmin-body">
-    <form class="layui-form" action="/system/userAdd">
+    <form class="layui-form">
 
         <!--职员编号-->
         <div class="layui-form-item">
@@ -184,7 +231,7 @@
             </label>
             <div class="layui-input-inline">
 
-                <select id="depname" name="depName">
+                <select id="depname">
                     <option value="-1">--请选择--</option>
                 </select>
 
@@ -198,7 +245,7 @@
             </label>
             <div class="layui-input-inline">
 
-                <select id="rolename" name="rolename">
+                <select id="rolename">
                     <option value="-1">--请选择--</option>
                 </select>
 
@@ -219,17 +266,6 @@
             </div>
         </div>
 
-        <!--确认密码-->
-<!--        <div class="layui-form-item">
-            <label for="repass" class="layui-form-label">
-                <span class="we-red">*</span>确认密码
-            </label>
-            <div class="layui-input-inline">
-                <input type="password" id="repass" name="ispassword" required="" lay-verify="ispassword"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>-->
-
         <!--是否冻结-->
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="we-red">*</span>冻结</label>
@@ -243,39 +279,74 @@
             <label  class="layui-form-label">
             </label>
             <button  class="layui-btn" lay-filter="add" lay-submit="">
-                添加
+                修改
             </button>
         </div>
     </form>
 </div>
 <script type="text/javascript">
 
-    $(function(){
-        layui.use(['form','layer','admin'], function(){
+/*
+    layui.use(['form','layer'], function(){
+        var form = layui.form,
+            layer = layui.layer;
 
-        $.ajax({
-            url: data.form.action,
-            type: data.form.method,
-            data: $(data.form).serialize(),
-            dataType: "json",
-            success: function(data){
-                if(data===500){
-                    parent.layer.msg("添加失败", {icon: 5});
-                }else{
-                    parent.layer.msg("添加成功", {icon: 6});
-                    window.location.href="index";
+        //自定义验证规则
+        form.verify({
+            userid: function(value){
+                if(value.length < 5){
+                    return '职员编号至少得5个字符';
                 }
             },
-            error:function(){
-                parent.layer.msg("系统异常");
-            },
-
+            turename: function(value){
+                if(value.length < 5){
+                    return '姓名至少得2个字符';
+                }
+            }
+            ,age:[/(.+){1,2}$/, '年龄必须2位数字']
+            ,qq: [/(.+){5,11}$/, 'QQ必须5到11位']
+            ,address: function(value){
+                if(value.length < 5){
+                    return '地址至少得3个字符';
+                }
+            }
+            ,password: [/(.+){6,12}$/, '密码必须6到12位']
+            ,ispassword: function(value){
+                if($('#pass').val()!=$('#repass').val()){
+                    return '两次密码不一致';
+                }
+            }
         });
 
-        //parent.layer.close(index);
+        //监听提交
+        form.on('submit(add)', function(data){
+            console.log(data);
+            alert(data);
+            var obj =data;
+            //发异步，把数据提交给php
+            $(document).ready(function(){
+                $.ajax({
+                    url: "/system/userAdd",
+                    type: "POST",
+                    data: {"obj":obj},
+                    dataType: "json",
+                    success: function(data){
+                        if(data===500){
+                            parent.layer.msg("添加失败", {icon: 5});
+                        }else{
+                            parent.layer.msg("添加成功", {icon: 6});
+                        }
+                    },
+                    error:function(){
+                        parent.layer.msg("系统异常");
+                    }
+                });
+            });
 
+        });
     });
-    });
+*/
+
 </script>
 </body>
 

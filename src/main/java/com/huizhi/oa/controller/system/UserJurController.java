@@ -2,6 +2,7 @@ package com.huizhi.oa.controller.system;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.huizhi.oa.entity.UserJur;
 import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
 import com.huizhi.oa.util.ResultMap;
@@ -30,10 +31,10 @@ public class UserJurController {
     //权限配置数据分页显示
     @ResponseBody
     @RequestMapping("selectUserJurALL")
-    public ResultMap<List<Userinfo>> getallUserRole(Integer page, Integer limit) throws Exception {
+    public ResultMap<List<UserJur>> getallUserRole(Integer page, Integer limit) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<Userinfo> list=userinfoService.getUserJurInfo();
-        PageInfo<Userinfo> pageinfo=new PageInfo<>(list);
-        return new ResultMap<List<Userinfo>>("",list,0,(int)pageinfo.getTotal());
+        List<UserJur> list=userinfoService.getUserJurInfo();
+        PageInfo<UserJur> pageinfo=new PageInfo<>(list);
+        return new ResultMap<List<UserJur>>("",list,0,(int)pageinfo.getTotal());
     }
 }
