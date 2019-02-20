@@ -13,7 +13,6 @@
 
             $.ajax({
                 type:"get",
-                //data:  表示服务传递的参数
                 url:"/noticemanage/getNotice",
                 dataType:"json",
                 success:function(data){  //data表示返回的数据
@@ -119,7 +118,7 @@
                     data: {"nId":nId,"userid":userid,"nTitle":nTitle,"nTime":nTime,"nContent":nContent},
                     dataType: "json",
                     success: function(data){
-                        if(data===500){
+                        if(data==500){
                             parent.layer.msg("修改失败", {icon: 5});
                         }else{
                             parent.layer.msg("修改成功", {icon: 6});

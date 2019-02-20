@@ -51,9 +51,6 @@ public class NoticeinfoServiceImpl implements NoticeinfoService {
         return noticeinfoMapper.getAllNoticeinfo();
     }
 
-    @Override
-    public List<Userinfo> getAllUserid() {
-        return noticeinfoMapper.getAllUserid();
-    }
+
 
 }

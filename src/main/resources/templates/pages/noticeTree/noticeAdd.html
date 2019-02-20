@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>公告添加</title>
@@ -7,128 +9,11 @@
     <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
     <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
 
-    <script type="text/javascript">
-
-        $(function(){
-
-            //公告编号验证
-            $("#nId").blur(function () {
-                //获取公告编号文本框的值
-                var nId=$("#nId").val();
-                //使用正则表达式 公告编号由1-3个数字构成
-                var reg =/^[0-9]{1,3}$/;
-                //判断
-                if (reg.test(nId)){
-                    $("#nId_prompt").html("正确").css("color","green");
-                    return true;
-                } else{
-                    $("#nId_prompt").html("必须是1-3位数字").css("color","red");
-                    return false;
-                }
-            });
-
-            //职工编号验证
-            $("#userid").blur(function(){
-                //获取职工编号文本框的值
-                var userid=$('#userid').val();
-                //使用正则表达式 职工编号由数字组成
-                var reg=/^[0-9]*$/;
-                //判断
-                if(reg.test(userid)){
-                    $("#userid_prompt").html("正确").css("color","green");
-                    return true;
-                }else{
-                    $("#userid_prompt").html("必须是数字").css("color","red");
-                    //获得焦点
-                    //$("#depnamemc").focus();
-                    //将文本内容进行全选
-                    //$("#depnamemc").select();
-                    return false;
-                }
-            });
-
-
-
-            //公告标题验证
-            $("#nTitle").blur(function(){
-                //获取公告标题文本框的值
-                var nTitle=$('#nTitle').val();
-                //使用正则表达式 公告标题至少2-8位汉字
-                var reg = /^[\u4e00-\u9fa5]{2,8}$/;
-                //判断
-                if(reg.test(nTitle)){
-                    $("#nTitle_prompt").html("正确").css("color","green");
-                    return true;
-                }else{
-                    $("#nTitle_prompt").html("2-8位汉字").css("color","red");
-                    //获得焦点
-                    //$("#depname").focus();
-                    //将文本内容进行全选
-                    //$("#depname").select();
-                    return false;
-                }
-            });
-
-            //公告内容验证
-            $("#nContent").blur(function(){
-                //获取公告内容文本框的值
-                var nContent=$('#nContent').val();
-                //使用正则表达式 公告内容至少20位汉字
-                var reg = /^[\u4e00-\u9fa5]{20,}$/;
-                //判断
-                if(reg.test(nContent)){
-                    $("#nContent_prompt").html("正确").css("color","green");
-                    return true;
-                }else{
-                    $("#nContent_prompt").html("至少20位汉字").css("color","red");
-                    //获得焦点
-                    //$("#depname").focus();
-                    //将文本内容进行全选
-                    //$("#depname").select();
-                    return false;
-                }
-            });
-
-
-            var index = parent.layer.getFrameIndex(window.name);
-
-            //关闭iframe
-            $('#closeIframe').click(function(){
-                var nId=$('#nId').val();
-                var userid=$('#userid').val();
-                var nTitle=$('#nTitle').val();
-                var nTime=$('#nTime').val();
-                var nContent=$('#nContent').val();
-                $.ajax({
-                    url: "/noticemanage/noticeAddInfo",
-                    type: "POST",
-                    data: {"nId":nId,"userid":userid,"nTitle":nTitle,"nTime":nTime,"nContent":nContent},
-                    dataType: "json",
-                    success: function(data){
-                        if(data===500){
-                            parent.layer.msg("添加失败", {icon: 5});
-                        }else{
-                            parent.layer.msg("添加成功", {icon: 6});
-                        }
-                    },
-                    error:function(){
-                        parent.layer.msg("系统异常");
-                    },
-
-                });
-
-                parent.layer.close(index);
-
-            });
-
-        });
-
-    </script>
 
 </head>
-<body>
 
-<script>
+<script type="text/javascript">
+    //日期选择器模块
     layui.use('laydate', function(){
         var laydate = layui.laydate;
 
@@ -137,56 +22,158 @@
             elem: '#nTime' //指定元素
         });
     });
+
+    //重新渲染表单
+    function renderForm(){
+        layui.use('form', function(){
+            var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+            form.render();
+        });
+    }
+
+    $(document).ready(function(){
+
+        //异步获取职工编号
+        $.ajax({
+            type : "get",
+            url : "/system/selectUserid",
+            success : function(data) {
+                //alert(data[1].depnamemc);
+                var user='';
+                $.each(data, function(index,obj) {
+                    user += '<option value="'+obj.userid+'">'+obj.userid+'</option>';
+                });
+                //alert(dep);
+                $("#userid").append(user);
+                renderForm();
+                //layui.form.render();
+            },
+        });
+
+    });
 </script>
 
-<br><br>
-<div class="layui-form-item">
-    <label class="layui-form-label">公告编号:</label>
-    <div class="layui-input-block">
-        <input type="text" id="nId" name="nId" lay-verify="nId" autocomplete="off" placeholder="公告编号" class="layui-input" style="width: 200px">
-        <span id="nId_prompt"></span>
-    </div>
+<body>
+<br>
+<div class="weadmin-body">
+    <form class="layui-form">
+
+        <!--公告编号-->
+        <div class="layui-form-item">
+            <label for="nId" class="layui-form-label">
+                <span class="we-red">*</span>公告编号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="nId" name="nId" required="" lay-verify="nId"
+                       autocomplete="off" value="" class="layui-input" style="width: 200px">
+            </div>
+        </div>
+
+        <!--职工编号-->
+        <div class="layui-form-item">
+            <label for="userid" class="layui-form-label">
+                <span class="we-red">*</span>职工编号
+            </label>
+            <div class="layui-input-inline" style="width: 200px">
+
+                <select id="userid">
+                    <option value="-1">--请选择--</option>
+                </select>
+
+            </div>
+        </div>
+
+        <!--公告标题-->
+        <div class="layui-form-item">
+            <label for="nTitle" class="layui-form-label">
+                <span class="we-red">*</span>公告标题
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="nTitle" name="nTitle" required="" lay-verify="nTitle"
+                       autocomplete="off" value="" class="layui-input" style="width: 200px">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>-->
+        </div>
+
+        <!--发布时间-->
+        <div class="layui-form-item">
+            <label for="nTime" class="layui-form-label">
+                <span class="we-red">*</span>发布时间
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="nTime" name="nTime" required="" lay-verify="nTime"
+                       autocomplete="off" value="" class="layui-input" style="width: 200px">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>-->
+        </div>
+
+
+        <!--公告内容-->
+        <div class="layui-form-item">
+            <label for="nContent" class="layui-form-label">
+                <span class="we-red">*</span>公告内容
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="nContent" name="nContent" required="" lay-verify="nContent"
+                       autocomplete="off" value="" class="layui-input" style="width: 200px">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>-->
+        </div>
+
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                添加
+            </button>
+        </div>
+    </form>
 </div>
-<div class="layui-form-item">
-    <label class="layui-form-label">职工编号:</label>
-    <div class="layui-input-block">
-        <input type="text" id="userid" name="userid" lay-verify="userid" placeholder="职工编号" autocomplete="off" class="layui-input" style="width: 200px">
-        <span id="userid_prompt"></span>
-    </div>
-</div>
-<div class="layui-form-item">
-    <label class="layui-form-label">公告标题:</label>
-    <div class="layui-input-block">
-        <input type="text" id="nTitle" name="nTitle" lay-verify="nTitle" autocomplete="off" placeholder="公告标题" class="layui-input" style="width: 200px">
-        <span id="nTitle_prompt"></span>
-    </div>
-</div>
+<script type="text/javascript">
 
+    layui.use(['form','layer'], function(){
+        var form = layui.form,
+            layer = layui.layer;
 
-<div class="layui-form-item">
-    <label class="layui-form-label">发布时间:</label>
-    <div class="layui-input-inline">
-        <input type="text" class="layui-input" id="nTime" name="nTime" placeholder="发布时间" autocomplete="off" style="width: 200px">
-        <span id="nTime_prompt"></span>
-    </div>
-</div>
+        //自定义验证规则
+        form.verify({
+            nId:[/(.+){1,}$/, '公告编号必须是数字'],
+            nTitle: function(value){
+                if(value.length < 5){
+                    return '公告标题至少得5个字符';
+                }
+            }
+            ,nContent: function(value){
+                if(value.length < 10){
+                    return '公告内容必须的10个字符';
+                }
+            }
 
+        });
 
-<div class="layui-form-item">
-    <label class="layui-form-label">公告内容:</label>
-    <div class="layui-input-block">
-        <input type="text" id="nContent" name="nContent" lay-verify="nContent" placeholder="公告内容" autocomplete="off" class="layui-input" style="width: 200px">
-        <span id="nContent_prompt"></span>
-    </div>
-</div>
-<div class="layui-form-item">
-    <div class="layui-input-block">
-        <button class="layui-btn"  id="closeIframe" lay-submit="" lay-filter="add">添加</button>
-        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-    </div>
-</div>
+        //监听提交
+        form.on('submit(add)', function(data){
+            console.log(data);
+            //发异步，把数据提交给php
+            layer.alert("增加成功", {icon: 6},function () {
+                // 获得frame索引
+                var index = parent.layer.getFrameIndex(window.name);
+                //关闭当前frame
+                parent.layer.close(index);
+            });
+            return false;
+        });
 
-
-
+    });
+</script>
 </body>
+
 </html>

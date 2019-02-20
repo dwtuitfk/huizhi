@@ -21,7 +21,5 @@ public interface NoticeinfoService {
     //查询所有公告信息
     List<Noticeinfo> getAllNoticeinfo();
 
-    //查询所有用户信息
-    List<Userinfo> getAllUserid();
 
 }

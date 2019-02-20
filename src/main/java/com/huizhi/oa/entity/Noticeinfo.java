@@ -11,7 +11,8 @@ public class Noticeinfo {
     private Integer userid;
 
     private String nTitle;
-    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date nTime;
 
     private String nContent;
