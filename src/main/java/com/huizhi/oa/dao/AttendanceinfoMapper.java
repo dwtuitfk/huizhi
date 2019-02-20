@@ -2,6 +2,8 @@ package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Attendanceinfo;
 
+import java.util.List;
+
 public interface AttendanceinfoMapper {
     int deleteByPrimaryKey(Integer aId);
 
@@ -11,6 +13,11 @@ public interface AttendanceinfoMapper {
 
     Attendanceinfo selectByPrimaryKey(Integer aId);
 
+    //<select id="selectGetAll"  resultMap="BaseResultMap">
+    List<Attendanceinfo> selectGetAll();
+    //<select id="selectAttendanceinfo"
+
+    List<Attendanceinfo> selectAttendanceinfo();
     int updateByPrimaryKeySelective(Attendanceinfo record);
 
     int updateByPrimaryKey(Attendanceinfo record);

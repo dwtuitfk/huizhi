@@ -20,6 +20,35 @@
     from tiaoxiuinfo
     where tx_id = #{txId,jdbcType=INTEGER}
   </select>
+
+  <select id="selectTiaoxiuinfo" parameterType="com.huizhi.oa.entity.Tiaoxiuinfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tiaoxiuinfo
+    where 1=1
+    <if test="userid != null">
+     and userId like #{userid,jdbcType=INTEGER},
+    </if>
+    <if test="txStarttime != null">
+      and tx_starttime like #{txStarttime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="txOvertime != null">
+      and tx_overtime like #{txOvertime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="txReason != null">
+      and tx_reason like #{txReason,jdbcType=VARCHAR},
+    </if>
+    <if test="txUserid != null">
+      and tx_userId like #{txUserid,jdbcType=INTEGER},
+    </if>
+    <if test="txState != null">
+      and tx_state like #{txState,jdbcType=INTEGER},
+    </if>
+    <if test="txCheckad != null">
+      and tx_checkAd like #{txCheckad,jdbcType=VARCHAR},
+    </if>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tiaoxiuinfo
     where tx_id = #{txId,jdbcType=INTEGER}
