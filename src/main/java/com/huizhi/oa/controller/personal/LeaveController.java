@@ -21,7 +21,7 @@ public class LeaveController {
 
     /*http://localhost:8080/getAllLeaveInfo?page=1&limit=10测试成功*/
     /**
-     * 获取所有邮件
+     * 获取所有请假条
      * @param page
      * @param limit
      * @return
