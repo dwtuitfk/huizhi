@@ -6,4 +6,5 @@ public interface RoleJurMapper {
     int insert(RoleJur record);
 
     int insertSelective(RoleJur record);
+
 }

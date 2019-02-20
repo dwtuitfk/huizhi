@@ -177,8 +177,8 @@
                     console.log(data);
                     $.ajax({
                         type: "POST",
-                        url: "/system/delDep",
-                        data: {"ids":data.bmzdid},
+                        url: "/system/userDel",
+                        data: {"userid":data.userid},
                         dataType:"json",
                         success: function (data) {
                             if (data==500) {

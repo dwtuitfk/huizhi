@@ -6,4 +6,8 @@ public interface UserRoleService {
     int insert(UserRole record);
 
     int insertSelective(UserRole record);
+
+    UserRole getUserRoleinfo(Integer roleid);
+
+    int delUserRoleinfo (Integer roleid);
 }
