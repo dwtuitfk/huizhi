@@ -11,12 +11,8 @@
   <sql id="Base_Column_List">
     c_id, c_type, c_state, c_insurance, c_maintainTime
   </sql>
-  <!--获取所有车辆信息-->
-  <select id="getAllCarinfo" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from carinfo
-  </select>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
@@ -96,4 +92,12 @@
       c_maintainTime = #{cMaintaintime,jdbcType=TIMESTAMP}
     where c_id = #{cId,jdbcType=VARCHAR}
   </update>
+
+  <!--获取所有车辆信息-->
+  <select id="getAllCarinfo"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from carinfo
+  </select>
+
 </mapper>

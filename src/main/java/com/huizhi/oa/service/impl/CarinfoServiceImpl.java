@@ -15,11 +15,6 @@ public class CarinfoServiceImpl implements CarinfoService {
     private CarinfoMapper carinfoMapper;
 
     @Override
-    public List<Carinfo> getAllCarinfo() {
-        return carinfoMapper.getAllCarinfo();
-    }
-
-    @Override
     public int deleteByPrimaryKey(String cId) {
         return carinfoMapper.deleteByPrimaryKey(cId);
     }
@@ -48,4 +43,17 @@ public class CarinfoServiceImpl implements CarinfoService {
     public int updateByPrimaryKey(Carinfo record) {
         return carinfoMapper.updateByPrimaryKey(record);
     }
+
+
+
+    /**
+     * 显示车辆所以信息
+     * @return
+     */
+    @Override
+    public List<Carinfo> getAllCarinfo() {
+        return carinfoMapper.getAllCarinfo();
+    }
+
+
 }
