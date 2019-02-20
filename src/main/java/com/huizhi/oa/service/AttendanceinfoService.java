@@ -2,6 +2,8 @@ package com.huizhi.oa.service;
 
 import com.huizhi.oa.entity.Attendanceinfo;
 
+import java.util.List;
+
 public interface AttendanceinfoService {
     int deleteByPrimaryKey(Integer aId);
 
@@ -10,6 +12,10 @@ public interface AttendanceinfoService {
     int insertSelective(Attendanceinfo record);
 
     Attendanceinfo selectByPrimaryKey(Integer aId);
+
+    List<Attendanceinfo> selectGetAll();
+
+    List<Attendanceinfo> selectAttendanceinfo();
 
     int updateByPrimaryKeySelective(Attendanceinfo record);
 

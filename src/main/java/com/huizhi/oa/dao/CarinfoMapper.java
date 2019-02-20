@@ -1,9 +1,12 @@
 package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Carinfo;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Mapper
+@Repository
 public interface CarinfoMapper {
     int deleteByPrimaryKey(String cId);
 

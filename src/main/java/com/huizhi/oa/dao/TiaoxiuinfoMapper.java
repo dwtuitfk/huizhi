@@ -2,6 +2,8 @@ package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Tiaoxiuinfo;
 
+import java.util.List;
+
 public interface TiaoxiuinfoMapper {
     int deleteByPrimaryKey(Integer txId);
 
@@ -10,6 +12,9 @@ public interface TiaoxiuinfoMapper {
     int insertSelective(Tiaoxiuinfo record);
 
     Tiaoxiuinfo selectByPrimaryKey(Integer txId);
+
+    //<select id="selectTiaoxiuinfo"
+    List<Tiaoxiuinfo> selectTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo);
 
     int updateByPrimaryKeySelective(Tiaoxiuinfo record);
 
