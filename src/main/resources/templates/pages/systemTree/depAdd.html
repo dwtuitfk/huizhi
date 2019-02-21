@@ -64,8 +64,6 @@
                     if(checkDepnamemc()&&checkDepname()){
                         var index = parent.layer.getFrameIndex(window.name);
 
-                        //关闭iframe
-                        $('#closeIframe').click(function(){
                             var depname=$('#depname').val();
                             var depnamemc=$('#depnamemc').val();
                             $.ajax({
@@ -88,7 +86,7 @@
 
                             parent.layer.close(index);
 
-                        });
+
                     }
                     else{
                         return false;

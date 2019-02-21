@@ -37,4 +37,8 @@ public class UserJurController {
         PageInfo<UserJur> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<UserJur>>("",list,0,(int)pageinfo.getTotal());
     }
+/*
+    @ResponseBody
+    @RequestMapping
+    public*/
 }

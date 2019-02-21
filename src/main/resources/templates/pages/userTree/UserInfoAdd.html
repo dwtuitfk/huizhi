@@ -259,11 +259,15 @@
             data: $(data.form).serialize(),
             dataType: "json",
             success: function(data){
-                if(data===500){
-                    parent.layer.msg("添加失败", {icon: 5});
-                }else{
-                    parent.layer.msg("添加成功", {icon: 6});
-                    window.location.href="index";
+                alert(data);
+                if (data === 500) {
+                    layer.msg("添加失败", {icon: 5});
+                } else {
+                    layer.msg("添加成功", {icon: 6});
+                    setTimeout(function(){
+                        parent.layer.close(index);
+                        parent.location.reload();
+                    }, 1000);
                 }
             },
             error:function(){

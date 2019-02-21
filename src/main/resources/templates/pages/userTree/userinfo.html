@@ -11,7 +11,9 @@
             margin: 0px;
             padding: 0px;
         }
-
+        .layui-table, .layui-table-view {
+            margin: 0px 0;
+        }
 
     </style>
 </head>
@@ -23,8 +25,8 @@
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
-        <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>
+        <button class="layui-btn layui-btn-sm" lay-event="add"><i class="layui-icon">&#xe642;</i>添加</button>
+        <button class="layui-btn layui-btn-sm" lay-event="delete"><i class="layui-icon">&#xe640;</i>删除</button>
     </div>
 </script>
 
@@ -69,27 +71,29 @@
         //执行一个 table 实例
         table.render({
             elem: '#demo'
-            ,height: 500
+            ,hight:'full-200'
+            ,cellMinWidth: 80
             ,url: '/system/selectUserinfoALL' //数据接口
             ,title: '部门表'
             ,page: true //开启分页
             ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             ,totalRow: false //开启合计行
+            , even: true
             ,cols: [
 
                 [ //表头
                     {type:'checkbox', fixed: 'left'},
                     {field:'userid', title: '职员编号',minWidth:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
-                    {field:'turename', title: '姓名',minWidth:'100',style:'vertical-align: middle',align:'center'},
+                    {field:'turename', title: '姓名',minWidth:'100',style:'vertical-align: middle',align:'center',sort: true},
                     {field:'age', title: '年龄',minWidth:'80',templet: '#type',align:'center',sort: true},
-                    {field:'sex', title: '性别',minWidth:'60',align:'center'},
-                    {field:'address', title:'地址',minWidth:'130',align:'center',templet:'#amount'},
-                    {field:'email', title: '邮箱',minWidth:'120',align:'center'},
-                    {field:'phone', title: '电话',minWidth:'120',align:'center'},
-                    {field:'qq', title: 'QQ号码',minWidth:'100',align:'center'},
-                    {field:'roleNamemc', title: '岗位',minWidth:'120',align:'center'},
-                    {field:'depNamemc', title: '部门',minWidth:'120',align:'center'},
-                    {field:'isprohibit', title: '是否冻结',minWidth:'100',align:'center'},
+                    {field:'sex', title: '性别',minWidth:'60',align:'center',sort: true},
+                    {field:'address', title:'地址',minWidth:'130',align:'center',templet:'#amount',sort: true},
+                    {field:'email', title: '邮箱',minWidth:'120',align:'center',sort: true},
+                    {field:'phone', title: '电话',minWidth:'120',align:'center',sort: true},
+                    {field:'qq', title: 'QQ号码',minWidth:'100',align:'center',sort: true},
+                    {field:'roleNamemc', title: '岗位',minWidth:'120',align:'center',sort: true},
+                    {field:'depNamemc', title: '部门',minWidth:'120',align:'center',sort: true},
+                    {field:'isprohibit', title: '是否冻结',minWidth:'100',align:'center',sort: true},
                     {title: '操作', align:'center',minWidth:'140', toolbar: '#barDemo'}
 
                 ]
@@ -108,7 +112,8 @@
                         //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                         type: 2,
                         title: "添加用户",
-                        area: ['430px', '430px'],
+                        area: ['450px', '430px'],
+                        maxmin: true,
                         content: '/system/userInfoAdd' //引用的弹出层的页面层的方式加载修改界面表单
                     });
                     break;
@@ -177,8 +182,8 @@
                     console.log(data);
                     $.ajax({
                         type: "POST",
-                        url: "/system/delDep",
-                        data: {"ids":data.bmzdid},
+                        url: "/system/userDel",
+                        data: {"userid":data.userid},
                         dataType:"json",
                         success: function (data) {
                             if (data==500) {
@@ -204,6 +209,7 @@
                     type: 2,
                     title: "修改用户信息",
                     area: ['430px', '430px'],
+                    maxmin: true,
                     content: '/system/userInfoUpdata?userid='+data.userid //引用的弹出层的页面层的方式加载修改界面表单
                 });
             }

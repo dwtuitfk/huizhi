@@ -28,4 +28,14 @@
       </if>
     </trim>
   </insert>
+
+  <!-- 查询单条用户角色信息的持久化操作 -->
+  <select id="getUserRoleinfo" resultType="com.huizhi.oa.entity.UserRole" parameterType="java.lang.Integer">
+		select userid,roleId FROM user_role WHERE userid=#{userid}
+  </select>
+
+  <!-- 删除单条用户角色信息的持久化操作 -->
+  <delete id="delUserRoleinfo" parameterType="int">
+	     DELETE FROM user_role WHERE userId=#{userid}
+	</delete>
 </mapper>

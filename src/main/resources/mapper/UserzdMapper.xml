@@ -45,7 +45,7 @@
 
   <!-- 修改岗位信息的持久化操作 -->
   <update id="updateUserzd" parameterType="com.huizhi.oa.entity.Userzd">
-    UPDATE bmzd SET roleName = #{rolename},roleNamemc=#{rolenamemc} WHERE bmzdId=#{bmzdid}
+    UPDATE userzd SET roleName = #{rolename},roleNamemc=#{rolenamemc} WHERE userzdId=#{userzdid}
   </update>
 
   <!-- 查询单条岗位信息的持久化操作 -->

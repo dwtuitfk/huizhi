@@ -25,4 +25,14 @@ public class UserRoleServiceImpl implements UserRoleService {
     public int insertSelective(UserRole record) {
         return userRoleMapper.insertSelective(record);
     }
+
+    @Override
+    public UserRole getUserRoleinfo(Integer roleid) {
+        return userRoleMapper.getUserRoleinfo(roleid);
+    }
+
+    @Override
+    public int delUserRoleinfo(Integer roleid) {
+        return userRoleMapper.delUserRoleinfo(roleid);
+    }
 }

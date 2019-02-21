@@ -39,8 +39,8 @@ public class AttendanceinfoServiceImpl implements AttendanceinfoService {
     }
 
     @Override
-    public List<Attendanceinfo> selectAttendanceinfo() {
-        return attendanceinfoMapper.selectAttendanceinfo();
+    public List<Attendanceinfo> selectAttendanceinfo(Attendanceinfo attendanceinfo) {
+        return attendanceinfoMapper.selectAttendanceinfo(attendanceinfo);
     }
 
     @Override

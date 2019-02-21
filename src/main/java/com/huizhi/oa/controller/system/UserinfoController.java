@@ -113,12 +113,47 @@ public class UserinfoController {
     //修改用户信息
     @RequestMapping("userUpdata")
     @ResponseBody
-    public String userUpdata(Userinfo userinfo) {
-        int temp = userinfoService.updateByPrimaryKeySelective(userinfo);
+    public String userUpdata(Userinfo userinfo,Integer rolename) {
+
+        int temp;
+
+        //修改用户对应角色
+        //1.修改用户信息
+        temp=userinfoService.updateByPrimaryKeySelective(userinfo);
+
+        //2.根据用户信息userId主键查询用户对应角色的角色表roleId
+        UserRole userRole= userRoleService.getUserRoleinfo(userinfo.getUserid());
+
+        //3.修改角色信息表
+        Roleinfo roleinfo = new Roleinfo();
+        roleinfo.setRoleid(userRole.getRoleid());
+        roleinfo.setRolename(rolename);
+        temp +=roleinfoService.updateByPrimaryKeySelective(roleinfo);
+
         if (temp>0)
             return "400";
         else
             return "500";
     }
 
+    //删除角色及权限
+    @RequestMapping("userDel")
+    @ResponseBody
+    public String userDel(Integer userid) {
+
+        int temp = 0;
+        //1.根据用户信息userId主键查询用户对应角色的角色表roleId
+        UserRole userRole = userRoleService.getUserRoleinfo(userid);
+        //2.解除用户对应角色关联
+        temp =userRoleService.delUserRoleinfo(userid);
+        //3.删除角色编号对应信息
+        temp +=roleinfoService.deleteByPrimaryKey(userRole.getRoleid());
+        //4.删除用户信息
+        temp +=userinfoService.deleteByPrimaryKey(userid);
+
+        if (temp>0)
+            return "400";
+        else
+            return "500";
+    }
 }

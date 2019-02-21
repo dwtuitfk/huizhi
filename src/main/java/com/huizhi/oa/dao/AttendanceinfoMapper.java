@@ -15,9 +15,10 @@ public interface AttendanceinfoMapper {
 
     //<select id="selectGetAll"  resultMap="BaseResultMap">
     List<Attendanceinfo> selectGetAll();
-    //<select id="selectAttendanceinfo"
 
-    List<Attendanceinfo> selectAttendanceinfo();
+    //<select id="selectAttendanceinfo"
+    List<Attendanceinfo> selectAttendanceinfo(Attendanceinfo attendanceinfo);
+
     int updateByPrimaryKeySelective(Attendanceinfo record);
 
     int updateByPrimaryKey(Attendanceinfo record);

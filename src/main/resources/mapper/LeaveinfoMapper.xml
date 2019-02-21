@@ -26,6 +26,42 @@
     from leaveinfo
     where l_id = #{lId,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectLeaveinfo" parameterType="com.huizhi.oa.entity.Leaveinfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from leaveinfo
+    where 1=1
+    <if test="lId != null">
+     and l_id like #{lId,jdbcType=VARCHAR}
+    </if>
+    <if test="userid != null">
+      and userId = #{userid,jdbcType=INTEGER},
+    </if>
+    <if test="lStarttime != null">
+      and l_startTime like #{lStarttime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="lOvertime != null">
+      and l_overTime like #{lOvertime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="lReason != null">
+      and l_reason like #{lReason,jdbcType=VARCHAR},
+    </if>
+    <if test="lUserid != null">
+      and l_userId like #{lUserid,jdbcType=INTEGER},
+    </if>
+    <if test="lState != null">
+      and l_state = #{lState,jdbcType=INTEGER},
+    </if>
+    <if test="lCheckad != null">
+      and l_checkAd like #{lCheckad,jdbcType=VARCHAR},
+    </if>
+    <if test="lType != null">
+      and l_type = #{lType,jdbcType=INTEGER},
+    </if>
+
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from leaveinfo
     where l_id = #{lId,jdbcType=VARCHAR}

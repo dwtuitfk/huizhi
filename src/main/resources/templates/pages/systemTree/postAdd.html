@@ -11,8 +11,9 @@
 
         $(function(){
 
+
             //岗位名称验证
-            $("#rolenamemc").blur(function(){
+            function checkRolenamemc(){
                 //获取岗位名称文本框的值
                 var rolenamemc=$('#rolenamemc').val();
                 //使用正则表达式 岗位名称由2-4个汉字构成
@@ -29,11 +30,11 @@
                     //$("#rolenamemc").select();
                     return false;
                 }
-            });
+            };
 
 
             //岗位编号验证
-            $("#rolename").blur(function(){
+            function checkRolename(){
                 //获取岗位编号文本框的值
                 var rolename=$('#rolename').val();
                 //使用正则表达式 岗位编号至少n位数字
@@ -50,40 +51,60 @@
                     //$("#rolename").select();
                     return false;
                 }
-            });
+            };
 
 
-            var index = parent.layer.getFrameIndex(window.name);
+            //使用jQuery
+            $(function(){
+                //岗位名称失去焦点事件实现验证
+                $("#rolenamemc").blur(checkRolenamemc);
+                //岗位名称编号失去焦点事件实现验证
+                $("#rolename").blur(checkRolename);
+                //提交按钮的验证事件
+                $("#closeIframe").click(function(){
+                    if(checkRolenamemc()&&checkRolename()){
+                        var index = parent.layer.getFrameIndex(window.name);
+                        var rolename=$('#rolename').val();
+                        var rolenamemc=$('#rolenamemc').val();
+                        $.ajax({
+                            url: "/system/postAddInfo",
+                            type: "POST",
+                            data: {"rolename":rolename,"rolenamemc":rolenamemc},
+                            dataType: "json",
+                            success: function(data){
+                                if(data===500){
+                                    parent.layer.msg("添加失败", {icon: 5});
+                                }else{
+                                    parent.layer.msg("添加成功", {icon: 6});
+                                }
+                            },
+                            error:function(){
+                                parent.layer.msg("系统异常");
+                            },
 
-            //关闭iframe
-            $('#closeIframe').click(function(){
-                var rolename=$('#rolename').val();
-                var rolenamemc=$('#rolenamemc').val();
-                $.ajax({
-                    url: "/system/postAddInfo",
-                    type: "POST",
-                    data: {"rolename":rolename,"rolenamemc":rolenamemc},
-                    dataType: "json",
-                    success: function(data){
-                        if(data===500){
-                            parent.layer.msg("添加失败", {icon: 5});
-                        }else{
-                            parent.layer.msg("添加成功", {icon: 6});
-                        }
-                    },
-                    error:function(){
-                        parent.layer.msg("系统异常");
-                    },
+                        });
 
+                        parent.layer.close(index);
+
+
+                    }
+                    else{
+                        return false;
+                    }
                 });
-
-                parent.layer.close(index);
-
             });
+
+
+
+
+
+
 
         });
 
+
     </script>
+
 
 </head>
 <body>

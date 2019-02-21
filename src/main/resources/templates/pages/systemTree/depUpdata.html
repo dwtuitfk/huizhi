@@ -28,10 +28,8 @@
 
 
 
-
-
             //部门名称验证
-            $("#depnamemc").blur(function(){
+            function checkDepnamemc(){
                 //获取部门名称文本框的值
                 var depnamemc=$('#depnamemc').val();
                 //使用正则表达式 部门名称由2-4个汉字构成
@@ -48,11 +46,11 @@
                     //$("#depnamemc").select();
                     return false;
                 }
-            });
+            };
 
 
             //部门编号验证
-            $("#depname").blur(function(){
+            function checkDepname(){
                 //获取部门编号文本框的值
                 var depname=$('#depname').val();
                 //使用正则表达式 部门编号至少n位数字
@@ -69,16 +67,22 @@
                     //$("#depname").select();
                     return false;
                 }
-            });
+            };
 
 
-            var index = parent.layer.getFrameIndex(window.name);
-
-            //关闭iframe
-            $('#closeIframe').click(function(){
-                var bmzdid=$('#bmzdid').val();
-                var depname=$('#depname').val();
-                var depnamemc=$('#depnamemc').val();
+            //使用jQuery
+            $(function(){
+                //部门名称失去焦点事件实现验证
+                $("#depnamemc").blur(checkDepnamemc);
+                //部门名称编号失去焦点事件实现验证
+                $("#depname").blur(checkDepname);
+                //提交按钮的验证事件
+                $("#closeIframe").click(function(){
+                    if(checkDepnamemc()&&checkDepname()){
+                        var index = parent.layer.getFrameIndex(window.name);
+                        var bmzdid=$('#bmzdid').val();
+                        var depname=$('#depname').val();
+                        var depnamemc=$('#depnamemc').val();
                 $.ajax({
                     url: "/system/depUpdateInfo",
                     type: "POST",
@@ -97,8 +101,14 @@
 
                 });
 
-                parent.layer.close(index);
+                        parent.layer.close(index);
 
+
+                    }
+                    else{
+                        return false;
+                    }
+                });
             });
 
         });
