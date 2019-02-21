@@ -22,4 +22,16 @@ public interface EmailinfoMapper {
      * @return
      */
     List<Emailinfo> getAllEmailInfo();
+
+    /**
+     *通过寄件人编号获取他的所有邮件
+     * @return
+     */
+    List<Emailinfo> getAllEmailInfoByeSendid(int eSendid);
+
+    /**
+     *通过收件人编号获取他的所有邮件
+     * @return
+     */
+    List<Emailinfo> getAllEmailInfoByeAcceptid(int eAcceptid);
 }

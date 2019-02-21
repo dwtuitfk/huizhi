@@ -47,4 +47,14 @@ public class EmailinfoServiceImpl<service> implements EmailinfoService {
     public List<Emailinfo> getAllEmailInfo() {
         return emailinfoMapper.getAllEmailInfo();
     }
+
+    @Override
+    public List<Emailinfo> getAllEmailInfoByeSendid(int eSendid) {
+        return emailinfoMapper.getAllEmailInfoByeSendid(eSendid);
+    }
+
+    @Override
+    public List<Emailinfo> getAllEmailInfoByeAcceptid(int eAcceptid) {
+        return emailinfoMapper.getAllEmailInfoByeAcceptid(eAcceptid);
+    }
 }

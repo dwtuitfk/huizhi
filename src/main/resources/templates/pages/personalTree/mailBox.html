@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>通讯录</title>
+    <title>收件箱</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
     <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
@@ -14,8 +14,8 @@
     </style>
 </head>
 <body>
-<table class="layui-hide" id="demo" lay-filter="test"></table>
-
+<table class="layui-hide" id="demo" lay-filter="test">
+</table>
 <script th:inline="none">
     //格式转换
     function createrFormat(o){
@@ -32,7 +32,7 @@
             ,element = layui.element //元素操作
             ,slider = layui.slider //滑块
         //向世界问个好
-        layer.msg('欢迎使用通信录！');
+       /* layer.msg('欢迎使用通信录！');*/
         //监听Tab切换
         element.on('tab(demo)', function(data){
             layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
@@ -43,28 +43,27 @@
         table.render({
             elem: '#demo'
             ,hight:'full-200'
-            ,url: '/getAllContacts' //数据接口
-            ,title: '通讯录'
-            ,page: true //开启分页
-           /* ,toolbar: true*/ //仅开启工具栏，不显示左侧模板
-            /*,totalRow: false*/ //开启合计行
+            ,url: '/getAllEmailInfoByeAcceptid' //数据接口
+            ,title: '邮箱'
+            ,page: true //开启分页A
+            ,toolbar: true//仅开启工具栏，不显示左侧模板
+            ,totalRow: false //开启合计行
             ,cols: [
                 [ //表头
-                    {field:'userid', title: '职员编号',minWidth:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
-                    {field:'turename', title: '姓名',minWidth:'100',style:'vertical-align: middle',align:'center',sort: true},
-                    {field:'roleNamemc', title: '岗位',minWidth:'120',align:'center',sort: true},
-                    {field:'depNamemc', title: '部门',minWidth:'120',align:'center',sort: true},
-                    {field:'age', title: '年龄',minWidth:'80',align:'center',sort: true,hide: true},
-                    {field:'sex', title: '性别',minWidth:'60',align:'center',sort: true},
-                    {field:'address', title:'地址',minWidth:'130',align:'center',templet:'#amount',sort: true,hide: true},
-                    {field:'email', title: '邮箱',minWidth:'120',align:'center',sort: true},
-                    {field:'phone', title: '电话',minWidth:'120',align:'center',sort: true},
-                    {field:'qq', title: 'QQ号码',minWidth:'100',align:'center',sort: true},
-                    {field:'isprohibit', title: '是否冻结',minWidth:'100',align:'center',sort: true,hide: true},
+                    {type:'checkbox', fixed: 'left'},
+                    {field:'eId', title: '邮件编号',minWidth:'100', sort: true, fixed: 'left',align:'center'},
+                    {field:'eTitle', title: '邮件标题',minWidth:'100',sort: true,align:'center'},
+                    {field:'eTime', title: '发送时间',minWidth:'180',sort: true,align:'center'},
+                    {field:'eSendid', title: '发送人员',minWidth:'100',sort: true,align:'center'},
+                    {field:'eAcceptid', title: '接收人员',minWidth:'80',sort: true,align:'center'},
+                    {field:'eCopyid', title:'转抄人员',minWidth:'130',sort: true,align:'center'},
+                    {field:'eContent', title: '邮件内容',minWidth:'120',sort: true,align:'center'},
+                    {field:'eState', title: '邮件状态）',minWidth:'50',sort: true,align:'center'},
                 ]
             ]
         });
     });
 </script>
+
 </body>
 </html>

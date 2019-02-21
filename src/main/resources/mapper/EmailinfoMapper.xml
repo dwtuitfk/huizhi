@@ -14,6 +14,20 @@
   <sql id="Base_Column_List">
     e_id, e_title, e_time, e_sendId, e_acceptId, e_copyId, e_content, e_state
   </sql>
+  <!--通过寄件人编号获取他的所有邮件-->
+  <select id="getAllEmailInfoByeAcceptid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emailinfo
+    where e_acceptId = #{eAcceptid,jdbcType=INTEGER}
+  </select>
+<!--通过寄件人编号获取他的所有邮件-->
+  <select id="getAllEmailInfoByeSendid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emailinfo
+    where e_sendId = #{eSendid,jdbcType=INTEGER}
+  </select>
   <select id="getAllEmailInfo" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
