@@ -66,4 +66,9 @@ public class UserinfoServiceImpl implements UserinfoService {
         return userinfoMapper.getUserinfo(userid);
     }
 
+    @Override
+    public List<UserRoleDep> seachUserinfo(UserRoleDep userRoleDep) {
+        return userinfoMapper.seachUserinfo(userRoleDep);
+    }
+
 }

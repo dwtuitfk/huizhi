@@ -28,4 +28,7 @@ public interface UserinfoService {
 
     //查询单个用户信息
     UserRoleDep getUserinfo (Integer userid);
+
+    //模糊查询
+    List<UserRoleDep> seachUserinfo(UserRoleDep userRoleDep);
 }
