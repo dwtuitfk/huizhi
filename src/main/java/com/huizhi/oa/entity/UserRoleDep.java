@@ -1,5 +1,7 @@
 package com.huizhi.oa.entity;
 
+import java.security.PrivateKey;
+
 /**
  * created by dwtuitfk on 2019/2/19.
  */
@@ -28,6 +30,36 @@ public class UserRoleDep {
     private String roleNamemc;
 
     private String depNamemc;
+
+    private Integer depName;
+
+    private Integer roleName;
+
+    private String isprohibitinfo;
+
+    public String getIsprohibitinfo() {
+        return isprohibitinfo;
+    }
+
+    public void setIsprohibitinfo(String isprohibitinfo) {
+        this.isprohibitinfo = isprohibitinfo;
+    }
+
+    public Integer getDepName() {
+        return depName;
+    }
+
+    public void setDepName(Integer depName) {
+        this.depName = depName;
+    }
+
+    public Integer getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(Integer roleName) {
+        this.roleName = roleName;
+    }
 
     public Integer getUserid() {
         return userid;

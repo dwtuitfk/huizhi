@@ -156,4 +156,59 @@ public class UserinfoController {
         else
             return "500";
     }
+
+    public boolean isDigit(String strNum) {
+        return strNum.matches("[0-9]{1,}");
+    }
+
+    @RequestMapping("seachUserinfo")
+    @ResponseBody
+    public ResultMap<List<UserRoleDep>> getalluserinfo(Integer page, Integer limit, String userid,String turename,String address,String sex,String depName,String roleName,Integer isprohibit) throws Exception {
+        PageHelper.startPage(page == null ? 1 : page, limit);
+        List<UserRoleDep> list=null;
+        UserRoleDep userRoleDep = new UserRoleDep();
+        if (userid==null&&turename==null&&address==null&&sex==null&&depName==null&&roleName==null&&isprohibit==null){
+            list=userinfoService.seachUserinfo(userRoleDep);
+        }else {
+            if (!userid.equals("")){
+                if(this.isDigit(userid))
+                    userRoleDep.setUserid(Integer.parseInt(userid));
+            }
+            if (!turename.equals(""))
+                userRoleDep.setTurename(turename);
+            if (!address.equals(""))
+                userRoleDep.setAddress(address);
+            if (!sex.equals(""))
+                userRoleDep.setSex(sex);
+
+            if (!depName.equals(""))
+                if(this.isDigit(depName)) {
+                    userRoleDep.setDepName(Integer.parseInt(depName));
+                }
+
+            if (!roleName.equals(""))
+                if(this.isDigit(roleName)){
+                    userRoleDep.setRoleName(Integer.parseInt(roleName));
+                }
+
+            userRoleDep.setIsprohibit(isprohibit);
+
+        }
+        list = userinfoService.seachUserinfo(userRoleDep);
+        for (UserRoleDep user:list) {
+            user.setIsprohibitinfo(user.getIsprohibit() == 0?"禁用":"正常");
+        }
+        PageInfo<UserRoleDep> pageinfo = new PageInfo<>(list);
+        return new ResultMap<List<UserRoleDep>>("", list, 0, (int) pageinfo.getTotal());
+
+    }
+
+    //查询所有用户信息
+    @ResponseBody
+    @RequestMapping("/getUserAllInfo")
+    public List<UserRoleDep> getUserAllInfo(){
+        List<UserRoleDep> list = userinfoService.getAllUserinfo();
+        return list;
+    }
+
 }
