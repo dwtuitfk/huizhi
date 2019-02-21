@@ -62,13 +62,13 @@
 
         <div class="layui-input-inline" style="width: 100px;">
             <select name="isprohibit" id="isprohibit">
-                <option value="">是否禁用</option>
-                <option value="0">禁用</option>
-                <option value="1">正常</option>
+                <option value="">状态</option>
+                <option value="0">离职</option>
+                <option value="1">在职</option>
             </select>
         </div>
         <button class="layui-btn layui-btn-sm" lay-event="search" id="search" >
-            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>搜索
         </button>
 
 
@@ -160,6 +160,7 @@
             ,title: '部门表'
             ,page: true //开启分页
             ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,defaultToolbar:["filter"]
             ,totalRow: false //开启合计行
             , even: true
             ,cols: [
@@ -176,7 +177,7 @@
                     {field:'qq', title: 'QQ号码',minWidth:'100',align:'center',sort: true},
                     {field:'roleNamemc', title: '岗位',minWidth:'120',align:'center',sort: true},
                     {field:'depNamemc', title: '部门',minWidth:'120',align:'center',sort: true},
-                    {field:'isprohibit', title: '是否冻结',minWidth:'100',align:'center',sort: true},
+                    {field:'isprohibitinfo', title: '是否冻结',minWidth:'100',align:'center',sort: true},
                     {title: '操作', align:'center',minWidth:'140', toolbar: '#barDemo'}
 
                 ]

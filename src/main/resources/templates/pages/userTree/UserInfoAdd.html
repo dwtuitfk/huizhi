@@ -68,7 +68,7 @@
 <body>
 <br>
 <div class="weadmin-body">
-    <form class="layui-form" action="/system/userAdd">
+    <form class="layui-form" action="" target="nm_iframe">
 
         <!--职员编号-->
         <div class="layui-form-item">
@@ -114,10 +114,10 @@
 
         <!--性别-->
         <div class="layui-form-item">
-            <label class="layui-form-label"><span class="we-red">*</span>性别</label>
+            <label class="layui-form-label">性别</label>
             <div class="layui-input-block">
-                <input type="checkbox" name="sex" lay-skin="primary" title="男" checked="" value="男">
-                <input type="checkbox" name="sex" lay-skin="primary" title="女" value="女">
+                <input type="radio" name="sex" value="男" title="男" checked >
+                <input type="radio" name="sex" value="女" title="女" >
             </div>
         </div>
 
@@ -135,10 +135,10 @@
             </div>
         </div>
 
-        <!--QQ-->
+        <!--QQ号码-->
         <div class="layui-form-item">
             <label for="qq" class="layui-form-label">
-                <span class="we-red">*</span>QQ
+                <span class="we-red">*</span>QQ号码
             </label>
             <div class="layui-input-inline">
                 <input type="text" value="" id="qq" name="qq" required="" lay-verify="qq"
@@ -182,10 +182,10 @@
             <label for="depname" class="layui-form-label">
                 <span class="we-red">*</span>部门
             </label>
-            <div class="layui-input-inline">
+            <div class="layui-input-inline" id="chickdep">
 
                 <select id="depname" name="depName">
-                    <option value="-1">--请选择--</option>
+                    <option value="">--请选择部门--</option>
                 </select>
 
             </div>
@@ -196,10 +196,10 @@
             <label for="rolename" class="layui-form-label">
                 <span class="we-red">*</span>职位
             </label>
-            <div class="layui-input-inline">
+            <div class="layui-input-inline" id="chickrole">
 
                 <select id="rolename" name="rolename">
-                    <option value="-1">--请选择--</option>
+                    <option value="">--请选择职位--</option>
                 </select>
 
             </div>
@@ -215,7 +215,7 @@
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
-                6到16个字符
+
             </div>
         </div>
 
@@ -230,14 +230,11 @@
             </div>
         </div>-->
 
-        <!--是否冻结-->
-        <div class="layui-form-item">
-            <label class="layui-form-label"><span class="we-red">*</span>冻结</label>
-            <div class="layui-input-block">
-                <input type="checkbox" name="isprohibit" lay-skin="primary" title="是" checked="" value="1">
-                <input type="checkbox" name="isprohibit" lay-skin="primary" title="否" value="0">
-            </div>
-        </div>
+        <!--默认状态添加为在职-->
+        <input id="isprohibit" name="isprohibit" value="1" type="hidden">
+
+
+
 
         <div class="layui-form-item">
             <label  class="layui-form-label">
@@ -247,34 +244,134 @@
             </button>
         </div>
     </form>
+    <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
 </div>
 <script type="text/javascript">
 
     $(function(){
-        layui.use(['form','layer','admin'], function(){
+        layui.use(['form', 'layedit', 'laydate'], function(){
 
-        $.ajax({
-            url: data.form.action,
-            type: data.form.method,
-            data: $(data.form).serialize(),
-            dataType: "json",
-            success: function(data){
-                alert(data);
-                if (data === 500) {
-                    layer.msg("添加失败", {icon: 5});
-                } else {
-                    layer.msg("添加成功", {icon: 6});
-                    setTimeout(function(){
-                        parent.layer.close(index);
-                        parent.location.reload();
-                    }, 1000);
+            var form = layui.form
+                ,layer = layui.layer
+                ,layedit = layui.layedit
+                ,laydate = layui.laydate;
+
+
+            //日期
+            laydate.render({
+                elem: '#date'
+            });
+
+
+            //判断职员编号是否重复
+            $('#userid').blur(function () {
+                var userid=$('#userid').val();
+                if(userid==""){
+                    return;
+                }else{
+                    $.ajax({
+                        url:"/system/inspectUserid",//判断用户名是否存在
+                        type:"GET",
+                        data:{'userid':userid},
+                        dataType:"json",
+                        success:function(data){
+                            if (data===500) {
+                                layer.msg("用户名已存在", {icon: 5});
+                            }
+                        },
+                        error:function(){
+                            layer.msg("系统异常");
+                        },
+                    });
                 }
-            },
-            error:function(){
-                parent.layer.msg("系统异常");
-            },
+            })
 
-        });
+            //判断职位是否输入
+            $('#rolename').click(function () {
+                if($('#rolename').val()==""){
+                    layer.msg("请先选择职位", {icon: 5})
+                }
+            })
+            //判断部门是否输入
+            $('#depname').click(function () {
+                if($('#depname').val()==""){
+                    layer.msg("请先选择部门", {icon: 5})
+                }
+            })
+
+
+            //创建一个编辑器
+            var editIndex = layedit.build('LAY_demo_editor');
+
+            //自定义验证规则
+            form.verify({
+                userid: [
+                    /^[1-9]\d{1,10}$/
+                    ,'职员编号必须10位数字,且不能以0开头'
+                ]
+                ,password: [
+                    /^[a-zA-Z]\w{5,17}$/
+                    ,'以字母开头，长度在6~18之间，只能包含字母、数字和下划线'
+                ]
+                ,turename:[
+                    /^([\u4e00-\u9fa5]){2,5}$/
+                    ,'请输入2到5位数中文姓名'
+                ]
+                ,age:[
+                    /^(?:[1-9]?\d|100)$/
+                    ,'请输入正确的年龄1到100'
+                ]
+                ,address:[
+                    /^([\u4e00-\u9fa5]){2,19}$/
+                    ,'请输入中文地址'
+                ]
+                ,qq:[
+                    /^[1-9][0-9]{4,11}$/
+                    ,'请输入正确QQ号码'
+                ]
+                ,content: function(value){
+                    layedit.sync(editIndex);
+                }
+            });
+
+
+            form.on('submit(add)', function(data){
+
+                var index = parent.layer.getFrameIndex(window.name);
+                $.ajax({
+                    type: 'post',
+                    url: '/system/userAdd', // ajax请求路径
+                    data: {
+                        userid:data.field.userid,
+                        password:data.field.password,
+                        turename: data.field.turename,
+                        sex:data.field.sex,
+                        age:data.field.age,
+                        address:data.field.address,
+                        phone:data.field.phone,
+                        qq: data.field.qq,
+                        email:data.field.email,
+                        depName:data.field.depName,
+                        rolename:data.field.rolename,
+                        isprohibit:data.field.isprohibit
+                    },
+                    dataType:"json",
+                    success: function(data){
+                        if(data==400){
+                            layer.msg("添加成功", {icon: 6,time:2000},function () {
+                                parent.layer.close(index);
+                                parent.location.reload();
+                            });
+                        }else {
+                            layer.msg("添加失败", {icon: 5,time:2000});
+                        }
+                    },
+                    error:function(){
+                        layer.msg("系统异常");
+                    },
+                });
+                return false;
+            });
 
         //parent.layer.close(index);
 
