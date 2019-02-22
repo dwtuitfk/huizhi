@@ -25,14 +25,14 @@ public class LeaveinfoController {
         return "pages/leaveinfoTree/leaveinfo";
     }
 
-    @ResponseBody
-    @RequestMapping("test")
-    public List<Leaveinfo> selectTest(){
-        Leaveinfo leaveinfo = new Leaveinfo();
-        leaveinfo.setlId("11");
-        List<Leaveinfo> list = leaveinfoService.selectTest(leaveinfo);
-        return list;
-    }
+//    @ResponseBody
+//    @RequestMapping("test")
+//    public List<Leaveinfo> selectTest(){
+//        Leaveinfo leaveinfo = new Leaveinfo();
+//        leaveinfo.setlId("11");
+//        List<Leaveinfo> list = leaveinfoService.selectTest(leaveinfo);
+//        return list;
+//    }
 
     @RequestMapping("leaveAdd")
     public String showAddLeaveinfo(){
