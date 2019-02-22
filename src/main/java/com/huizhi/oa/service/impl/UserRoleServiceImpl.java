@@ -5,11 +5,14 @@ import com.huizhi.oa.entity.UserRole;
 import com.huizhi.oa.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * created by dwtuitfk on 2019/2/17.
  */
 @Service
+@Transactional
 public class UserRoleServiceImpl implements UserRoleService {
 
     @Autowired
@@ -26,6 +29,7 @@ public class UserRoleServiceImpl implements UserRoleService {
         return userRoleMapper.insertSelective(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public UserRole getUserRoleinfo(Integer roleid) {
         return userRoleMapper.getUserRoleinfo(roleid);
