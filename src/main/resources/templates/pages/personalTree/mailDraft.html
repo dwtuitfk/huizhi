@@ -16,6 +16,14 @@
 <body>
 <table class="layui-hide" id="demo" lay-filter="test">
 </table>
+<!--永久删除草稿-->
+<script type="text/html" id="toolbarDemo">
+    <button class="layui-btn layui-btn-sm" lay-event="delete"><i class="layui-icon">&#xe640;</i>删除草稿</button>
+</script>
+<!--重新编辑单个邮件-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">编辑<i class="layui-icon">&#xe602;</i></a>
+</script>
 <script th:inline="none">
     //格式转换
     function createrFormat(o){
@@ -46,7 +54,7 @@
             ,url: '/getAllByeSendididDraft' //数据接口
             ,title: '邮箱'
             ,page: true //开启分页A
-            ,toolbar: true//仅开启工具栏，不显示左侧模板
+            ,toolbar: '#toolbarDemo'//仅开启工具栏，不显示左侧模板
             ,totalRow: false //开启合计行
             ,cols: [
                 [ //表头
@@ -59,6 +67,7 @@
                     {field:'eCopyid', title:'转抄人员',minWidth:'130',sort: true,align:'center'},
                     {field:'eContent', title: '邮件内容',minWidth:'120',sort: true,align:'center'},
                     {field:'eState', title: '邮件状态）',minWidth:'50',sort: true,align:'center'},
+                    {title: '操作', align:'center',minWidth:'140', toolbar: '#barDemo'}
                 ]
             ]
         });

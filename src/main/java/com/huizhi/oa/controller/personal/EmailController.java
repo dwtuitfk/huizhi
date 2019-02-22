@@ -27,6 +27,7 @@ public class EmailController {
 
 
     /*http://localhost:8080/getAllEmailInfo?page=1&limit=10测试成功*/
+    //获取所有邮件
     /**
      * 获取所有邮件
      * @param page
@@ -42,7 +43,100 @@ public class EmailController {
         PageInfo<Emailinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Emailinfo>>("",list,0,(int)pageinfo.getTotal());
     }
+    /*http://localhost:8080/getOneEmailInfo测试成功*/
+    //根据主键eid获取单个邮件
+    /**
+     * 根据主键eid获取单个邮件
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("getOneEmailInfo")
+    public Emailinfo getOneEmailInfo() throws Exception {
+        //根据eid获取单个邮件
+        Emailinfo list=emailinfoService.selectByPrimaryKey("1");
+        return list;
+    }
+    /*http://localhost:8080/getOneEmailInfo测试成功*/
+    //根据主键eid获取单个邮件,并将邮件状态改为2，已读
+    /**
+     * 完成查看邮件功能
+     * 根据主键eid获取单个邮件,并将邮件状态改为2，已读
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("getOneEmailInfoChangeStateTwo")
+    public void getOneEmailInfoChangeStateTwo() throws Exception {
+        //根据eid获取单个邮件
+        Emailinfo list=emailinfoService.selectByPrimaryKey("1");
+        //将邮件状态改为2，已读
+        list.seteState(2);
+        emailinfoService.updateByPrimaryKeySelective(list);
+    }
+    /*http://localhost:8080/changeEmailInfoStateTwo测试成功*/
+    //根据主键eid获取单个邮件,并修改邮件状态为2，已读
+    /**
+     * 根据主键eid获取单个邮件,并修改邮件状态为2，已读
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("changeEmailInfoStateTwo")
+    public void changeEmailInfoStateTwo() throws Exception {
+        //根据eid获取单个邮件
+        Emailinfo list=emailinfoService.selectByPrimaryKey("1");
+        //更改邮件状态为2，已读
+        list.seteState(2);
+        emailinfoService.updateByPrimaryKeySelective(list);
+    }
+    /*http://localhost:8080/changeEmailInfoStateThress测试成功*/
+    //根据主键eid获取单个邮件,并修改邮件状态3,垃圾箱
+    /**
+     * 根据主键eid获取单个邮件,并修改邮件状态3,垃圾箱
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("changeEmailInfoStateThress")
+    public void changeEmailInfoStateThress() throws Exception {
+        //根据eid获取单个邮件
+        Emailinfo list=emailinfoService.selectByPrimaryKey("1");
+        //更改邮件状态为3，已读
+        list.seteState(3);
+        emailinfoService.updateByPrimaryKeySelective(list);
+    }
+    /*http://localhost:8080/deleteSomeEmailByPrimaryKey测试成功*/
+    //根据主键eid删除单个邮件
+    /**
+     * 根据主键eid删除单个邮件
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("deleteSomeEmailByPrimaryKey")
+    public void deleteSomeEmailByPrimaryKey() throws Exception {
+        //根据eid获取单个邮件
+        emailinfoService.deleteByPrimaryKey("1");
+    }
+    /*http://localhost:8080/updateOneEmailByPrimaryKey测试成功*/
+    //根据主键eid修改单个邮件
+    /**
+     * 根据主键eid修改单个邮件
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("updateOneEmailByPrimaryKey")
+    public void updateOneEmailByPrimaryKey() throws Exception {
+        //获取新的单个邮件
+        Emailinfo emailinfo = new Emailinfo();
+
+        //根据eid获取单个邮件
+        emailinfoService.updateByPrimaryKey(emailinfo);
+    }
     /*http://localhost:8080/getAllEmailInfoByeSendid?page=1&limit=10测试成功*/
+    //通过寄件人id获取某个人所有邮件
     /**
      * 通过寄件人id获取某个人所有邮件
      * @param page
@@ -60,6 +154,7 @@ public class EmailController {
     }
 
     /*http://localhost:8080/getAllByeAcceptidBox?page=1&limit=10测试成功*/
+    //通过收件人、邮件状态state为1或者2，获取他的所有未读、已读邮件
     /**
      * 通过收件人、邮件状态state为1或者2，获取他的所有未读、已读邮件
      * @param page
@@ -75,7 +170,24 @@ public class EmailController {
         PageInfo<Emailinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Emailinfo>>("",list,0,(int)pageinfo.getTotal());
     }
+    /*http://localhost:8080/getAllByeAcceptidBoxUnreadNum测试成功*/
+    //通过收件人、邮件状态state为1，获取他的所有未读邮件，返回其数量
+    /**
+     * 通过收件人、邮件状态state为1，获取他的所有未读邮件，返回其数量
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("getAllByeAcceptidBoxUnreadNum")
+    public List getAllByeAcceptidBoxUnreadNum() throws Exception {
+        //通过收件人、邮件状态state为1，获取他的所有未读邮件，返回其数量
+        List<Emailinfo> list=emailinfoService.getAllByeAcceptidBoxUnread(122);
+        List list1 = new ArrayList();
+        list1.add(list.size());
+        return list1;
+    }
     /*http://localhost:8080/getAllByeAcceptidDustbin?page=1&limit=10测试成功*/
+    //通过收件人、邮件状态state为3，获取他的垃圾箱
     /**
      * 通过收件人、邮件状态state为3，获取他的垃圾箱
      * @param page
@@ -92,6 +204,7 @@ public class EmailController {
         return new ResultMap<List<Emailinfo>>("",list,0,(int)pageinfo.getTotal());
     }
     /*http://localhost:8080/getAllByeSendididDraft?page=1&limit=10测试成功*/
+    //通过寄件人、邮件状态state为0，获取他的草稿邮件
     /**
      * 通过寄件人、邮件状态state为0，获取他的草稿邮件
      * @param page
@@ -102,15 +215,12 @@ public class EmailController {
     @ResponseBody
     @RequestMapping("getAllByeSendididDraft")
     public ResultMap<List<Emailinfo>> getAllByeSendididDraft(Integer page, Integer limit) throws Exception {
-        List<Emailinfo> list = emailinfoService.getAllByeSendididDraft(122);
-        List<Emailinfo> dustbinList = null;
-        if (list.size() > 0){
-            dustbinList = list.stream().filter(item -> item.geteState() == 0).collect(Collectors.toList());
-        }
         PageHelper.startPage(page == null ? 1 : page, limit);
-        PageInfo<Emailinfo> pageinfo = new PageInfo<>(dustbinList);
-        return new ResultMap<List<Emailinfo>>("", dustbinList, 0, (int) pageinfo.getTotal());
+        List<Emailinfo> list = emailinfoService.getAllByeSendididDraft(122);
+        PageInfo<Emailinfo> pageinfo = new PageInfo<>(list);
+        return new ResultMap<List<Emailinfo>>("", list, 0, (int) pageinfo.getTotal());
     }
+
     /*发邮件*/
     @ResponseBody
     @RequestMapping("/sendEmail")
@@ -164,7 +274,7 @@ public class EmailController {
             emailinfo.seteContent(eContent);
         }
         /**
-         * 邮件状态,
+         * 获取邮件状态,
          * 草稿为0，
          * 发送为1，未读状态
          */

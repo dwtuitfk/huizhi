@@ -5,6 +5,7 @@ import com.huizhi.oa.entity.Emailinfo;
 import com.huizhi.oa.service.EmailinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class EmailinfoServiceImpl<service> implements EmailinfoService {
     private EmailinfoMapper emailinfoMapper;
 
     @Override
+    @Transactional    //提供事务支持
     public int deleteByPrimaryKey(String eId) {
         return emailinfoMapper.deleteByPrimaryKey(eId);
     }
@@ -29,16 +31,19 @@ public class EmailinfoServiceImpl<service> implements EmailinfoService {
     }
 
     @Override
+    @Transactional    //提供事务支持
     public Emailinfo selectByPrimaryKey(String eId) {
         return emailinfoMapper.selectByPrimaryKey(eId);
     }
 
     @Override
+    @Transactional    //提供事务支持
     public int updateByPrimaryKeySelective(Emailinfo record) {
         return emailinfoMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
+    @Transactional    //提供事务支持
     public int updateByPrimaryKey(Emailinfo record) {
         return emailinfoMapper.updateByPrimaryKey(record);
     }
