@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>会议室添加</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
+
+
+</head>
+
+<script type="text/javascript">
+
+    //重新渲染表单
+    function renderForm(){
+        layui.use('form', function(){
+            var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+            form.render();
+        });
+    }
+
+    $(document).ready(function(){
+
+
+
+        layui.use(['form'], function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            form.render();
+
+        });
+
+    });
+</script>
+
+<body>
+<br>
+<div class="weadmin-body">
+    <form class="layui-form" action="/meeting/meethouseAdd" >
+
+        <!--会议室编号-->
+        <div class="layui-form-item">
+            <label for="mhId" class="layui-form-label">
+                <span class="we-red">*</span>会议室编号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="mhId" name="mhId" required="" lay-verify="mhId"
+                       autocomplete="off" value="" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--会议室名称-->
+        <div class="layui-form-item">
+            <label for="mhName" class="layui-form-label">
+                <span class="we-red">*</span>会议室名称
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="mhName" name="mhName" required="" lay-verify="mhName"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--会议室位置-->
+        <div class="layui-form-item">
+            <label for="mhAddress" class="layui-form-label">
+                <span class="we-red">*</span>会议室位置
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="mhAddress" name="mhAddress" required="" lay-verify="mhAddress"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                添加
+            </button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function(){
+        layui.use(['form','layer','admin'], function(){
+
+            $.ajax({
+                url: data.form.action,
+                type: data.form.method,
+                data: $(data.form).serialize(),
+                dataType: "json",
+                success: function(data){
+                    if(data===500){
+                        parent.layer.msg("添加失败", {icon: 5});
+                    }else{
+                        parent.layer.msg("添加成功", {icon: 6});
+                        window.location.href="index";
+                    }
+                },
+                error:function(){
+                    parent.layer.msg("系统异常");
+                },
+
+            });
+
+            //parent.layer.close(index);
+
+        });
+    });
+</script>
+</body>
+
+</html>

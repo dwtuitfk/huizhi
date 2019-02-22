@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>会议申请添加</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
+
+
+</head>
+
+<script type="text/javascript">
+
+    //重新渲染表单
+    function renderForm(){
+        layui.use('form', function(){
+            var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+            form.render();
+        });
+    }
+
+    $(document).ready(function(){
+
+        //异步会议室名称
+        $.ajax({
+            type : "get",
+            url : "/meeting/selectMeethouse",
+            success : function(data) {
+                //alert(data[1].depnamemc);
+                var dep='';
+                $.each(data, function(index,obj) {
+                    dep += '<option value="'+obj.mhId+'">'+obj.mhAddress+'</option>';
+                });
+                //alert(dep);
+                $("#mhAddress").append(dep);
+                renderForm();
+                //layui.form.render();
+            },
+        });
+
+        layui.use(['form','laydate'], function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            form.render();
+            var laydate = layui.laydate;
+            //日期时间选择器
+            laydate.render({
+                elem: '#haStarttime'
+                ,type: 'datetime'
+            });
+        });
+
+    });
+</script>
+
+<body>
+<br>
+<div class="weadmin-body">
+    <form class="layui-form" action="/meeting/houseapplyinfoAdd">
+
+        <!--会议申请编号-->
+        <div class="layui-form-item">
+            <label for="haId" class="layui-form-label">
+                <span class="we-red">*</span>会议申请编号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="haId" name="haId" required="" lay-verify="haId"
+                       autocomplete="off" value="" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+
+        <!--员工编号（申请人员）-->
+        <div class="layui-form-item">
+            <label for="userid" class="layui-form-label">
+                <span class="we-red">*</span>申请人
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="" id="userid" name="userid" required="" lay-verify="userid"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="we-red"></span>
+            </div>
+        </div>
+        <!--申请开会时间-->
+        <div class="layui-inline">
+            <label class="layui-form-label">开会时间</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="haStarttime" name="haStarttime" placeholder="yyyy-MM-dd HH:mm:ss">
+            </div>
+        </div>
+        <!--申请原因-->
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">申请原因</label>
+            <div class="layui-input-block">
+                <textarea value="" id="haReason" name="haReason" lay-verify="haReason"
+                          autocomplete="off" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <!--申请会议编号-->
+        <div class="layui-form-item">
+            <label for="mhAddress" class="layui-form-label">
+                <span class="we-red">*</span>会议室
+            </label>
+            <div class="layui-input-inline">
+
+                <select id="mhAddress" name="haMhId">
+                    <option value="-1">--请选择--</option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                添加
+            </button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+
+    layui.use(['form','layer'], function(){
+        var form = layui.form,
+            layer = layui.layer;
+
+        //验证会议申请编码的规则
+        form.verify({
+            haId:
+                [
+                    /^[0-9]{1,4}$/
+                    ,'请填入0-4的分数'
+                ]
+        });
+    });
+
+    $(function(){
+        layui.use(['form','layer','admin'], function(){
+
+            $.ajax({
+                url: data.form.action,
+                type: data.form.method,
+                data: $(data.form).serialize(),
+                dataType: "json",
+                success: function(data){
+                    if(data===500){
+                        parent.layer.msg("添加失败", {icon: 5});
+                    }else{
+                        parent.layer.msg("添加成功", {icon: 6});
+                        window.location.href="index";
+                    }
+                },
+                error:function(){
+                    parent.layer.msg("系统异常");
+                },
+
+            });
+
+            //parent.layer.close(index);
+        });
+    });
+
+</script>
+</body>
+
+</html>

@@ -2,6 +2,8 @@ package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Meethouse;
 
+import java.util.List;
+
 public interface MeethouseMapper {
     int deleteByPrimaryKey(Integer mhId);
 
@@ -14,4 +16,13 @@ public interface MeethouseMapper {
     int updateByPrimaryKeySelective(Meethouse record);
 
     int updateByPrimaryKey(Meethouse record);
+
+    List<Meethouse> getAllMeethouse();
+
+    /**
+     * 多项删除
+     * @param ids
+     * @return
+     */
+    int delMoreMeethouse(List<Integer> ids);
 }
