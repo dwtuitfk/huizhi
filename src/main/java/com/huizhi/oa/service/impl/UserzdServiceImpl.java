@@ -7,6 +7,8 @@ import com.huizhi.oa.entity.Userzd;
 import com.huizhi.oa.service.UserzdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import java.util.List;
  * created by dwtuitfk on 2019/2/17.
  */
 @Service
+@Transactional
 public class UserzdServiceImpl implements UserzdService {
 
     @Autowired
@@ -30,6 +33,7 @@ public class UserzdServiceImpl implements UserzdService {
         return userzdMapper.insertSelective(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public List<Userzd> getAllUserzd() {
         List<Userzd> list = userzdMapper.getAllUserzd();
@@ -41,6 +45,7 @@ public class UserzdServiceImpl implements UserzdService {
         return userzdMapper.updateUserzd(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public Userzd getUserzd(int userzdid) {
         return userzdMapper.getUserzd(userzdid);

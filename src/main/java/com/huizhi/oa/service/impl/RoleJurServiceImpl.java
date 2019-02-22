@@ -5,11 +5,13 @@ import com.huizhi.oa.entity.RoleJur;
 import com.huizhi.oa.service.RoleJurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * created by dwtuitfk on 2019/2/17.
  */
 @Service
+@Transactional
 public class RoleJurServiceImpl implements RoleJurService {
 
     @Autowired
