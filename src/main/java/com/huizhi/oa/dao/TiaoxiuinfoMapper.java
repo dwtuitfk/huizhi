@@ -13,6 +13,9 @@ public interface TiaoxiuinfoMapper {
 
     Tiaoxiuinfo selectByPrimaryKey(Integer txId);
 
+    //<select id="selectGetAll">
+    List<Tiaoxiuinfo> selectGetAll();
+
     //<select id="selectTiaoxiuinfo"
     List<Tiaoxiuinfo> selectTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo);
 

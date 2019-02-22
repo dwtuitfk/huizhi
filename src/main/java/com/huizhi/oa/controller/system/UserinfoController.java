@@ -175,7 +175,23 @@ public class UserinfoController {
             /*list=userinfoService.getAllUserinfo();*/
             System.out.println(list.size());
             for (UserRoleDep user:list) {
-                user.setIsprohibitinfo(user.getIsprohibit() == 0?"离职":"在职");
+                switch (user.getIsprohibit()){
+                    case 0:
+                        user.setIsprohibitinfo("离职");
+                        break;
+                    case 1:
+                        user.setIsprohibitinfo("在职");
+                        break;
+                    case 2:
+                        user.setIsprohibitinfo("内退");
+                        break;
+                    case 3:
+                        user.setIsprohibitinfo("返聘");
+                        break;
+                    case 4:
+                        user.setIsprohibitinfo("停薪留职");
+                        break;
+                }
             }
 
             PageInfo<UserRoleDep> pageinfo = new PageInfo<>(list);
@@ -207,7 +223,24 @@ public class UserinfoController {
         }
         list = userinfoService.seachUserinfo(userRoleDep);
         for (UserRoleDep user:list) {
-            user.setIsprohibitinfo(user.getIsprohibit() == 0?"离职":"在职");
+            switch (user.getIsprohibit()){
+                case 0:
+                    user.setIsprohibitinfo("离职");
+                    break;
+                case 1:
+                    user.setIsprohibitinfo("在职");
+                    break;
+                case 2:
+                    user.setIsprohibitinfo("内退");
+                    break;
+                case 3:
+                    user.setIsprohibitinfo("返聘");
+                    break;
+                case 4:
+                    user.setIsprohibitinfo("停薪留职");
+                    break;
+            }
+
         }
         PageInfo<UserRoleDep> pageinfo = new PageInfo<>(list);
         return new ResultMap<List<UserRoleDep>>("", list, 0, (int) pageinfo.getTotal());

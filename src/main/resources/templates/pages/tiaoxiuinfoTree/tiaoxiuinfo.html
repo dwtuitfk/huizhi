@@ -63,7 +63,7 @@
         table.render({
             elem: '#demo'
             ,height: 500
-            ,url: '/tiaoxiuinfo/selectInfo' //数据接口
+            ,url: '/kaoqin/tiaoxiuinfo/selectInfo' //数据接口
             ,title: '调休表'
             ,page: true //开启分页
             ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
@@ -72,7 +72,7 @@
 
                 [ //表头
                     {type: 'checkbox', fixed: 'left'}
-                    ,{field: 'userid', title: '员工编号', width:200, sort: true, fixed: 'left',style:'height:20px;', align:'center'}
+                    ,{field: 'tureName', title: '员工姓名', width:200, sort: true, fixed: 'left',style:'height:20px;', align:'center'}
                     ,{field: 'txStarttime', title: '调休日期', width:200, sort: true, align:'center'}
                     ,{field: 'txReason', title: '调休原因', width: 200, sort: true, align:'center'}
                     ,{fixed: 'right', title: '操作',width: 240, align:'center', toolbar: '#barDemo', align:'center'}

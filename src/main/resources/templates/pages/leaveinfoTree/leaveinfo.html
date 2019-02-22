@@ -63,7 +63,7 @@
         table.render({
             elem: '#demo'
             ,height: 500
-            ,url: '/leaveinfo/getAll' //数据接口
+            ,url: '/kaoqin/leaveinfo/getAll' //数据接口
             ,title: '外出表'
             ,page: true //开启分页
             ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
@@ -73,7 +73,7 @@
                 [ //表头
                     {type: 'checkbox', fixed: 'left'}
                     ,{field: 'lId', title: '单号', width:200, sort: true, fixed: 'left',style:'height:20px;', align:'center'}
-                    ,{field: 'userid', title: '员工编号', width:200, sort: true, align:'center'}
+                    ,{field: 'tureName', title: '员工名称', width:200, sort: true, align:'center'}
                     ,{field: 'lStarttime', title: '开始日期', width:200, sort: true, align:'center'}
                     ,{field: 'lOvertime', title: '结束日期', width: 200, sort: true, align:'center'}
                     ,{field: 'lReason', title: '申请原因', width: 200, sort: true, align:'center'}

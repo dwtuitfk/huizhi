@@ -29,6 +29,11 @@ public class LeaveinfoServiceImpl implements LeaveinfoService {
     }
 
     @Override
+    public List<Leaveinfo> selectTest(Leaveinfo leaveinfo) {
+        return leaveinfoMapper.selectTest(leaveinfo);
+    }
+
+    @Override
     public Leaveinfo selectByPrimaryKey(String lId) {
         return leaveinfoMapper.selectByPrimaryKey(lId);
     }

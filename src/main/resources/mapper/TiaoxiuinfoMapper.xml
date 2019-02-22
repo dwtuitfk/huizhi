@@ -21,6 +21,14 @@
     where tx_id = #{txId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectGetAll" resultMap="BaseResultMap">
+    select
+    tiao.*,us.tureName
+    from tiaoxiuinfo tiao
+    LEFT JOIN userinfo us ON tiao.userId= us.userId
+
+  </select>
+
   <select id="selectTiaoxiuinfo" parameterType="com.huizhi.oa.entity.Tiaoxiuinfo" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
