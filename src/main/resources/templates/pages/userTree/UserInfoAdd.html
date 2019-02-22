@@ -220,15 +220,15 @@
         </div>
 
         <!--确认密码-->
-<!--        <div class="layui-form-item">
-            <label for="repass" class="layui-form-label">
+        <div class="layui-form-item">
+            <label for="pass" class="layui-form-label">
                 <span class="we-red">*</span>确认密码
             </label>
             <div class="layui-input-inline">
-                <input type="password" id="repass" name="ispassword" required="" lay-verify="ispassword"
+                <input type="password" id="repass" name="repassword" required="" lay-verify="repassword"
                        autocomplete="off" class="layui-input">
             </div>
-        </div>-->
+        </div>
 
         <!--默认状态添加为在职-->
         <input id="isprohibit" name="isprohibit" value="1" type="hidden">
@@ -313,6 +313,12 @@
                     /^[a-zA-Z]\w{5,17}$/
                     ,'以字母开头，长度在6~18之间，只能包含字母、数字和下划线'
                 ]
+                ,repassword:function(value){
+                    var passwordValue = $('input[name=password]').val();
+                    if(value != passwordValue){
+                        return '两次输入的密码不一致!';
+                    }
+                }
                 ,turename:[
                     /^([\u4e00-\u9fa5]){2,5}$/
                     ,'请输入2到5位数中文姓名'

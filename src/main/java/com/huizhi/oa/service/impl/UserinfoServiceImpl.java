@@ -9,6 +9,8 @@ import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
  * created by dwtuitfk on 2019/2/17.
  */
 @Service
+@Transactional
 public class UserinfoServiceImpl implements UserinfoService {
 
     @Autowired
@@ -36,6 +39,7 @@ public class UserinfoServiceImpl implements UserinfoService {
         return userinfoMapper.insertSelective(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public Userinfo selectByPrimaryKey(Integer userid) {
         return userinfoMapper.selectByPrimaryKey(userid);
@@ -51,11 +55,13 @@ public class UserinfoServiceImpl implements UserinfoService {
         return userinfoMapper.updateByPrimaryKey(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public List<UserRoleDep> getAllUserinfo() {
         return userinfoMapper.getAllUserinfo();
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public List<UserJur> getUserJurInfo() {
         return userinfoMapper.getUserJurInfo();
@@ -66,6 +72,7 @@ public class UserinfoServiceImpl implements UserinfoService {
         return userinfoMapper.getUserinfo(userid);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public List<UserRoleDep> seachUserinfo(UserRoleDep userRoleDep) {
         return userinfoMapper.seachUserinfo(userRoleDep);

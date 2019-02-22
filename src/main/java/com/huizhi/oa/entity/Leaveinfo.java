@@ -25,6 +25,16 @@ public class Leaveinfo {
 
     private Integer lType;
 
+    private String tureName;
+
+    public void setTureName(String tureName) {
+        this.tureName = tureName;
+    }
+
+    public String getTureName() {
+        return tureName;
+    }
+
     public String getlId() {
         return lId;
     }

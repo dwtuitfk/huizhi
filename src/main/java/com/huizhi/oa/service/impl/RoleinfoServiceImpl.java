@@ -5,6 +5,8 @@ import com.huizhi.oa.entity.Roleinfo;
 import com.huizhi.oa.service.RoleinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  * created by dwtuitfk on 2019/2/17.
  */
 @Service
+@Transactional
 public class RoleinfoServiceImpl implements RoleinfoService {
 
     @Autowired
@@ -33,6 +36,7 @@ public class RoleinfoServiceImpl implements RoleinfoService {
         return roleinfoMapper.insertSelective(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public Roleinfo selectByPrimaryKey(Integer roleid) {
         return roleinfoMapper.selectByPrimaryKey(roleid);
@@ -48,6 +52,7 @@ public class RoleinfoServiceImpl implements RoleinfoService {
         return roleinfoMapper.updateByPrimaryKey(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public List<Roleinfo> getAllRoleinfo() {
         return roleinfoMapper.getAllRoleinfo();

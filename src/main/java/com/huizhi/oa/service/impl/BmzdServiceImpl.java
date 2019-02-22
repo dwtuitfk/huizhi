@@ -7,6 +7,8 @@ import com.huizhi.oa.entity.Bmzd;
 import com.huizhi.oa.service.BmzdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import java.util.List;
  * created by dwtuitfk on 2019/2/17.
  */
 @Service
+@Transactional
 public class BmzdServiceImpl implements BmzdService {
     @Autowired
     protected BmzdMapper bmzdMapper;
@@ -28,6 +31,7 @@ public class BmzdServiceImpl implements BmzdService {
         return bmzdMapper.insertSelective(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public List<Bmzd> getAllBmzd() {
         List<Bmzd> list = bmzdMapper.getAllBmzd();
@@ -39,6 +43,7 @@ public class BmzdServiceImpl implements BmzdService {
         return bmzdMapper.updateBmzd(record);
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     @Override
     public Bmzd getBmzd(int bmzdid) {
         return bmzdMapper.getBmzd(bmzdid);

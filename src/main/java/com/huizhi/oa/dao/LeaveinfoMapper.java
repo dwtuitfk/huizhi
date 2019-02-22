@@ -11,6 +11,9 @@ public interface LeaveinfoMapper {
 
     int insertSelective(Leaveinfo record);
 
+    //<select id="selectTest"
+    List<Leaveinfo> selectTest(Leaveinfo leaveinfo);
+
     Leaveinfo selectByPrimaryKey(String lId);
 
     //<select id="selectLeaveinfo"

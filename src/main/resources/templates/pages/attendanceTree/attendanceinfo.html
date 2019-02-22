@@ -63,7 +63,7 @@
         table.render({
             elem: '#demo'
             ,height: 500
-            ,url: '/attendanceinfo/getAll' //数据接口
+            ,url: '/kaoqin/attendanceinfo/getAll' //数据接口
             ,title: '考勤表'
             ,page: true //开启分页
             ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
@@ -73,7 +73,7 @@
                 [ //表头
                     {type: 'checkbox', fixed: 'left'}
                     ,{field: 'aId', title: '序号', width:200, sort: true, fixed: 'left',style:'height:20px;', align:'center'}
-                    ,{field: 'userid', title: '员工编号', width:200, sort: true, align:'center'}
+                    ,{field: 'tureName', title: '员工名称', width:200, sort: true, align:'center'}
                     ,{field: 'aMtime', title: '上班时间', width:200, sort: true, align:'center'}
                     ,{field: 'aAtime', title: '下班时间', width: 200, sort: true, align:'center'}
                     ,{fixed: 'right', title: '操作',width: 240, align:'center', toolbar: '#barDemo', align:'center'}

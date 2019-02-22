@@ -15,17 +15,34 @@
   <sql id="Base_Column_List">
     l_id, userId, l_startTime, l_overTime, l_reason, l_userId, l_state, l_checkAd, l_type
   </sql>
+
   <select id="getAllLeaveInfo" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
-    from leaveinfo
+    lea.*,us.tureName
+    from leaveinfo lea
+    LEFT JOIN userinfo us ON lea.userId= us.userId
   </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from leaveinfo
     where l_id = #{lId,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectTest" parameterType="com.huizhi.oa.entity.Leaveinfo" resultMap="BaseResultMap">
+  select
+    <include refid="Base_Column_List" />
+    from leaveinfo
+    where 1=1
+    <if test="lId != null">
+      and l_id like '%#{lId,jdbcType=VARCHAR}%'
+    </if>
+    <if test="userid != null">
+      and userId = #{userid,jdbcType=INTEGER},
+    </if>
+  </select>
+
 
   <select id="selectLeaveinfo" parameterType="com.huizhi.oa.entity.Leaveinfo" resultMap="BaseResultMap">
     select

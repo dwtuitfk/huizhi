@@ -15,7 +15,17 @@
 </head>
 <body>
 <table class="layui-hide" id="demo" lay-filter="test">
+
 </table>
+<!--将收件箱中的邮件放入垃圾箱-->
+<script type="text/html" id="toolbarDemo">
+    <!--<button class="layui-btn layui-btn-sm" lay-event="add"><i class="layui-icon">&#xe642;</i>添加</button>-->
+    <button class="layui-btn layui-btn-sm" lay-event="delete"><i class="layui-icon">&#xe640;</i>删除</button>
+</script>
+<!--查看单个邮件详情-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="detail">详情<i class="layui-icon">&#xe602;</i></a>
+</script>
 <script th:inline="none">
     //格式转换
     function createrFormat(o){
@@ -43,22 +53,29 @@
         table.render({
             elem: '#demo'
             ,hight:'full-200'
-            ,url: '/getAllEmailInfoByeAcceptid' //数据接口
+            ,url: '/getAllByeAcceptidBox' //数据接口
             ,title: '邮箱'
             ,page: true //开启分页A
-            ,toolbar: true//仅开启工具栏，不显示左侧模板
-            ,totalRow: false //开启合计行
+            ,toolbar: '#toolbarDemo'//自定义操作
+           /* ,totalRow: false *///开启合计行
             ,cols: [
                 [ //表头
                     {type:'checkbox', fixed: 'left'},
-                    {field:'eId', title: '邮件编号',minWidth:'100', sort: true, fixed: 'left',align:'center'},
+                    //{field:'eId', title: '邮件编号',minWidth:'100', sort: true, fixed: 'left',align:'center',hide: true},
                     {field:'eTitle', title: '邮件标题',minWidth:'100',sort: true,align:'center'},
                     {field:'eTime', title: '发送时间',minWidth:'180',sort: true,align:'center'},
                     {field:'eSendid', title: '发送人员',minWidth:'100',sort: true,align:'center'},
-                    {field:'eAcceptid', title: '接收人员',minWidth:'80',sort: true,align:'center'},
-                    {field:'eCopyid', title:'转抄人员',minWidth:'130',sort: true,align:'center'},
+                    //{field:'eAcceptid', title: '接收人员',minWidth:'80',sort: true,align:'center',hide: true},
+                    //{field:'eCopyid', title:'转抄人员',minWidth:'130',sort: true,align:'center',hide: true},
                     {field:'eContent', title: '邮件内容',minWidth:'120',sort: true,align:'center'},
-                    {field:'eState', title: '邮件状态）',minWidth:'50',sort: true,align:'center'},
+                    {field:'eState', title: '邮件状态）',minWidth:'50',sort: true,align:'center',
+                        templet: function(d){
+                            if(d.eState == '1'){
+                                return '未读'
+                            } else { return '已读'}
+                        }
+                    },
+                    {title: '操作', align:'center',minWidth:'140', toolbar: '#barDemo'}
                 ]
             ]
         });
