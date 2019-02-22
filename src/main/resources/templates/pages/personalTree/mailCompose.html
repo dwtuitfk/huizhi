@@ -12,6 +12,18 @@
 
 <script type="text/javascript">
 
+
+    //邮件存稿
+    function save(){
+        document.form1.action="/sendEmail?eState=0";
+        document.form1.submit();
+    }
+    //发送邮件
+    function send(){
+        document.form1.action="/sendEmail?eState=1";
+        document.form1.submit();
+    }
+
     //重新渲染表单
     function renderForm(){
         layui.use('form', function(){
@@ -20,70 +32,27 @@
         });
     }
     $(document).ready(function () {
-        //申请单初始化值
-        $.ajax({
-            url:"/getCaID",
-            type:"get",
-            success:function(data){
-                $('#caId').val(data);
-                renderForm();
-            }
-        });
-        //下拉菜单获取牌照
-        $.ajax({
-            url:"/getAllLicensePlate",
-            type:"get",
-            success:function(data){
 
-                $.each(data,function(index,item){
-                    $('#caCId').append(new Option(item,item));//往下拉菜单里添加元素
+        //富文本编辑器自定义工具栏
+        var index,layedit;
+        layui.use('layedit', function(){
+            layedit = layui.layedit;
+            index = layedit.build('eContent', {
+                tool: ['strong','italic','face','underline','del', 'link', 'unlink', '|', 'left', 'center', 'right','b']
+                ,height : 180
+            })
+        });
+            layui.use(['form', 'laydate'], function(){
+                var form = layui.form;
+                var laydate = layui.laydate;
+                laydate.render({
+                    elem: '#eTime',
                 })
-                renderForm();//菜单渲染 把内容加载进去
-            },
-            //async:false//false表示同步
-        });
-
-        layui.use(['form', 'laydate'], function(){
-            var form = layui.form;
-            var laydate = layui.laydate;
-            //日期
-            var nowTime=new Date();
-            var startDate=laydate.render({
-                elem: '#caStarttime',
-                type: 'datetime',
-                min: 'nowTime',
-                done: function(value, date){
-                    endDate.config.min ={
-                        year:date.year,
-                        month:date.month-1, //关键
-                        date: date.date,
-                        hours:date.hours,
-                        minutes:date.minutes,
-                        seconds:date.seconds
-                    };
-                }
-
-            });
-            var endDate=laydate.render({
-                elem: '#caOvertime',
-                type: 'datetime',
-                min: 'nowTime',
-                done: function(value, date){
-                    startDate.config.max ={
-                        year:date.year,
-                        month:date.month-1, //关键
-                        date: date.date,
-                        hours:date.hours,
-                        minutes:date.minutes,
-                        seconds:date.seconds
-                    };
-                }
-
             });
             /*form.render();*/
             //自定义验证规则
             form.verify({
-                caReason: function(value) {
+               /* caReason: function(value) {
                     if (value.length < 2) {
                         return '申请原因至少得2个字符啊';
                     }
@@ -92,78 +61,84 @@
                     if (value < 0) {
                         return '请选择车辆';
                     }
-                }
+                }*/
             });
-        });
-
     });
+
+
+
 
 </script>
 <body>
 <div class="weadmin-body">
-    <form class="layui-form layui-form-pane" action="/addCarApply">
-        <!--申请单单号-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请单单号</label>
+    <!--action="/sendEmail?eState=1"-->
+    <form class="layui-form layui-form-pane" name="form1" method="post">
+        <!--邮件编号-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">邮件编号</label>
             <div class="layui-input-inline">
-                <input type="text" name="caId" id="caId" readonly placeholder="请输入" autocomplete="off" class="layui-input">
+                <input type="text" name="eId" id="eId" readonly placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+        </div>-->
+
+        <!--邮件标题-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮件标题</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eTitle" id="eTitle" lay-verify="eTitle" autocomplete="off" placeholder="默认当前账号用户" class="layui-input">
             </div>
         </div>
-        <!--申请的车辆-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请的车辆</label>
+        <!--发送时间-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">发送时间:</label>
             <div class="layui-input-inline">
-                <select name="caCId" id="caCId" lay-verify="caCId">
-                    <option value="-1">--请选择--</option>
-                </select>
+                <input type="text" name="eTime" id="eTime" lay-verify="eTime" placeholder=" " autocomplete="off" class="layui-input">
+            </div>
+        </div>-->
+
+        <!--发送人员-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">发送人员:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eSendid" id="eSendid" lay-verify="eSendid" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
         </div>
-        <!--申请人员-->
+        <!--接收人员-->
         <div class="layui-form-item">
-            <label class="layui-form-label">申请人员</label>
+            <label class="layui-form-label">接收人员:</label>
             <div class="layui-input-inline">
-                <input type="text" name="userid" lay-verify="" autocomplete="off" placeholder="默认当前账号用户" class="layui-input">
+                <input type="text" name="eAcceptid" id="eAcceptid" lay-verify="eAcceptid" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
         </div>
-        <!--开始日期-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">开始日期:</label>
+        <!--转抄人员-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">转抄人员:</label>
             <div class="layui-input-inline">
-                <input type="text" name="caStarttime" id="caStarttime" lay-verify="required" placeholder=" " autocomplete="off" class="layui-input">
+                <input type="text" name="eCopyid" id="eCopyid" lay-verify="eCopyid" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
-        </div>
-        <!--结束日期-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">结束日期:</label>
+        </div>-->
+        <!--邮件内容-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">邮件内容:</label>
             <div class="layui-input-inline">
-                <input type="text" name="caOvertime" id="caOvertime" lay-verify="required" placeholder=" " autocomplete="off" class="layui-input">
+                <input type="text" name="eContent" id="eContent" lay-verify="eContent" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
+        </div>-->
+        <!-- 富文本编辑器 -->
+        <div class="layui-input-block mailcontent" style="width:600px;" >
+            <textarea name="eContent" id="eContent" style="display: block;"></textarea>
         </div>
-        <!--申请原因-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请原因:</label>
+        <!--邮件状态-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">邮件状态:</label>
             <div class="layui-input-inline">
-                <input type="text" name="caReason" id="caReason" lay-verify="caReason" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                <input type="text" name="eState" id="eState" lay-verify="eState" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
-        </div>
-        <!--审核人员-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">审核人员</label>
-            <div class="layui-input-inline">
-                <select name="check" lay-filter="aihao">
-                    <option value="-1">--请选择--</option>
-                    <option value="0">写作</option>
-                    <option value="1" selected="">阅读</option>
-                    <option value="2">游戏</option>
-                    <option value="3">音乐</option>
-                    <option value="4">旅行</option>
-                </select>
-            </div>
-        </div>
+        </div>-->
         <div class="layui-form-item">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                <button class="layui-btn" lay-submit="" lay-filter="demo1" onclick="send()">发送</button>
+                <button class="layui-btn " lay-submit="" lay-filter="demo2" onclick="save()">草稿</button>
             </div>
         </div>
     </form>

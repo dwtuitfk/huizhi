@@ -14,7 +14,40 @@
   <sql id="Base_Column_List">
     e_id, e_title, e_time, e_sendId, e_acceptId, e_copyId, e_content, e_state
   </sql>
-  <!--通过寄件人编号获取他的所有邮件-->
+  <!--通过收件人、邮件状态state为1或者2，获取他的所有未读、已读邮件-->
+  <select id="getAllByeAcceptidBox" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emailinfo
+    where e_acceptId = #{eAcceptid,jdbcType=INTEGER}
+    and (e_state = 1 OR e_state = 2)
+    ORDER BY e_state
+  </select>
+  <!--通过收件人、邮件状态state为1，获取他的所有未读邮件-->
+  <select id="getAllByeAcceptidBoxUnread" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emailinfo
+    where e_acceptId = #{eAcceptid,jdbcType=INTEGER}
+    and e_state = 1
+  </select>
+  <!--通过寄件人、邮件状态state为0，获取他的草稿邮件-->
+  <select id="getAllByeSendididDraft" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emailinfo
+    where e_sendId = #{eSendid,jdbcType=INTEGER}
+    and e_state = 0
+  </select>
+  <!--通过收件人、邮件状态state为3，获取他的垃圾箱-->
+  <select id="getAllByeAcceptidDustbin" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emailinfo
+    where e_acceptId = #{eAcceptid,jdbcType=INTEGER}
+    and e_state = 3
+  </select>
+  <!--通过收件人编号获取他的所有邮件-->
   <select id="getAllEmailInfoByeAcceptid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
