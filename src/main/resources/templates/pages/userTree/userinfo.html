@@ -65,6 +65,9 @@
                 <option value="">状态</option>
                 <option value="0">离职</option>
                 <option value="1">在职</option>
+                <option value="2">内退</option>
+                <option value="3">返聘</option>
+                <option value="4">停薪留职</option>
             </select>
         </div>
         <button class="layui-btn layui-btn-sm" lay-event="search" id="search" >
@@ -179,7 +182,7 @@
                     {field:'qq', title: 'QQ号码',minWidth:'100',align:'center',sort: true},
                     {field:'roleNamemc', title: '岗位',minWidth:'120',align:'center',sort: true},
                     {field:'depNamemc', title: '部门',minWidth:'120',align:'center',sort: true},
-                    {field:'isprohibitinfo', title: '是否冻结',minWidth:'100',align:'center',sort: true},
+                    {field:'isprohibitinfo', title: '状态',minWidth:'100',align:'center',sort: true},
                     {title: '操作', align:'center',minWidth:'140', toolbar: '#barDemo'}
 
                 ]
