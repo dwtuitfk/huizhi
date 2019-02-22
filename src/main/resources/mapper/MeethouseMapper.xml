@@ -79,4 +79,16 @@
       mh_state = #{mhState,jdbcType=INTEGER}
     where mh_id = #{mhId,jdbcType=INTEGER}
   </update>
+  <select id="getAllMeethouse" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from meethouse
+  </select>
+  <delete id="delMoreMeethouse" >
+    delete from meethouse where mh_id in
+    <foreach item="item" index="index" collection="list"
+             open="(" separator="," close=")">
+    #{mhId}
+    </foreach>
+  </delete>
 </mapper>

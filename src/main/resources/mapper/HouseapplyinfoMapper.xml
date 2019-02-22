@@ -139,4 +139,10 @@
       ha_m_id = #{haMId,jdbcType=INTEGER}
     where ha_id = #{haId,jdbcType=INTEGER}
   </update>
+  <select id="getAllHouseapplyinfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    houseapplyinfo
+  </select>
 </mapper>

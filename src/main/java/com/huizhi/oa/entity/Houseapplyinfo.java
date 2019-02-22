@@ -1,5 +1,8 @@
 package com.huizhi.oa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Houseapplyinfo {
@@ -7,6 +10,8 @@ public class Houseapplyinfo {
 
     private Integer userid;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Date haStarttime;
 
     private String haReason;

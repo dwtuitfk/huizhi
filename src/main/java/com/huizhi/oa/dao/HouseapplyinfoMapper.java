@@ -1,6 +1,9 @@
 package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Houseapplyinfo;
+import com.huizhi.oa.entity.Userinfo;
+
+import java.util.List;
 
 public interface HouseapplyinfoMapper {
     int deleteByPrimaryKey(Integer haId);
@@ -14,4 +17,12 @@ public interface HouseapplyinfoMapper {
     int updateByPrimaryKeySelective(Houseapplyinfo record);
 
     int updateByPrimaryKey(Houseapplyinfo record);
+
+    List<Houseapplyinfo> getAllHouseapplyinfo();
+
+    /**
+     * 查询员工编号和姓名
+     * @return
+     */
+    List<Userinfo> getUserIdAndTureName();
 }

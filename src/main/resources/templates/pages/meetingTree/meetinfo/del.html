@@ -14,6 +14,13 @@
     </style>
 </head>
 <body>
-更新
+删除
+/meeting/getAllMeetinfo
+{type:'checkbox', fixed: 'left'},
+{field:'mhId', title: '会议室编号',width:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
+{field:'mhName', title: '会议室名称',width:'100',style:'vertical-align: middle',align:'center'},
+{field:'mhAddress', title: '会议室位置',width:'100',templet: '#type',align:'center'},
+{field:'mhState', title: '会议室状态',width:'100',align:'center'},
+{title: '操作', align:'center',width:'180', toolbar: '#barDemo'}
 </body>
 </html>

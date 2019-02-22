@@ -2,6 +2,8 @@ package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Meetinfo;
 
+import java.util.List;
+
 public interface MeetinfoMapper {
     int deleteByPrimaryKey(Integer mId);
 
@@ -14,4 +16,6 @@ public interface MeetinfoMapper {
     int updateByPrimaryKeySelective(Meetinfo record);
 
     int updateByPrimaryKey(Meetinfo record);
+
+    List<Meetinfo> getAllMeetinfo();
 }

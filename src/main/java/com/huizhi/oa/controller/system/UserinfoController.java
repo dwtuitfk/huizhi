@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * created by dwtuitfk on 2019/2/17.
@@ -169,6 +171,15 @@ public class UserinfoController {
         UserRoleDep userRoleDep = new UserRoleDep();
         if (userid==null&&turename==null&&address==null&&sex==null&&depName==null&&roleName==null&&isprohibit==null){
             list=userinfoService.seachUserinfo(userRoleDep);
+
+            /*list=userinfoService.getAllUserinfo();*/
+            System.out.println(list.size());
+            for (UserRoleDep user:list) {
+                user.setIsprohibitinfo(user.getIsprohibit() == 0?"离职":"在职");
+            }
+
+            PageInfo<UserRoleDep> pageinfo = new PageInfo<>(list);
+            return new ResultMap<List<UserRoleDep>>("", list, 0, (int) pageinfo.getTotal());
         }else {
             if (!userid.equals("")){
                 if(this.isDigit(userid))
@@ -196,7 +207,7 @@ public class UserinfoController {
         }
         list = userinfoService.seachUserinfo(userRoleDep);
         for (UserRoleDep user:list) {
-            user.setIsprohibitinfo(user.getIsprohibit() == 0?"禁用":"正常");
+            user.setIsprohibitinfo(user.getIsprohibit() == 0?"离职":"在职");
         }
         PageInfo<UserRoleDep> pageinfo = new PageInfo<>(list);
         return new ResultMap<List<UserRoleDep>>("", list, 0, (int) pageinfo.getTotal());
@@ -210,5 +221,22 @@ public class UserinfoController {
         List<UserRoleDep> list = userinfoService.getAllUserinfo();
         return list;
     }
+
+    //判断用户id是否存在
+    @ResponseBody
+    @RequestMapping("inspectUserid")
+    public String inspectUserid (Integer userid) {
+
+        //根据用户id主键查询 用户id是否存在 用来添加验证重复
+        Userinfo userinfo = userinfoService.selectByPrimaryKey(userid);
+        Optional<Userinfo> optional = Optional.ofNullable(userinfo);
+        if(!optional.isPresent()){
+            System.out.println("用户id为空可以使用");
+            return "400";
+        }
+        System.out.println("500获取的用户id为:"+optional.get().getUserid());
+        return "500";
+    }
+
 
 }
