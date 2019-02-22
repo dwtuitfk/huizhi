@@ -11,6 +11,13 @@ public interface LeaveinfoService {
 
     int insertSelective(Leaveinfo record);
 
+    /**
+     * 测试查询条件
+     * @param leaveinfo
+     * @return
+     */
+    List<Leaveinfo> selectTest(Leaveinfo leaveinfo);
+
     Leaveinfo selectByPrimaryKey(String lId);
 
 

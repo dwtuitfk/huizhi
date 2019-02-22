@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,8 +21,42 @@ public class LeaveinfoController {
     private LeaveinfoService leaveinfoService;
 
     @RequestMapping("leave")
-    public String getLeaveinfo(Leaveinfo leaveinfo){
+    public String getLeaveinfo(){
         return "pages/leaveinfoTree/leaveinfo";
+    }
+
+    @ResponseBody
+    @RequestMapping("test")
+    public List<Leaveinfo> selectTest(){
+        Leaveinfo leaveinfo = new Leaveinfo();
+        leaveinfo.setlId("11");
+        List<Leaveinfo> list = leaveinfoService.selectTest(leaveinfo);
+        return list;
+    }
+
+    @RequestMapping("leaveAdd")
+    public String showAddLeaveinfo(){
+        return "pages/personalTree/leaveApply";
+    }
+
+    @RequestMapping("add")
+    public int addLeaveinfo(Leaveinfo leaveinfo){
+        System.out.println(leaveinfo.getlOvertime());
+        System.out.println(leaveinfo.getlStarttime());
+
+//        leaveinfo.setlId("T"+ System.currentTimeMillis());
+//        leaveinfo.setlUserid(122);
+//        leaveinfo.setlType(1);
+//        leaveinfo.setlUserid(123);
+//        leaveinfo.setlState(0);
+//        leaveinfo.setlType(0);
+        //int temp = leaveinfoService.insertSelective(leaveinfo);
+        if (1>0){
+            return 400;
+        }else{
+            return 500;
+        }
+
     }
 
     @ResponseBody
@@ -73,5 +108,14 @@ public class LeaveinfoController {
         }
     }
 
+
+    /*系统自动生成申请单单号*/
+    @ResponseBody
+    @RequestMapping("/getLeaveID")
+    public List getCaID() throws Exception {
+        List list = new ArrayList();
+        list.add("T"+ System.currentTimeMillis());
+        return list;
+    }
 
 }
