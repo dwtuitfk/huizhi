@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.UserJur;
 import com.huizhi.oa.entity.UserRoleDep;
 import com.huizhi.oa.entity.Userinfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -31,4 +32,12 @@ public interface UserinfoService {
 
     //模糊查询
     List<UserRoleDep> seachUserinfo(UserRoleDep userRoleDep);
+
+    //用户登陆
+    UserRoleDep userlogin (Integer userid,Integer password);
+
+    Userinfo  findById(Integer userid);
+
+    Userinfo finduserById(Integer userid);
+
 }

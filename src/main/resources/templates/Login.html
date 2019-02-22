@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>汇智科技系统办公系统</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>汇智科技</title>
+
+   <!-- <link th:href="@{hz.ico}" rel="icon" type="image/x-icon" />
+    <link th:href="@{hz.ico}" rel="shortcut icon" type="image/x-icon" />-->
+    <link th:href="@{/css/base.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
+
+    <style type="text/css">
+        #check{
+            margin-top: -20px;
+            padding: 0 35px;
+        }
+
+        #rememberMe + label {
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #d3d3d3;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 20px;
+        }
+
+        #rememberMe:checked + label{
+            background-color: #eee;
+        }
+        #rememberMe:checked + label:after{
+            content:"\2714";
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#purchaser").click(function () {
+                var userid = $("#userid").val();
+                var password = $("#password").val();
+                var vcode = $("#vcode").val();
+                var rememberMe =$('#rememberMe').is(':checked');
+                $.ajax(
+                    {
+                        url:"/ajaxLogin",
+                        data:{"userid":userid,"password":password,"vcode":vcode,"rememberMe":rememberMe},
+                        type:"post",
+                        dataType:"json",
+                        success:function(data)
+                        {
+                            if(data.status==200){
+                                location.href = "/index";
+                            }else if(data.status==400){
+                                location.href = "/lock";
+                            }else if(data.status==100){
+                                $("#show").css("display","block");
+                                $("#ts").html("密码错误，您还有："+data.message+" 次机会").css("color","red");
+                                $("#icon").html("&#xe62e;").css("color","red");
+                            }else if(data.status==600){
+                                $("#show").css("display","block");
+                                $("#ts").html("账号不存在,您还有："+data.message+" 次机会").css("color","red");
+                                $("#icon").html("&#xe62e;").css("color","red");
+                            }else if(data.status==300){
+                                $("#show").css("display","block");
+                                $("#ts").html("账号不存在,您还有："+data.message+" 次机会").css("color","red");
+                                $("#icon").html("&#xe62e;").css("color","red");
+                            }else{
+                                $("#show").css("display","block");
+                                $("#ts").html(data.message).css("color","red");
+                                $("#icon").html("&#xe62e;").css("color","red");
+                            }
+
+                        },
+                        error: function() {
+                            $("#ts").html("登录失败");
+                        }
+                    });
+
+
+        });
+
+
+            $("img[name='code']").click(function(){
+                $(this).attr("src","/getImage?a="+Math.random());
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div class="login-hd">
+    <div class="left-bg"></div>
+    <div class="right-bg"></div>
+    <div class="hd-inner">
+        <span class="logo"></span>
+        <!-- <span class="sys-name">OA管理系统</span> -->
+    </div>
+</div>
+<div class="login-bd">
+    <div class="bd-inner">
+        <div class="inner-wrap">
+            <div class="lg-zone">
+                <div class="lg-box">
+                    <div class="lg-label"><h4>欢迎使用</h4></div>
+                    <div class="alert alert-error" id="alert">
+                        <div id="show">
+                            <i class="iconfont" style="color:black;" id="icon">&#xe62e;</i>
+                            <span id="ts" style="color:black;">请登录</span>
+                        </div>
+                    </div>
+                    <form id="myform">
+                        <div class="lg-username input-item clearfix">
+                            <i class="iconfont">&#xe60d;</i>
+                            <input type="text" placeholder="请输入职员编号" name="userid" id="userid" >
+                        </div>
+                        <div class="lg-password input-item clearfix">
+                            <i class="iconfont">&#xe634;</i>
+                            <input type="password" placeholder="请输入密码" name="password" id="password" >
+                        </div>
+                        <div class="lg-check clearfix">
+                            <div class="input-item">
+                                <i class="iconfont">&#xe633;</i>
+                                <input type="text" placeholder="验证码" id="vcode" name="vcode" >
+                            </div>
+                            <img name="code" src="/getImage" title="看不清换一张" id="code"><br/>
+                        </div>
+                        <div class="lg-check clearfix" id="check">
+                        <input type="checkbox" name="rememberMe" id="rememberMe" style="display:none"/>
+                         <label for="rememberMe"></label>&nbsp&nbsp记住我
+                        </div>
+                        <div class="enter">
+                            <a href="#" id="purchaser" class="purchaser">登&nbsp;录</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="lg-poster"></div>
+        </div>
+    </div>
+</div>
+<div class="login-ft">
+    <div class="ft-inner">
+        <div class="about-us">
+            <a href="javascript:;">关于我们</a>
+            <a href="javascript:;">法律声明</a>
+            <a href="javascript:;">服务条款</a>
+            <a href="javascript:;">联系方式</a>
+        </div>
+        <div class="address">地址：武汉市武昌区&nbsp;邮编：430000&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2015&nbsp;-&nbsp;2019&nbsp;武汉汇智科技有限公司&nbsp;版权所有</div>
+        <div class="other-info">建议使用IE8及以上版本浏览器&nbsp;鄂ICP备&nbsp;95270001号&nbsp;E-mail：admin@hzkj.com</div>
+    </div>
+</div>
+</body>
+</html>

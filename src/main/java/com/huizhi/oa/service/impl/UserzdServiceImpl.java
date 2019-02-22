@@ -56,5 +56,10 @@ public class UserzdServiceImpl implements UserzdService {
         return userzdMapper.delMoreUserzd(ids);
     }
 
+    @Override
+    public Userzd getRoleName(int rolename) {
+        return userzdMapper.getRoleName(rolename);
+    }
+
 
 }

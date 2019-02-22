@@ -51,10 +51,10 @@
                     <a onclick="WeAdminShow('个人信息','http://www.baidu.com')">个人信息</a>
                 </dd>
                 <dd>
-                    <a onclick="WeAdminShow('切换帐号','/login')">切换帐号</a>
+                    <a onclick="WeAdminShow('切换帐号','/login')">修改密码</a>
                 </dd>
                 <dd>
-                    <a class="loginout" href="login">退出</a>
+                    <a class="loginout" href="/logout">退出</a>
                 </dd>
             </dl>
         </li>
@@ -350,13 +350,13 @@
             var login = JSON.parse(localStorage.getItem("login"));
             if(login){
                 if(login=0){
-                    window.location.href='./login.html';
+                    window.location.href='login1.html';
                     return false;
                 }else{
                     return false;
                 }
             }else{
-                window.location.href='./login.html';
+                window.location.href='login1.html';
                 return false;
             }
         });
