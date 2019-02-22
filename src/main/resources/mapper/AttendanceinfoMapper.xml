@@ -19,8 +19,9 @@
 
   <select id="selectGetAll"  resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
-    from attendanceinfo
+    att.*, us.tureName
+    from attendanceinfo att
+    LEFT JOIN userinfo us ON att.userId= us.userId
   </select>
 
   <select id="selectAttendanceinfo" parameterType="com.huizhi.oa.entity.Attendanceinfo"  resultMap="BaseResultMap">

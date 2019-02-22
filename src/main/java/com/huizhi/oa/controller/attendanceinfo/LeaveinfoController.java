@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/leaveinfo")
+@RequestMapping("/kaoqin/leaveinfo")
 public class LeaveinfoController {
     @Autowired
     private LeaveinfoService leaveinfoService;
@@ -28,10 +28,20 @@ public class LeaveinfoController {
     @RequestMapping("/getAll")
     public ResultMap<List<Leaveinfo>> getALeaveinfo(Integer page, Integer limit,Leaveinfo leaveinfo) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<Leaveinfo> list = leaveinfoService.selectLeaveinfo(leaveinfo);
+        List<Leaveinfo> list = leaveinfoService.getAllLeaveInfo();
         PageInfo<Leaveinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Leaveinfo>>("",list,0,(int)pageinfo.getTotal());
     }
+
+
+    public List<Leaveinfo> testLeave(){
+        List<Leaveinfo> list = leaveinfoService.getAllLeaveInfo();
+        return list;
+    }
+
+
+
+
 
     /**
      * 多条件模糊查询

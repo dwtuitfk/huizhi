@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/attendanceinfo")
+@RequestMapping("/kaoqin/attendanceinfo")
 public class AttendanceinfoController {
     @Autowired
     private AttendanceinfoService attendanceinfoService;
@@ -31,11 +31,19 @@ public class AttendanceinfoController {
     @RequestMapping("/getAll")
     public ResultMap<List<Attendanceinfo>> getAllAttendanceinfo(Integer page, Integer limit, Attendanceinfo attendanceinfo) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-       // attendanceinfo.setUserid(122);
+        // attendanceinfo.setUserid(122);
         List<Attendanceinfo> list = attendanceinfoService.selectGetAll();
         PageInfo<Attendanceinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Attendanceinfo>>("",list,0,(int)pageinfo.getTotal());
     }
+
+    public List<Attendanceinfo> testSelectAttendance(){
+        List<Attendanceinfo> list = attendanceinfoService.selectGetAll();
+        return list;
+    }
+
+
+
 
 
     @ResponseBody

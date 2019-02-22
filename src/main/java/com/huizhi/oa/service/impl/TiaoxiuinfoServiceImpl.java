@@ -33,6 +33,11 @@ public class TiaoxiuinfoServiceImpl implements TiaoxiuinfoService {
     }
 
     @Override
+    public List<Tiaoxiuinfo> selectGetAll(){
+        return tiaoxiuinfoMapper.selectGetAll();
+    };
+
+    @Override
     public List<Tiaoxiuinfo> selectTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo) {
         return tiaoxiuinfoMapper.selectTiaoxiuinfo(tiaoxiuinfo);
     }

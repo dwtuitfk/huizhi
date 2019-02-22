@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/tiaoxiuinfo")
+@RequestMapping("/kaoqin/tiaoxiuinfo")
 public class TiaoxiuinfoController {
     @Autowired
     private TiaoxiuinfoService tiaoxiuinfoService;
@@ -27,10 +27,18 @@ public class TiaoxiuinfoController {
     @RequestMapping("/selectInfo")
     public ResultMap<List<Tiaoxiuinfo>> getTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo, Integer page, Integer limit) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<Tiaoxiuinfo> list = tiaoxiuinfoService.selectTiaoxiuinfo(tiaoxiuinfo);
+        List<Tiaoxiuinfo> list = tiaoxiuinfoService.selectGetAll();
         PageInfo<Tiaoxiuinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Tiaoxiuinfo>>("",list,0,(int)pageinfo.getTotal());
     }
+
+
+    public List<Tiaoxiuinfo> getTiao(){
+        List<Tiaoxiuinfo> list = tiaoxiuinfoService.selectGetAll();
+        return list;
+    }
+
+
 
     public List<Tiaoxiuinfo> getTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo) throws Exception {
         //tiaoxiuinfo.setTxReason("%adwad%");

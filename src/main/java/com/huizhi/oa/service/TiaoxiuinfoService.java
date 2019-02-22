@@ -13,6 +13,8 @@ public interface TiaoxiuinfoService {
 
     Tiaoxiuinfo selectByPrimaryKey(Integer txId);
 
+    List<Tiaoxiuinfo> selectGetAll();
+
     List<Tiaoxiuinfo> selectTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo);
 
     int updateByPrimaryKeySelective(Tiaoxiuinfo record);

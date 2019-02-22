@@ -1,5 +1,7 @@
 package com.huizhi.oa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Attendanceinfo {
@@ -7,9 +9,21 @@ public class Attendanceinfo {
 
     private Integer userid;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date aMtime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date aAtime;
+
+    private String tureName;
+
+    public void setTureName(String tureName) {
+        this.tureName = tureName;
+    }
+
+    public String getTureName() {
+        return tureName;
+    }
 
     public Integer getaId() {
         return aId;
