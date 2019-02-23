@@ -19,4 +19,7 @@ public interface RoleinfoService {
 
     //查询所有角色信息
     List<Roleinfo> getAllRoleinfo();
+
+    //根据角色id查询对应的职位字典rolename
+    Roleinfo getRoleinfo(Integer roleid);
 }

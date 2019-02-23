@@ -69,8 +69,14 @@
     where roleId = #{roleid,jdbcType=INTEGER}
   </update>
 
+  <!-- 查询所有角色信息 -->
   <select id="getAllRoleinfo"  resultType="com.huizhi.oa.entity.Roleinfo">
     select roleid,roleName,depName FROM roleinfo
+  </select>
+
+  <!-- 根据角色roleid查询对应的岗位rolename -->
+  <select id="getRoleinfo" resultType="com.huizhi.oa.entity.Roleinfo" parameterType="java.lang.Integer">
+		select roleName FROM roleinfo WHERE roleid=#{roleid}
   </select>
 
 </mapper>

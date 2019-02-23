@@ -11,8 +11,10 @@ import com.huizhi.oa.service.UserRoleService;
 import com.huizhi.oa.service.UserinfoService;
 import com.huizhi.oa.util.LayUIResult;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -272,4 +274,28 @@ public class UserinfoController {
     }
 
 
+    //主页---修改密码页面
+    @RequestMapping("/changePassword")
+    public String changePassword(){
+        return "pages/userTree/changePassword";
+    }
+
+    //主页---修改密码异步显示
+    @ResponseBody
+    @RequestMapping("/changePasswordInfo")
+    public Userinfo changePasswordInfo(){
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        return userinfo;
+    }
+
+    //修改密码
+    @ResponseBody
+    @RequestMapping("/changePasswordubmit")
+    public String changePasswordubmit(Userinfo userinfo){
+        int temp = userinfoService.updateByPrimaryKeySelective(userinfo);
+        if (temp>0)
+            return "400";
+        else
+            return "500";
+    }
 }

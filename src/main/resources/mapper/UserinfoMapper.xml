@@ -163,7 +163,7 @@
   </update>
 
 
-  <!-- 用户角色(岗位)表—职位变更 -->
+  <!-- 档案管理查询所有用户拥有的权限以及部门 -->
   <select id="getAllUserinfo" resultType="com.huizhi.oa.entity.UserRoleDep">
 select
 userinfo.userId,
@@ -194,7 +194,7 @@ INNER JOIN jurinfo on role_jur.jurId = jurinfo.jurId
 INNER JOIN bmzd on userinfo.depName = bmzd.depName
   </select>
 
-
+  <!--获取单个用户信息-->
   <select id="getUserinfo" parameterType="java.lang.Integer" resultType="com.huizhi.oa.entity.UserRoleDep">
 select
 userinfo.userId,
@@ -217,6 +217,7 @@ INNER JOIN bmzd on userinfo.depName = bmzd.depName
 WHERE Userinfo.userId =#{userid}
   </select>
 
+  <!--模糊查询-->
   <select id="seachUserinfo" resultType="com.huizhi.oa.entity.UserRoleDep" parameterType="com.huizhi.oa.entity.UserRoleDep">
     select
     userinfo.userId,
@@ -259,5 +260,28 @@ WHERE Userinfo.userId =#{userid}
     </if>
   </select>
 
+  <!--用户登陆验证-->
+  <select id="userlogin" resultType="com.huizhi.oa.entity.UserRoleDep" parameterType="java.lang.Integer">
+	select
+	userinfo.userId,
+	userinfo.tureName,
+	userinfo.sex,
+	userinfo.qq,
+	userinfo.phone,
+	userinfo.email,
+	userinfo.age,
+	userinfo.address,
+	userinfo.isProhibit,
+	userinfo.passWord,
+	userzd.roleNamemc,
+	bmzd.depNamemc
+	FROM userinfo
+	INNER JOIN user_role on userinfo.userId = user_role.userId
+	INNER JOIN roleinfo on user_role.roleId = roleinfo.roleId
+	INNER JOIN userzd on roleinfo.roleName = userzd.roleName
+	INNER JOIN bmzd on userinfo.depName = bmzd.depName
+	WHERE Userinfo.userId =#{userid}
+	and Userinfo.passWord=#{password}
+  </select>
 
 </mapper>

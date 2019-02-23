@@ -57,4 +57,9 @@ public class RoleinfoServiceImpl implements RoleinfoService {
     public List<Roleinfo> getAllRoleinfo() {
         return roleinfoMapper.getAllRoleinfo();
     }
+
+    @Override
+    public Roleinfo getRoleinfo(Integer roleid) {
+        return getRoleinfo(roleid);
+    }
 }
