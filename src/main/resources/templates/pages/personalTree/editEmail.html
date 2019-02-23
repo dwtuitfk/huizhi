@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>editEmail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
+
+</head>
+<script type="text/javascript">
+    //邮件存稿
+    function save(){
+        document.form1.action="/sendEmailDraft?eState=0";
+        document.form1.submit();
+    }
+    //发送邮件
+    function send(){
+        document.form1.action="/sendEmailDraft?eState=1";
+        document.form1.submit();
+    }
+    //重新渲染表单
+    function renderForm(){
+        layui.use('form', function(){
+            var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+            form.render();
+        });
+    }
+    $(document).ready(function () {
+
+        var index,layedit;
+        layui.use(['form', 'laydate', 'layedit'], function(){
+            var form = layui.form;
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#eTime',
+            })
+            layedit = layui.layedit;
+            //富文本编辑器自定义工具栏
+            index = layedit.build('eContent', {
+                tool: ['strong','italic','face','underline','del', 'link', 'unlink', '|', 'left', 'center', 'right','b']
+                ,height : 180
+            })
+        });
+        //获取父类信息
+        var parent_json = eval('('+parent.json+')');
+        //异步查询单条用户信息
+        $.ajax({
+            type:"get",
+            url:"/getOneEmailInfo",//查看单条数据
+            data:{"eId":parent_json.eId},
+            dataType:"json",
+            success:function(data){
+                $('#eId').val(data.eId);
+                $('#eTitle').val(data.eTitle);
+                //$('#eTime').val(data.eTime);
+                $('#eSendid').val(data.eSendid);
+                $('#eAcceptid').val(data.eAcceptid);
+                layedit.setContent(index,data.eContent);
+                /* layui.use(['layedit'],function() {
+                     var layedit = layui.layedit; //只有执行了这一步，部分表单元素才会自动修饰成功
+                 });*/
+                //$('#eContent').val(data.eContent);
+                //$('#age').val(data.age);
+                // $('#sex').val(data.sex);
+                // $('#address').val(data.address);
+                // $('#isprohibit').val(data.isprohibit);
+                //depmc = data.depNamemc;
+                // rolemc = data.roleNamemc;
+
+            }
+        });
+        layui.use(['form','layedit'],function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            var layedit = layui.layedit; //只有执行了这一步，部分表单元素才会自动修饰成功
+            //form.render();
+            //layedit.render();
+        });
+
+    });
+</script>
+<body>
+<div class="weadmin-body">
+    <!--action="/sendEmail?eState=1"-->
+    <form class="layui-form layui-form-pane" name="form1" id="form1" method="post">
+        <!--邮件编号-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮件编号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eId" id="eId" readonly placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <!--邮件标题-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮件标题</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eTitle" id="eTitle" lay-verify="eTitle" autocomplete="off" placeholder="默认当前账号用户" class="layui-input">
+            </div>
+        </div>
+        <!--发送时间-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">发送时间:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eTime" id="eTime" lay-verify="eTime" placeholder=" " autocomplete="off" class="layui-input">
+            </div>
+        </div>-->
+
+        <!--发送人员-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">发送人员:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eSendid" id="eSendid" lay-verify="eSendid" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <!--接收人员-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">接收人员:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eAcceptid" id="eAcceptid" lay-verify="eAcceptid" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <!--转抄人员-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">转抄人员:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eCopyid" id="eCopyid" lay-verify="eCopyid" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>-->
+        <!--邮件内容-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">邮件内容:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eContent" id="eContent" lay-verify="eContent" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>-->
+        <!-- 富文本编辑器 -->
+        <div class="layui-input-block mailcontent" style="width:600px;" >
+            <textarea name="eContent" id="eContent" style="display: block;"></textarea>
+        </div>
+        <!--邮件状态-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">邮件状态:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="eState" id="eState" lay-verify="eState" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>-->
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <button class="layui-btn" lay-submit="" lay-filter="demo1" onclick="send()">发送</button>
+                <button class="layui-btn " lay-submit="" lay-filter="demo2" onclick="save()">草稿</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
