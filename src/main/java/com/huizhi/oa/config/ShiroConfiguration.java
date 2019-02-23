@@ -45,6 +45,7 @@ public class ShiroConfiguration {
 		//配置退出 过滤器,其中的具体的退出代码Shiro已经实现了
 
 		filterChainDefinitionMap.put("/getImage", "anon");
+		filterChainDefinitionMap.put("/druid/**", "anon");
 		filterChainDefinitionMap.put("/webjars/**", "anon");
 		filterChainDefinitionMap.put("/META-INF/resources/webjars/", "anon");
 		filterChainDefinitionMap.put("/ajaxLogin", "anon");
@@ -61,7 +62,7 @@ public class ShiroConfiguration {
 		filterChainDefinitionMap.put("/index", "user");
 		filterChainDefinitionMap.put("/logout", "authc");
 		filterChainDefinitionMap.put("/**", "authc");
-		
+
 		// 如果不设置默认会自动寻找Web工程根目录下的"/login"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的链接

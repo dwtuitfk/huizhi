@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,11 @@ public class LoginController {
 		private String SHIRO_LOGIN_LEFTCOUNT="shiro-login-left-count";
 
 		@RequestMapping({"/","/index"})//,"/error"
-		public String index(){
+		public String index(Model model){
+			Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+			System.out.print("当前用户编号"+userinfo.getUserid());
+			System.out.print("当前用户姓名"+userinfo.getTurename());
+			model.addAttribute("userinfo", userinfo);
 			return "index";
 		}
 		@RequestMapping(value="/lock",method= RequestMethod.GET)
@@ -77,6 +82,7 @@ public class LoginController {
 		    //转化成小写字母
 		    vcode = vcode.toLowerCase();
 		    String v = (String) session.getAttribute("verCode");
+		    v.toLowerCase();
 		    //还可以读取一次后把验证码清空，这样每次登录都必须获取验证码
 		    session.removeAttribute("codeTime");
 		    if(!vcode.equals(v)){
@@ -91,7 +97,7 @@ public class LoginController {
 		    ValueOperations<String, String> opsForValue = stringRedisTemplate.opsForValue();
 		    if(stringRedisTemplate.hasKey(SHIRO_LOGIN_COUNT+userid)){
 	        //计数大于5时，设置用户被锁定一小时  
-	        if(Integer.parseInt(opsForValue.get(SHIRO_LOGIN_COUNT+userid))>=5){
+	        if(Integer.parseInt(opsForValue.get(SHIRO_LOGIN_COUNT+userid))>=4){
 	            opsForValue.set(SHIRO_IS_LOCK+userid, "LOCK");
 	            stringRedisTemplate.expire(SHIRO_IS_LOCK+userid, 1, TimeUnit.HOURS);
 	            
