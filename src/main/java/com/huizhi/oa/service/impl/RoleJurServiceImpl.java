@@ -32,6 +32,6 @@ public class RoleJurServiceImpl implements RoleJurService {
 
     @Override
     public List<RoleJur> getJurinfo(Integer roleid) {
-        return getJurinfo(roleid);
+        return roleJurMapper.getJurinfo(roleid);
     }
 }

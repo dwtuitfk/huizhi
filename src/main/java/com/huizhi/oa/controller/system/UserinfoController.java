@@ -12,6 +12,7 @@ import com.huizhi.oa.service.UserinfoService;
 import com.huizhi.oa.util.LayUIResult;
 import com.huizhi.oa.util.ResultMap;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,7 @@ public class UserinfoController {
     private RoleinfoService roleinfoService;
 
     //档案管理入口
+    @RequiresPermissions("/user")//权限管理;
     @RequestMapping("/user")
     public String user() {
         return "pages/userTree/userinfo";
@@ -73,6 +75,7 @@ public class UserinfoController {
         //1.添加到角色信息表中
         Roleinfo roleinfo = new Roleinfo();
         roleinfo.setRolename(rolename);
+        roleinfo.setDepname(userinfo.getDepName());
        temp=roleinfoService.insertSelective(roleinfo);
         //2.查询角色信息表最新记录
        System.out.println("---最新一条角色信息记录---");
@@ -132,6 +135,7 @@ public class UserinfoController {
         Roleinfo roleinfo = new Roleinfo();
         roleinfo.setRoleid(userRole.getRoleid());
         roleinfo.setRolename(rolename);
+        roleinfo.setDepname(userinfo.getDepName());
         temp +=roleinfoService.updateByPrimaryKeySelective(roleinfo);
 
         if (temp>0)

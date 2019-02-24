@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * created by dwtuitfk on 2019/2/17.
  */
@@ -48,5 +50,15 @@ public class JurinfoServiceImpl implements JurinfoService {
     @Override
     public int updateByPrimaryKey(Jurinfo record) {
         return jurinfoMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Jurinfo> getAllJurinfo() {
+        return jurinfoMapper.getAllJurinfo();
+    }
+
+    @Override
+    public Jurinfo getJurinfo(Integer jurid) {
+        return jurinfoMapper.getJurinfo(jurid);
     }
 }

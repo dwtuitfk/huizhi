@@ -45,7 +45,7 @@ body.white .login-bd .lg-zone .lg-box .lg-label h4 {
 .login-hd {
 	position: relative;
 	height: 94px;
-	background: #108ec9;
+	background: #24262f;
 	line-height: 94px;
 	min-width: 1200px
 }
@@ -172,10 +172,10 @@ body.white .login-bd .lg-zone .lg-box .lg-label h4 {
 }
 
 .login-bd .bd-inner .inner-wrap .lg-zone .lg-box .lg-label h4 {
-	 border-left: 4px solid #108ec9;
+	 border-left: 4px solid #24262f;
 /* 	background:#108ec9; 
 	color:#FFF */
-	color:#108ec9;
+	color:#24262f;
 }
 
 .login-bd .bd-inner .inner-wrap .lg-zone .lg-box .input-item {

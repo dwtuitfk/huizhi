@@ -1,6 +1,8 @@
 package com.huizhi.oa.entity;
 
-public class RoleJur {
+import java.io.Serializable;
+
+public class RoleJur implements Serializable {
     private Integer roleid;
 
     private Integer jurid;

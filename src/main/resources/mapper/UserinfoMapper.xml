@@ -186,7 +186,7 @@ INNER JOIN bmzd on userinfo.depName = bmzd.depName
 
   <!-- 用户权限表—权限配置 -->
   <select id="getUserJurInfo" resultType="com.huizhi.oa.entity.UserJur">
-select userinfo.userId,userinfo.tureName,jurinfo.fName,bmzd.depNamemc
+select userinfo.userId,userinfo.tureName,jurinfo.fName,bmzd.depNamemc,jurinfo.finfo
 FROM userinfo
 INNER JOIN user_role on userinfo.userId = user_role.userId
 INNER JOIN role_jur on user_role.roleId = role_jur.roleId

@@ -46,6 +46,7 @@ public class ShiroConfiguration {
 
 		filterChainDefinitionMap.put("/getImage", "anon");
 		filterChainDefinitionMap.put("/druid/**", "anon");
+		filterChainDefinitionMap.put("/bootstrap/**", "anon");
 		filterChainDefinitionMap.put("/webjars/**", "anon");
 		filterChainDefinitionMap.put("/META-INF/resources/webjars/", "anon");
 		filterChainDefinitionMap.put("/ajaxLogin", "anon");

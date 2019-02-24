@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Sorry</title>
+    <title>没有权限</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -44,12 +44,12 @@
     <div class="row-fluid">
         <div class="http-error">
             <h1>Sorry!</h1>
-            <p class="info">您的账户已被锁定,请一个小时后再登陆！</p>
+            <p class="info">您没有访问权限!</p>
             <p><i class="icon-home"></i></p>
             <p><a href="#" id="back">返回登陆页面</a></p>
         </div>
     </div>
-    </div>
-    <script src="bootstrap/js/bootstrap.js"></script>
+</div>
+<script th:src="@{/wbootstrap/js/bootstrap.js}"></script>
 </body>
 </html>

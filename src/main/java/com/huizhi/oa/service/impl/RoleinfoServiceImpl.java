@@ -60,6 +60,6 @@ public class RoleinfoServiceImpl implements RoleinfoService {
 
     @Override
     public Roleinfo getRoleinfo(Integer roleid) {
-        return getRoleinfo(roleid);
+        return roleinfoMapper.getRoleinfo(roleid);
     }
 }

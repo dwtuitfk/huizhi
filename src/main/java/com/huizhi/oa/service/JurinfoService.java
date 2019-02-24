@@ -2,6 +2,8 @@ package com.huizhi.oa.service;
 
 import com.huizhi.oa.entity.Jurinfo;
 
+import java.util.List;
+
 public interface JurinfoService {
     int deleteByPrimaryKey(Integer jurid);
 
@@ -14,4 +16,8 @@ public interface JurinfoService {
     int updateByPrimaryKeySelective(Jurinfo record);
 
     int updateByPrimaryKey(Jurinfo record);
+
+    List<Jurinfo> getAllJurinfo();
+
+    Jurinfo getJurinfo(Integer jurid);
 }

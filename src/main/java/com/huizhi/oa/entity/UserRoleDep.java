@@ -1,11 +1,12 @@
 package com.huizhi.oa.entity;
 
+import java.io.Serializable;
 import java.security.PrivateKey;
 
 /**
  * created by dwtuitfk on 2019/2/19.
  */
-public class UserRoleDep {
+public class UserRoleDep implements Serializable {
 
     private Integer userid;
 

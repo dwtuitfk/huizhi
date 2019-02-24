@@ -77,20 +77,22 @@ public class MyShiroRealm extends AuthorizingRealm{
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 		Userinfo userinfo  = (Userinfo)principals.getPrimaryPrincipal();
 		int userid=userinfo.getUserid();
-		List<UserRole> list=userRoleDaoService.getAllUserRoleinfo(userid);
-		for(UserRole userrole:list){
-			int roleid=userrole.getRoleid();
+		List<UserRole> list1=userRoleDaoService.getAllUserRoleinfo(userid);
+
+		for(UserRole userrole:list1){
+
+			Integer roleid=userrole.getRoleid();
 			authorizationInfo.addRole(userzdService.getRoleName(roleinfoService.getRoleinfo(roleid).getRolename()).getRolenamemc());
 			System.out.println(userzdService.getRoleName(roleinfoService.getRoleinfo(roleid).getRolename()).getRolenamemc());
-			List<RoleJur> list1=roleJurService.getJurinfo(roleid);
-			for(RoleJur p:list1){
-				
-				authorizationInfo.addStringPermission(jurinfoService.selectByPrimaryKey(p.getJurid()).getFname());
-				System.out.println(jurinfoService.selectByPrimaryKey(p.getJurid()).getFname());
+
+			List<RoleJur> list2 = roleJurService.getJurinfo(roleid);
+			for(RoleJur roleJur:list2){
+				authorizationInfo.addStringPermission(jurinfoService.getJurinfo(roleJur.getJurid()).getFname());
+				System.out.println(jurinfoService.getJurinfo(roleJur.getJurid()).getFname());
+
 			}
+
 		}
-
-
 		
 		return authorizationInfo;
 	}

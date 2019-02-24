@@ -4,12 +4,13 @@
   <resultMap id="BaseResultMap" type="com.huizhi.oa.entity.Jurinfo">
     <id column="jurId" jdbcType="INTEGER" property="jurid" />
     <result column="fName" jdbcType="VARCHAR" property="fname" />
+    <result column="finfo" jdbcType="VARCHAR" property="finfo" />
   </resultMap>
   <sql id="Base_Column_List">
-    jurId, fName
+    jurId, fName, finfo
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from jurinfo
     where jurId = #{jurid,jdbcType=INTEGER}
@@ -19,8 +20,10 @@
     where jurId = #{jurid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.huizhi.oa.entity.Jurinfo">
-    insert into jurinfo (jurId, fName)
-    values (#{jurid,jdbcType=INTEGER}, #{fname,jdbcType=VARCHAR})
+    insert into jurinfo (jurId, fName, finfo
+      )
+    values (#{jurid,jdbcType=INTEGER}, #{fname,jdbcType=VARCHAR}, #{finfo,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Jurinfo">
     insert into jurinfo
@@ -31,6 +34,9 @@
       <if test="fname != null">
         fName,
       </if>
+      <if test="finfo != null">
+        finfo,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="jurid != null">
@@ -38,6 +44,9 @@
       </if>
       <if test="fname != null">
         #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="finfo != null">
+        #{finfo,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -47,12 +56,27 @@
       <if test="fname != null">
         fName = #{fname,jdbcType=VARCHAR},
       </if>
+      <if test="finfo != null">
+        finfo = #{finfo,jdbcType=VARCHAR},
+      </if>
     </set>
     where jurId = #{jurid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Jurinfo">
     update jurinfo
-    set fName = #{fname,jdbcType=VARCHAR}
+    set fName = #{fname,jdbcType=VARCHAR},
+      finfo = #{finfo,jdbcType=VARCHAR}
     where jurId = #{jurid,jdbcType=INTEGER}
   </update>
+
+  <!--查询所有权限信息-->
+  <select id="getAllJurinfo" resultType="com.huizhi.oa.entity.Jurinfo">
+    select jurId,fName,finfo from jurinfo;
+  </select>
+
+  <!--根据权限jurId查询对应的权限信息fname-->
+  <select id="getJurinfo" resultType="com.huizhi.oa.entity.Jurinfo" parameterType="java.lang.Integer">
+		select jurId,fName,finfo from jurinfo WHERE jurId =#{jurid}
+  </select>
+
 </mapper>

@@ -1,6 +1,8 @@
 package com.huizhi.oa.entity;
 
-public class UserRole {
+import java.io.Serializable;
+
+public class UserRole implements Serializable {
     private Integer userid;
 
     private Integer roleid;

@@ -30,7 +30,7 @@
   </insert>
 
   <!--根据角色id查询对应的权限jurid-->
-  <select id="getJurinfo" resultType="com.huizhi.oa.entity.UserRole" parameterType="java.lang.Integer">
+  <select id="getJurinfo" resultType="com.huizhi.oa.entity.RoleJur" parameterType="java.lang.Integer">
     select roleId,jurId from role_jur WHERE roleid = #{roleid}
   </select>
 
