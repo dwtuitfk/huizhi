@@ -6,6 +6,7 @@ import com.huizhi.oa.entity.UserRoleDep;
 import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class UserRoleController {
         @Autowired
         private UserinfoService userinfoService;
 
+        @RequiresPermissions("/userRole")//权限管理;
         @RequestMapping("/userRole")
         public String userRole() {
             return "pages/userTree/userRole";

@@ -3,6 +3,8 @@ package com.huizhi.oa.dao;
 import com.huizhi.oa.entity.UserJur;
 import com.huizhi.oa.entity.UserRoleDep;
 import com.huizhi.oa.entity.Userinfo;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -30,4 +32,10 @@ public interface UserinfoMapper {
 
     //模糊查询
     List<UserRoleDep> seachUserinfo(UserRoleDep userRoleDep);
+
+    //用户登陆验证
+    UserRoleDep userlogin (Integer userid,Integer password);
+
+    @Select("SELECT * FROM userinfo where userId=#{userid}")
+    Userinfo finduserById(@Param("id") Integer userid);
 }

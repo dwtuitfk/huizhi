@@ -1,6 +1,8 @@
 package com.huizhi.oa.entity;
 
-public class Bmzd {
+import java.io.Serializable;
+
+public class Bmzd implements Serializable {
     private Integer bmzdid;
 
     private Integer depname;

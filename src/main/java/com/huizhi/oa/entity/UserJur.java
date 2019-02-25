@@ -1,9 +1,11 @@
 package com.huizhi.oa.entity;
 
+import java.io.Serializable;
+
 /**
  * created by dwtuitfk on 2019/2/19.
  */
-public class UserJur {
+public class UserJur implements Serializable {
 
     private Integer userId;
 
@@ -11,7 +13,17 @@ public class UserJur {
 
     private String fName;
 
+    private String finfo;
+
     private String depNamemc;
+
+    public String getFinfo() {
+        return finfo;
+    }
+
+    public void setFinfo(String finfo) {
+        this.finfo = finfo;
+    }
 
     public Integer getUserId() {
         return userId;

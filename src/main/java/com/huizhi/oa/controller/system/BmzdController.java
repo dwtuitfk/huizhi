@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Bmzd;
 import com.huizhi.oa.service.BmzdService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class BmzdController {
     private BmzdService bmzdService;
 
     //部门管理显示入口
+    @RequiresPermissions("/dep")//权限管理;
     @RequestMapping("/dep")
     public String dep() {
         return "pages/systemTree/department";

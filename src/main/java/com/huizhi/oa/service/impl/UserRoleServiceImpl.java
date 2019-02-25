@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * created by dwtuitfk on 2019/2/17.
  */
@@ -38,5 +40,10 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Override
     public int delUserRoleinfo(Integer roleid) {
         return userRoleMapper.delUserRoleinfo(roleid);
+    }
+
+    @Override
+    public List<UserRole> getAllUserRoleinfo(Integer roleid) {
+        return userRoleMapper.getAllUserRoleinfo(roleid);
     }
 }

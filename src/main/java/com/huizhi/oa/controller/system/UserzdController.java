@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Userzd;
 import com.huizhi.oa.service.UserzdService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class UserzdController {
     @Autowired
     private UserzdService userzdService;
     //岗位管理显示入口
+    @RequiresPermissions("/post")//权限管理;
     @RequestMapping("/post")
     public String post() {
         return "pages/systemTree/post";
