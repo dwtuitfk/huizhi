@@ -102,6 +102,11 @@ public class UserinfoServiceImpl implements UserinfoService {
         return userinfoMapper.finduserById(userid);
     }
 
+    @Override
+    public List<UserRoleDep> seachContacts(UserRoleDep userRoleDep) {
+        return userinfoMapper.seachContacts(userRoleDep);
+    }
+
 
     @Override
     public Userinfo findById(Integer userid) {
