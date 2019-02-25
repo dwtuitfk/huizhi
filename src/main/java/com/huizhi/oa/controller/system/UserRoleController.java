@@ -3,7 +3,6 @@ package com.huizhi.oa.controller.system;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.UserRoleDep;
-import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.UserinfoService;
 import com.huizhi.oa.util.ResultMap;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

@@ -34,4 +34,9 @@
     select roleId,jurId from role_jur WHERE roleid = #{roleid}
   </select>
 
+  <!--根据角色id删除对应的权限jurid-->
+  <delete id="DelRolejur" parameterType="java.lang.Integer">
+	     DELETE FROM role_jur WHERE roleId = #{roled}
+	</delete>
+
 </mapper>

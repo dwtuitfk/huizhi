@@ -61,4 +61,9 @@ public class JurinfoServiceImpl implements JurinfoService {
     public Jurinfo getJurinfo(Integer jurid) {
         return jurinfoMapper.getJurinfo(jurid);
     }
+
+    @Override
+    public List<Jurinfo> getAllJurid(Integer rolename) {
+        return jurinfoMapper.getAllJurid(rolename);
+    }
 }

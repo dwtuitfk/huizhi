@@ -71,12 +71,21 @@
 
   <!--查询所有权限信息-->
   <select id="getAllJurinfo" resultType="com.huizhi.oa.entity.Jurinfo">
-    select jurId,fName,finfo from jurinfo;
+    select jurId,fName,finfo from jurinfo
   </select>
 
   <!--根据权限jurId查询对应的权限信息fname-->
   <select id="getJurinfo" resultType="com.huizhi.oa.entity.Jurinfo" parameterType="java.lang.Integer">
 		select jurId,fName,finfo from jurinfo WHERE jurId =#{jurid}
   </select>
+
+  <!--根据depName查询对应所有的权限信息-->
+  <select id="getAllJurid" resultType="com.huizhi.oa.entity.Jurinfo" parameterType="java.lang.Integer">
+    SELECT jurinfo.jurId,fName,finfo FROM jurinfo
+    INNER JOIN role_jur ON role_jur.`jurId`=jurinfo.`jurId`
+    INNER JOIN roleinfo ON roleinfo.`roleId`=role_jur.`roleId`
+    WHERE roleName= #{rolename,jdbcType=INTEGER}
+  </select>
+
 
 </mapper>

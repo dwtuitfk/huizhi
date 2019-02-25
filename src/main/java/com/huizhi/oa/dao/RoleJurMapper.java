@@ -11,4 +11,8 @@ public interface RoleJurMapper {
 
     //根据角色id查询对应的权限信息
     List<RoleJur> getJurinfo(Integer roleid);
+
+    //删除角色对应的权限
+    int DelRolejur(Integer roleid);
+
 }
