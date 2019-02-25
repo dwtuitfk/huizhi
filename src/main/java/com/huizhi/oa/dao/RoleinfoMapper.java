@@ -22,4 +22,7 @@ public interface RoleinfoMapper {
 
     //根据角色id查询对应的职位字典rolename
     Roleinfo getRoleinfo(Integer roleid);
+
+    //根据角色rolename查询对应的角色roleid
+    List<Roleinfo> getAllRoleid (Integer rolename);
 }

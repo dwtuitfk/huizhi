@@ -20,4 +20,7 @@ public interface JurinfoService {
     List<Jurinfo> getAllJurinfo();
 
     Jurinfo getJurinfo(Integer jurid);
+
+    //根据rolename查询对应所有的权限信息
+    List<Jurinfo> getAllJurid(Integer rolename);
 }

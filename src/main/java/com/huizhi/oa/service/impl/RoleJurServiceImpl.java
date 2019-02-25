@@ -22,16 +22,21 @@ public class RoleJurServiceImpl implements RoleJurService {
 
     @Override
     public int insert(RoleJur record) {
-        return 0;
+        return roleJurMapper.insert(record);
     }
 
     @Override
     public int insertSelective(RoleJur record) {
-        return 0;
+        return roleJurMapper.insertSelective(record);
     }
 
     @Override
     public List<RoleJur> getJurinfo(Integer roleid) {
         return roleJurMapper.getJurinfo(roleid);
+    }
+
+    @Override
+    public int DelRolejur(Integer roleid) {
+        return roleJurMapper.DelRolejur(roleid);
     }
 }

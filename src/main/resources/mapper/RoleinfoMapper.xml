@@ -79,4 +79,9 @@
 		select roleName FROM roleinfo WHERE roleid=#{roleid}
   </select>
 
+
+  <!-- 查询所有角色信息对应Roleid -->
+  <select id="getAllRoleid"  resultType="com.huizhi.oa.entity.Roleinfo">
+    select roleid,roleName,depName FROM roleinfo where roleName=#{rolename}
+  </select>
 </mapper>
