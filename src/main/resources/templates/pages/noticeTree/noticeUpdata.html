@@ -9,7 +9,17 @@
 
     <script type="text/javascript">
 
-        $(function(){
+        $(document).ready(function(){
+
+            //富文本编辑器自定义工具栏
+            var editIndex,layedit;
+            layui.use('layedit', function(){
+                layedit = layui.layedit;
+                editIndex = layedit.build('nContent', {
+                    tool: ['strong','italic','face','underline','del', 'link', 'unlink', '|', 'left', 'center', 'right','b']
+                    ,height : 100
+                });
+            });
 
             $.ajax({
                 type:"get",
@@ -20,47 +30,9 @@
                     $('#userid').val(data.userid);
                     $('#nTitle').val(data.nTitle);
                     $('#nTime').val(data.nTime);
-                    $('#nContent').val(data.nContent);
+                    layedit.setContent(editIndex,data.nContent);//富文本编辑器还原表单
                 }
             });
-
-            //公告编号验证
-            $("#nId").blur(function () {
-                //获取公告编号文本框的值
-                var nId=$("#nId").val();
-                //使用正则表达式 公告编号由1-3个数字构成
-                var reg =/^[0-9]{1,3}$/;
-                //判断
-                if (reg.test(nId)){
-                    $("#nId_prompt").html("正确").css("color","green");
-                    return true;
-                } else{
-                    $("#nId_prompt").html("必须是1-3位数字").css("color","red");
-                    return false;
-                }
-            });
-
-            //职工编号验证
-            $("#userid").blur(function(){
-                //获取职工编号文本框的值
-                var userid=$('#userid').val();
-                //使用正则表达式 职工编号由数字组成
-                var reg=/^[0-9]*$/;
-                //判断
-                if(reg.test(userid)){
-                    $("#userid_prompt").html("正确").css("color","green");
-                    return true;
-                }else{
-                    $("#userid_prompt").html("必须是数字").css("color","red");
-                    //获得焦点
-                    //$("#depnamemc").focus();
-                    //将文本内容进行全选
-                    //$("#depnamemc").select();
-                    return false;
-                }
-            });
-
-
 
             //公告标题验证
             $("#nTitle").blur(function(){
@@ -111,7 +83,7 @@
                 var userid=$('#userid').val();
                 var nTitle=$('#nTitle').val();
                 var nTime=$('#nTime').val();
-                var nContent=$('#nContent').val();
+                var nContent =layedit.getContent(editIndex);//取富文本编辑器中的值
                 $.ajax({
                     url: "/noticemanage/noticeUpdateInfo",
                     type: "POST",
@@ -122,6 +94,7 @@
                             parent.layer.msg("修改失败", {icon: 5});
                         }else{
                             parent.layer.msg("修改成功", {icon: 6});
+
                         }
                     },
                     error:function(){
@@ -144,41 +117,49 @@
 
 <br><br>
 <div class="layui-form-item">
-    <label class="layui-form-label">公告编号:</label>
+    <label class="layui-form-label">
+        <span class="we-red">*</span>公告编号:
+    </label>
     <div class="layui-input-block">
-        <input type="text" id="nId" name="nId" lay-verify="nId" autocomplete="off" placeholder="公告编号" class="layui-input" style="width: 200px">
+        <input type="text" id="nId" name="nId" lay-verify="nId" readonly="ture" autocomplete="off" class="layui-input" style="width: 200px">
         <span id="nId_prompt"></span>
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">职工编号:</label>
+    <label class="layui-form-label">
+        <span class="we-red">*</span>职工编号:
+    </label>
     <div class="layui-input-block">
-        <input type="text" id="userid" name="userid" lay-verify="userid" placeholder="职工编号" autocomplete="off" class="layui-input" style="width: 200px">
+        <input type="text" id="userid" name="userid" lay-verify="userid" readonly="ture" placeholder="职工编号" autocomplete="off" class="layui-input" style="width: 200px">
         <span id="userid_prompt"></span>
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">公告标题:</label>
+    <label class="layui-form-label">
+        <span class="we-red">*</span>公告标题:
+    </label>
     <div class="layui-input-block">
-        <input type="text" id="nTitle" name="nTitle" lay-verify="nTitle" autocomplete="off" placeholder="公告标题" class="layui-input" style="width: 200px">
+        <input type="text" id="nTitle" name="nTitle" lay-verify="nTitle" autocomplete="off" class="layui-input" style="width: 200px">
         <span id="nTitle_prompt"></span>
     </div>
 </div>
 
-
 <div class="layui-form-item">
-    <label class="layui-form-label">发布时间:</label>
+    <label class="layui-form-label">
+        <span class="we-red">*</span>发布时间:
+    </label>
     <div class="layui-input-inline">
-        <input type="text" class="layui-input" id="nTime" name="nTime" placeholder="发布时间" autocomplete="off" style="width: 200px">
+        <input type="text" class="layui-input" id="nTime" name="nTime" autocomplete="off" style="width: 200px">
         <span id="nTime_prompt"></span>
     </div>
 </div>
 
-
-<div class="layui-form-item">
-    <label class="layui-form-label">公告内容:</label>
+<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">
+        <span class="we-red">*</span>公告内容:
+    </label>
     <div class="layui-input-block">
-        <input type="text" id="nContent" name="nContent" lay-verify="nContent" placeholder="公告内容" autocomplete="off" class="layui-input" style="width: 200px">
+        <textarea type="textarea" id="nContent" name="nContent" lay-verify="nContent" autocomplete="off" class="layui-input" style="width: 200px;height: 80px"></textarea>
         <span id="nContent_prompt"></span>
     </div>
 </div>
@@ -189,6 +170,16 @@
         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
 </div>
+<script>
+    layui.use(['laydate'], function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#nTime',//指定元素
+            type: 'datetime'//日期格式
+        });
 
+    });
+</script>
 </body>
 </html>

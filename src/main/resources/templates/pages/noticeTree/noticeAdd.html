@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>公告添加</title>
+    <title>用户添加</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
     <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
@@ -12,16 +12,7 @@
 
 </head>
 
-<script type="text/javascript">
-    //日期选择器模块
-    layui.use('laydate', function(){
-        var laydate = layui.laydate;
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#nTime' //指定元素
-        });
-    });
+<script type="text/javascript" th:inline="none">
 
     //重新渲染表单
     function renderForm(){
@@ -33,15 +24,107 @@
 
     $(document).ready(function(){
 
+        var editIndex,layedit;
+        layui.use(['form', 'layedit', 'laydate','layer'], function(){
+
+            var form = layui.form
+                ,layer = layui.layer
+                ,laydate = layui.laydate;
+
+
+            //日期
+            laydate.render({
+                elem: '#nTime',
+                type: 'datetime'//日期格式
+            });
+
+            //判断公告编号是否输入
+            $('#nId').click(function () {
+                if($('#nId').val()==""){
+                    layer.msg("请输入公告编号", {icon: 5})
+                }
+            });
+            //判断公告标题是否输入
+            $('#nTitle').click(function () {
+                if($('#nTitle').val()==""){
+                    layer.msg("请先选择部门", {icon: 5})
+                }
+            });
+
+            //自定义验证规则
+            form.verify({
+                nId: [
+                    /^[1-9]\d{1,10}$/
+                    ,'公告编号必须10位数字,且不能以0开头'
+                ]
+                ,nTitle:[
+                    /^([\u4e00-\u9fa5]){2,5}$/
+                    ,'请输入2到5位数中文字符'
+                ]
+
+            });
+
+            //创建一个编辑器
+            layedit = layui.layedit
+            editIndex = layedit.build('nContent',{
+                tool: ['strong','italic','face','underline','del', 'link', 'unlink', '|', 'left', 'center', 'right','b']
+                ,height : 100
+            });
+
+        });
+            $(function() {
+
+                var index = parent.layer.getFrameIndex(window.name);
+
+                //关闭iframe
+                $('#closeIframe').click(function () {
+                    var nId = $('#nId').val();
+                    var userid = $('#userid').val();
+                    var nTitle = $('#nTitle').val();
+                    var nTime = $('#nTime').val();
+                    //var nContent=layedit.sync(editIndex);
+                    var nContent =layedit.getContent(editIndex);
+                    //var nContent =$('#nContent').val();
+                    $.ajax({
+                        url: "/noticemanage/noticeAddInfo",
+                        type: "POST",
+                        data: {
+                            nId: nId
+                            , userid: userid
+                            , nTitle: nTitle
+                            , nTime: nTime
+                            , nContent: nContent
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data === 500) {
+                                parent.layer.msg("添加失败", {icon: 5});
+                            } else {
+                                parent.layer.msg("添加成功", {icon: 6});
+                            }
+
+                        },
+                        error: function () {
+                            parent.layer.msg("系统异常");
+                        },
+
+                    });
+
+                    parent.layer.close(index);
+
+                });
+            });
+
+
         //异步获取职工编号
         $.ajax({
             type : "get",
-            url : "/system/selectUserid",
+            url : "/system/getUserAllInfo",
             success : function(data) {
                 //alert(data[1].depnamemc);
                 var user='';
                 $.each(data, function(index,obj) {
-                    user += '<option value="'+obj.userid+'">'+obj.userid+'</option>';
+                    user += '<option value="'+obj.userid+'">'+obj.turename+'</option>';
                 });
                 //alert(dep);
                 $("#userid").append(user);
@@ -50,29 +133,32 @@
             },
         });
 
+        layui.use('form', function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            form.render();
+        });
+
     });
 </script>
 
 <body>
 <br>
 <div class="weadmin-body">
-    <form class="layui-form">
+    <form class="layui-form" action="" target="nm_iframe">
 
-        <!--公告编号-->
         <div class="layui-form-item">
             <label for="nId" class="layui-form-label">
-                <span class="we-red">*</span>公告编号
+                <span class="we-red">*</span>公告编号:
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="nId" name="nId" required="" lay-verify="nId"
-                       autocomplete="off" value="" class="layui-input" style="width: 200px">
+            <div class="layui-input-block">
+                <input type="text" id="nId" name="nId" lay-verify="nId" autocomplete="off" class="layui-input" style="width: 200px">
+                <span id="nId_prompt"></span>
             </div>
         </div>
 
-        <!--职工编号-->
         <div class="layui-form-item">
             <label for="userid" class="layui-form-label">
-                <span class="we-red">*</span>职工编号
+                <span class="we-red">*</span>职工编号:
             </label>
             <div class="layui-input-inline" style="width: 200px">
 
@@ -83,97 +169,49 @@
             </div>
         </div>
 
-        <!--公告标题-->
         <div class="layui-form-item">
             <label for="nTitle" class="layui-form-label">
-                <span class="we-red">*</span>公告标题
+                <span class="we-red">*</span>公告标题:
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="nTitle" name="nTitle" required="" lay-verify="nTitle"
-                       autocomplete="off" value="" class="layui-input" style="width: 200px">
+            <div class="layui-input-block">
+                <input type="text" id="nTitle" name="nTitle" lay-verify="nTitle" autocomplete="off" class="layui-input" style="width: 200px">
+                <span id="nTitle_prompt"></span>
             </div>
-            <!--<div class="layui-form-mid layui-word-aux">
-                <span class="we-red"></span>
-            </div>-->
         </div>
 
-        <!--发布时间-->
         <div class="layui-form-item">
             <label for="nTime" class="layui-form-label">
-                <span class="we-red">*</span>发布时间
+                <span class="we-red">*</span>发布时间:
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="nTime" name="nTime" required="" lay-verify="nTime"
-                       autocomplete="off" value="" class="layui-input" style="width: 200px">
+                <input type="text" class="layui-input" id="nTime" name="nTime" autocomplete="off" style="width: 200px">
+                <span id="nTime_prompt"></span>
             </div>
-            <!--<div class="layui-form-mid layui-word-aux">
-                <span class="we-red"></span>
-            </div>-->
         </div>
 
-
-        <!--公告内容-->
-        <div class="layui-form-item">
+        <div class="layui-form-item layui-form-text">
             <label for="nContent" class="layui-form-label">
-                <span class="we-red">*</span>公告内容
+                <span class="we-red">*</span>公告内容:
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="nContent" name="nContent" required="" lay-verify="nContent"
-                       autocomplete="off" value="" class="layui-input" style="width: 200px">
+            <div class="layui-input-block">
+                <textarea type="text" class="layui-textarea" id="nContent" name="nContent" lay-verify="nContent" autocomplete="off" style="width: 200px;height: 10px"></textarea>
+                <span id="nContent_prompt"></span>
             </div>
-            <!--<div class="layui-form-mid layui-word-aux">
-                <span class="we-red"></span>
-            </div>-->
         </div>
 
 
-
         <div class="layui-form-item">
-            <label class="layui-form-label">
+            <label  class="layui-form-label">
             </label>
-            <button  class="layui-btn" lay-filter="add" lay-submit="">
+            <button  class="layui-btn" id="closeIframe" lay-filter="add" lay-submit="">
                 添加
             </button>
         </div>
+
     </form>
+    <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
 </div>
-<script type="text/javascript">
 
-    layui.use(['form','layer'], function(){
-        var form = layui.form,
-            layer = layui.layer;
-
-        //自定义验证规则
-        form.verify({
-            nId:[/(.+){1,}$/, '公告编号必须是数字'],
-            nTitle: function(value){
-                if(value.length < 5){
-                    return '公告标题至少得5个字符';
-                }
-            }
-            ,nContent: function(value){
-                if(value.length < 10){
-                    return '公告内容必须的10个字符';
-                }
-            }
-
-        });
-
-        //监听提交
-        form.on('submit(add)', function(data){
-            console.log(data);
-            //发异步，把数据提交给php
-            layer.alert("增加成功", {icon: 6},function () {
-                // 获得frame索引
-                var index = parent.layer.getFrameIndex(window.name);
-                //关闭当前frame
-                parent.layer.close(index);
-            });
-            return false;
-        });
-
-    });
-</script>
 </body>
 
 </html>

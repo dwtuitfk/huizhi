@@ -5,11 +5,17 @@ import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Noticeinfo;
 import com.huizhi.oa.service.NoticeinfoService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,24 +24,35 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/noticemanage")
+
 public class NoticeinfoController {
+
+    //使日期可以正常添加的初始化方法
+    @InitBinder//方法在控制器处理请求方法前执行
+    public  void init(WebDataBinder wdb){
+        wdb.registerCustomEditor(Date.class,
+                new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true)
+        );
+    }
+
 
     @Autowired
     private NoticeinfoService noticeinfoService;
 
     //公告管理显示入口
+    @RequiresPermissions("/notice")
     @RequestMapping("/notice")
     public String notice(){
         return "pages/noticeTree/noticeinfo";
     }
 
     //公告管理数据查询
-    /*@ResponseBody
-    @RequestMapping("/noticeinfo")
+    @ResponseBody
+    @RequestMapping("/selectNoticeinfo")
     public List<Noticeinfo> getAllNoticeinfo(){
         List<Noticeinfo> list =noticeinfoService.getAllNoticeinfo();
         return list;
-    }*/
+    }
 
     //公告管理数据分页显示
     @ResponseBody
@@ -72,7 +89,7 @@ public class NoticeinfoController {
         return "pages/noticeTree/noticeUpdata";
     }
 
-    //查询单条部门记录
+    //查询单条公告记录
     @RequestMapping("getNotice")
     @ResponseBody
     public Noticeinfo getNotice(){
@@ -91,5 +108,17 @@ public class NoticeinfoController {
             return "500";
     }
 
+    //公告首页显示入口
+    @RequiresPermissions("/noticehp")
+    @RequestMapping("/noticehp")
+    public String noticehomepage(){
+        return "pages/noticeTree/noticehomepage";
+    }
 
+    //公告详情显示入口
+    @RequestMapping("/noticeparticulars")
+    public String noticeparticulars(Integer nId) {
+        nId2=nId;
+        return "pages/noticeTree/noticeparticulars";
+    }
 }
