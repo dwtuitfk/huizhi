@@ -38,4 +38,7 @@ public interface UserinfoMapper {
 
     @Select("SELECT * FROM userinfo where userId=#{userid}")
     Userinfo finduserById(@Param("id") Integer userid);
+
+    //通讯录模糊查询
+    List<UserRoleDep> seachContacts(UserRoleDep userRoleDep);
 }

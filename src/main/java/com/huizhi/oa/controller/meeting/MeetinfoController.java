@@ -1,18 +1,4 @@
-/**
- * System Name： SDN Platform
- * <p>
- * File Name： MeetinfoController
- * <p>
- * Creating Time： 2019-02-17 18:09
- * <p>
- * Copyright (c) 2015-2025 Fiberhome Technologies.
- * 88,YouKeYuan Road, Hongshan District.,Wuhan,P.R.China,
- * Wuhan Research Institute of Post & Telecommunication.
- * <p>
- * All rights reserved.
- */
-
-package com.huizhi.oa.controller;
+package com.huizhi.oa.controller.meeting;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -27,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -69,12 +56,15 @@ public class MeetinfoController {
     public String del(){
         return "pages/meetingTree/meetinfo/del";
     }
+
+    public Integer mId2;
     /**
      * 更新会议记录页面
      * @return
      */
     @RequestMapping("/meetinfoUpdatePage")
-    public String update(){
+    public String update(Integer mId){
+        mId2 = mId;
         return "pages/meetingTree/meetinfo/update";
     }
 
@@ -105,8 +95,8 @@ public class MeetinfoController {
     @ResponseBody
     @RequestMapping("/getMeetinfo")
     public Meetinfo getMeetinfo(){
-        int id = 1;
-        return meetinfoService.selectByPrimaryKey(id);
+        Meetinfo meetinfo = meetinfoService.selectByPrimaryKey(mId2);
+        return meetinfo;
     }
 
     /**
@@ -114,23 +104,31 @@ public class MeetinfoController {
      * @param meetinfo
      * @return
      */
+    @ResponseBody
     @RequestMapping("/meetinfoAdd")
     public String addMeetinfo(Meetinfo meetinfo){
-        int tmp = -1;
-        tmp = meetinfoService.insertSelective(meetinfo);
-        return "getAllMeetinfo";
+        int tmp = meetinfoService.insertSelective(meetinfo);
+        if (tmp>0){
+            return "400";
+        }else {
+            return "500";
+        }
     }
 
     /**
-     * 更新会议记录
-     * @param record
+     * 修改会议记录
+     * @param meetinfo
      * @return
      */
+    @ResponseBody
     @RequestMapping("/meetinfoUpdate")
-    public String updateMeetinfo(Meetinfo record){
-        int tmp = -1;
-        tmp = meetinfoService.updateByPrimaryKeySelective(record);
-        return "getAllMeetinfo";
+    public String updateMeetinfo(Meetinfo meetinfo){
+        int tmp = meetinfoService.updateByPrimaryKeySelective(meetinfo);
+        if (tmp>0){
+            return "400";
+        }else {
+            return "500";
+        }
     }
 
     /**
@@ -138,11 +136,42 @@ public class MeetinfoController {
      * @param mId
      * @return
      */
+    @ResponseBody
     @RequestMapping("/meetinfoDel")
     public String delMeetinfo(Integer mId){
-        int tmp = -1;
-        tmp = meetinfoService.deleteByPrimaryKey(mId);
-        return "getAllMeetinfo";
+        int tmp = meetinfoService.deleteByPrimaryKey(mId);
+        if(tmp>0){
+            return "400";
+        }else {
+            return "500";
+        }
+    }
+
+    /**
+     * 多项删除会议记录
+     * @param ids
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/meetinfoDelMore")
+    public String delMoreMeetinfo(String ids){
+        List<Integer> id=null;
+        if(ids.contains(",")){
+            String []arr=ids.split(",");
+            id=new ArrayList<>();
+            for (String a:arr) {
+                id.add(Integer.parseInt(a));
+            }
+        }else{
+            id=new ArrayList<>();
+            id.add(Integer.parseInt(ids));
+        }
+        int temp=meetinfoService.delMoreMeetinfo(id);
+
+        if (temp>0)
+            return "400";
+        else
+            return "500";
     }
 
 }

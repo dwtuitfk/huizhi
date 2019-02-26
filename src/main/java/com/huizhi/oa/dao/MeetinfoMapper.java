@@ -18,4 +18,11 @@ public interface MeetinfoMapper {
     int updateByPrimaryKey(Meetinfo record);
 
     List<Meetinfo> getAllMeetinfo();
+
+    /**
+     * 多项删除
+     * @param ids
+     * @return
+     */
+    int delMoreMeetinfo(List<Integer> ids);
 }

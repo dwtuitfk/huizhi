@@ -23,4 +23,11 @@ public interface MeethouseService {
     PageInfo<Meethouse> getAllMeethouse(Integer pageNum, Integer pageSize);
 
     int delMoreMeethouse(List<Integer> ids);
+
+    /**
+     * 模糊查询
+     * @param meethouse
+     * @return
+     */
+    List<Meethouse> seachMeethouse(Meethouse meethouse);
 }

@@ -23,24 +23,21 @@
     }
 
     $(document).ready(function(){
-
-
-
         layui.use(['form'], function() {
             var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
             form.render();
-
         });
-
     });
+
 </script>
 
 <body>
 <br>
 <div class="weadmin-body">
-    <form class="layui-form" action="/meeting/meethouseAdd" >
+    <form class="layui-form" action="" target="nm_iframe" >
 
         <!--会议室编号-->
+
         <div class="layui-form-item">
             <label for="mhId" class="layui-form-label">
                 <span class="we-red">*</span>会议室编号
@@ -89,34 +86,49 @@
                 添加
             </button>
         </div>
+
     </form>
+    <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
 </div>
 <script type="text/javascript">
+
     $(function(){
-        layui.use(['form','layer','admin'], function(){
+        layui.use(['form','layer','layedit'], function(){
+            var form = layui.form
+                ,layer = layui.layer
+                ,layedit = layui.layedit;
 
-            $.ajax({
-                url: data.form.action,
-                type: data.form.method,
-                data: $(data.form).serialize(),
-                dataType: "json",
-                success: function(data){
-                    if(data===500){
-                        parent.layer.msg("添加失败", {icon: 5});
-                    }else{
-                        parent.layer.msg("添加成功", {icon: 6});
-                        window.location.href="index";
-                    }
-                },
-                error:function(){
-                    parent.layer.msg("系统异常");
-                },
+            var editIndex = layedit.build('LAY_demo_editor');
 
+            form.on('submit(add)', function(data){
+
+                var index = parent.layer.getFrameIndex(window.name);
+                $.ajax({
+                    type: 'post',
+                    url: '/meeting/meethouseAdd', // ajax请求路径
+                    data: {
+                        mhId:data.field.mhId,
+                        mhName:data.field.mhName,
+                        mhAddress: data.field.mhAddress
+                    },
+                    dataType:"json",
+                    success: function(data){
+                        if(data==400){
+                            layer.msg("添加成功", {icon: 6,time:2000},function () {
+                                parent.layer.close(index);
+                                parent.location.reload();
+                            });
+                        }else {
+                            layer.msg("添加失败", {icon: 5,time:2000});
+                        }
+                    },
+                    error:function(){
+                        layer.msg("系统异常");
+                    },
+                });
+                return false;
             });
-
-            //parent.layer.close(index);
-
-        });
+    });
     });
 </script>
 </body>

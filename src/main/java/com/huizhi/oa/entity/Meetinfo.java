@@ -1,5 +1,8 @@
 package com.huizhi.oa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Meetinfo {
@@ -13,11 +16,24 @@ public class Meetinfo {
 
     private String mPeople;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Date mStarttime;
 
     private Integer mState;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Date mOvertime;
+    /**
+     * 状态名
+     */
+    private String mStateName;
+
+    /**
+     * 会议室位置
+     */
+    private String mhAddress;
 
     public Integer getmId() {
         return mId;
@@ -81,5 +97,21 @@ public class Meetinfo {
 
     public void setmOvertime(Date mOvertime) {
         this.mOvertime = mOvertime;
+    }
+
+    public String getmStateName() {
+        return mStateName;
+    }
+
+    public void setmStateName(String mStateName) {
+        this.mStateName = mStateName;
+    }
+
+    public String getMhAddress() {
+        return mhAddress;
+    }
+
+    public void setMhAddress(String mhAddress) {
+        this.mhAddress = mhAddress;
     }
 }

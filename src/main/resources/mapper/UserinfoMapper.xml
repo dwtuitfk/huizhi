@@ -284,4 +284,50 @@ WHERE Userinfo.userId =#{userid}
 	and Userinfo.passWord=#{password}
   </select>
 
+  <!--通讯录模糊查询-->
+
+  <select id="seachContacts" resultType="com.huizhi.oa.entity.UserRoleDep" parameterType="com.huizhi.oa.entity.UserRoleDep">
+    select
+    userinfo.userId,
+    userinfo.tureName,
+    userinfo.sex,
+    userinfo.qq,
+    userinfo.phone,
+    userinfo.email,
+    userinfo.age,
+    userinfo.address,
+    userinfo.isProhibit,
+    userzd.roleNamemc,
+    bmzd.depNamemc
+    FROM userinfo
+    INNER JOIN user_role on userinfo.userId = user_role.userId
+    INNER JOIN roleinfo on user_role.roleId = roleinfo.roleId
+    INNER JOIN userzd on roleinfo.roleName = userzd.roleName
+    INNER JOIN bmzd on userinfo.depName = bmzd.depName
+    WHERE 1=1
+    <if test="userid != null">
+      and userinfo.userid like concat("%",#{userid},"%")
+    </if>
+    <if test="turename != null">
+      and userinfo.tureName like concat("%",#{turename},"%")
+    </if>
+    <if test="qq != null">
+      and userinfo.qq like concat("%",#{qq},"%")
+    </if>
+    <if test="address != null">
+      and userinfo.address like concat("%",#{address},"%")
+    </if>
+    <if test="sex != null">
+      and userinfo.sex = #{sex}
+    </if>
+    <if test="roleName != null">
+      and roleinfo.roleName = #{roleName}
+    </if>
+    <if test="depName != null">
+      and userinfo.depName = #{depName}
+    </if>
+  </select>
+
+
+
 </mapper>

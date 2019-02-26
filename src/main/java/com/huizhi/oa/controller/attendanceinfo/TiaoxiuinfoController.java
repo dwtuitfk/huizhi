@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Tiaoxiuinfo;
 import com.huizhi.oa.service.TiaoxiuinfoService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class TiaoxiuinfoController {
     @Autowired
     private TiaoxiuinfoService tiaoxiuinfoService;
 
+    @RequiresPermissions("/tiaoxiu")//权限管理;
     @RequestMapping("/tiaoxiu")
     public String dep() {
         return "pages/tiaoxiuinfoTree/tiaoxiuinfo";

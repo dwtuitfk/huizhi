@@ -9,6 +9,8 @@ public class Meethouse {
 
     private Integer mhState;
 
+    private String stateName;
+
     public Integer getMhId() {
         return mhId;
     }
@@ -39,5 +41,13 @@ public class Meethouse {
 
     public void setMhState(Integer mhState) {
         this.mhState = mhState;
+    }
+
+    public String getStateName() {
+        return stateName;
+    }
+
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
     }
 }

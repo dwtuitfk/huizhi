@@ -11,18 +11,63 @@
             margin: 0px;
             padding: 0px;
         }
+        .layui-table, .layui-table-view {
+            margin: 0px 0;
+        }
+
     </style>
+
 </head>
 <body>
 <table class="layui-hide" id="demo" lay-filter="test"></table>
 
+<script type="text/html" id="toolbarDemo">
+
+    <div class="layui-input-inline" style="width: 120px;">
+        <input type="text" id="userid" name="userid" lay-verify="required" placeholder="职员编号" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" id="turename" name="turename" lay-verify="required" placeholder="姓名" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-input-inline" style="width: 120px;">
+        <input type="text" id="qq" name="qq" lay-verify="required" placeholder="QQ号码" autocomplete="off" class="layui-input">
+    </div>
+
+    <div class="layui-input-inline" style="width: 120px;">
+        <input type="text" id="address" name="address" lay-verify="required" placeholder="地址" autocomplete="off" class="layui-input">
+    </div>
+
+    <div class="layui-input-inline" style="width: 100px;">
+        <select name="sex" id="sex">
+            <option value="">性别</option>
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+    </div>
+
+    <div class="layui-input-inline" style="width: 100px;">
+        <select id="rolename" name="rolename">
+            <option value="">岗位</option>
+        </select>
+    </div>
+
+    <div class="layui-input-inline" style="width: 100px;">
+        <select id="depname" name="depName">
+            <option value="">部门</option>
+        </select>
+    </div>
+
+    <button class="layui-btn layui-btn-sm" lay-event="search" id="search" >
+        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>搜索
+    </button>
+
+</script>
+
+
+
 <script th:inline="none">
-    //格式转换
-    function createrFormat(o){
-        //var str = JSON.stringify(o);
-        return o;
-    }
-    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function(){
+
+    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider','form'], function(){
         var laydate = layui.laydate //日期
             ,laypage = layui.laypage //分页
             ,layer = layui.layer //弹层
@@ -30,15 +75,55 @@
             ,carousel = layui.carousel //轮播
             ,upload = layui.upload //上传
             ,element = layui.element //元素操作
-            ,slider = layui.slider //滑块
-        //向世界问个好
-        layer.msg('欢迎使用通信录！');
-        //监听Tab切换
-        element.on('tab(demo)', function(data){
-            layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
-                tips: 1
+            ,slider = layui.slider
+            ,form=layui.form//滑块
+
+
+
+        function readerselect(){
+            //异步获取部门名称
+            $.ajax({
+                type : "get",
+                url : "/system/selectDep",
+                success : function(data) {
+                    //alert(data[1].depnamemc);
+                    var dep='';
+                    $.each(data, function(index,obj) {
+                        dep += '<option value="'+obj.depname+'">'+obj.depnamemc+'</option>';
+                    });
+                    //alert(dep);
+                    $("#depname").append(dep);
+                    form.render();
+                },
             });
-        });
+
+            //异步获取岗位名称
+            $.ajax({
+                type : "get",
+                url : "/system/selectPost",
+                success : function(data) {
+                    //alert(data[1].rolenamemc);
+                    var role='';
+                    $.each(data, function(index,obj) {
+                        role += '<option value="'+obj.rolename+'">'+obj.rolenamemc+'</option>';
+                    });
+                    //alert(role);
+                    $("#rolename").append(role);
+                    form.render();
+                },
+            });
+        }
+
+            readerselect();
+            //监听Tab切换
+            element.on('tab(demo)', function(data){
+                layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
+                    tips: 1
+                });
+            });
+
+
+
         //执行一个 table 实例
         table.render({
             elem: '#demo'
@@ -46,8 +131,9 @@
             ,url: '/getAllContacts' //数据接口
             ,title: '通讯录'
             ,page: true //开启分页
-            ,toolbar: true //仅开启工具栏，不显示左侧模板
+            ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             /*,totalRow: false*/ //开启合计行
+            , even: true
             ,cols: [
                 [ //表头
                     {field:'userid', title: '职员编号',minWidth:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
@@ -63,7 +149,45 @@
                     {field:'isprohibit', title: '是否冻结',minWidth:'100',align:'center',sort: true,hide: true},
                 ]
             ]
+            ,id: 'idTest'
         });
+
+
+        //监听头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id)
+                ,data = checkStatus.data; //获取选中的数据
+            switch(obj.event){
+                case 'search':
+                    var userid=$('#userid').val();
+                    var turename=$('#turename').val();
+                    var qq=$('#qq').val();
+                    var address=$('#address').val();
+                    var sex=$('#sex').val();
+                    var roleName=$('#rolename').val();
+                    var depName=$('#depname').val();
+                    table.reload('idTest', {
+                        where:{
+                            userid:userid,
+                            turename:turename,
+                            qq:qq,
+                            address:address,
+                            sex:sex,
+                            depName:depName,
+                            roleName:roleName
+                        }
+                        ,page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                    });
+                    readerselect();
+                    break;
+
+            };
+        });
+
+
+
     });
 </script>
 </body>

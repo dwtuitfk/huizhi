@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Attendanceinfo;
 import com.huizhi.oa.service.AttendanceinfoService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class AttendanceinfoController {
     private AttendanceinfoService attendanceinfoService;
 
     //@ResponseBody
+    @RequiresPermissions("/attendance")//权限管理;
     @RequestMapping("/attendance")
     public String showAttendance() {
        // return "kdjflajladl";

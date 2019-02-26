@@ -40,4 +40,6 @@ public interface UserinfoService {
 
     Userinfo finduserById(Integer userid);
 
+    //通讯录模糊查询
+    List<UserRoleDep> seachContacts(UserRoleDep userRoleDep);
 }
