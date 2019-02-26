@@ -26,9 +26,15 @@
         <div>
             <img th:src="@{/images/2.jpg}" style="height: 280px; width: 100%">
         </div>
-        <div>条目3</div>
-        <div>条目4</div>
-        <div>条目5</div>
+        <div>
+            <img th:src="@{/images/3.jpg}" style="height: 280px; width: 100%">
+        </div>
+        <div>
+            <img th:src="@{/images/4.jpg}" style="height: 280px; width: 100%">
+        </div>
+        <div>
+            <img th:src="@{/images/5.jpg}" style="height: 280px; width: 100%">
+        </div>
     </div>
 </div>
 <!-- 条目中可以是任意内容，如：<img src=""> -->
@@ -129,7 +135,7 @@
                     //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                     type: 2,
                     title: "公告详情",
-                    area: ['650px', '450px'],
+                    area: ['650px', '470px'],
                     content: '/noticemanage/noticeparticulars?nId='+data.nId //引用的弹出层的页面层的方式加载修改界面表单
                 });
             }
