@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -19,7 +18,6 @@
 </head>
 
 <script type="text/javascript">
-
 
     //邮件存稿
     function save(){
@@ -50,6 +48,16 @@
                 ,height : 180
             })
         });
+
+
+      /*  var parent_jsoneAcceptid = eval('('+parent.jsoneAcceptid+')');
+        var parent_jsonjsoneSendid = eval('('+parent.jsoneSendid+')');
+        alert(parent_jsonjsoneSendid);*/
+
+       /* $("#eAcceptid").val(eAcceptid);
+        $("#eSendid").val(eSendid);
+        alert(eSendid);*/
+
             layui.use(['form', 'laydate'], function(){
                 var form = layui.form;
                 var laydate = layui.laydate;
@@ -59,7 +67,7 @@
             });
             /*form.render();*/
             //自定义验证规则
-           /* form.verify({*/
+            form.verify({
                /* caReason: function(value) {
                     if (value.length < 2) {
                         return '申请原因至少得2个字符啊';
@@ -70,7 +78,7 @@
                         return '请选择车辆';
                     }
                 }*/
-            /*});*/
+            });
     });
 
 
@@ -108,14 +116,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">发送人员:</label>
             <div class="layui-input-inline">
-                <input type="text" name="eSendid" id="eSendid" lay-verify="eSendid" th:value="${userinfo.userid}"  class="layui-input">
+                <input type="text" name="eSendid" id="eSendid" lay-verify="eSendid"  th:value="${eAcceptid}" class="layui-input">
             </div>
         </div>
         <!--接收人员-->
         <div class="layui-form-item">
             <label class="layui-form-label">接收人员:</label>
             <div class="layui-input-inline">
-                <input type="text" name="eAcceptid" id="eAcceptid" lay-verify="eAcceptid"  class="layui-input">
+                <input type="text" name="eAcceptid" id="eAcceptid" lay-verify="eAcceptid" th:value="${eSendid}" placeholder=""  class="layui-input">
             </div>
         </div>
         <!--转抄人员-->
@@ -136,7 +144,6 @@
         <div class="layui-input-block mailcontent" style="width:600px;" >
             <textarea name="eContent" id="eContent" style="display: block;"></textarea>
         </div>
-        <br>
         <!--邮件状态-->
         <!--<div class="layui-form-item">
             <label class="layui-form-label">邮件状态:</label>

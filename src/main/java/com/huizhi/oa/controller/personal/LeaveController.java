@@ -19,7 +19,6 @@ public class LeaveController {
     @Autowired
     private LeaveinfoService leaveinfoService;
 
-    /*http://localhost:8080/getAllLeaveInfo?page=1&limit=10测试成功*/
     /**
      * 获取所有请假条
      * @param page
@@ -32,6 +31,51 @@ public class LeaveController {
     public ResultMap<List<Leaveinfo>> getAllLeaveInfo(Integer page, Integer limit) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
         List<Leaveinfo> list=leaveinfoService.getAllLeaveInfo();
+        PageInfo<Leaveinfo> pageinfo=new PageInfo<>(list);
+        return new ResultMap<List<Leaveinfo>>("",list,0,(int)pageinfo.getTotal());
+    }
+    /**
+     * 获取某人所有请假条
+     * @param page
+     * @param limit
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("getOneLeaveInfoAndBM")
+    public ResultMap<List<Leaveinfo>> getOneLeaveInfoAndBM(Integer page, Integer limit) throws Exception {
+        PageHelper.startPage(page==null?1:page, limit);
+        List<Leaveinfo> list=leaveinfoService.getOneLeaveInfoAndBM(7201);
+        PageInfo<Leaveinfo> pageinfo=new PageInfo<>(list);
+        return new ResultMap<List<Leaveinfo>>("",list,0,(int)pageinfo.getTotal());
+    }
+    /**
+     * 获取所有请假条
+     * @param page
+     * @param limit
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("getAllLeaveInfoAndBM")
+    public ResultMap<List<Leaveinfo>> getAllLeaveInfoAndBM(Integer page, Integer limit) throws Exception {
+        PageHelper.startPage(page==null?1:page, limit);
+        List<Leaveinfo> list=leaveinfoService.getAllLeaveInfoAndBM();
+        PageInfo<Leaveinfo> pageinfo=new PageInfo<>(list);
+        return new ResultMap<List<Leaveinfo>>("",list,0,(int)pageinfo.getTotal());
+    }
+    /**
+     * 获取所有请出差信息
+     * @param page
+     * @param limit
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("getAllBusinessInfoAndBM")
+    public ResultMap<List<Leaveinfo>> getAllBusinessInfoAndBM(Integer page, Integer limit) throws Exception {
+        PageHelper.startPage(page==null?1:page, limit);
+        List<Leaveinfo> list=leaveinfoService.getAllBusinessInfoAndBM();
         PageInfo<Leaveinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Leaveinfo>>("",list,0,(int)pageinfo.getTotal());
     }

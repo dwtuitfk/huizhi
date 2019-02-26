@@ -11,15 +11,17 @@
             margin: 0px;
             padding: 0px;
         }
+        .layui-table, .layui-table-view {
+            margin: 0px 0;
+        }
     </style>
 </head>
 <body>
-请假申请审核请假申请审核请假申请审核请假申请审核请假申请审核
 <table class="layui-hide" id="demo" lay-filter="test"></table>
 
 <script th:inline="none">
     //setInterval(count,1000);
-    function count(){
+    /*function count(){
         $.ajax({ //收件箱未读邮件总数
             url:'/email/count',
             data:{
@@ -35,7 +37,7 @@
                 }
             }
         })
-    }
+    }*/
     //格式转换
     function createrFormat(o){
         //var str = JSON.stringify(o);
@@ -50,8 +52,7 @@
             ,upload = layui.upload //上传
             ,element = layui.element //元素操作
             ,slider = layui.slider //滑块
-        //向世界问个好
-        layer.msg('欢迎使用通信录！');
+
         //监听Tab切换
         element.on('tab(demo)', function(data){
             layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
@@ -62,26 +63,87 @@
         table.render({
             elem: '#demo'
             ,hight:'full-200'
-            ,url: '/getAllContacts' //数据接口
+            ,url: '/getAllLeaveInfoAndBM' //数据接口
             ,title: '审批'
             ,page: true //开启分页
             /* ,toolbar: true*/ //仅开启工具栏，不显示左侧模板
             /*,totalRow: false*/ //开启合计行
             ,cols: [
                 [ //表头
-                    {field:'类型', title: '申请原因',minWidth:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
-                    {field:'turename', title: '申请人',minWidth:'100',style:'vertical-align: middle',align:'center',sort: true},
-                    {field:'depNamemc', title: '部门',minWidth:'120',align:'center',sort: true},
-                    {field:'depNamemc', title: '审核状态',minWidth:'120',align:'center',sort: true},
+                    {field:'lReason', title: '申请原因',minWidth:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
+                    {field:'tureName', title: '申请人',minWidth:'100',style:'vertical-align: middle',align:'center',sort: true},
+                    {field:'depName', title: '部门',minWidth:'120',align:'center',sort: true},
+                    {field:'lState', title: '审核状态',minWidth:'120',align:'center',sort: true,edit: 'text'},
+                    {field:'lUserid', title: '审核人',minWidth:'120',align:'center',sort: true},
+                    //{field: 'lCheckad', title: '审核意见', minWidth: 200,edit: 'text'},
                     {title: '操作', align:'center',minWidth:'140', toolbar: '#barDemo'}
                 ]
             ]
+            ,id: 'idTest'
+            ,done: function(){
+
+                $("[data-field='lState']").children().each(function () {
+                    if ($(this).text() == '1') {
+                        $(this).text("审核通过")
+                    } else if ($(this).text() == '0') {
+                        $(this).text("未审核")
+                    }
+                    else if ($(this).text() == '2') {
+                        $(this).text("审核未通过")
+                    }
+                });
+               /* $("[data-field='lType']").children().each(function () {
+                    if ($(this).text() == '1') {
+                        $(this).text("出差")
+                    } else if ($(this).text() == '0') {
+                        $(this).text("请假")
+                    }
+                });*/
+
+
+            }
+        });
+        //监听行工具事件
+        table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                ,layEvent = obj.event; //获得 lay-event 对应的值
+            if(layEvent === 'edit'){
+
+                //将本行数据存储，方便子页面调用
+                json=JSON.stringify(data);
+                layer.open({
+                    //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                    type: 2,
+                    title: "审批",
+                    area: ['800px', '600px'],
+                    maxmin: true,
+                    content: '/personal/oneLeaveCheck', //引用的弹出层的页面层的方式加载修改界面表单
+                    cancel: function(index, layero){
+                        //if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
+                        layer.close(index)
+                        table.reload('idTest', {
+                            where: { //设定异步数据接口的额外参数，任意设
+                            }
+                            , page: {
+                                curr: 1 //重新从第 1 页开始
+                            }
+                        });
+                        //}
+                        return true;
+                    },
+                });
+
+            } else if(layEvent === 'del'){
+
+            } else if(layEvent === 'edit'){
+
+            }
         });
     });
 </script>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">审批</a>
+    <!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
 </script>
 </body>
 </html>

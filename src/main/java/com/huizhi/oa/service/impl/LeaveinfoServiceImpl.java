@@ -54,6 +54,21 @@ public class LeaveinfoServiceImpl implements LeaveinfoService {
     }
 
     @Override
+    public List<Leaveinfo> getOneLeaveInfoAndBM(Integer userId) {
+        return leaveinfoMapper.getOneLeaveInfoAndBM(userId);
+    }
+
+    @Override
+    public List<Leaveinfo> getAllLeaveInfoAndBM() {
+        return leaveinfoMapper.getAllLeaveInfoAndBM();
+    }
+
+    @Override
+    public List<Leaveinfo> getAllBusinessInfoAndBM() {
+        return leaveinfoMapper.getAllBusinessInfoAndBM();
+    }
+
+    @Override
     public List<Leaveinfo> selectLeaveinfo(Leaveinfo leaveinfo){
         return leaveinfoMapper.selectLeaveinfo(leaveinfo);
     }

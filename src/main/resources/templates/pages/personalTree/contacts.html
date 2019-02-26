@@ -140,13 +140,13 @@
                     {field:'turename', title: '姓名',minWidth:'100',style:'vertical-align: middle',align:'center',sort: true},
                     {field:'roleNamemc', title: '岗位',minWidth:'120',align:'center',sort: true},
                     {field:'depNamemc', title: '部门',minWidth:'120',align:'center',sort: true},
-                    {field:'age', title: '年龄',minWidth:'80',align:'center',sort: true,hide: true},
+                    //{field:'age', title: '年龄',minWidth:'80',align:'center',sort: true,hide: true},
                     {field:'sex', title: '性别',minWidth:'60',align:'center',sort: true},
-                    {field:'address', title:'地址',minWidth:'130',align:'center',templet:'#amount',sort: true,hide: true},
+                    //{field:'address', title:'地址',minWidth:'130',align:'center',templet:'#amount',sort: true,hide: true},
                     {field:'email', title: '邮箱',minWidth:'120',align:'center',sort: true},
                     {field:'phone', title: '电话',minWidth:'120',align:'center',sort: true},
                     {field:'qq', title: 'QQ号码',minWidth:'100',align:'center',sort: true},
-                    {field:'isprohibit', title: '是否冻结',minWidth:'100',align:'center',sort: true,hide: true},
+                    //{field:'isprohibit', title: '是否冻结',minWidth:'100',align:'center',sort: true,hide: true},
                 ]
             ]
             ,id: 'idTest'
@@ -166,6 +166,7 @@
                     var sex=$('#sex').val();
                     var roleName=$('#rolename').val();
                     var depName=$('#depname').val();
+                    var phone=$('#phone').val();
                     table.reload('idTest', {
                         where:{
                             userid:userid,
@@ -174,7 +175,8 @@
                             address:address,
                             sex:sex,
                             depName:depName,
-                            roleName:roleName
+                            roleName:roleName,
+                            phone:phone
                         }
                         ,page: {
                             curr: 1 //重新从第 1 页开始

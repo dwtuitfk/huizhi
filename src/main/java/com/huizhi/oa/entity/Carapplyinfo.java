@@ -23,6 +23,26 @@ public class Carapplyinfo {
 
     private String caCheckad;
 
+    private String depName;
+
+    public String getDepName() {
+        return depName;
+    }
+
+    public void setDepName(String depName) {
+        this.depName = depName;
+    }
+
+    public String getTureName() {
+        return tureName;
+    }
+
+    public void setTureName(String tureName) {
+        this.tureName = tureName;
+    }
+
+    private String tureName;
+
     public String getCaId() {
         return caId;
     }

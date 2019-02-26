@@ -37,4 +37,20 @@ public interface LeaveinfoService {
      * @return
      */
     List<Leaveinfo> getAllLeaveInfo();
+
+    /**
+     * 获取某个人所有请假、出差信息,部门
+     * @return
+     */
+    List<Leaveinfo> getOneLeaveInfoAndBM(Integer userId);
+    /**
+     * 获取某个人所有请假信息,部门
+     * @return
+     */
+    List<Leaveinfo> getAllLeaveInfoAndBM();
+    /**
+     * 获取某个人所有出差信息,部门
+     * @return
+     */
+    List<Leaveinfo> getAllBusinessInfoAndBM();
 }

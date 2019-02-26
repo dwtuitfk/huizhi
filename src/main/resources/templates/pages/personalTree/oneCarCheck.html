@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>用户管理</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .layui-table, .layui-table-view {
+            margin: 0px 0;
+        }
+    </style>
+</head>
+
+<script type="text/javascript">
+
+    //重新渲染表单
+    /*function renderForm(){
+        layui.use('form', function(){
+            var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+            form.render();
+        });
+    }*/
+    $(document).ready(function () {
+        var pp = eval('('+parent.json+')');
+        //申请单初始化值
+        $.ajax({
+            url: "/getOneCarInfoCheck",
+            type: "POST",
+            data: {"caId":pp.caId},
+            dataType: "json",
+            success:function(data){
+                $('#caId').val(data.caId);
+                $('#caCId').val(data.caCId);
+                $('#userid').val(pp.tureName);
+                $('#caStarttime').val(data.caStarttime);
+                $('#caOvertime').val(data.caOvertime);
+                $('#caReason').val(data.caReason);
+                //$('#caUserid').val(data.caUserid);
+                $('#caCheckad').val(data.caCheckad);
+            },
+            error:function(){
+                parent.layer.msg("系统异常");
+            },
+        });
+        //下拉菜单获取牌照
+        /*$.ajax({
+            url:"/getAllLicensePlate",
+            type:"get",
+            success:function(data){
+
+                $.each(data,function(index,item){
+                    $('#caCId').append(new Option(item,item));//往下拉菜单里添加元素
+                })
+                renderForm();//菜单渲染 把内容加载进去
+            },
+        });*/
+        layui.use(['form', 'layedit', 'laydate'], function(){
+            var form = layui.form;
+            //监听提交
+            form.on('submit(passOk)', function(data){
+                // console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+                // console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+                // console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+                /*  layer.alert(JSON.stringify(data.field.financePassword), {
+                      title: '最终的提交信息'
+                  })*/
+                //修改
+                var index = parent.layer.getFrameIndex(window.name);
+                $.ajax({
+                    url:"/carPassOrNo?caState=1",
+                    type:"POST",
+                    data:data.field,
+                    dataType:"json",
+                    success:function (data) {
+                        if(data===500){
+                            layer.msg("放入失败", {icon: 5});
+                        }else {
+                            table.reload('idTest', {
+                                where: { //设定异步数据接口的额外参数，任意设
+
+                                }
+                                , page: {
+                                    curr: 1 //重新从第 1 页开始
+                                }
+                            });
+                        }
+                    }
+                });
+                parent.layer.close(index);
+            });
+            //监听提交
+            var index = parent.layer.getFrameIndex(window.name);
+            form.on('submit(passNo)', function(data){
+                $.ajax({
+                    url:"/carPassOrNo?caState=2",
+                    type:"POST",
+                    data:data.field,
+                    dataType:"json",
+                    success:function (data) {
+                        if(data===500){
+                            layer.msg("放入失败", {icon: 5});
+                        }else {
+                            table.reload('idTest', {
+                                where: { //设定异步数据接口的额外参数，任意设
+
+                                }
+                                , page: {
+                                    curr: 1 //重新从第 1 页开始
+                                }
+                            });
+                        }
+                    }
+                });
+                parent.layer.close(index);
+            });
+        });
+    });
+        /*layui.use(['form', 'laydate'], function(){
+
+            });
+            var endDate=laydate.render({
+                elem: '#caOvertime',
+            });
+            /!*form.render();*!/
+            //自定义验证规则
+            form.verify({
+            });
+        });*/
+
+</script>
+<body>
+<div class="weadmin-body">
+    <form class="layui-form layui-form-pane" id="idTest" >
+        <!--申请单单号-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">申请单单号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="caId" id="caId" readonly  class="layui-input">
+            </div>
+        </div>
+        <!--申请的车辆-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">申请的车辆</label>
+            <div class="layui-input-inline">
+                <input type="text" name="caCId" id="caCId" lay-verify="" readonly class="layui-input">
+            </div>
+        </div>
+
+        <!--申请人员-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">申请人员</label>
+            <div class="layui-input-inline">
+                <input type="text" name="userid" id="userid" lay-verify="" readonly placeholder="" class="layui-input">
+            </div>
+        </div>
+        <!--开始日期-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">开始日期:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="caStarttime" id="caStarttime" lay-verify="required" readonly autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <!--结束日期-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">结束日期:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="caOvertime" id="caOvertime" lay-verify="required" readonly autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <!--申请原因-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">申请原因:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="caReason" id="caReason" lay-verify="caReason" readonly class="layui-input">
+            </div>
+        </div>
+        <!--审核人员-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">审核人员:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="caUserid" id="caUserid" lay-verify="caReason" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>-->
+        <!--审批建议-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">审批建议</label>
+            <div class="layui-input-block">
+                <textarea id="caCheckad" name="caCheckad" lay-verify="required" placeholder="" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <button class="layui-btn" id="passOk" lay-submit lay-filter="passOk" >审批通过</button>
+                <button class="layui-btn" id="passNo" lay-submit lay-filter="passNo" >审批不通过</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

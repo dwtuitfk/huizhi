@@ -27,6 +27,17 @@ public class Leaveinfo {
 
     private String tureName;
 
+    public String getDepName() {
+        return depName;
+    }
+
+    public void setDepName(String depName) {
+        this.depName = depName;
+    }
+
+    //人员的部门编号
+    private String depName;
+
     public void setTureName(String tureName) {
         this.tureName = tureName;
     }

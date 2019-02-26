@@ -66,7 +66,7 @@ public class CarController {
         carapplyinfo.setCaCId(caCId);
         /*开始时间*/
         String caStarttime=request.getParameter("caStarttime");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         carapplyinfo.setCaStarttime(sdf.parse(caStarttime));
         /*结束时间*/
         String caOvertime=request.getParameter("caOvertime");

@@ -22,7 +22,33 @@
     from leaveinfo lea
     LEFT JOIN userinfo us ON lea.userId= us.userId
   </select>
-
+  <!--获取某人所有请假、出差申请-->
+  <select id="getOneLeaveInfoAndBM" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  SELECT
+  lea.*,us.tureName,us.depName
+  FROM leaveinfo lea
+  LEFT JOIN userinfo us ON lea.userId= us.userId
+  WHERE lea.userId =#{userid}
+  order by l_state
+  </select>
+  <!--获取所有请假申请-->
+  <select id="getAllLeaveInfoAndBM" resultMap="BaseResultMap">
+  SELECT
+  lea.*,us.tureName,us.depName
+  FROM leaveinfo lea
+  LEFT JOIN userinfo us ON lea.userId= us.userId
+  WHERE lea.l_type = 0
+  order by l_state
+  </select>
+  <!--获取所有出差申请-->
+  <select id="getAllBusinessInfoAndBM" resultMap="BaseResultMap">
+  SELECT
+  lea.*,us.tureName,us.depName
+  FROM leaveinfo lea
+  LEFT JOIN userinfo us ON lea.userId= us.userId
+  WHERE lea.l_type = 1
+  order by l_state
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

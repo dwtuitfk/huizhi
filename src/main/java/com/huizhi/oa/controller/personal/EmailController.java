@@ -3,10 +3,14 @@ package com.huizhi.oa.controller.personal;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Emailinfo;
+import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.EmailinfoService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,6 +29,16 @@ public class EmailController {
     @Autowired
     private EmailinfoService emailinfoService;
 
+    //邮件回复跳转
+    @RequestMapping("/mailReply")
+    public String showPage(HttpServletRequest request, Model model){
+        String eAcceptid = request.getParameter("eAcceptid");
+        String eSendid = request.getParameter("eSendid");
+        model.addAttribute("eAcceptid",eAcceptid);
+        model.addAttribute("eSendid",eSendid);
+
+        return "pages/personalTree/mailReply";
+    }
 
     /*http://localhost:8080/getAllEmailInfo?page=1&limit=10测试成功*/
     //获取所有邮件
@@ -280,9 +294,8 @@ public class EmailController {
     }
 
     /*发邮件*/
-    @ResponseBody
     @RequestMapping("/sendEmail")
-    public void sendEmail(HttpServletRequest request) throws Exception {
+    public String sendEmail(HttpServletRequest request) throws Exception {
         Emailinfo emailinfo = new Emailinfo();
         /*邮件编号*/
         String uuid = UUID.randomUUID().toString();//生成UUID作为邮件编号
@@ -301,9 +314,12 @@ public class EmailController {
         //String eTime=request.getParameter("eTime");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         emailinfo.seteTime(sdf.parse(sdf.format(new Date())));
-        /*发送人员*/
+        /*发送人员
+        * 获取当前登录人员信息
+        * */
         String eSendid=request.getParameter("eSendid");
-        emailinfo.seteSendid(122);
+        //Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        emailinfo.seteSendid(Integer.parseInt(eSendid));
         /*接收人员*/
         String eAcceptid=request.getParameter("eAcceptid");
         if (eAcceptid.isEmpty()){
@@ -338,6 +354,7 @@ public class EmailController {
         String eState = request.getParameter("eState");
         emailinfo.seteState(Integer.parseInt(eState));
         emailinfoService.insertSelective(emailinfo);
+        return "mailCompose";
     }
     /*草稿发邮件*/
     @ResponseBody

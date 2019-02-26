@@ -16,6 +16,23 @@
     ca_id, userId, ca_startTime, ca_overTime, ca_c_id, ca_reason, ca_userId, ca_state, 
     ca_checkAd
   </sql>
+  <!--查看某个人所有申请状况-->
+  <select id="getAllApplyInfoCheck" parameterType="java.lang.Integer" resultType="com.huizhi.oa.entity.AllApply">
+  SELECT c.* FROM(
+  SELECT  leaveinfo.userId userId, l_startTime startTime, l_overTime overTime, l_reason reason, l_userId checkId, l_state state, l_checkAd checkAd FROM leaveinfo
+  UNION ALL
+  SELECT  carapplyinfo.userId userId, ca_startTime startTime, ca_overTime overTime, ca_reason reason, ca_userId checkId, ca_state state, ca_checkAd checkAd FROM carapplyinfo) AS c
+  WHERE userId = #{userId,jdbcType=INTEGER}
+  ORDER BY state
+  </select>
+  <select id="getAllCarApplyInfoCheck" resultMap="BaseResultMap">
+    /*获取所有车辆申请信息*/
+    select
+    car.*,us.tureName,us.depName
+    FROM carapplyinfo car
+    LEFT JOIN userinfo us ON car.userId= us.userId
+    order by ca_state
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
