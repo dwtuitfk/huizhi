@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>公告详情</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            //富文本编辑器自定义工具栏
+            var editIndex,layedit;
+            layui.use('layedit', function(){
+                layedit = layui.layedit;
+                editIndex = layedit.build('nContent', {
+                    tool: false
+                    ,height : 100
+                    ,contenteditable:false
+                    ,border:0
+                });
+            });
+
+            $.ajax({
+                type:"get",
+                url:"/noticemanage/getNotice",
+                dataType:"json",
+                success:function(data){  //data表示返回的数据
+                    $('#nId').val(data.nId);
+                    $('#userid').val(data.userid);
+                    $('#nTitle').val(data.nTitle);
+                    $('#nTime').val(data.nTime);
+                    //$('#nContent').val(data.nContent);
+                    layedit.setContent(editIndex,data.nContent);//富文本编辑器还原表单
+                }
+            });
+
+            var index = parent.layer.getFrameIndex(window.name);
+
+            //关闭iframe
+            $('#closeIframe').click(function(){
+                parent.layer.close(index);//关闭当前页
+            });
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+
+<br><br>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">
+        公告标题:
+    </label>
+    <h1 class="layui-input-block">
+            <input type="text" id="nTitle" name="nTitle" lay-verify="nTitle" readonly autocomplete="off" class="layui-input" style="width: 200px; border:0">
+        <span id="nTitle_prompt"></span>
+    </h1>
+</div>
+
+<!--<div class="layui-form-item">
+    <label class="layui-form-label">
+        <span class="we-red">*</span>公告编号:
+    </label>
+    <div class="layui-input-block">
+        <input type="text" id="nId" name="nId" lay-verify="nId" readonly autocomplete="off" class="layui-input" style="width: 200px">
+        <span id="nId_prompt"></span>
+    </div>
+</div>-->
+<!--<div class="layui-form-item">
+    <label class="layui-form-label">
+        <span class="we-red">*</span>职工编号:
+    </label>
+    <div class="layui-input-block">
+        <input type="text" id="userid" name="userid" lay-verify="userid" readonly placeholder="职工编号" autocomplete="off" class="layui-input" style="width: 200px">
+        <span id="userid_prompt"></span>
+    </div>
+</div>-->
+
+
+<div class="layui-form-item">
+    <label class="layui-form-label">
+        发布时间:
+    </label>
+    <div class="layui-input-inline">
+        <input type="text" class="layui-input" id="nTime" name="nTime" readonly autocomplete="off" style="width: 200px; border:0">
+        <span id="nTime_prompt"></span>
+    </div>
+</div>
+
+<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">
+        公告内容:
+    </label>
+    <div class="layui-input-block">
+        <textarea type="textarea" id="nContent" name="nContent" lay-verify="nContent" readonly autocomplete="off" class="layui-input" style="width: 200px;height: 80px; border:0;"></textarea>
+        <span id="nContent_prompt"></span>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <button class="layui-btn"  id="closeIframe" lay-submit="" lay-filter="updata">返回</button>
+    </div>
+</div>
+</body>
+</html>
