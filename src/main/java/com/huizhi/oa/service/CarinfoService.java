@@ -22,4 +22,17 @@ public interface CarinfoService {
     显示所有车辆信息
      */
     List<Carinfo>  getAllCarinfo();
+
+    /**
+     * 删去更多
+     * @param ids
+     * @return
+     */
+    int delMoreCar(List<String> ids);
+
+    /**
+     * 高级搜索信息
+     * @return
+     */
+    List<Carinfo> seachCarinfo(Carinfo c);
 }

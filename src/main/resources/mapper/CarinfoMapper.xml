@@ -24,9 +24,9 @@
     where c_id = #{cId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.huizhi.oa.entity.Carinfo">
-    insert into carinfo (c_id, c_type, c_state, 
+    insert into carinfo (c_id, c_type, c_state,
       c_insurance, c_maintainTime)
-    values (#{cId,jdbcType=VARCHAR}, #{cType,jdbcType=VARCHAR}, #{cState,jdbcType=INTEGER}, 
+    values (#{cId,jdbcType=VARCHAR}, #{cType,jdbcType=VARCHAR}, #{cState,jdbcType=INTEGER},
       #{cInsurance,jdbcType=VARCHAR}, #{cMaintaintime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Carinfo">
@@ -100,4 +100,27 @@
     from carinfo
   </select>
 
+
+  <!-- 删除车辆信息的持久化操作 -->
+  <delete id="delMoreCar">
+    delete from carinfo where c_id in
+
+    <foreach item="item" index="index" collection="list"
+             open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
+  <!--高级查询车辆信息   c_id, c_type, c_state, c_insurance, c_maintainTime-->
+  <select id="seachCarinfo" resultMap="BaseResultMap" parameterType="com.huizhi.oa.entity.Carinfo">
+    SELECT c_id,
+    c_type,
+    c_state,
+    c_insurance,
+    c_maintainTime FROM  carinfo
+    WHERE 1=1
+    <if test="cId!=null"> AND c_id LIKE concat('%',#{cId},'%')</if>
+    <if test="cType!=null">AND c_type LIKE concat('%',#{cType},'%')</if>
+    <if test="cMaintaintime!=null">AND c_maintainTime LIKE concat(#{cMaintaintime})</if>
+  </select>
 </mapper>

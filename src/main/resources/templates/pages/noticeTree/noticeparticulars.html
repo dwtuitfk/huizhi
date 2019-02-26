@@ -17,9 +17,7 @@
                 layedit = layui.layedit;
                 editIndex = layedit.build('nContent', {
                     tool: false
-                    ,height : 100
-                    ,contenteditable:false
-                    ,border:0
+                    ,height : 200
                 });
             });
 
@@ -55,7 +53,7 @@
 <br><br>
 
 <div class="layui-form-item">
-    <label class="layui-form-label">
+    <label class="layui-form-label" style="color: white">
         公告标题:
     </label>
     <h1 class="layui-input-block">
@@ -85,7 +83,7 @@
 
 
 <div class="layui-form-item">
-    <label class="layui-form-label">
+    <label class="layui-form-label" style="color: white">
         发布时间:
     </label>
     <div class="layui-input-inline">
@@ -95,11 +93,11 @@
 </div>
 
 <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">
+    <label class="layui-form-label" style="color: white">
         公告内容:
     </label>
     <div class="layui-input-block">
-        <textarea type="textarea" id="nContent" name="nContent" lay-verify="nContent" readonly autocomplete="off" class="layui-input" style="width: 200px;height: 80px; border:0;"></textarea>
+        <textarea type="textarea" id="nContent" name="nContent" lay-verify="nContent" readonly autocomplete="off" class="layui-input"></textarea>
         <span id="nContent_prompt"></span>
     </div>
 </div>

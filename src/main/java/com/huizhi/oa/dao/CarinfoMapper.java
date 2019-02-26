@@ -22,4 +22,8 @@ public interface CarinfoMapper {
 
     //查询所有车辆信息
     List<Carinfo> getAllCarinfo();
+    //删去更多信息
+    int delMoreCar(List<String> ids);
+    //高级搜索
+    List<Carinfo> seachCarinfo(Carinfo c);
 }

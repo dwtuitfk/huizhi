@@ -94,7 +94,7 @@
                             parent.layer.msg("修改失败", {icon: 5});
                         }else{
                             parent.layer.msg("修改成功", {icon: 6});
-
+                            parent.location.reload();
                         }
                     },
                     error:function(){
@@ -121,7 +121,7 @@
         <span class="we-red">*</span>公告编号:
     </label>
     <div class="layui-input-block">
-        <input type="text" id="nId" name="nId" lay-verify="nId" readonly="ture" autocomplete="off" class="layui-input" style="width: 200px">
+        <input type="text" id="nId" name="nId" lay-verify="nId" readonly="readonly" autocomplete="off" class="layui-input layui-disabled" style="width: 200px">
         <span id="nId_prompt"></span>
     </div>
 </div>
@@ -130,7 +130,7 @@
         <span class="we-red">*</span>职工编号:
     </label>
     <div class="layui-input-block">
-        <input type="text" id="userid" name="userid" lay-verify="userid" readonly="ture" placeholder="职工编号" autocomplete="off" class="layui-input" style="width: 200px">
+        <input type="text" id="userid" name="userid" lay-verify="userid" readonly="readonly" placeholder="职工编号" autocomplete="off" class="layui-input layui-disabled" style="width: 200px">
         <span id="userid_prompt"></span>
     </div>
 </div>

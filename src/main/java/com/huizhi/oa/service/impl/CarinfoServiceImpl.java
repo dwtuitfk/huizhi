@@ -55,5 +55,24 @@ public class CarinfoServiceImpl implements CarinfoService {
         return carinfoMapper.getAllCarinfo();
     }
 
+    /**
+     * 删去更多
+     * @param ids
+     * @return
+     */
+    @Override
+    public int delMoreCar(List<String> ids) {
+        return carinfoMapper.delMoreCar(ids);
+    }
+
+    /**
+     * 高级搜索
+     * @return
+     */
+    @Override
+    public List<Carinfo> seachCarinfo(Carinfo c) {
+        return carinfoMapper.seachCarinfo(c);
+    }
+
 
 }

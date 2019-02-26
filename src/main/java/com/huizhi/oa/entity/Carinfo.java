@@ -1,5 +1,7 @@
 package com.huizhi.oa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Carinfo {
@@ -10,7 +12,7 @@ public class Carinfo {
     private Integer cState;
 
     private String cInsurance;
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date cMaintaintime;
 
     public String getcId() {
