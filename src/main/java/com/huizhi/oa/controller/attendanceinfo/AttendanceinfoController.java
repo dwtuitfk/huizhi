@@ -139,6 +139,10 @@ public class AttendanceinfoController {
                     attendanceinfo.setSelectTime(oneDate);
                 }
                 System.out.println(attendanceinfo.getSelectTime());
+            }else{
+                if(!oneDate.equals("")){
+                    attendanceinfo.setSelectTime(oneDate);
+                }
             }
 
             list = attendanceinfoService.searchSelect(attendanceinfo);

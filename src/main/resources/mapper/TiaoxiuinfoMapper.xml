@@ -10,7 +10,9 @@
     <result column="tx_userId" jdbcType="INTEGER" property="txUserid" />
     <result column="tx_state" jdbcType="INTEGER" property="txState" />
     <result column="tx_checkAd" jdbcType="VARCHAR" property="txCheckad" />
+    <result column="selectTime" jdbcType="TIMESTAMP" property="selectTime" />
   </resultMap>
+
   <sql id="Base_Column_List">
     tx_id, userId, tx_starttime, tx_overtime, tx_reason, tx_userId, tx_state, tx_checkAd
   </sql>
@@ -162,4 +164,39 @@
       tx_checkAd = #{txCheckad,jdbcType=VARCHAR}
     where tx_id = #{txId,jdbcType=INTEGER}
   </update>
+
+  <select id="searchTiaoxiuinfo" parameterType="com.huizhi.oa.entity.Tiaoxiuinfo" resultMap="BaseResultMap">
+    select
+    tiao.*,us.tureName
+    from tiaoxiuinfo tiao
+    LEFT JOIN userinfo us ON tiao.userId= us.userId
+    where 1=1
+    <if test="userid != null">
+      and tiao.userId like concat("%",#{userid},"%")
+    </if>
+
+    <if test="tureName != null">
+      and us.tureName like concat("%",#{tureName},"%")
+    </if>
+    <if test="selectTime != null">
+
+      and  DATE_FORMAT(#{selectTime}, '%Y-%m-%d') >= DATE_FORMAT(tx_starttime , '%Y-%m-%d')
+      and  DATE_FORMAT(tx_overtime , '%Y-%m-%d') >= DATE_FORMAT(#{selectTime}, '%Y-%m-%d')
+      <!--
+      and  DATE_FORMAT(tx_overtime , '%Y-%m-%d') >= #{selectTime}
+
+      and tx_starttime like concat("%",#{selectTime},"%")
+      and #{selectTime} >= DATE_FORMAT(tx_starttime , '%Y-%m-%d')
+      and  #{selectTime} >= tx_starttime
+      and  tx_overtime >= #{selectTime}
+      -->
+    </if>
+    <if test="txState != null">
+      and tx_state = #{txState,jdbcType=INTEGER}
+    </if>
+
+
+  </select>
+
+
 </mapper>

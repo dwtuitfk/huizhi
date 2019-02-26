@@ -20,4 +20,11 @@ public interface TiaoxiuinfoService {
     int updateByPrimaryKeySelective(Tiaoxiuinfo record);
 
     int updateByPrimaryKey(Tiaoxiuinfo record);
+
+    /**
+     * 索引查询
+     * @param tiaoxiuinfo
+     * @return
+     */
+    List<Tiaoxiuinfo> searchTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo);
 }

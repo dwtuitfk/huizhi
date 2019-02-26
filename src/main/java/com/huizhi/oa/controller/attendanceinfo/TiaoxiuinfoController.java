@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -22,7 +24,7 @@ public class TiaoxiuinfoController {
     @RequiresPermissions("/tiaoxiu")//权限管理;
     @RequestMapping("/tiaoxiu")
     public String dep() {
-        return "pages/tiaoxiuinfoTree/tiaoxiuinfo";
+        return "pages/tiaoxiuinfoTree/searchTiaoxiuinfo";
     }
 
     @ResponseBody
@@ -48,6 +50,45 @@ public class TiaoxiuinfoController {
         return list;
     }
 
+
+    @ResponseBody
+    @RequestMapping("/searchTiaoxiuinfo")
+    public ResultMap<List<Tiaoxiuinfo>> searchTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo, Integer page, Integer limit, String tureName, String userid, String oneDate) throws Exception {
+        PageHelper.startPage(page==null?1:page, limit);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("天"+oneDate);
+        System.out.println("用户id"+userid);
+
+        System.out.println("名称"+tureName);
+
+
+        if(tureName==null && userid==null && oneDate==null){
+            List<Tiaoxiuinfo> list = tiaoxiuinfoService.searchTiaoxiuinfo(tiaoxiuinfo);
+            PageInfo<Tiaoxiuinfo> pageinfo=new PageInfo<>(list);
+            return new ResultMap<List<Tiaoxiuinfo>>("",list,0,(int)pageinfo.getTotal());
+        }else{
+            if(!tureName.equals("")){
+                tiaoxiuinfo.setTureName(tureName);
+            }
+
+
+
+            if(!oneDate.equals("")){
+                tiaoxiuinfo.setSelectTime(sdf.parse(oneDate));
+            }
+            System.out.println("调休时间"+tiaoxiuinfo.getSelectTime());
+
+            if(!userid.equals("")){
+                tiaoxiuinfo.setUserid(Integer.parseInt(userid));
+            }
+
+            List<Tiaoxiuinfo> list = tiaoxiuinfoService.searchTiaoxiuinfo(tiaoxiuinfo);
+            System.out.println(list);
+            PageInfo<Tiaoxiuinfo> pageinfo=new PageInfo<>(list);
+            return new ResultMap<List<Tiaoxiuinfo>>("",list,0,(int)pageinfo.getTotal());
+        }
+
+    }
 
 
 }

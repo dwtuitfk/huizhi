@@ -25,6 +25,17 @@ public class Tiaoxiuinfo {
 
     private String tureName;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private Date selectTime;
+
+    public void setSelectTime(Date selectTime) {
+        this.selectTime = selectTime;
+    }
+
+    public Date getSelectTime() {
+        return selectTime;
+    }
+
     public void setTureName(String tureName) {
         this.tureName = tureName;
     }

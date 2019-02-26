@@ -51,4 +51,9 @@ public class TiaoxiuinfoServiceImpl implements TiaoxiuinfoService {
     public int updateByPrimaryKey(Tiaoxiuinfo record) {
         return tiaoxiuinfoMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<Tiaoxiuinfo> searchTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo) {
+        return tiaoxiuinfoMapper.searchTiaoxiuinfo(tiaoxiuinfo);
+    }
 }

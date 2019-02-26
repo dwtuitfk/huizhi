@@ -22,4 +22,14 @@ public interface TiaoxiuinfoMapper {
     int updateByPrimaryKeySelective(Tiaoxiuinfo record);
 
     int updateByPrimaryKey(Tiaoxiuinfo record);
+
+    //<select id="searchTiaoxiuinfo"
+
+    /**
+     * 索引查询
+     * @param tiaoxiuinfo
+     * @return
+     */
+    List<Tiaoxiuinfo> searchTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo);
+
 }
