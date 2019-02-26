@@ -52,4 +52,9 @@ public class AttendanceinfoServiceImpl implements AttendanceinfoService {
     public int updateByPrimaryKey(Attendanceinfo record) {
         return attendanceinfoMapper.updateByPrimaryKeySelective(record);
     }
+
+    @Override
+    public List<Attendanceinfo> searchSelect(Attendanceinfo attendanceinfo) {
+        return attendanceinfoMapper.searchSelect(attendanceinfo);
+    }
 }

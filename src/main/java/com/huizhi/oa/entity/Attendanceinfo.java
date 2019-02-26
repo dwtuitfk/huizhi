@@ -17,6 +17,36 @@ public class Attendanceinfo {
 
     private String tureName;
 
+    private String mtimeRemarkes;
+
+    private String atimeRemarkes;
+
+    private String selectTime;
+
+    public void setMtimeRemarkes(String mtimeRemarkes) {
+        this.mtimeRemarkes = mtimeRemarkes;
+    }
+
+    public void setAtimeRemarkes(String atimeRemarkes) {
+        this.atimeRemarkes = atimeRemarkes;
+    }
+
+    public void setSelectTime(String selectTime) {
+        this.selectTime = selectTime;
+    }
+
+    public String getMtimeRemarkes() {
+        return mtimeRemarkes;
+    }
+
+    public String getAtimeRemarkes() {
+        return atimeRemarkes;
+    }
+
+    public String getSelectTime() {
+        return selectTime;
+    }
+
     public void setTureName(String tureName) {
         this.tureName = tureName;
     }

@@ -22,4 +22,12 @@ public interface AttendanceinfoMapper {
     int updateByPrimaryKeySelective(Attendanceinfo record);
 
     int updateByPrimaryKey(Attendanceinfo record);
+    //<select id="searchSelect"
+
+    /**
+     * 索引查询
+     * @param attendanceinfo
+     * @return
+     */
+    List<Attendanceinfo> searchSelect(Attendanceinfo attendanceinfo);
 }

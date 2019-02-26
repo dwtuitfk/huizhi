@@ -20,4 +20,11 @@ public interface AttendanceinfoService {
     int updateByPrimaryKeySelective(Attendanceinfo record);
 
     int updateByPrimaryKey(Attendanceinfo record);
+
+    /**
+     * 索引查询
+     * @param attendanceinfo
+     * @return
+     */
+    List<Attendanceinfo> searchSelect(Attendanceinfo attendanceinfo);
 }

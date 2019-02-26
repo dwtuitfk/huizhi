@@ -6,6 +6,7 @@
     <result column="userId" jdbcType="INTEGER" property="userid" />
     <result column="a_mtime" jdbcType="TIMESTAMP" property="aMtime" />
     <result column="a_atime" jdbcType="TIMESTAMP" property="aAtime" />
+    <result column="SelectTime" jdbcType="VARCHAR" property="SelectTime" />
   </resultMap>
   <sql id="Base_Column_List">
     a_id, userId, a_mtime, a_atime
@@ -96,4 +97,32 @@
       a_atime = #{aAtime,jdbcType=TIMESTAMP}
     where a_id = #{aId,jdbcType=INTEGER}
   </update>
+
+  <select id="searchSelect" parameterType="com.huizhi.oa.entity.Attendanceinfo" resultMap="BaseResultMap">
+    select
+    att.*, us.tureName
+    from attendanceinfo att
+    LEFT JOIN userinfo us ON att.userId= us.userId
+    where 1=1
+    <if test="userid != null">
+      and att.userId like concat("%",#{userid},"%")
+    </if>
+
+    <if test="tureName != null">
+      and us.tureName like concat("%",#{tureName},"%")
+    </if>
+
+    <if test="selectTime != null">
+      and a_mtime LIKE CONCAT('%',#{selectTime},'%')
+    </if>
+
+    <if test="selectTime != null">
+      or a_atime LIKE CONCAT('%',#{selectTime},'%')
+    </if>
+
+
+
+
+  </select>
+
 </mapper>
