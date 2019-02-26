@@ -2,14 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>车辆修改</title>
+    <title>车辆添加</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
     <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
 
     <script type="text/javascript">
-
-
 
         //重新渲染表单
         function renderForm(){
@@ -20,59 +18,41 @@
         }
 
 
-        //=======================进入选择器下拉列表=================================
-        //加载获取数据进入车辆查询系统
-        $(document).ready(function(){
-
-            //异步获取车辆名称
-            $.ajax({
-                type : "get",
-                url : "/carmanage/selectCarinfo",
-                success : function(data) {
-                    // alert(data[1].cType);
-                    var car='';
-                    $.each(data, function(index,obj) {
-                        car += '<option value="'+obj.cType+'">'+obj.cType+'</option>';
-                    });
-                    // alert(car);
-                    $("#carname").append(car);
-                    renderForm();
-                    //layui.form.render();
-                },
-            });
-
-
-
-            layui.use('form', function() {
-                var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-                form.render();
-            });
-
-        });
-        //=====================结束下拉选择器列表================
         layui.use(['form', 'laydate'], function(){
             var form = layui.form;
-            var laydate = layui.laydate,
-                layer = layui.layer;
+            var laydate = layui.laydate,//日期
+                layer = layui.layer;//弹层
 
-            $.ajax({
-                type:"get",
-                //data:  表示服务传递的参数
-                url:"/carmanage/getCar",
-                dataType:"json",
-                success:function(data){  //data表示返回的数据
-                    $('#carId').val(data.cId);
-                    $('#carname').val(data.cType);
-                    $('#cState').val(data.cState);
-                    $('#cInsurance').val(data.cInsurance);
-                    $('#cMaintaintime').val(data.cMaintaintime);
-                }
-            });
+            /*
+                        $(document).ready(function(){
+
+                            //异步获取车辆名称
+                            $.ajax({
+                                type : "get",
+                                url : "/carmanage/selectCarinfo",
+                                success : function(data) {
+                                    alert(data[1].cId);
+                                    var car='';
+                                    $.each(data, function(index,obj) {
+                                        car += '<option value="'+obj.cId+'">'+obj.cId+'</option>';
+                                    });
+                                    alert(car);
+                                    $("#carId").append(car);
+                                    renderForm();
+                                    //layui.form.render();
+                                },
+                            });
 
 
 
+                            layui.use('form', function() {
+                                var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                                form.render();
+                            });
 
-            //车辆上次保养时间验证
+                        });*/
+
+            //车辆上次保养时间
             laydate.render({
                 elem: '#cMaintaintime'
             });
@@ -87,7 +67,7 @@
                     $("#car_1").html("正确").css("color","green");
                     return true;
                 }else{
-                    $("#car_1").html("必须是字母大学开头后面为字母和数字组合").css("color","red");
+                    $("#car_1").html("必须是大写字母开头后面字母和数字组合的5位数").css("color","red");
                     //获得焦点
                     //$("#carId").focus();
                     //将文本内容进行全选
@@ -131,7 +111,7 @@
                 }
             };
             //车辆保险信息
-            $("#car_cInsurance").blur(function(){
+            $("#cInsurance").blur(function(){
                 //获取车辆保险文本框的值
                 var cInsurance=$('#cInsurance').val();
                 //使用正则表达式 公告内容至少20位汉字
@@ -151,48 +131,51 @@
 
 
             //使用jQuery
-            $(function(){
-                //部门名称失去焦点事件实现验证
-                $("#carId").blur(checkcarcId);
-                //部门名称编号失去焦点事件实现验证
-                $("#carname").blur(checkCar);
-                //提交按钮的验证事件
-                $("#closeIframe").click(function(){
+            //车辆名称失去焦点事件实现验证
+            $("#carname").blur(checkCar);
+            //车辆名称编号失去焦点事件实现验证
+            $("#carId").blur(checkcarcId);
+            //提交按钮的验证事件
+            $("#closeIframe").click(function(){
+                // alert(191);
+                if(checkCar()&&checkcarcId()){
+                var index = parent.layer.getFrameIndex(window.name);
+                var carname=$('#carname').val();
+                var carId=$('#carId').val();
+                var cState=$('#cState').val();
+                var cInsurance=$('#cInsurance').val();
+                var cMaintaintime=$('#cMaintaintime').val();
 
-                    if(checkcarcId()&&checkCar()){
-                        var index = parent.layer.getFrameIndex(window.name);
-                        var carname=$('#carname').val();
-                        var carId=$('#carId').val();
-                        var cState=$('#cState').val();
-                        var cInsurance=$('#cInsurance').val();
-                        var cMaintaintime=$('#cMaintaintime').val();
-                        $.ajax({
-                            url: "/carmanage/carUpdateInfo",
-                            type: "POST",
-                            data: {"cId":carId,"cType":carname,"cState":cState,"cInsurance":cInsurance,"cMaintaintime":cMaintaintime},
-                            dataType: "json",
-                            success: function(data){
-                                if(data===500){
-                                    parent.layer.msg("修改失败", {icon: 5});
-                                }else{
-                                    parent.layer.msg("修改成功", {icon: 6});
-                                }
-                            },
-                            error:function(){
-                                parent.layer.msg("系统异常");
-                            },
+                $.ajax({
+                    url: "/carmanage/carAddInfo",
+                    type: "POST",
+                    data: {"cId":carId,"cType":carname,"cState":cState,"cInsurance":cInsurance,"cMaintaintime":cMaintaintime},
+                    dataType:"json",
+                    success: function(data){
+                        if(data===500){
+                            parent.layer.msg("添加失败", {icon: 5});
+                        }else{
+                            parent.layer.msg("添加成功", {icon: 6});
 
-                        });
-
-                        parent.layer.close(index);
-
-
-                    }
-                    else{
-                        return false;
-                    }
+                        }
+                    },
+                    error:function(){
+                        layer.msg("系统异常");
+                    },
                 });
+
+                parent.layer.close(index);
+
+
+                }
+                else{
+                    return false;
+                }
             });
+
+
+
+
 
         });
 
@@ -203,10 +186,25 @@
 
 
 <br><br>
+<!--车辆编号-->
+<!--<div class="layui-form-item">
+ <label for="carId" class="layui-form-label">
+     <span class="we-red">*</span>车辆编号:
+ </label>
+ <div class="layui-input-inline" id="chickdep">
+
+     <select id="carId" name="carId">
+         <option value="">&#45;&#45;车辆车牌号&#45;&#45;</option>
+     </select>
+
+ </div>
+</div>
+-->
+
 
 <form class="layui-form" action="" target="nm_iframe">
 
-    <!--   //车辆编号-->
+    <!--   车辆编号-->
     <div class="layui-form-item">
         <label class="layui-form-label">车辆编号:</label>
         <div class="layui-input-block">
@@ -214,31 +212,24 @@
             <span id="car_1"></span>
         </div>
     </div>
-    <!--   //车辆类型-->
-    <!--<div class="layui-form-item">
+
+
+    <!--   车辆类型-->
+    <div class="layui-form-item">
         <label class="layui-form-label">车辆类型:</label>
         <div class="layui-input-block">
             <input type="text" id="carname" name="carname" lay-verify="carname" placeholder="车辆类型" autocomplete="off" class="layui-input" style="width: 200px">
+            <!--<select id="carname" name="carname">
+             <option value="">&#45;&#45;越野&#45;&#45;</option>
+             <option value="">&#45;&#45;奔驰&#45;&#45;</option>
+             <option value="">&#45;&#45;宝马&#45;&#45;</option>
+             </select>-->
             <span id="car_2"></span>
-        </div>
-    </div>-->
 
-    <!--   //车辆类型-->
-    <div class="layui-form-item">
-        <label for="carname" class="layui-form-label">
-            <span class="we-red">*</span>车辆编号:
-        </label>
-        <!--  //车辆编号-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">车辆类型:</label>
-            <div class="layui-input-block">
-                <input type="text" id="carname" name="carname" lay-verify="carname" autocomplete="off" placeholder="车辆编号" class="layui-input" style="width: 200px">
-            </div>
+
         </div>
     </div>
-
-
-    <!--  //车辆状况-->
+    <!--  车辆状况-->
     <div class="layui-form-item">
         <label class="layui-form-label">车辆状况:</label>
         <div class="layui-input-block">
@@ -251,7 +242,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">保险信息:</label>
         <div class="layui-input-block">
-            <input type="text" id="cInsurance" name="cInsurance" lay-verify="cInsurance" placeholder="保险信息" autocomplete="off" class="layui-input" style="width: 200px">
+            <input type="text" id="cInsurance" name="cInsurance" lay-verify="cInsurance" placeholder="请填写保养" autocomplete="off" class="layui-input" style="width: 420px" >
             <span id="car_4"></span>
         </div>
     </div>
@@ -265,14 +256,17 @@
         </div>
     </div>
 
+
+
+    <!-- 添加重置-->
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn"  id="closeIframe" lay-submit="" lay-filter="updata">修改</button>
+            <button class="layui-btn"  id="closeIframe" lay-submit="" lay-filter="add">添加</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
-
 </form>
+
 
 </body>
 </html>
