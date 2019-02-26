@@ -11,14 +11,11 @@
             margin: 0px;
             padding: 0px;
         }
-
     </style>
 </head>
 <body>
 
-
 <table class="layui-hide" id="demo" lay-filter="test"></table>
-
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
@@ -40,7 +37,6 @@
         return o;
     }
 
-
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function(){
         var laydate = layui.laydate //日期
             ,laypage = layui.laypage //分页
@@ -51,42 +47,40 @@
             ,element = layui.element //元素操作
             ,slider = layui.slider //滑块
 
+        //执行一个 table 实例
+        table.render({
+            elem: '#demo'
+            ,skin: 'row'
+            ,even: true
+            ,url: '/meeting/getAllHouseapplyinfo' //数据接口
+            ,title: '会议申请'
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，
+            ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,totalRow: false //开启合计行
+            ,cols: [
+                [ //表头
+                    {type:'checkbox', fixed: 'left'},
+                    {field:'haId', title: '编号',minWidth:'60', fixed: 'left', unresize: true, sort: true,align: 'center'},
+                    {field:'tureName', title: '申请人',align: 'center'},
+                    {field:'haStarttime', title: '开会时间',minWidth:'100',align: 'center',sort: true},
+                    {field:'haReason', title: '申请用途',minWidth:'100', edit: 'text',align: 'center'},
+                    {field:'roleNamemc', title:'审核人员',minWidth:'100',align: 'center'},
+                    {field:'mhAddress', title: '会议室',minWidth:'100',align: 'center', sort: true},
+                    {field:'state', title: '状态',align: 'center'},
+                    {field:'haCheckad', title: '审核建议',align: 'center'},
+                    {field:'haMId', title: '会议记录编号',minWidth:'80',align: 'center', sort: true},
+                    {fixed: 'right', title:'操作', toolbar: '#barDemo', align: 'center'}
+                ]
+            ]
+            ,page: true //开启分页
+        });
+
         //监听Tab切换
         element.on('tab(demo)', function(data){
             layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
                 tips: 1
             });
         });
-
-        //执行一个 table 实例
-        table.render({
-            elem: '#demo'
-            //,height: 500
-            ,url: '/meeting/getAllHouseapplyinfo' //数据接口
-            ,title: '会议申请'
-            ,page: true //开启分页
-            ,toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
-            ,totalRow: false //开启合计行
-            ,cols: [
-
-                [ //表头
-                    {type:'checkbox', fixed: 'left'},
-                    {field:'haId', title: '会议室申请编号',width:'100', sort: true, fixed: 'left',align:'center'},
-                    {field:'tureName', title: '申请人',width:'100',align:'center'},
-                    {field:'haStarttime', title: '申请开会时间',width:'100',align:'center'},
-                    {field:'haReason', title: '申请用途',width:'100',align:'center'},
-                    {field:'roleNamemc', title:'审核人员',width:'200',align:'center'},
-                    {field:'mhAddress', title: '会议室',width:'150',align:'center'},
-                    {field:'state', title: '状态',width:'150',align:'center'},
-                    {field:'haCheckad', title: '审核建议',width:'150',align:'center'},
-                    {field:'haMId', title: '会议记录编号',width:'150',align:'center'},
-                    {title: '操作', align:'center',width:'180', toolbar: '#barDemo'}
-
-                ]
-
-            ]
-        });
-
 
         //监听头工具栏事件
         table.on('toolbar(test)', function(obj){
@@ -201,7 +195,5 @@
         });
     });
 </script>
-
-
 </body>
 </html>

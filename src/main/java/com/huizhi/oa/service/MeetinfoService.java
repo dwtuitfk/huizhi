@@ -21,4 +21,6 @@ public interface MeetinfoService {
     List<Meetinfo> getAllMeetinfo();
 
     PageInfo<Meetinfo> getAllMeetinfo(Integer pageNum, Integer pageSize);
+
+    int delMoreMeetinfo(List<Integer> ids);
 }

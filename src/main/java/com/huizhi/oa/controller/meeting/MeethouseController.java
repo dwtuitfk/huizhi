@@ -1,24 +1,8 @@
-/**
- * System Name： SDN Platform
- * <p>
- * File Name： MeethouseController
- * <p>
- * Creating Time： 2019-02-18 09:18
- * <p>
- * Copyright (c) 2015-2025 Fiberhome Technologies.
- * 88,YouKeYuan Road, Hongshan District.,Wuhan,P.R.China,
- * Wuhan Research Institute of Post & Telecommunication.
- * <p>
- * All rights reserved.
- */
-
-package com.huizhi.oa.controller;
+package com.huizhi.oa.controller.meeting;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.huizhi.oa.entity.Bmzd;
-import com.huizhi.oa.entity.Houseapplyinfo;
-import com.huizhi.oa.entity.Meethouse;
+import com.huizhi.oa.entity.*;
 import com.huizhi.oa.service.MeethouseService;
 import com.huizhi.oa.util.LayUIResult;
 import com.huizhi.oa.util.ResultMap;
@@ -91,19 +75,16 @@ public class MeethouseController {
      */
     @ResponseBody
     @RequestMapping("/getAllMeethouse")
-    public ResultMap<List<Meethouse>> getAllMeethouse(Integer page, Integer limit) throws Exception {
+    public ResultMap<List<Meethouse>> getAllMeethouse(Integer page, Integer limit,String stateName,Integer mhId) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<Meethouse> list= meethouseService.getAllMeethouse();
+        Meethouse meethouse = new Meethouse();
+        meethouse.setMhId(mhId);
+        meethouse.setStateName(stateName);
+        List<Meethouse> list=meethouseService.seachMeethouse(meethouse);
         PageInfo<Meethouse> pageinfo=new PageInfo<>(list);
-        return new ResultMap<List<Meethouse>>("", list, 0, (int)pageinfo.getTotal());
+        return new ResultMap<>("",list,0,(int)pageinfo.getTotal());
     }
-    /*public Object getAllMeethouse(@RequestParam("page") Integer pageNum, @RequestParam("limit") Integer pageSize){
-        PageInfo<Meethouse> list = meethouseService.getAllMeethouse(pageNum, pageSize);
-        int count = (int) list.getTotal();
-        LayUIResult result = LayUIResult.build(0, "", list); // 这个是我返回的数据格式，可以可以自己定义
-        result.setCount(count); // 尾部以把该封装类贴出来
-        return result;
-    }*/
+
 
     /**
      * 查询单条会议室
@@ -118,20 +99,16 @@ public class MeethouseController {
 
     /**
      * 添加会议室
-     * @param mhId
-     * @param mhName
-     * @param mhAddress
+     * @param meethouse
      * @return
      */
     @ResponseBody
     @RequestMapping("/meethouseAdd")
-    public String addMeethouse(@RequestParam("mhId") String mhId,
-                               @RequestParam("mhName") String mhName,
-                               @RequestParam("mhAddress") String mhAddress){
-        Meethouse meethouse = new Meethouse();
+    public String addMeethouse(Meethouse meethouse){
+        /*Meethouse meethouse = new Meethouse();
         meethouse.setMhId(Integer.valueOf(mhId));
         meethouse.setMhName(mhName);
-        meethouse.setMhAddress(mhAddress);
+        meethouse.setMhAddress(mhAddress);*/
         meethouse.setMhState(1);//会议室初始状态
         int tmp = meethouseService.insertSelective(meethouse);
         if(tmp>0){

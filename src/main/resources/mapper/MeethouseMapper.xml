@@ -6,6 +6,7 @@
     <result column="mh_name" jdbcType="VARCHAR" property="mhName" />
     <result column="mh_address" jdbcType="VARCHAR" property="mhAddress" />
     <result column="mh_state" jdbcType="INTEGER" property="mhState" />
+    <result column="stateName" jdbcType="VARCHAR" property="stateName" />
   </resultMap>
   <sql id="Base_Column_List">
     mh_id, mh_name, mh_address, mh_state
@@ -80,15 +81,40 @@
     where mh_id = #{mhId,jdbcType=INTEGER}
   </update>
   <select id="getAllMeethouse" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from meethouse
+      SELECT m.mh_id,m.mh_name,m.mh_address,
+      CASE m.mh_state
+          WHEN 1 THEN '空闲'
+          WHEN 0 THEN '占用'
+      END as stateName
+      FROM
+      meethouse as m
   </select>
-  <delete id="delMoreMeethouse" >
-    delete from meethouse where mh_id in
+  <delete id="delMoreMeethouse" parameterType="java.lang.Integer" >
+    delete from meethouse
+    where mh_id in
     <foreach item="item" index="index" collection="list"
              open="(" separator="," close=")">
-    #{mhId}
+    #{item}
     </foreach>
   </delete>
+  <!--模糊查询-->
+  <select id="seachMeethouse" resultMap="BaseResultMap" parameterType="com.huizhi.oa.entity.Meethouse">
+    select
+    mh_id, mh_name, mh_address, stateName
+    FROM
+        (SELECT m.mh_id,m.mh_name,m.mh_address,
+        CASE m.mh_state
+        WHEN 1 THEN '空闲'
+        WHEN 0 THEN '占用'
+        END as stateName
+        FROM
+        meethouse as m) as meethouse
+    WHERE 1=1
+    <if test="mhId != null">
+      and meethouse.mh_id like concat("%",#{mhId},"%")
+    </if>
+    <if test="stateName != null">
+      and meethouse.stateName like concat("%",#{stateName},"%")
+    </if>
+  </select>
 </mapper>

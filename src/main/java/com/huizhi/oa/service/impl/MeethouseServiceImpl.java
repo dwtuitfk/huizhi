@@ -83,4 +83,9 @@ public class MeethouseServiceImpl implements MeethouseService {
     public int delMoreMeethouse(List<Integer> ids) {
         return meethouseMapper.delMoreMeethouse(ids);
     }
+
+    @Override
+    public List<Meethouse> seachMeethouse(Meethouse meethouse) {
+        return meethouseMapper.seachMeethouse(meethouse);
+    }
 }

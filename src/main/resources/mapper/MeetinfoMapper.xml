@@ -10,6 +10,8 @@
     <result column="m_starttime" jdbcType="TIMESTAMP" property="mStarttime" />
     <result column="m_state" jdbcType="INTEGER" property="mState" />
     <result column="m_overtime" jdbcType="TIMESTAMP" property="mOvertime" />
+    <result column="m_state_name" jdbcType="VARCHAR" property="mStateName" />
+    <result column="mh_address" jdbcType="VARCHAR" property="mhAddress" />
   </resultMap>
   <sql id="Base_Column_List">
     m_id, m_title, m_content, mh_id, m_people, m_starttime, m_state, m_overtime
@@ -126,8 +128,21 @@
     where m_id = #{mId,jdbcType=INTEGER}
   </update>
   <select id="getAllMeetinfo" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from meetinfo
+      SELECT m.m_id,m.m_title,h.mh_address,m.m_content,m.m_people,m.m_starttime,m.m_overtime,
+      CASE m.m_state
+              WHEN 1 THEN '空闲'
+              WHEN 0 THEN '占用'
+      END as m_state_name
+      FROM meetinfo as m
+      LEFT JOIN meethouse as h
+      on m.mh_id=h.mh_id
   </select>
+  <delete id="delMoreMeetinfo">
+    delete from meetinfo where m_id in
+    <foreach item="item" index="index" collection="list"
+             open="(" separator="," close=")">
+      #{mId}
+    </foreach>
+  </delete>
+
 </mapper>

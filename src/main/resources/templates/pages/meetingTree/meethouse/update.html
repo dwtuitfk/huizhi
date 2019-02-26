@@ -26,7 +26,10 @@
 
         var depmc;
         var rolemc;
-
+        layui.use('form', function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            form.render();
+        });
         //异步查询单条用户信息
         $.ajax({
             type:"get",
@@ -36,27 +39,14 @@
                 $('#mhId').val(data.mhId);
                 $('#mhName').val(data.mhName);
                 $('#mhAddress').val(data.mhAddress);
-                $('#mhState').val(data.mhState);
-
+                //$('#mhState').val(data.mhState);
+                $(":radio[name='mhState'][value='" + data.mhState + "']").prop("checked", "checked");
                 depmc = data.depNamemc;
                 rolemc = data.roleNamemc;
                 /*                alert(depmc);
                                 alert(rolemc);*/
             }
         });
-
-
-
-
-
-
-
-
-        layui.use('form', function() {
-            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-            form.render();
-        });
-
     });
 </script>
 
@@ -111,8 +101,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="we-red">*</span>会议室状态</label>
             <div class="layui-input-block">
-                <input type="radio" name="mhState" lay-skin="primary" title="空闲" checked="" value="1">
-                <input type="radio" name="mhState" lay-skin="primary" title="占用" value="0">
+                <input type="radio" name="mhState" lay-skin="primary" title="未开" value="1" checked="checked">
+                <input type="radio" name="mhState" lay-skin="primary" title="已开" value="0">
             </div>
         </div>
 

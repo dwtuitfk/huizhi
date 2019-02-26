@@ -11,6 +11,10 @@
     <result column="ha_state" jdbcType="INTEGER" property="haState" />
     <result column="ha_checkAd" jdbcType="VARCHAR" property="haCheckad" />
     <result column="ha_m_id" jdbcType="INTEGER" property="haMId" />
+    <result column="mh_address" jdbcType="VARCHAR" property="mhAddress" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="roleNamemc" jdbcType="VARCHAR" property="roleNamemc" />
+    <result column="tureName" jdbcType="VARCHAR" property="tureName" />
   </resultMap>
   <sql id="Base_Column_List">
     ha_id, userId, ha_startTime, ha_reason, ha_userId, ha_mh_id, ha_state, ha_checkAd, 
@@ -140,9 +144,19 @@
     where ha_id = #{haId,jdbcType=INTEGER}
   </update>
   <select id="getAllHouseapplyinfo" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    houseapplyinfo
+          SELECT h.ha_id,u.tureName,h.ha_startTime,h.ha_reason,z.roleNamemc,h.ha_mh_id,
+      CASE h.ha_state
+          WHEN 0 THEN '未审核'
+          WHEN 1 THEN '审核通过'
+          WHEN 2 THEN '审核未通过'
+      END as state
+      ,h.ha_checkAd,h.ha_m_id,m.mh_address
+      FROM houseapplyinfo as h
+      LEFT JOIN meethouse as m
+      on h.ha_mh_id=m.mh_id
+      LEFT JOIN userzd as z
+      on h.ha_userId=z.userzdId
+      LEFT JOIN userinfo as u
+      ON h.userId=u.userId
   </select>
 </mapper>

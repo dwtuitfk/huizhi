@@ -84,5 +84,10 @@ public class MeetinfoServiceImpl implements MeetinfoService {
         return new PageInfo<>(list);
     }
 
+    @Override
+    public int delMoreMeetinfo(List<Integer> ids) {
+        return meetinfoMapper.delMoreMeetinfo(ids);
+    }
+
 
 }

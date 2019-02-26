@@ -25,6 +25,22 @@ public class Houseapplyinfo {
     private String haCheckad;
 
     private Integer haMId;
+    /**
+     * 会议室名称
+     */
+    private String mhAddress;
+    /**
+     * 会议室状态名称
+     */
+    private String state;
+    /**
+     * 审核人员
+     */
+    private String roleNamemc;
+    /**
+     * 申请人姓名
+     */
+    private String tureName;
 
     public Integer getHaId() {
         return haId;
@@ -96,5 +112,37 @@ public class Houseapplyinfo {
 
     public void setHaMId(Integer haMId) {
         this.haMId = haMId;
+    }
+
+    public String getMhAddress() {
+        return mhAddress;
+    }
+
+    public void setMhAddress(String mhAddress) {
+        this.mhAddress = mhAddress;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getRoleNamemc() {
+        return roleNamemc;
+    }
+
+    public void setRoleNamemc(String roleNamemc) {
+        this.roleNamemc = roleNamemc;
+    }
+
+    public String getTureName() {
+        return tureName;
+    }
+
+    public void setTureName(String tureName) {
+        this.tureName = tureName;
     }
 }

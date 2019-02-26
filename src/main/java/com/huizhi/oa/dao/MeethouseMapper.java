@@ -1,6 +1,7 @@
 package com.huizhi.oa.dao;
 
 import com.huizhi.oa.entity.Meethouse;
+import com.huizhi.oa.entity.UserRoleDep;
 
 import java.util.List;
 
@@ -25,4 +26,11 @@ public interface MeethouseMapper {
      * @return
      */
     int delMoreMeethouse(List<Integer> ids);
+
+    /**
+     * 模糊查询
+     * @param meethouse
+     * @return
+     */
+    List<Meethouse> seachMeethouse(Meethouse meethouse);
 }
