@@ -231,8 +231,10 @@
                 layer.open({
                     //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                     type: 2,
+                    closeBtn: 1,//关闭按钮是否显示 1显示0不显示
+                    shade: 0.8,  //遮罩透明度
                     title: "修改会议室信息",
-                    area: ['430px', '430px'],
+                    area: ['450px', '400px'],
                     maxmin: true,
                     content: '/meeting/meethouseUpdatePage?mhId='+data.mhId //引用的弹出层的页面层的方式加载修改界面表单
                 });

@@ -37,6 +37,23 @@
                 ,type: 'datetime'
             });
         });
+
+        //异步会议室名称
+        $.ajax({
+            type : "get",
+            url : "/meeting/selectMeethouse",
+            success : function(data) {
+                //alert(data[1].depnamemc);
+                var dep='';
+                $.each(data, function(index,obj) {
+                    dep += '<option value="'+obj.mhId+'">'+obj.mhAddress+'</option>';
+                });
+                //alert(dep);
+                $("#mhAddress").append(dep);
+                renderForm();
+                //layui.form.render();
+            },
+        });
         //异步查询单条用户信息
         $.ajax({
             type:"get",
@@ -55,22 +72,7 @@
             }
         });
 
-        //异步会议室名称
-        $.ajax({
-            type : "get",
-            url : "/meeting/selectMeethouse",
-            success : function(data) {
-                //alert(data[1].depnamemc);
-                var dep='';
-                $.each(data, function(index,obj) {
-                    dep += '<option value="'+obj.mhId+'">'+obj.mhAddress+'</option>';
-                });
-                //alert(dep);
-                $("#mhAddress").append(dep);
-                renderForm();
-                //layui.form.render();
-            },
-        });
+
 
 
 
@@ -83,7 +85,7 @@
     <form class="layui-form" action="/meeting/houseapplyinfoUpdate">
 
         <!--会议申请编号-->
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="width: 96%;">
             <label for="haId" class="layui-form-label">
                 <span class="we-red">*</span>会议编号
             </label>
@@ -97,7 +99,7 @@
         </div>
 
         <!--申请开会时间-->
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="width: 96%;">
             <label for="haStarttime" class="layui-form-label">
                 <span class="we-red">*</span>开会时间
             </label>
@@ -111,7 +113,7 @@
         </div>
 
         <!--申请原因-->
-        <div class="layui-form-item">
+        <!--<div class="layui-form-item" style="width: 96%;">
             <label for="haReason" class="layui-form-label">
                 <span class="we-red">*</span>申请用途
             </label>
@@ -121,6 +123,12 @@
             </div>
             <div class="layui-form-mid layui-word-aux">
                 <span class="we-red"></span>
+            </div>
+        </div>-->
+        <div class="layui-form-item layui-form-text" style="width: 96%;">
+            <label class="layui-form-label">申请用途</label>
+            <div class="layui-input-block">
+                <textarea id="haReason" name="haReason" value=""  placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
         </div>
 
@@ -139,7 +147,7 @@
         </div>-->
 
         <!--会议室编号-->
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="width: 96%;">
             <label for="mhAddress" class="layui-form-label">
                 <span class="we-red">*</span>会议室
             </label>
