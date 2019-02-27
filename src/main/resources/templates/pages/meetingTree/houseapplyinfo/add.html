@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>会议申请添加</title>
+    <title>添加会议申请</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/layui/2.4.5/css/layui.css}"/>
     <script th:src="@{/webjars/jquery/3.3.1/jquery.js}" type="text/javascript"></script>
     <script th:src="@{/webjars/layui/2.4.5/layui.js}" type="text/javascript"></script>
@@ -58,12 +58,12 @@
 <body>
 <br>
 <div class="weadmin-body">
-    <form class="layui-form" action="/meeting/houseapplyinfoAdd">
+    <form class="layui-form" action="" target="nm_iframe">
 
         <!--会议申请编号-->
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="width: 96%;">
             <label for="haId" class="layui-form-label">
-                <span class="we-red">*</span>会议申请编号
+                <span class="we-red">*</span>编号
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="haId" name="haId" required="" lay-verify="haId"
@@ -74,28 +74,15 @@
             </div>
         </div>
 
-        <!--员工编号（申请人员）-->
-        <div class="layui-form-item">
-            <label for="userid" class="layui-form-label">
-                <span class="we-red">*</span>申请人
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" value="" id="userid" name="userid" required="" lay-verify="userid"
-                       autocomplete="off" class="layui-input">
-            </div>
-            <div class="layui-form-mid layui-word-aux">
-                <span class="we-red"></span>
-            </div>
-        </div>
         <!--申请开会时间-->
-        <div class="layui-inline">
+        <div class="layui-inline" style="width: 96%;">
             <label class="layui-form-label">开会时间</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="haStarttime" name="haStarttime" placeholder="yyyy-MM-dd HH:mm:ss">
             </div>
         </div>
         <!--申请原因-->
-        <div class="layui-form-item layui-form-text">
+        <div class="layui-form-item layui-form-text" style="width: 96%;">
             <label class="layui-form-label">申请原因</label>
             <div class="layui-input-block">
                 <textarea value="" id="haReason" name="haReason" lay-verify="haReason"
@@ -104,7 +91,7 @@
         </div>
 
         <!--申请会议编号-->
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="width: 96%;">
             <label for="mhAddress" class="layui-form-label">
                 <span class="we-red">*</span>会议室
             </label>
@@ -120,54 +107,63 @@
         <div class="layui-form-item">
             <label class="layui-form-label">
             </label>
-            <button  class="layui-btn" lay-filter="add" lay-submit="">
-                添加
-            </button>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">添加</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </form>
+    <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
 </div>
 <script type="text/javascript">
+    $(function () {
 
-    layui.use(['form','layer'], function(){
-        var form = layui.form,
-            layer = layui.layer;
+        layui.use(['form','layer','layedit'], function(){
+            var form = layui.form,
+                layer = layui.layer,
+                layedit = layui.layedit;
+            var editIndex = layedit.build('LAY_demo_editor');
 
-        //验证会议申请编码的规则
-        form.verify({
-            haId:
-                [
-                    /^[0-9]{1,4}$/
-                    ,'请填入0-4的分数'
-                ]
-        });
-    });
-
-    $(function(){
-        layui.use(['form','layer','admin'], function(){
-
-            $.ajax({
-                url: data.form.action,
-                type: data.form.method,
-                data: $(data.form).serialize(),
-                dataType: "json",
-                success: function(data){
-                    if(data===500){
-                        parent.layer.msg("添加失败", {icon: 5});
-                    }else{
-                        parent.layer.msg("添加成功", {icon: 6});
-                        window.location.href="index";
-                    }
-                },
-                error:function(){
-                    parent.layer.msg("系统异常");
-                },
-
+            //验证会议申请编码的规则
+            form.verify({
+                haId:
+                    [
+                        /^[0-9]{1,4}$/
+                        ,'请填入0-4的分数'
+                    ]
             });
 
-            //parent.layer.close(index);
-        });
-    });
+            form.on('submit(add)', function(data){
 
+                var index = parent.layer.getFrameIndex(window.name);
+                $.ajax({
+                    type: 'post',
+                    url: '/meeting/houseapplyinfoAdd', // ajax请求路径
+                    data: {
+                        haId:data.field.haId,
+                        //userid:data.field.userid,
+                        haStarttime: data.field.haStarttime,
+                        haReason: data.field.haReason,
+                        haMhId: data.field.haMhId
+                    },
+                    dataType:"json",
+                    success: function(data){
+                        if(data==400){
+                            layer.msg("添加成功", {icon: 6,time:2000},function () {
+                                parent.layer.close(index);
+                                parent.location.reload();
+                            });
+                        }else {
+                            layer.msg("添加失败", {icon: 5,time:2000});
+                        }
+                    },
+                    error:function(){
+                        layer.msg("系统异常");
+                    },
+                });
+                return false;
+            });
+        });
+
+    });
 </script>
 </body>
 

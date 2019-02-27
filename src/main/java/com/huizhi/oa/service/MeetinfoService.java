@@ -23,4 +23,11 @@ public interface MeetinfoService {
     PageInfo<Meetinfo> getAllMeetinfo(Integer pageNum, Integer pageSize);
 
     int delMoreMeetinfo(List<Integer> ids);
+
+    /**
+     * 模糊查询
+     * @param meetinfo
+     * @return
+     */
+    List<Meetinfo> seachMeetinfo(Meetinfo meetinfo);
 }

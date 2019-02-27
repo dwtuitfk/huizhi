@@ -34,6 +34,10 @@ public class Meetinfo {
      * 会议室位置
      */
     private String mhAddress;
+    /**
+     * 搜索时间条件
+     */
+    private String times;
 
     public Integer getmId() {
         return mId;
@@ -113,5 +117,13 @@ public class Meetinfo {
 
     public void setMhAddress(String mhAddress) {
         this.mhAddress = mhAddress;
+    }
+
+    public String getTimes() {
+        return times;
+    }
+
+    public void setTimes(String times) {
+        this.times = times;
     }
 }

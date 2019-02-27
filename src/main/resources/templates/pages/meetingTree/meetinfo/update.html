@@ -93,7 +93,7 @@
         <!--会议编号-->
         <div class="layui-form-item">
             <label for="mId" class="layui-form-label">
-                <span class="we-red">*</span>会议编号
+                <span class="we-red">*</span>编号
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="mId" name="mId" required="" lay-verify="mId"
@@ -107,7 +107,7 @@
         <!--会议标题-->
         <div class="layui-form-item">
             <label for="mTitle" class="layui-form-label">
-                <span class="we-red">*</span>会议编号
+                <span class="we-red">*</span>标题
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="mTitle" name="mTitle" required="" lay-verify="mTitle"
@@ -120,7 +120,7 @@
 
         <!--会议内容-->
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">会议内容</label>
+            <label class="layui-form-label">内容</label>
             <div class="layui-input-block">
                 <textarea id="mContent" name="mContent" value=""  placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
@@ -129,7 +129,7 @@
         <!--会议室编号-->
         <div class="layui-form-item">
             <label for="mhAddress" class="layui-form-label">
-                <span class="we-red">*</span>会议室编号
+                <span class="we-red">*</span>会议室
             </label>
             <div class="layui-input-inline">
                 <select id="mhAddress" name="mhId">
@@ -137,19 +137,6 @@
                 </select>
             </div>
         </div>
-
-        <!--<div class="layui-form-item">
-            <label for="mhId" class="layui-form-label">
-                <span class="we-red">*</span>会议室编号
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" id="mhId" name="mhId" required="" lay-verify="mhId"
-                       autocomplete="off" value="" class="layui-input" >
-            </div>
-            <div class="layui-form-mid layui-word-aux">
-                <span class="we-red"></span>
-            </div>
-        </div>-->
 
         <!--会议人员-->
         <div class="layui-form-item">
@@ -168,7 +155,7 @@
         <!--开会时间-->
         <div class="layui-form-item">
             <label for="mStarttime" class="layui-form-label">
-                <span class="we-red">*</span>申请开会时间
+                <span class="we-red">*</span>开会时间
             </label>
             <div class="layui-input-inline">
                 <input type="text" value="" id="mStarttime" name="mStarttime" required="" lay-verify="mStarttime"
@@ -190,7 +177,7 @@
         <!--开会结束时间-->
         <div class="layui-form-item">
             <label for="mOvertime" class="layui-form-label">
-                <span class="we-red">*</span>申请开会时间
+                <span class="we-red">*</span>散会时间
             </label>
             <div class="layui-input-inline">
                 <input type="text" value="" id="mOvertime" name="mOvertime" required="" lay-verify="mOvertime"
@@ -212,36 +199,39 @@
 </div>
 <script type="text/javascript">
 
+$(function () {
 
     layui.use(['form','layer'], function(){
         var form = layui.form,
             layer = layui.layer;
 
+        form.on('submit(add)', function(data){
+            var index = parent.layer.getFrameIndex(window.name);
+            //监听提交
+            $.ajax({
+                url: data.form.action,
+                type: data.form.method,
+                data: $(data.form).serialize(),
+                dataType: "json",
+                success: function(data){
+                    if(data==400){
+                        layer.msg("修改成功", {icon: 6,time:2000},function () {
+                            parent.layer.close(index);
+                            parent.location.reload();
+                        });
+                    }else {
+                        layer.msg("修改失败", {icon: 5,time:2000});
+                    }
+                },
+                error:function(){
+                    layer.msg("系统异常");
+                },
 
-        //监听提交
-        $.ajax({
-            url: data.form.action,
-            type: data.form.method,
-            data: $(data.form).serialize(),
-            dataType: "json",
-            success: function(data){
-                //alert(data);
-                if (data === 500) {
-                    layer.msg("修改失败", {icon: 5});
-                } else {
-                    layer.msg("修改成功", {icon: 6});
-                    setTimeout(function(){
-                        parent.layer.close(index);
-                        parent.location.reload();
-                    }, 1000);
-                }
-            },
-            error:function(){
-                parent.layer.msg("系统异常");
-            },
-
+            });
+            return false;
         });
     });
+});
 
 
 </script>

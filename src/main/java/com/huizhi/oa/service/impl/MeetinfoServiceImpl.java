@@ -89,5 +89,10 @@ public class MeetinfoServiceImpl implements MeetinfoService {
         return meetinfoMapper.delMoreMeetinfo(ids);
     }
 
+    @Override
+    public List<Meetinfo> seachMeetinfo(Meetinfo meetinfo) {
+        return meetinfoMapper.seachMeetinfo(meetinfo);
+    }
+
 
 }

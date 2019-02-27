@@ -12,6 +12,7 @@
     <result column="m_overtime" jdbcType="TIMESTAMP" property="mOvertime" />
     <result column="m_state_name" jdbcType="VARCHAR" property="mStateName" />
     <result column="mh_address" jdbcType="VARCHAR" property="mhAddress" />
+    <result column="times" jdbcType="VARCHAR" property="times" />
   </resultMap>
   <sql id="Base_Column_List">
     m_id, m_title, m_content, mh_id, m_people, m_starttime, m_state, m_overtime
@@ -141,8 +142,38 @@
     delete from meetinfo where m_id in
     <foreach item="item" index="index" collection="list"
              open="(" separator="," close=")">
-      #{mId}
+      #{item}
     </foreach>
   </delete>
 
+  <select id="seachMeetinfo" resultMap="BaseResultMap" parameterType="com.huizhi.oa.entity.Meetinfo">
+      select mi.m_id,
+              mi.m_title,
+              mi.mh_address,
+              mi.m_content,
+              mi.m_people,
+              mi.m_starttime,
+              mi.times,
+              mi.m_overtime,
+              mi.m_state_name
+      from
+        (SELECT m.m_id,m.m_title,h.mh_address,m.m_content,m.m_people,m.m_starttime,m.m_starttime as times,m.m_overtime,
+        CASE m.m_state
+                WHEN 1 THEN '空闲'
+                WHEN 0 THEN '占用'
+        END as m_state_name
+        FROM meetinfo as m
+        LEFT JOIN meethouse as h
+        on m.mh_id=h.mh_id) as mi
+    WHERE 1=1
+    <if test="mId != null">
+      and mi.m_id like concat("%",#{mId},"%")
+    </if>
+    <if test="mTitle != null">
+      and mi.m_title like concat("%",#{mTitle},"%")
+    </if>
+    <if test="times != null">
+      and mi.times like concat("%",#{times},"%")
+    </if>
+  </select>
 </mapper>

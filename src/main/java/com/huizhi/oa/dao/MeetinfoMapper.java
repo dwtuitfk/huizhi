@@ -1,5 +1,6 @@
 package com.huizhi.oa.dao;
 
+import com.huizhi.oa.entity.Meethouse;
 import com.huizhi.oa.entity.Meetinfo;
 
 import java.util.List;
@@ -25,4 +26,11 @@ public interface MeetinfoMapper {
      * @return
      */
     int delMoreMeetinfo(List<Integer> ids);
+
+    /**
+     * 模糊查询
+     * @param meetinfo
+     * @return
+     */
+    List<Meetinfo> seachMeetinfo(Meetinfo meetinfo);
 }

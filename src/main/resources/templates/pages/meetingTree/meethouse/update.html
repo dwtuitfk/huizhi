@@ -117,36 +117,39 @@
 </div>
 <script type="text/javascript">
 
+$(function () {
 
     layui.use(['form','layer'], function(){
         var form = layui.form,
             layer = layui.layer;
 
+        form.on('submit(add)', function(data){
+            var index = parent.layer.getFrameIndex(window.name);
+            //监听提交
+            $.ajax({
+                url: data.form.action,
+                type: data.form.method,
+                data: $(data.form).serialize(),
+                dataType: "json",
+                success: function(data){
+                    if(data==400){
+                        layer.msg("修改成功", {icon: 6,time:2000},function () {
+                            parent.layer.close(index);
+                            parent.location.reload();
+                        });
+                    }else {
+                        layer.msg("修改失败", {icon: 5,time:2000});
+                    }
+                },
+                error:function(){
+                    layer.msg("系统异常");
+                },
 
-        //监听提交
-        $.ajax({
-            url: data.form.action,
-            type: data.form.method,
-            data: $(data.form).serialize(),
-            dataType: "json",
-            success: function(data){
-                //alert(data);
-                if (data === 500) {
-                    layer.msg("修改失败", {icon: 5});
-                } else {
-                    layer.msg("修改成功", {icon: 6});
-                    setTimeout(function(){
-                        parent.layer.close(index);
-                        parent.location.reload();
-                    }, 1000);
-                }
-            },
-            error:function(){
-                parent.layer.msg("系统异常");
-            },
-
+            });
+            return false;
         });
     });
+});
 
 
 </script>

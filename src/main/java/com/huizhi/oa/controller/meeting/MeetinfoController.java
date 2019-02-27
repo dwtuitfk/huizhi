@@ -8,12 +8,18 @@ import com.huizhi.oa.service.MeetinfoService;
 import com.huizhi.oa.util.LayUIResult;
 import com.huizhi.oa.util.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,6 +33,12 @@ import java.util.List;
 @RequestMapping("/meeting")
 public class MeetinfoController {
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
     @Autowired
     private MeetinfoService meetinfoService;
 
@@ -74,19 +86,18 @@ public class MeetinfoController {
      */
     @ResponseBody
     @RequestMapping("/getAllMeetinfo")
-    public ResultMap<List<Meetinfo>> getAllMeetinfo(Integer page, Integer limit) throws Exception {
+    public ResultMap<List<Meetinfo>> getAllMeetinfo(Integer page, Integer limit, Meetinfo meetinfo ) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<Meetinfo> list=meetinfoService.getAllMeetinfo();
+        System.out.println("时间条件："+meetinfo.getTimes());
+        /*Meetinfo meetinfo = new Meetinfo();
+        meetinfo.setmId(mId);//设置编号
+        meetinfo.setmTitle(mTitle);//会议标题
+        meetinfo.setmStarttime(mStarttime);*/
+        List<Meetinfo> list=meetinfoService.seachMeetinfo(meetinfo);
+        System.out.println("实体："+meetinfo+"ID:"+meetinfo.getmId()+"时间："+meetinfo.getTimes());
         PageInfo<Meetinfo> pageinfo=new PageInfo<>(list);
-        return new ResultMap<List<Meetinfo>>("",list,0,(int)pageinfo.getTotal());
+        return new ResultMap<>("",list,0,(int)pageinfo.getTotal());
     }
-    /*public Object getAllMeetinfo(@RequestParam("page") Integer pageNum, @RequestParam("limit") Integer pageSize){
-        PageInfo<Meetinfo> list = meetinfoService.getAllMeetinfo(pageNum,pageSize);
-        int count = (int) list.getTotal();
-        LayUIResult result = LayUIResult.build(0, "", list); // 这个是我返回的数据格式，可以可以自己定义
-        result.setCount(count); // 尾部以把该封装类贴出来
-        return result;
-    }*/
 
     /**
      * 查询单条会议记录

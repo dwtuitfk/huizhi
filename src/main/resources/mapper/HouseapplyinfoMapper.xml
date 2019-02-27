@@ -159,4 +159,48 @@
       LEFT JOIN userinfo as u
       ON h.userId=u.userId
   </select>
+
+  <delete id="delMoreHouseapplyinfo" parameterType="java.lang.Integer" >
+    delete from houseapplyinfo
+    where ha_id in
+    <foreach item="item" index="index" collection="list"
+             open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
+  <select id="seachHouseapplyinfo" resultMap="BaseResultMap" parameterType="com.huizhi.oa.entity.Houseapplyinfo">
+    select hi.ha_id,
+            hi.tureName,
+            hi.ha_startTime,
+            hi.ha_reason,
+            hi.roleNamemc,
+            hi.ha_mh_id,
+            hi.state,
+            hi.ha_checkAd,
+            hi.ha_m_id,
+            hi.mh_address
+    from
+            (SELECT h.ha_id,u.tureName,h.ha_startTime,h.ha_reason,z.roleNamemc,h.ha_mh_id,
+            CASE h.ha_state
+                WHEN 0 THEN '未审核'
+                WHEN 1 THEN '审核通过'
+                WHEN 2 THEN '审核未通过'
+            END as state
+            ,h.ha_checkAd,h.ha_m_id,m.mh_address
+            FROM houseapplyinfo as h
+            LEFT JOIN meethouse as m
+            on h.ha_mh_id=m.mh_id
+            LEFT JOIN userzd as z
+            on h.ha_userId=z.userzdId
+            LEFT JOIN userinfo as u
+            ON h.userId=u.userId) as hi
+    WHERE 1=1
+    <if test="haId != null">
+      and hi.ha_id like concat("%",#{haId},"%")
+    </if>
+    <if test="state != null">
+      and hi.state like concat("%",#{state},"%")
+    </if>
+  </select>
 </mapper>
