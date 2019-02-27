@@ -44,27 +44,71 @@ public class AttendanceinfoController {
         return list;
     }
 
+    /**
+     * 添加上班打卡时间
+     * @param attendanceinfo
+     * @return
+     * @throws Exception
+     */
+    @RequiresPermissions("/addMtime")
     @ResponseBody
-    @RequestMapping("/add")
-    public String addAttendanceinfo(Attendanceinfo attendanceinfo) throws Exception {
+    @RequestMapping("/addMtime")
+    public String addMtime(Attendanceinfo attendanceinfo) throws Exception {
+        System.out.println("进入上班打卡");
         Date dt = new Date();
         //最后的aa表示“上午”或“下午”    HH表示24小时制    如果换成hh表示12小时制
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        attendanceinfo.setUserid(123);
-        attendanceinfo.setaId(8);
-        System.out.println(dt);
-
-       attendanceinfo.setaAtime(dt);
-       // attendanceinfo.setaId(15);
-       // attendanceinfo.setaAtime(sdf.format(dt));
-        int temp = attendanceinfoService.insertSelective(attendanceinfo);
-        if (temp>0){
-            return "添加成功";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        attendanceinfo.setSelectTime(sdf.format(dt));
+        attendanceinfo.setUserid(7201);
+        List<Attendanceinfo> list = attendanceinfoService.searchSelect(attendanceinfo);
+        if(list.size()>0){
+            return "您已打卡";
         }else{
-            return "添加失败";
+            System.out.println("准备上班打卡");
+            attendanceinfo.setaMtime(dt);
+            int temp = attendanceinfoService.insertSelective(attendanceinfo);
+            if(temp>0){
+                return "打卡成功，祝你工作愉快！";
+            }else{
+                return "打卡失败，请重新打卡";
+            }
         }
-
     }
+
+    /**
+     * 添加下班打卡时间
+     * @param attendanceinfo
+     * @return
+     * @throws Exception
+     */
+    @RequiresPermissions("/addAtime")
+    @ResponseBody
+    @RequestMapping("/addAtime")
+    public String addAtime(Attendanceinfo attendanceinfo) throws Exception {
+        System.out.println("进入下班打卡");
+        Date dt = new Date();
+        //最后的aa表示“上午”或“下午”    HH表示24小时制    如果换成hh表示12小时制
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        attendanceinfo.setSelectTime(sdf.format(dt));
+        attendanceinfo.setUserid(7201);
+        List<Attendanceinfo> list = attendanceinfoService.searchSelect(attendanceinfo);
+        Attendanceinfo att = list.get(0);
+        if(list.size()>0){
+            System.out.println("进入下班打卡");
+            att.setaAtime(dt);
+            System.out.println(att.getaAtime());
+            int temp = attendanceinfoService.updateByPrimaryKeySelective(att);
+            if(temp>0){
+                return "打卡成功，祝你回家愉快！";
+            }else{
+                return "打卡失败，请重新打卡";
+            }
+        }else{
+            return "您上班未打卡，请到行政核实！";
+        }
+    }
+
+
     @ResponseBody
     @RequestMapping("/update")
     public String updateAttendanceinfo(Attendanceinfo attendanceinfo) throws Exception {

@@ -39,11 +39,12 @@
     where a_id = #{aId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.huizhi.oa.entity.Attendanceinfo">
-    insert into attendanceinfo (a_id, userId, a_mtime, 
+    insert into attendanceinfo (a_id, userId, a_mtime,
       a_atime)
     values (#{aId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{aMtime,jdbcType=TIMESTAMP}, 
       #{aAtime,jdbcType=TIMESTAMP})
   </insert>
+
   <insert id="insertSelective" parameterType="com.huizhi.oa.entity.Attendanceinfo" useGeneratedKeys="true" keyProperty="aId">
     insert into attendanceinfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -88,7 +89,8 @@
         a_atime = #{aAtime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where a_id = #{aId,jdbcType=INTEGER}
+    where
+      a_id = #{aId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.huizhi.oa.entity.Attendanceinfo">
     update attendanceinfo

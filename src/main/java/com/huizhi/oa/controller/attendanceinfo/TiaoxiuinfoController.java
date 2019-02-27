@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -56,14 +57,25 @@ public class TiaoxiuinfoController {
     public ResultMap<List<Tiaoxiuinfo>> searchTiaoxiuinfo(Tiaoxiuinfo tiaoxiuinfo, Integer page, Integer limit, String tureName, String userid, String oneDate) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println("天"+oneDate);
-        System.out.println("用户id"+userid);
-
-        System.out.println("名称"+tureName);
-
-
+        Date tempDate = new Date();
         if(tureName==null && userid==null && oneDate==null){
             List<Tiaoxiuinfo> list = tiaoxiuinfoService.searchTiaoxiuinfo(tiaoxiuinfo);
+
+            for (Tiaoxiuinfo tiao:list) {
+                //tempDate = tiao.getTxOvertime()-tiao.getTxStarttime();
+
+                System.out.println("开始时间："+tiao.getTxStarttime());
+                System.out.println("结束时间："+tiao.getTxOvertime());
+                String mtimeTemp = sdf.format(tiao.getTxStarttime());
+                String atimeTemp = sdf.format(tiao.getTxOvertime());
+//                long time1 = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).parse(mtimeTemp, new ParsePosition(0)).getTime();
+//                long time2 = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).parse(atimeTemp, new ParsePosition(0)).getTime();
+//                long time = time2-time1;
+//                String format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(time);
+//                Date date = new Date(sdf.parse(atimeTemp).getTime()-sdf.parse(mtimeTemp).getTime());
+
+//                System.out.println(sdf.format(format2));
+            }
             PageInfo<Tiaoxiuinfo> pageinfo=new PageInfo<>(list);
             return new ResultMap<List<Tiaoxiuinfo>>("",list,0,(int)pageinfo.getTotal());
         }else{
@@ -83,6 +95,18 @@ public class TiaoxiuinfoController {
             }
 
             List<Tiaoxiuinfo> list = tiaoxiuinfoService.searchTiaoxiuinfo(tiaoxiuinfo);
+            for (Tiaoxiuinfo tiao:list) {
+                //tempDate = tiao.getTxOvertime()-tiao.getTxStarttime();
+                Date date = new Date(String.valueOf(tiao.getTxStarttime()));
+                Date date2 = new Date(String.valueOf(tiao.getTxOvertime()));
+                System.out.println("开始时间："+tiao.getTxStarttime());
+                System.out.println(date);
+
+                System.out.println("结束时间："+tiao.getTxOvertime());
+                System.out.println(date2);
+
+                //System.out.println("结束时间："+tiao.getTxOvertime()-tiao.getTxStarttime());
+            }
             System.out.println(list);
             PageInfo<Tiaoxiuinfo> pageinfo=new PageInfo<>(list);
             return new ResultMap<List<Tiaoxiuinfo>>("",list,0,(int)pageinfo.getTotal());
