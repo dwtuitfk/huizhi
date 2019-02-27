@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
 //@RequiresPermissions("/personal")//权限管理;
+@Controller
 @RequestMapping("/personal")
 public class PageController {
 

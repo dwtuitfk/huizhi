@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -103,14 +103,14 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="noticemanage/noticehp">
+                        <a _href="noticemanage/noticehp" shiro:hasPermission="/noticehp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>公告首页</cite>
 
                         </a>
                     </li>
                     <li>
-                        <a _href="noticemanage/notice">
+                        <a _href="noticemanage/notice" shiro:hasPermission="/notice">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>公告管理</cite>
 
@@ -127,13 +127,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/kaoqin/attendanceinfo/attendance">
+                        <a _href="/kaoqin/attendanceinfo/attendance" shiro:hasPermission="/attendance">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>考勤信息</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="/kaoqin/tiaoxiuinfo/tiaoxiu">
+                        <a _href="/kaoqin/tiaoxiuinfo/tiaoxiu" shiro:hasPermission="/tiaoxiu">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>调休管理</cite>
                         </a>
@@ -155,26 +155,26 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a _href="/personal/mailCompose">
+                                <a _href="/personal/mailCompose" shiro:hasPermission="/mailCompose">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>写邮件</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/personal/mailBox">
+                                <a _href="/personal/mailBox" shiro:hasPermission="/mailBox">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>收件箱</cite>
                                     <span class="unreadNum" id="unreadNum" style="color: #FD482C"></span>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/personal/mailDraft">
+                                <a _href="/personal/mailDraft" shiro:hasPermission="/mailDraft">
                                      <i class="iconfont">&#xe6a7;</i>
                                      <cite>草稿</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/personal/mailDustbin">
+                                <a _href="/personal/mailDustbin" shiro:hasPermission="/mailDustbin">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>垃圾箱</cite>
                                 </a>
@@ -182,7 +182,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a _href="/personal/contacts">
+                        <a _href="/personal/contacts" shiro:hasPermission="/contacts">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>通讯录</cite>
                         </a>
@@ -195,19 +195,19 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a _href="/personal/leaveApply">
+                                <a _href="/personal/leaveApply" shiro:hasPermission="/leaveApply">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>请假申请</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/personal/carApply">
+                                <a _href="/personal/carApply" shiro:hasPermission="/carApply">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>车辆申请</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/personal/allApply">
+                                <a _href="/personal/allApply" shiro:hasPermission="/allApply">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>个人申请查询申请</cite>
                                 </a>
@@ -231,19 +231,19 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a _href="/meeting/meethouse/show">
+                                <a _href="/meeting/meethouse/show" shiro:hasPermission="/show">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会议室管理</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/meeting/houseapplyinfo/show1">
+                                <a _href="/meeting/houseapplyinfo/show1" shiro:hasPermission="/show1">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会议申请管理</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/meeting/meetinfo/show">
+                                <a _href="/meeting/meetinfo/show" shiro:hasPermission="/show">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会议记录管理</cite>
                                 </a>
@@ -252,7 +252,7 @@
                     </li>
 
                     <li>
-                        <a _href="carmanage/car">
+                        <a _href="carmanage/car" shiro:hasPermission="/car">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>车辆管理</cite>
                         </a>
@@ -265,19 +265,19 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a _href="/personal/leaveCheck">
+                                <a _href="/personal/leaveCheck" shiro:hasPermission="/leaveCheck">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>请假申请审核</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/personal/outCheck">
+                                <a _href="/personal/outCheck" shiro:hasPermission="/outCheck">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>出差申请审核</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/personal/carCheck">
+                                <a _href="/personal/carCheck" shiro:hasPermission="/carCheck">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>车辆申请审核</cite>
                                 </a>
@@ -297,13 +297,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="system/dep">
+                        <a _href="system/dep" shiro:hasPermission="/dep">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>部门管理</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="system/post">
+                        <a _href="system/post" shiro:hasPermission="/post">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>岗位管理</cite>
                         </a>
@@ -315,13 +315,13 @@
                         </a>
                     </li>-->
                     <li>
-                        <a _href="system/user">
+                        <a _href="system/user" shiro:hasPermission="/user">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>档案中心</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="system/userJur">
+                        <a _href="system/userJur" shiro:hasPermission="/userJur">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>权限配置</cite>
                         </a>
