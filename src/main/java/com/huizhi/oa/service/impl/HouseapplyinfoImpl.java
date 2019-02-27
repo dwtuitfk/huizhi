@@ -83,5 +83,20 @@ public class HouseapplyinfoImpl implements HouseapplyinfoService {
         return new PageInfo<>(list);
     }
 
+    /**
+     * 多项删除
+     * @param ids
+     * @return
+     */
+    @Override
+    public int delMoreHouseapplyinfo(List<Integer> ids) {
+        return houseapplyinfoMapper.delMoreHouseapplyinfo(ids);
+    }
+
+    @Override
+    public List<Houseapplyinfo> seachHouseapplyinfo(Houseapplyinfo houseapplyinfo) {
+        return houseapplyinfoMapper.seachHouseapplyinfo(houseapplyinfo);
+    }
+
 
 }

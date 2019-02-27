@@ -11,7 +11,7 @@
 
         $(document).ready(function(){
 
-            //富文本编辑器自定义工具栏
+           /* //富文本编辑器自定义工具栏
             var editIndex,layedit;
             layui.use('layedit', function(){
                 layedit = layui.layedit;
@@ -19,7 +19,7 @@
                     tool: false
                     ,height : 200
                 });
-            });
+            });*/
 
             $.ajax({
                 type:"get",
@@ -30,8 +30,8 @@
                     $('#userid').val(data.userid);
                     $('#nTitle').val(data.nTitle);
                     $('#nTime').val(data.nTime);
-                    //$('#nContent').val(data.nContent);
-                    layedit.setContent(editIndex,data.nContent);//富文本编辑器还原表单
+                    $('#nContent').val(data.nContent);
+                    //layedit.setContent(editIndex,data.nContent);//富文本编辑器还原表单
                 }
             });
 
@@ -57,7 +57,7 @@
         公告标题:
     </label>
     <h1 class="layui-input-block">
-            <input type="text" id="nTitle" name="nTitle" lay-verify="nTitle" readonly autocomplete="off" class="layui-input" style=" border:0">
+            <input type="text" id="nTitle" name="nTitle" lay-verify="nTitle" readonly autocomplete="off" class="layui-input" style=" width: 500px; border:0">
         <span id="nTitle_prompt"></span>
     </h1>
 </div>
@@ -86,17 +86,17 @@
         公告内容:
     </label>
     <div class="layui-input-block">
-        <textarea type="textarea" id="nContent" name="nContent" lay-verify="nContent" readonly autocomplete="off" class="layui-input"></textarea>
+        <textarea type="textarea" id="nContent" name="nContent" lay-verify="nContent" readonly autocomplete="off" class="layui-input" style="width: 500px; height: 210px; font-size: 20px; text-indent: 40px; line-height: 35px; border:0"></textarea>
         <span id="nContent_prompt"></span>
     </div>
 </div>
 
-<div class="layui-form-item">
+<div class="layui-form-item" style="position: relative; left: 335px; top: 30px">
     <label class="layui-form-label" style="color: white">
         发布时间:
     </label>
     <div class="layui-input-inline">
-        <input type="text" class="layui-input" id="nTime" name="nTime" readonly autocomplete="off" style="width: 200px; border:0">
+        <input type="text" class="layui-input" id="nTime" name="nTime" readonly autocomplete="off" style="width: 200px; border:0; font-size: 16px">
         <span id="nTime_prompt"></span>
     </div>
 </div>

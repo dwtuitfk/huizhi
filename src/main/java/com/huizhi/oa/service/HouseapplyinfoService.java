@@ -22,4 +22,12 @@ public interface HouseapplyinfoService {
 
     PageInfo<Houseapplyinfo> getAllHouseapplyinfo(Integer pageNum, Integer pageSize);
 
+    int delMoreHouseapplyinfo(List<Integer> ids);
+
+    /**
+     * 模糊查询
+     * @param houseapplyinfo
+     * @return
+     */
+    List<Houseapplyinfo> seachHouseapplyinfo(Houseapplyinfo houseapplyinfo);
 }

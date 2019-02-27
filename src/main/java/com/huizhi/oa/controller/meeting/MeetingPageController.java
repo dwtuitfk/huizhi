@@ -1,5 +1,6 @@
 package com.huizhi.oa.controller.meeting;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class MeetingPageController {
      * @param page
      * @return
      */
+    @RequiresPermissions("/houseapplyinfo")//权限管理;
     @RequestMapping("/houseapplyinfo/{page}")
     public String houseapplyinfoShow(@PathVariable("page") String page){
         return "pages/meetingTree/houseapplyinfo/"+page;
@@ -28,6 +30,7 @@ public class MeetingPageController {
      * @param page
      * @return
      */
+    @RequiresPermissions("/meethouse")//权限管理;
     @RequestMapping("/meethouse/{page}")
     public String meethouseShow(@PathVariable("page") String page){
         return "pages/meetingTree/meethouse/"+page;
@@ -39,6 +42,7 @@ public class MeetingPageController {
      * @param page
      * @return
      */
+    @RequiresPermissions("/meetinfo")//权限管理;
     @RequestMapping("/meetinfo/{page}")
     public String meetinfoShow(@PathVariable("page") String page){
         return "pages/meetingTree/meetinfo/"+page;
