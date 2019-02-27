@@ -27,4 +27,11 @@ public interface AttendanceinfoService {
      * @return
      */
     List<Attendanceinfo> searchSelect(Attendanceinfo attendanceinfo);
+
+    /**
+     * 打卡前的查询
+     * @param attendanceinfo
+     * @return
+     */
+    List<Attendanceinfo> selectAddTime(Attendanceinfo attendanceinfo);
 }

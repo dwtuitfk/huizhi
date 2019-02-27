@@ -30,4 +30,14 @@ public interface AttendanceinfoMapper {
      * @return
      */
     List<Attendanceinfo> searchSelect(Attendanceinfo attendanceinfo);
+
+
+//    <select id="selectAddTime"
+
+    /**
+     * 打卡前的查询
+     * @param attendanceinfo
+     * @return
+     */
+    List<Attendanceinfo> selectAddTime(Attendanceinfo attendanceinfo);
 }

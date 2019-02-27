@@ -42,6 +42,50 @@
             //count();//未读邮件总数
         })
     </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#userid").css('display','none');
+            var userid = $("#userid").text()
+            $('#upDate').on('click',function(){
+                $.ajax({
+                    url:'/kaoqin/attendanceinfo/addMtime',
+                    data:{
+                        userid:userid
+                    },
+                    type:'post',
+                    // dataType:'json',
+                    success:function(data){
+                        alert( data );
+                    }
+                });
+
+                // $.get("/kaoqin/attendanceinfo/addMtime",function(data){
+                //     alert( data );
+                // });
+                //  location.href="/kaoqin/attendanceinfo/addMtime";
+            });
+
+            $('#downDate').on('click',function(){
+                $.ajax({
+                    url:'/kaoqin/attendanceinfo/addAtime',
+                    data:{
+                        userid:userid
+                    },
+                    type:'post',
+                    // dataType:'json',
+                    success:function(data){
+                        alert( data );
+                    }
+                });
+
+                // $.get("/kaoqin/attendanceinfo/addAtime",function(data){
+                //     alert( data );
+                // });
+                // location.href="/kaoqin/attendanceinfo/addAtime";
+            });
+        });
+    </script>
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
@@ -70,6 +114,7 @@
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
             <a href="javascript:;" th:text="${userinfo.turename}">Admin</a>
+
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
 <!--                <dd>
@@ -80,11 +125,17 @@
                 </dd>
 
                 <dd>
-                    <a href="/kaoqin/attendanceinfo/addMtime" class="upDate" id="upDate" >上班</a>
+                    <a class="upDate" id="upDate" >上班</a>
+                    <!--<input type="hidden" id="userid" class="userid" th:text="${userinfo.userid}>-->
                 </dd>
 
                 <dd>
-                    <a href="/kaoqin/attendanceinfo/addAtime" class="downDate" id="downDate">下班</a>
+                    <a class="downDate" id="downDate">下班</a>
+                </dd>
+
+                <dd>
+                    <a id="userid" th:text="${userinfo.userid}"></a>
+                    <!--<input type="hidden" id="userid" class="userid" th:text="${userinfo.userid}>-->
                 </dd>
 
                 <dd>
@@ -240,19 +291,19 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a _href="/meeting/meethouse/show" shiro:hasPermission="/meethouse">
+                                <a _href="/meeting/meethouse/show" shiro:hasPermission="/show">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会议室管理</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/meeting/houseapplyinfo/show1" shiro:hasPermission="/houseapplyinfo">
+                                <a _href="/meeting/houseapplyinfo/show1" shiro:hasPermission="/show1">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会议申请管理</cite>
                                 </a>
                             </li>
                             <li>
-                                <a _href="/meeting/meetinfo/show" shiro:hasPermission="/meetinfo">
+                                <a _href="/meeting/meetinfo/show" shiro:hasPermission="/show">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会议记录管理</cite>
                                 </a>

@@ -57,4 +57,9 @@ public class AttendanceinfoServiceImpl implements AttendanceinfoService {
     public List<Attendanceinfo> searchSelect(Attendanceinfo attendanceinfo) {
         return attendanceinfoMapper.searchSelect(attendanceinfo);
     }
+
+    @Override
+    public List<Attendanceinfo> selectAddTime(Attendanceinfo attendanceinfo) {
+        return attendanceinfoMapper.selectAddTime(attendanceinfo);
+    }
 }

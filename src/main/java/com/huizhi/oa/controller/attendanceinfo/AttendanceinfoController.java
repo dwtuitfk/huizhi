@@ -46,21 +46,30 @@ public class AttendanceinfoController {
 
     /**
      * 添加上班打卡时间
-     * @param attendanceinfo
+     * @param
      * @return
      * @throws Exception
      */
-    @RequiresPermissions("/addMtime")
+
     @ResponseBody
     @RequestMapping("/addMtime")
-    public String addMtime(Attendanceinfo attendanceinfo) throws Exception {
+    public String addMtime(String userid) throws Exception {
+        System.out.println(userid);
         System.out.println("进入上班打卡");
         Date dt = new Date();
         //最后的aa表示“上午”或“下午”    HH表示24小时制    如果换成hh表示12小时制
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Attendanceinfo attendanceinfo = new Attendanceinfo();
         attendanceinfo.setSelectTime(sdf.format(dt));
-        attendanceinfo.setUserid(7201);
-        List<Attendanceinfo> list = attendanceinfoService.searchSelect(attendanceinfo);
+        attendanceinfo.setUserid(Integer.parseInt(userid));
+//        attendanceinfo.setUserid(userid);
+        System.out.println(attendanceinfo.getUserid());
+        System.out.println(attendanceinfo.getSelectTime());
+        List<Attendanceinfo> list = attendanceinfoService.selectAddTime(attendanceinfo);
+        for (Attendanceinfo att:list) {
+           // System.out.println(att.getTureName());
+            System.out.println(att.getUserid());
+        }
         if(list.size()>0){
             return "您已打卡";
         }else{
@@ -81,19 +90,19 @@ public class AttendanceinfoController {
      * @return
      * @throws Exception
      */
-    @RequiresPermissions("/addAtime")
     @ResponseBody
     @RequestMapping("/addAtime")
-    public String addAtime(Attendanceinfo attendanceinfo) throws Exception {
+    public String addAtime(Attendanceinfo attendanceinfo,String userid) throws Exception {
+        System.out.println(userid);
         System.out.println("进入下班打卡");
         Date dt = new Date();
         //最后的aa表示“上午”或“下午”    HH表示24小时制    如果换成hh表示12小时制
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         attendanceinfo.setSelectTime(sdf.format(dt));
-        attendanceinfo.setUserid(7201);
-        List<Attendanceinfo> list = attendanceinfoService.searchSelect(attendanceinfo);
-        Attendanceinfo att = list.get(0);
+        attendanceinfo.setUserid(Integer.parseInt(userid));
+        List<Attendanceinfo> list = attendanceinfoService.selectAddTime(attendanceinfo);
         if(list.size()>0){
+            Attendanceinfo att = list.get(0);
             System.out.println("进入下班打卡");
             att.setaAtime(dt);
             System.out.println(att.getaAtime());
@@ -150,17 +159,24 @@ public class AttendanceinfoController {
                 System.out.println(att.getaMtime());
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
                 String mtimeTemp = sdf.format(att.getaMtime());
-                String atimeTemp = sdf.format(att.getaAtime());
+                String atimeTemp = null;
+                if(att.getaAtime()!=null){
+                    atimeTemp = sdf.format(att.getaAtime());
+                    if(atimeTemp.compareTo("17:30:00")<0){
+                        att.setAtimeRemarkes("早退");
+                    }else{
+                        att.setAtimeRemarkes("正常下班");
+                    }
+                }else{
+                    att.setAtimeRemarkes("尚未打卡");
+                }
+
                 if(mtimeTemp.compareTo("09:00:00")>0){
                     att.setMtimeRemarkes("迟到");
                 }else{
                     att.setMtimeRemarkes("正常上班");
                 }
-                if(atimeTemp.compareTo("17:30:00")<0){
-                    att.setAtimeRemarkes("早退");
-                }else{
-                    att.setAtimeRemarkes("正常下班");
-                }
+
                 System.out.println(att.getMtimeRemarkes());
                 System.out.println(att.getAtimeRemarkes());
             }
@@ -216,7 +232,6 @@ public class AttendanceinfoController {
 
 
     }
-
 
 
 
