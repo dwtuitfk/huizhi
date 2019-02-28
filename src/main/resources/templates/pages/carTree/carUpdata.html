@@ -81,13 +81,13 @@
                 //获取车辆车牌文本框的值
                 var carId=$('#carId').val();
                 //使用正则表达式 车辆车牌至少n位数字
-                var reg = /^[a-zA-Z]\w{5,7}$/;
+                var reg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/;
                 //判断
                 if(reg.test(carId)){
                     $("#car_1").html("正确").css("color","green");
                     return true;
                 }else{
-                    $("#car_1").html("必须是字母大学开头后面为字母和数字组合").css("color","red");
+                    $("#car_1").html("提示如：粤B12345").css("color","red");
                     //获得焦点
                     //$("#carId").focus();
                     //将文本内容进行全选
@@ -273,6 +273,7 @@
 </div>
 
 </form>
-
+<!--跳转本页面-->
+<iframe name="nm_iframe" id="nm_iframe" style="display: none"></iframe>
 </body>
 </html>

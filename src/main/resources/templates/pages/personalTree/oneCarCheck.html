@@ -93,6 +93,9 @@
                         }
                     }
                 });
+                //刷新父页面
+                window.parent.location.reload();
+                //关闭当前窗口
                 parent.layer.close(index);
             });
             //监听提交
@@ -118,6 +121,9 @@
                         }
                     }
                 });
+                //刷新父页面
+                window.parent.location.reload();
+                //关闭当前窗口
                 parent.layer.close(index);
             });
         });
@@ -164,21 +170,21 @@
         <div class="layui-form-item">
             <label class="layui-form-label">开始日期:</label>
             <div class="layui-input-inline">
-                <input type="text" name="caStarttime" id="caStarttime" lay-verify="required" readonly autocomplete="off" class="layui-input">
+                <input type="text" name="caStarttime" id="caStarttime" readonly lay-verify=""   class="layui-input">
             </div>
         </div>
         <!--结束日期-->
         <div class="layui-form-item">
             <label class="layui-form-label">结束日期:</label>
             <div class="layui-input-inline">
-                <input type="text" name="caOvertime" id="caOvertime" lay-verify="required" readonly autocomplete="off" class="layui-input">
+                <input type="text" name="caOvertime" id="caOvertime" readonly lay-verify=""   class="layui-input">
             </div>
         </div>
         <!--申请原因-->
         <div class="layui-form-item">
             <label class="layui-form-label">申请原因:</label>
             <div class="layui-input-inline">
-                <input type="text" name="caReason" id="caReason" lay-verify="caReason" readonly class="layui-input">
+                <input type="text" name="caReason" style="width: 200px" readonly id="caReason" lay-verify="caReason"  class="layui-input">
             </div>
         </div>
         <!--审核人员-->
@@ -192,13 +198,15 @@
         <div class="layui-form-item">
             <label class="layui-form-label">审批建议</label>
             <div class="layui-input-block">
-                <textarea id="caCheckad" name="caCheckad" lay-verify="required" placeholder="" class="layui-textarea"></textarea>
+                <textarea id="caCheckad" style="width: 200px" name="caCheckad" lay-verify="required" placeholder="" class="layui-textarea"></textarea>
             </div>
         </div>
 
         <div class="layui-form-item">
             <div class="layui-input-inline">
                 <button class="layui-btn" id="passOk" lay-submit lay-filter="passOk" >审批通过</button>
+            </div>
+            <div class="layui-input-inline">
                 <button class="layui-btn" id="passNo" lay-submit lay-filter="passNo" >审批不通过</button>
             </div>
         </div>

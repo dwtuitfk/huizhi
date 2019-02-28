@@ -4,13 +4,20 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Attendanceinfo;
 import com.huizhi.oa.entity.Leaveinfo;
+import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.LeaveinfoService;
 import com.huizhi.oa.util.ResultMap;
+import com.sun.deploy.net.HttpResponse;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,6 +123,50 @@ public class LeaveinfoController {
         List list = new ArrayList();
         list.add("T"+ System.currentTimeMillis());
         return list;
+    }
+
+    @RequestMapping("/addLeave")
+    public String addLeave(Model model){
+        String leaveId = "T"+ System.currentTimeMillis();
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        model.addAttribute(userinfo);
+        model.addAttribute("leaveId",leaveId);
+        return "pages/leaveinfoTree/addLeaveinfo";
+    }
+
+    @ResponseBody
+    @RequestMapping("/leaveInfoAdd")
+    public String leaveInfoAdd(Leaveinfo leaveinfo, String userid, String starttime, String overtime, String reason, String ltype){
+        System.out.println("添加成功");
+        System.out.println(userid);
+        System.out.println(starttime);
+        System.out.println(overtime);
+        System.out.println(reason);
+        System.out.println(ltype);
+        System.out.println("添加成功");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        leaveinfo.setlId("T"+ System.currentTimeMillis());
+        //leaveinfo.setUserid(Integer.parseInt(userid));
+        try {
+            leaveinfo.setlStarttime(sdf.parse(starttime));
+            leaveinfo.setlOvertime(sdf.parse(overtime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        leaveinfo.setlReason(reason);
+        leaveinfo.setlType(Integer.parseInt(ltype));
+        leaveinfo.setlState(0);
+
+        int temp = leaveinfoService.insertSelective(leaveinfo);
+       if(temp>0){
+           System.out.println("添加成功");
+           return "申请已发送，请耐心等待审核";
+       }else{
+           System.out.println("添加成功");
+           return "申请已发送失败，请重新发送";
+       }
+//        return 1;
     }
 
 }

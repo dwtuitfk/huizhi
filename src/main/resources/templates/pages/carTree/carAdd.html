@@ -61,13 +61,13 @@
                 //获取车辆车牌文本框的值
                 var carId=$('#carId').val();
                 //使用正则表达式 车辆车牌至少n位数字
-                var reg = /^[a-zA-Z]\w{5,7}$/;
+                var reg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/;
                 //判断
                 if(reg.test(carId)){
                     $("#car_1").html("正确").css("color","green");
                     return true;
                 }else{
-                    $("#car_1").html("必须是大写字母开头后面字母和数字组合的5位数").css("color","red");
+                    $("#car_1").html("提示如：粤B12345").css("color","red");
                     //获得焦点
                     //$("#carId").focus();
                     //将文本内容进行全选
@@ -120,6 +120,7 @@
                 if(reg.test(cInsurance)){
                     $("#car_4").html("正确").css("color","green");
                     return true;
+
                 }else{
                     $("#car_4").html("至少20位汉字").css("color","red");
 
@@ -145,7 +146,6 @@
                 var cState=$('#cState').val();
                 var cInsurance=$('#cInsurance').val();
                 var cMaintaintime=$('#cMaintaintime').val();
-
                 $.ajax({
                     url: "/carmanage/carAddInfo",
                     type: "POST",
@@ -153,20 +153,16 @@
                     dataType:"json",
                     success: function(data){
                         if(data===500){
-                            parent.layer.msg("添加失败", {icon: 5});
+                            layer.msg("添加失败", {icon: 5});
                         }else{
-                            parent.layer.msg("添加成功", {icon: 6});
-
+                            layer.msg("添加成功", {icon: 6,time:2000});
+                            parent.layer.close(index);
                         }
                     },
                     error:function(){
                         layer.msg("系统异常");
                     },
                 });
-
-                parent.layer.close(index);
-
-
                 }
                 else{
                     return false;
@@ -266,7 +262,7 @@
         </div>
     </div>
 </form>
-
+<iframe name="nm_iframe" id="nm_iframe" style="display: none"></iframe>
 
 </body>
 </html>

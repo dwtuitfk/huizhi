@@ -117,10 +117,12 @@
     c_type,
     c_state,
     c_insurance,
-    c_maintainTime FROM  carinfo
+    c_maintainTime,
+    c_maintainTime AS  times
+    FROM  carinfo
     WHERE 1=1
     <if test="cId!=null"> AND c_id LIKE concat('%',#{cId},'%')</if>
     <if test="cType!=null">AND c_type LIKE concat('%',#{cType},'%')</if>
-    <if test="cMaintaintime!=null">AND c_maintainTime LIKE concat(#{cMaintaintime})</if>
+    <if test="cMaintaintime!=null">AND c_maintainTime =#{cMaintaintime}</if>
   </select>
 </mapper>

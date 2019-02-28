@@ -144,14 +144,15 @@ public class AttendanceinfoController {
     @ResponseBody
     @RequestMapping("/searchAttendanceinfo")
     public ResultMap<List<Attendanceinfo>> searchAttendanceinfo(Attendanceinfo attendanceinfo, Integer page, Integer limit, String userid,String tureName,String oneMonth,String oneDate) throws Exception {
-        PageHelper.startPage(page == null ? 1 : page, limit);
+
         List<Attendanceinfo> list = null;
         System.out.println(userid);
         System.out.println(tureName);
         System.out.println(oneMonth);
         System.out.println(oneDate);
         if(userid == null&& tureName == null && oneDate==null && oneMonth==null){
-            list = attendanceinfoService.searchSelect(attendanceinfo);
+            PageHelper.startPage(page == null ? 1 : page, limit);
+
             list = attendanceinfoService.searchSelect(attendanceinfo);
 
             for (Attendanceinfo att:list) {
@@ -184,6 +185,7 @@ public class AttendanceinfoController {
             PageInfo<Attendanceinfo> pageinfo=new PageInfo<>(list);
             return new ResultMap<List<Attendanceinfo>>("",list,0,(int)pageinfo.getTotal());
         }else{
+            PageHelper.startPage(page == null ? 1 : page, limit);
             if (!userid.equals("")){
                 attendanceinfo.setUserid(Integer.parseInt(userid));
             }
@@ -211,17 +213,23 @@ public class AttendanceinfoController {
                 System.out.println(att.getaMtime());
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
                 String mtimeTemp = sdf.format(att.getaMtime());
-                String atimeTemp = sdf.format(att.getaAtime());
+                String atimeTemp = null;
+                if(att.getaAtime()!=null){
+                    atimeTemp = sdf.format(att.getaAtime());
+                    if(atimeTemp.compareTo("17:30:00")<0){
+                        att.setAtimeRemarkes("早退");
+                    }else{
+                        att.setAtimeRemarkes("正常下班");
+                    }
+                }else{
+                    att.setAtimeRemarkes("尚未打卡");
+                }
                 if(mtimeTemp.compareTo("09:00:00")>0){
                     att.setMtimeRemarkes("迟到");
                 }else{
                     att.setMtimeRemarkes("正常上班");
                 }
-                if(atimeTemp.compareTo("17:30:00")<0){
-                    att.setAtimeRemarkes("早退");
-                }else{
-                    att.setAtimeRemarkes("正常下班");
-                }
+
                 System.out.println(att.getMtimeRemarkes());
                 System.out.println(att.getAtimeRemarkes());
             }

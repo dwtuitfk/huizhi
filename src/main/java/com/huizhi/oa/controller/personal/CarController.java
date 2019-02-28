@@ -4,13 +4,16 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.Carapplyinfo;
 import com.huizhi.oa.entity.Carinfo;
+import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.CarapplyinfoService;
 import com.huizhi.oa.service.CarinfoService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -50,17 +53,17 @@ public class CarController {
         return list1;
     }
     /*添加车辆申请*/
-    @ResponseBody
     @RequestMapping("/addCarApply")
-    public void addCarApply(HttpServletRequest request) throws Exception {
+    public String addCarApply(HttpServletRequest request, Model model) throws Exception {
         Carapplyinfo carapplyinfo = new Carapplyinfo();
-
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        model.addAttribute("userinfo",userinfo);
         /*申请单单号*/
         String caId=request.getParameter("caId");
         carapplyinfo.setCaId(caId);
         /*申请人*/
         String userid=request.getParameter("userid");
-        carapplyinfo.setUserid(122);
+        carapplyinfo.setUserid(Integer.parseInt(userid));
         /*caCId*/
         String caCId=request.getParameter("caCId");
         carapplyinfo.setCaCId(caCId);
@@ -75,14 +78,16 @@ public class CarController {
         String caReason=request.getParameter("caReason");
         carapplyinfo.setCaReason(caReason);
         /*检查人*/
-        String caUserid=request.getParameter("caUserid");
-        carapplyinfo.setCaUserid(122);
+        /*String caUserid=request.getParameter("caUserid");
+        carapplyinfo.setCaUserid(122);*/
         /*申请单状态*/
         carapplyinfo.setCaState(0);
         /*审核建议*/
         carapplyinfo.setCaCheckad("");
         /*添加申请*/
         carapplyinfoService.insert(carapplyinfo);
+
+        return "pages/personalTree/carApply";
     }
     /*系统自动生成申请单单号*/
     @ResponseBody

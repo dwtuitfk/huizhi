@@ -31,9 +31,10 @@
                     // dataType:'json',
                     success:function(data){
                         if(data != 0){
-                            $('#unreadNum').html(data);
+                            $('#unreadNum').html("&nbsp;"+"&nbsp;"+data);
+
                         }else {
-                            $('#unreadNum').html("1");
+                            $('#unreadNum').html("");
                         }
                     }
                 })
@@ -209,9 +210,9 @@
                 <ul class="sub-menu">
                     <li>
                         <a href="javascript:;">
-                            <i class="iconfont">&#xe723;</i>
+                            <i class="iconfont">&#xe6a7;</i>
                             <cite>邮件</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
+
                         </a>
                         <ul class="sub-menu">
                             <li>
@@ -224,7 +225,7 @@
                                 <a _href="/personal/mailBox" shiro:hasPermission="/mailBox">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>收件箱</cite>
-                                    <span class="unreadNum" id="unreadNum" style="color: #FD482C"></span>
+                                    <span  class="unreadNum" id="unreadNum" style="color: #FD482C"></span>
                                 </a>
                             </li>
                             <li>
@@ -249,15 +250,15 @@
                     </li>
                     <li>
                         <a href="javascript:;">
-                            <i class="iconfont">&#xe723;</i>
+                            <i class="iconfont">&#xe6a7;</i>
                             <cite>个人申请</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
+
                         </a>
                         <ul class="sub-menu">
                             <li>
                                 <a _href="/personal/leaveApply" shiro:hasPermission="/leaveApply">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>请假申请</cite>
+                                    <cite>外出申请</cite>
                                 </a>
                             </li>
                             <li>
@@ -267,9 +268,15 @@
                                 </a>
                             </li>
                             <li>
+                                <a _href="/kaoqin/tiaoxiuinfo/tiaoxiuAdd" shiro:hasPermission="/carApply">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>调休申请</cite>
+                                </a>
+                            </li>
+                            <li>
                                 <a _href="/personal/allApply" shiro:hasPermission="/allApply">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>个人申请查询申请</cite>
+                                    <cite>申请查询</cite>
                                 </a>
                             </li>
                         </ul>
@@ -321,7 +328,7 @@
                         <a href="javascript:;">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>申请审核</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
+
                         </a>
                         <ul class="sub-menu">
                             <li>
@@ -395,7 +402,7 @@
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe  th:replace="pages/welcome.html"  frameborder="0" scrolling="yes" class="weIframe"></iframe>
+                <iframe  src='noticemanage/noticehp'   frameborder="0" scrolling="yes" class="weIframe"></iframe>
             </div>
         </div>
     </div>

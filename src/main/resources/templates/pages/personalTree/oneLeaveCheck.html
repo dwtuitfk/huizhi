@@ -13,7 +13,14 @@
             padding: 0px;
         }
         .layui-table, .layui-table-view {
-            margin: 0px 0;
+            margin: 0px;
+        }
+        .layui-form .layui-form-item{
+            margin-left: 110px;
+
+        }
+        .layui-form{
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -66,9 +73,13 @@
                     }
                 }
             });
+            //刷新父页面
+            window.parent.location.reload();
+            //关闭当前窗口
             parent.layer.close(index);
         });
         //监听提交
+            //当前窗口名
             var index = parent.layer.getFrameIndex(window.name);
         form.on('submit(passNo)', function(data){
             $.ajax({
@@ -78,12 +89,15 @@
                 dataType:"json",
                 success:function (data) {
                     if(data===500){
-                        parent.layer.msg("添加失败", {icon: 5});
+                        parent.layer.msg("发送成功", {icon: 5});
                     }else{
-                        parent.layer.msg("添加成功", {icon: 6});
+                        parent.layer.msg("发送失败", {icon: 6});
                     }
                 }
             });
+            //刷新父页面
+            window.parent.location.reload();
+            //关闭当前窗口
             parent.layer.close(index);
         });
     });
@@ -126,7 +140,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">申请原因</label>
             <div class="layui-input-block">
-                <input type="text" id="lReason" name="lReason" readonly lay-verify="required" placeholder="请输入内容" class="layui-textarea"></input>
+                <input type="text" style="width: 200px" id="lReason" name="lReason" readonly lay-verify="required" placeholder="请输入内容" class="layui-textarea"></input>
             </div>
         </div>
         <!--审批人-->
@@ -140,13 +154,15 @@
         <div class="layui-form-item">
             <label class="layui-form-label">审批建议</label>
             <div class="layui-input-block">
-                <textarea id="lCheckad" name="lCheckad" lay-verify="required" placeholder="" class="layui-textarea"></textarea>
+                <textarea id="lCheckad" style="width: 200px" name="lCheckad" lay-verify="required" placeholder="" class="layui-textarea"></textarea>
             </div>
         </div>
 
         <div class="layui-form-item">
             <div class="layui-input-inline">
                 <button class="layui-btn" id="passOk" lay-submit lay-filter="passOk" >审批通过</button>
+            </div>
+            <div class="layui-input-inline">
                 <button class="layui-btn" id="passNo" lay-submit lay-filter="passNo" >审批不通过</button>
             </div>
         </div>

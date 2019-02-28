@@ -18,7 +18,10 @@
 </head>
 <body>
 <table class="layui-hide" id="demo" lay-filter="test"></table>
-
+<script type="text/html" id="toolbarDemo">
+    <!--刷新当前表格-->
+    <button class="layui-btn layui-btn-sm" lay-event="reload"><i class="layui-icon">&#xe669;</i>刷新</button>
+</script>
 <script th:inline="none">
     //setInterval(count,1000);
     /*function count(){
@@ -66,13 +69,13 @@
             ,url: '/getAllLeaveInfoAndBM' //数据接口
             ,title: '审批'
             ,page: true //开启分页
-            /* ,toolbar: true*/ //仅开启工具栏，不显示左侧模板
+            ,toolbar: '#toolbarDemo'//仅开启工具栏，不显示左侧模板
             /*,totalRow: false*/ //开启合计行
             ,cols: [
                 [ //表头
                     {field:'lReason', title: '申请原因',minWidth:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
                     {field:'tureName', title: '申请人',minWidth:'100',style:'vertical-align: middle',align:'center',sort: true},
-                    {field:'depName', title: '部门',minWidth:'120',align:'center',sort: true},
+                    //{field:'depName', title: '部门',minWidth:'120',align:'center',sort: true},
                     {field:'lState', title: '审核状态',minWidth:'120',align:'center',sort: true,edit: 'text'},
                     {field:'lUserid', title: '审核人',minWidth:'120',align:'center',sort: true},
                     //{field: 'lCheckad', title: '审核意见', minWidth: 200,edit: 'text'},
@@ -120,7 +123,6 @@
                     content: '/personal/oneLeaveCheck', //引用的弹出层的页面层的方式加载修改界面表单
                     cancel: function(index, layero){
                         //if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
-                        layer.close(index)
                         table.reload('idTest', {
                             where: { //设定异步数据接口的额外参数，任意设
                             }
@@ -128,6 +130,7 @@
                                 curr: 1 //重新从第 1 页开始
                             }
                         });
+                        layer.close(index)
                         //}
                         return true;
                     },
@@ -139,11 +142,34 @@
 
             }
         });
+        //监听头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id)
+                ,data = checkStatus.data; //获取选中的数据
+            switch(obj.event){
+                //刷新当前页
+                case 'reload':
+                    table.reload('idTest', {
+                        where: { //设定异步数据接口的额外参数，任意设
+
+                        }
+                        , page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                    });
+                    break;
+                case 'changeRead':
+                    break;
+                case 'delete':
+                    break;
+                case 'search':
+
+            };
+        });
     });
 </script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">审批</a>
-    <!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
 </script>
 </body>
 </html>

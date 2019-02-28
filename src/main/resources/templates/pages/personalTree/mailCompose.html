@@ -16,24 +16,41 @@
             margin: 0px 0;
         }
         .layui-form .layui-form-item{
-            margin-left: 100px;
+            margin-left: 110px;
+
+        }
+        .layui-form{
+            margin-top: 90px;
         }
     </style>
 </head>
 
 <script type="text/javascript">
 
+/*function checkAcception(){*/
 
+    /*layui.use(['form', 'layedit', 'laydate'], function(){
+
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit*/
+
+
+        //parent.layer.close(index);
+    /*});*/
+/*}*/
     //邮件存稿
-    function save(){
+    /*function save(){
+
         document.form1.action="/sendEmail?eState=0";
         document.form1.submit();
-    }
+    }*/
     //发送邮件
-    function send(){
+   /* function send(){
         document.form1.action="/sendEmail?eState=1";
         document.form1.submit();
-    }
+
+    }*/
 
     //重新渲染表单
     function renderForm(){
@@ -43,6 +60,34 @@
         });
     }
     $(document).ready(function () {
+        //禁用验证
+        $('button[demo2]').each(function(){ValidatorEnable(this,false);});
+        //启用验证
+        $('button[demo1]').each(function(){ValidatorEnable(this,true);});
+        //判断职员编号是否存在
+        $('#eAcceptid').blur(function () {
+            var userid=$('#eAcceptid').val();
+            if(userid==""){
+                return "添加接收人";
+            }else{
+                $.ajax({
+                    url:"/system/inspectUserid",//判断用户名是否存在
+                    type:"GET",
+                    data:{'userid':userid},
+                    dataType:"json",
+                    success:function(data){
+                        if (data===500) {
+                            layer.msg("有此人", {icon: 6});
+                        }if (data===400) {
+                            layer.msg("无此人", {icon: 5});
+                        }
+                    },
+                    error:function(){
+                        layer.msg("系统异常");
+                    },
+                });
+            }
+        })
 
         //富文本编辑器自定义工具栏
         var index,layedit;
@@ -58,25 +103,61 @@
                 var laydate = layui.laydate;
                 laydate.render({
                     elem: '#eTime',
-                })
+                });
+                //监听提交
+                //发送
+                form.on('submit(demo1)', function(data){
+                    //用于同步编辑器内容到textarea（一般用于异步提交）
+                    layedit.sync(index);
+                    var  eTitle = $("#eTitle").val();
+                    //var  eSendid = $("#eSendid").val();
+                    var  eAcceptid = $("#eAcceptid").val();
+                    var  eContent = $("#eContent").val();
+                    if($.trim(eTitle) == ''){
+                        alert(eTitle);
+                        layer.msg('去写标题');
+                        return false;
+                    } else if($.trim(eAcceptid) == ''){
+                        layer.msg('你要发给谁啊？请填写接收人');
+                        return false;
+                    } else if($.trim(eContent) == ''){
+                        layer.msg('你要告诉别人什么啊？');
+                        return false;
+                    }
+                    $.ajax({
+                        url:"/sendEmail?eState=1",
+                        type:"POST",
+                        data:data.field,
+                        dataType:"json",
+                        success:function (data) {
+                            if(data===500){
+                                parent.layer.msg("发送成功", {icon: 6});
+                            }else{
+                                parent.layer.msg("发送失败", {icon: 5});
+                            }
+                        }
+                    });
+                });
+                //存草稿
+                form.on('submit(demo2)', function(data){
+                    $.ajax({
+                        url:"/sendEmail?eState=0",
+                        type:"POST",
+                        data:data.field,
+                        dataType:"json",
+                        success:function (data) {
+                            if(data===500){
+                                parent.layer.msg("保存成功", {icon: 6});
+                            }else{
+                                parent.layer.msg("保存失败", {icon: 5});
+                            }
+                        }
+                    });
+
+                });
             });
-            /*form.render();*/
-            //自定义验证规则
-           /* form.verify({*/
-               /* caReason: function(value) {
-                    if (value.length < 2) {
-                        return '申请原因至少得2个字符啊';
-                    }
-                },
-                caCId: function(value) {
-                    if (value < 0) {
-                        return '请选择车辆';
-                    }
-                }*/
-            /*});*/
+
     });
-
-
 
 
 </script>
@@ -96,7 +177,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">邮件标题</label>
             <div class="layui-input-inline">
-                <input type="text" name="eTitle" id="eTitle" lay-verify="eTitle" autocomplete="off" placeholder="默认当前账号用户" class="layui-input">
+                <input type="text" name="eTitle" id="eTitle" lay-verify="eTitle"  placeholder="" class="layui-input">
             </div>
         </div>
         <!--发送时间-->
@@ -111,7 +192,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">发送人员:</label>
             <div class="layui-input-inline">
-                <input type="text" name="eSendid" id="eSendid" lay-verify="eSendid" th:value="${userinfo.userid}"  class="layui-input">
+                <input type="text" name="eSendid" id="eSendid" lay-verify="eSendid" th:value="${userinfo.getUserid()}"  class="layui-input">
             </div>
         </div>
         <!--接收人员-->
@@ -137,9 +218,9 @@
         </div>-->
         <!-- 富文本编辑器 -->
         <div class="layui-input-block mailcontent" style="width:600px;" >
-            <textarea name="eContent" id="eContent" style="display: block;"></textarea>
+            <textarea name="eContent" id="eContent" style="display: block;" ></textarea>
         </div>
-        <br>
+        <br><br>
         <!--邮件状态-->
         <!--<div class="layui-form-item">
             <label class="layui-form-label">邮件状态:</label>
@@ -147,10 +228,11 @@
                 <input type="text" name="eState" id="eState" lay-verify="eState" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
         </div>-->
-        <div class="layui-form-item">
+        <div class="layui-form-item demo1">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit="" lay-filter="demo1" onclick="send()">发送</button>
-                <button class="layui-btn " lay-submit="" lay-filter="demo2" onclick="save()">草稿</button>
+                <!--onclick="send()"    onclick="save()"-->
+                <button class="layui-btn demo1" lay-submit="demo1" lay-filter="demo1" >发送</button>
+                <button class="layui-btn demo2" lay-submit="demo2" lay-filter="demo2" >草稿</button>
             </div>
         </div>
     </form>

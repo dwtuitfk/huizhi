@@ -61,6 +61,7 @@
             ,title: '邮箱'
             ,page: true //开启分页A
             ,toolbar: '#toolbarDemo'//自定义操作
+            ,defaultToolbar:[]
            /* ,totalRow: false *///开启合计行
             ,cols: [
                 [ //表头
@@ -71,7 +72,7 @@
                     {field:'eSendid', title: '发送人员',minWidth:'100',sort: true,align:'center'},
                     //{field:'eAcceptid', title: '接收人员',minWidth:'80',sort: true,align:'center',hide: true},
                     //{field:'eCopyid', title:'转抄人员',minWidth:'130',sort: true,align:'center',hide: true},
-                    {field:'eContent', title: '邮件内容',minWidth:'120',sort: true,align:'center'},
+                    //{field:'eContent', title: '邮件内容',minWidth:'120',sort: true,align:'center'},
                     {field:'eState', title: '邮件状态）',minWidth:'50',sort: true,align:'center',
                         templet: function(d){
                             if(d.eState == '1'){

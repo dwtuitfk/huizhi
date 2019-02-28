@@ -36,7 +36,8 @@ public class EmailController {
         String eSendid = request.getParameter("eSendid");
         model.addAttribute("eAcceptid",eAcceptid);
         model.addAttribute("eSendid",eSendid);
-
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        model.addAttribute("userinfo",userinfo);
         return "pages/personalTree/mailReply";
     }
 
@@ -152,13 +153,15 @@ public class EmailController {
     @ResponseBody
     @RequestMapping("changeEmailInfoStateThree")
     public String changeEmailInfoStateThree(String eIds) throws Exception {
-        List id = null;
+        List id=new ArrayList<>();
         if(eIds.contains(",")){
             String []arr=eIds.split(",");
-            id=new ArrayList<>();
             for (String a:arr) {
                 id.add(a);
             }
+        }else {
+            System.out.println(eIds);
+            id.add(eIds);
         }
         int i = 0;
         for (Object eId:id) {
@@ -167,14 +170,17 @@ public class EmailController {
             //更改邮件状态为3，垃圾箱
             list.seteState(3);
             emailinfoService.updateByPrimaryKeySelective(list);
-            i++;
+            System.out.println( emailinfoService.updateByPrimaryKeySelective(list));
 
+            System.out.println(list.geteState());
+            i++;
         }
         if (i>0)
             return "400";
         else
             return "500";
     }
+
     /*http://localhost:8080/deleteSomeEmailByPrimaryKey测试成功*/
     //根据主键eid删除单个邮件
     /**
@@ -238,7 +244,8 @@ public class EmailController {
     @RequestMapping("getAllByeAcceptidBox")
     public ResultMap<List<Emailinfo>> getAllByeAcceptidBox(Integer page, Integer limit) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<Emailinfo> list=emailinfoService.getAllByeAcceptidBox(122);
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        List<Emailinfo> list=emailinfoService.getAllByeAcceptidBox(userinfo.getUserid());
         PageInfo<Emailinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Emailinfo>>("",list,0,(int)pageinfo.getTotal());
     }
@@ -253,7 +260,8 @@ public class EmailController {
     @RequestMapping("getAllByeAcceptidBoxUnreadNum")
     public List getAllByeAcceptidBoxUnreadNum() throws Exception {
         //通过收件人、邮件状态state为1，获取他的所有未读邮件，返回其数量
-        List<Emailinfo> list=emailinfoService.getAllByeAcceptidBoxUnread(122);
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        List<Emailinfo> list=emailinfoService.getAllByeAcceptidBoxUnread(userinfo.getUserid());
         List list1 = new ArrayList();
         list1.add(list.size());
         return list1;
@@ -271,7 +279,8 @@ public class EmailController {
     @RequestMapping("getAllByeAcceptidDustbin")
     public ResultMap<List<Emailinfo>> getAllByeAcceptidDustbin(Integer page, Integer limit) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<Emailinfo> list=emailinfoService.getAllByeAcceptidDustbin(122);
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        List<Emailinfo> list=emailinfoService.getAllByeAcceptidDustbin(userinfo.getUserid());
         PageInfo<Emailinfo> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<Emailinfo>>("",list,0,(int)pageinfo.getTotal());
     }
@@ -288,14 +297,18 @@ public class EmailController {
     @RequestMapping("getAllByeSendididDraft")
     public ResultMap<List<Emailinfo>> getAllByeSendididDraft(Integer page, Integer limit) throws Exception {
         PageHelper.startPage(page == null ? 1 : page, limit);
-        List<Emailinfo> list = emailinfoService.getAllByeSendididDraft(122);
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        List<Emailinfo> list = emailinfoService.getAllByeSendididDraft(userinfo.getUserid());
         PageInfo<Emailinfo> pageinfo = new PageInfo<>(list);
         return new ResultMap<List<Emailinfo>>("", list, 0, (int) pageinfo.getTotal());
     }
 
     /*发邮件*/
-    @RequestMapping("/sendEmail")
-    public String sendEmail(HttpServletRequest request) throws Exception {
+    @ResponseBody
+    @RequestMapping("sendEmail")
+    public String sendEmail(HttpServletRequest request,Model model) throws Exception {
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        model.addAttribute("userinfo",userinfo);
         Emailinfo emailinfo = new Emailinfo();
         /*邮件编号*/
         String uuid = UUID.randomUUID().toString();//生成UUID作为邮件编号
@@ -324,8 +337,8 @@ public class EmailController {
         String eAcceptid=request.getParameter("eAcceptid");
         if (eAcceptid.isEmpty()){
             //接收人员为空时，默认为00000
-            eAcceptid = "0000";
-            emailinfo.seteAcceptid(Integer.valueOf(eAcceptid).intValue());
+            /*eAcceptid = "0000";
+            emailinfo.seteAcceptid(Integer.valueOf(eAcceptid).intValue());*/
         }else{
             emailinfo.seteAcceptid(Integer.parseInt(eAcceptid));
         }
@@ -353,13 +366,18 @@ public class EmailController {
          */
         String eState = request.getParameter("eState");
         emailinfo.seteState(Integer.parseInt(eState));
-        emailinfoService.insertSelective(emailinfo);
-        return "mailCompose";
+        int temp = emailinfoService.insertSelective(emailinfo);
+        if (temp>0){
+            return "500";
+        }else{
+            return "400";
+        }
+        //return "pages/personalTree/mailCompose";
     }
     /*草稿发邮件*/
     @ResponseBody
     @RequestMapping("/sendEmailDraft")
-    public void sendEmailDraft(HttpServletRequest request) throws Exception {
+    public String sendEmailDraft(HttpServletRequest request) throws Exception {
         String eId=request.getParameter("eId");
 
         Emailinfo emailinfo = emailinfoService.selectByPrimaryKey(eId);
@@ -377,13 +395,13 @@ public class EmailController {
         emailinfo.seteTime(sdf.parse(sdf.format(new Date())));
         /*发送人员*/
         String eSendid=request.getParameter("eSendid");
-        emailinfo.seteSendid(122);
+        emailinfo.seteSendid(Integer.parseInt(eSendid));
         /*接收人员*/
         String eAcceptid=request.getParameter("eAcceptid");
         if (eAcceptid.isEmpty()){
             //接收人员为空时，默认为00000
-            eAcceptid = "0000";
-            emailinfo.seteAcceptid(Integer.valueOf(eAcceptid).intValue());
+            /*eAcceptid = "";
+            emailinfo.seteAcceptid(Integer.valueOf(eAcceptid).intValue());*/
         }else{
             emailinfo.seteAcceptid(Integer.parseInt(eAcceptid));
         }
@@ -411,6 +429,11 @@ public class EmailController {
          */
         String eState = request.getParameter("eState");
         emailinfo.seteState(Integer.parseInt(eState));
-        emailinfoService.updateByPrimaryKey(emailinfo);
+        int temp = emailinfoService.updateByPrimaryKey(emailinfo);
+        if (temp>0){
+            return "500";
+        }else{
+            return "400";
+        }
     }
 }

@@ -15,94 +15,211 @@
         .layui-table, .layui-table-view {
             margin: 0px 0;
         }
+        .layui-form{
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+        .layui-btn{
+            margin-left: 100px;
+        }
+        #reason{
+            width: 400px;
+        }
     </style>
 </head>
 
 <script type="text/javascript">
 
+    $(function () {
+        $(function () {
 
-
-    $(function(){
-
-
-        $(function(){
-            $("#addLeaveinfo").click(function(){
-                var lStarttime=$('#lStarttime').val();
-                var lOvertime=$('#lOvertime').val();
-                var lReason=$('#lReason').val();
+            $('#leaveadd').on('click', function () {
+                var userid = $("#userid").val();
+                var starttime = $("#starttime").val();
+                var overtime = $("#overtime").val();
+                var ltype = $("input[name='ltype']:checked").val();
+                var reason = $("#reason").val();
                 $.ajax({
-                    url: "/kaoqin/leaveinfo/add",
-                    type: "POST",
-                    data: {"lStarttime":lStarttime,"lOvertime":lOvertime,"lReason":lReason},
-                    dataType: "json",
-                    success: function(data){
-                        if(data===500){
-                            parent.layer.msg("添加失败", {icon: 5});
-                        }else{
-                            parent.layer.msg("添加成功", {icon: 6});
-                        }
+                    url: '/kaoqin/leaveinfo/leaveInfoAdd',
+                    data: {
+                        userid: userid,
+                        starttime: starttime,
+                        overtime: overtime,
+                        ltype:ltype,
+                        reason: reason,
                     },
-                    error:function(){
-                        parent.layer.msg("系统异常");
-                    },
+                    type: 'post',
+                    // dataType:'json',
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+
+            });
+        });
+    });
+
+    //重新渲染表单
+    function renderForm(){
+        layui.use('form', function(){
+            var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+            form.render();
+        });
+    }
+    $(document).ready(function () {
+        //申请单单号初始化值
+        $.ajax({
+            url:"/getCaID",
+            type:"get",
+            success:function(data){
+                $('#caId').val(data);
+                renderForm();
+            }
+        });
+        //下拉菜单获取牌照
+        $.ajax({
+            url:"/getAllLicensePlate",
+            type:"get",
+            success:function(data){
+
+                $.each(data,function(index,item){
+                    $('#caCId').append(new Option(item,item));//往下拉菜单里添加元素
+                })
+                renderForm();//菜单渲染 把内容加载进去
+            },
+            //async:false//false表示同步
+        });
+
+        layui.use(['form', 'laydate'], function(){
+            var form = layui.form;
+            var laydate = layui.laydate;
+            //日期
+            var nowTime=new Date();
+            var startDate=laydate.render({
+                elem: '#starttime',
+                type: 'datetime',
+                min: 'nowTime',
+                done: function(value, date){
+                    endDate.config.min ={
+                        year:date.year,
+                        month:date.month-1, //关键
+                        date: date.date,
+                        hours:date.hours,
+                        minutes:date.minutes,
+                        seconds:date.seconds
+                    };
+                }
+
+            });
+            var endDate=laydate.render({
+                elem: '#overtime',
+                type: 'datetime',
+                min: 'nowTime',
+                done: function(value, date){
+                    startDate.config.max ={
+                        year:date.year,
+                        month:date.month-1, //关键
+                        date: date.date,
+                        hours:date.hours,
+                        minutes:date.minutes,
+                        seconds:date.seconds
+                    };
+                }
+
+            });
+            /*form.render();*/
+            //自定义验证规则
+            form.verify({
+                reason: function(value) {
+                    if (value.length < 2) {
+                        return '申请原因至少得2个字符啊';
+                    }
+                },
+
+                starttime: function(value) {
+                    if (value.length < 0) {
+                        return '申请原因至少得2个字符啊';
+                    }
+                },
+
+                overtime: function(value) {
+                    if (value.length < 0) {
+                        return '申请原因至少得2个字符啊';
+                    }
+                },
+
+
             });
         });
 
     });
-    });
-
-
-
-
 
 </script>
 <body>
+<br>
 <div class="weadmin-body">
-    <form class="layui-form layui-form-pane" action="/addCarApply">
-        <!--申请单单号-->
+    <form class="layui-form layui-form-pane" action="">
+        <!--申请单单号
         <div class="layui-form-item">
-            <label class="layui-form-label">申请单单号</label>
+            <label class="layui-form-label">申请单号</label>
             <div class="layui-input-inline">
-                <input type="text" name="lId" id="lId" readonly placeholder="请输入" autocomplete="off" class="layui-input">
+                <input type="text" name="l_id" id="l_id" readonly placeholder="请输入" autocomplete="off" class="layui-input" >
             </div>
         </div>
-
+        -->
         <!--申请人员-->
         <div class="layui-form-item">
-            <label class="layui-form-label">申请人员</label>
-            <div class="layui-input-inline">
-                <input type="text" name="userid" lay-verify="" autocomplete="off" placeholder="默认当前账号用户" class="layui-input">
+                <label class="layui-form-label">申请人员</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="turename"  placeholder="默认当前账号用户" class="layui-input" th:value="${userinfo.getTurename()}">
+                    <input type="hidden" name="userid" id="userid" th:value="${userinfo.getUserid()}" >
+                </div>
             </div>
-        </div>
-        <!--开始日期-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">开始日期:</label>
-            <div class="layui-input-inline">
-                <input type="text" name="lStarttime" id="lStarttime" lay-verify="required" placeholder=" " autocomplete="off" class="layui-input">
+            <!--开始日期-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">开始日期:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="starttime" id="starttime" lay-verify="required" placeholder=" " autocomplete="off" class="layui-input">
+                </div>
             </div>
-        </div>
-        <!--结束日期-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">结束日期:</label>
-            <div class="layui-input-inline">
-                <input type="text" name="lOvertime" id="lOvertime" lay-verify="required" placeholder=" " autocomplete="off" class="layui-input">
+            <!--结束日期-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">结束日期:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="overtime" id="overtime" lay-verify="required" placeholder=" " autocomplete="off" class="layui-input">
+                </div>
             </div>
-        </div>
-        <!--申请原因-->
+            <!--申请原因
+            <div class="layui-form-item">
+                <label class="layui-form-label">申请原因:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="reason" id="reason" lay-verify="caReason" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                </div>
+            </div>
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">申请原因</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="ltype" value="0" title="请假" checked>
+                    <input type="radio" name="ltype" value="1" title="出差" >
+                </div>
+            </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">申请原因</label>
             <div class="layui-input-block">
-                <textarea id="lReason" name="lReason" lay-verify="required" placeholder="请输入内容" class="layui-textarea"></textarea>
+                <textarea  name="reason" id="reason" lay-verify="reason" placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
         </div>
 
+            <!--审核人员-->
 
-        <div class="layui-form-item">
-            <div class="layui-input-inline">
-                <button class="layui-btn" id="addLeaveinfo" lay-submit="">立即提交</button>
-                <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+            <div class="layui-form-item">
+                <div class="layui-input-inline">
+                    <button class="layui-btn" lay-submit="" lay-filter="demo1" id="leaveadd">立即提交</button>
+                    <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                </div>
             </div>
-        </div>
     </form>
 </div>
 </body>

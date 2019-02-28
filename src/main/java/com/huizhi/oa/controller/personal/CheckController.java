@@ -5,11 +5,14 @@ import com.github.pagehelper.PageInfo;
 import com.huizhi.oa.entity.AllApply;
 import com.huizhi.oa.entity.Carapplyinfo;
 import com.huizhi.oa.entity.Leaveinfo;
+import com.huizhi.oa.entity.Userinfo;
 import com.huizhi.oa.service.CarapplyinfoService;
 import com.huizhi.oa.service.LeaveinfoService;
 import com.huizhi.oa.util.ResultMap;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,6 +41,9 @@ public class CheckController {
     @RequestMapping("passOrNo")
     public String passOrNo(String lId,String lCheckad,String lState) throws Exception {
         Leaveinfo leaveinfo = leaveinfoService.selectByPrimaryKey(lId);
+        //审批人为当前登录人
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        leaveinfo.setlUserid(userinfo.getUserid());
         leaveinfo.setlCheckad(lCheckad);
         /**
          * 获取邮件状态,
@@ -84,6 +90,9 @@ public class CheckController {
     @RequestMapping("carPassOrNo")
     public String carPassOrNo(String caId,String caCheckad,String caState) throws Exception {
         Carapplyinfo carapplyinfo = carapplyinfoService.selectByPrimaryKey(caId);
+        //审批人为当前登录人
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        carapplyinfo.setCaUserid(userinfo.getUserid());
         carapplyinfo.setCaCheckad(caCheckad);
         /**
          * 获取申请状态,
@@ -103,9 +112,11 @@ public class CheckController {
      */
     @ResponseBody
     @RequestMapping("getAllApplyInfoCheck")
-    public ResultMap<List<AllApply>> getAllApplyInfoCheck(Integer page, Integer limit) throws Exception {
+    public ResultMap<List<AllApply>> getAllApplyInfoCheck(Integer page, Integer limit, Model model) throws Exception {
         PageHelper.startPage(page==null?1:page, limit);
-        List<AllApply> list=carapplyinfoService.getAllApplyInfoCheck(7229);
+        Userinfo userinfo = (Userinfo) SecurityUtils.getSubject().getPrincipal();
+        model.addAttribute("userinfo",userinfo);
+        List<AllApply> list=carapplyinfoService.getAllApplyInfoCheck(userinfo.getUserid());
         PageInfo<AllApply> pageinfo=new PageInfo<>(list);
         return new ResultMap<List<AllApply>>("",list,0,(int)pageinfo.getTotal());
     }

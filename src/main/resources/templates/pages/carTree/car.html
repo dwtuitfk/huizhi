@@ -26,15 +26,15 @@
 
 <table class="layui-hide" id="demo" lay-filter="test"></table>
 <script type="text/html" id="toolbarDemo">
-<!--车辆牌照-->
+    <!--车辆牌照-->
     <div class="layui-inline">
         <input type="text" id="username" name="username" lay-verify="required" placeholder="请输入车辆编号" autocomplete="off" class="layui-input">
     </div>
-<!--车辆类型-->
+    <!--车辆类型-->
     <div class="layui-inline">
         <input type="text" id="ctype" name="ctype" lay-verify="required" placeholder="请输入车辆类型" autocomplete="off" class="layui-input">
     </div>
-<!--保养时间显示-->
+    <!--保养时间显示-->
     <div class="layui-inline">
         <input type="text" id="time" name="time" lay-verify="required" placeholder="2019-02-12" autocomplete="off" class="layui-input">
     </div>
@@ -74,7 +74,7 @@
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-   <!-- <a class="layui-bg-cyan" lay-event="look">查看</a>-->
+     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="look">查看</a>
 </script>
 
 <script th:inline="none">
@@ -113,8 +113,7 @@
         //执行一个 table 实例
         table.render({
             elem: '#demo'
-            ,hight:'full-200'
-            ,cellMinWidth: 100
+            ,height: 500
             ,url: '/carmanage/getAllCarInfo' //数据接口
             ,title: '车辆表'
             ,page: true //开启分页
@@ -127,10 +126,10 @@
                     {type:'checkbox', fixed: 'left'},
                     {field:'cId', title: '车辆编号',width:'100', sort: true, fixed: 'left',style:'height:20px;',align:'center'},
                     {field:'cType', title: '类型',width:'100',sort: true,style:'vertical-align: middle',align:'center'},
-                    {field:'cState', title: '状况（1：空闲|2：占用）',width:'180',sort: true,templet: '#type',align:'center'},
-                    {field:'cInsurance', title:'保险信息',width:'200',align:'center',templet:'#amount'},
+                    {field:'cState', title: '状况（1：空闲|2：占用）',width:'220',sort: true,templet: '#type',align:'center'},
+                    {field:'cInsurance', title:'保险信息',width:'200',sort: true,align:'center',templet:'#amount'},
                     {field:'cMaintaintime', title:'上次保养时间',sort: true,width:'200',align:'center',templet:'#amount'},
-                    {title: '操作', align:'center',width:'180', toolbar: '#barDemo'}
+                    {title: '操作', align:'center',sort: true,width:'220', toolbar: '#barDemo'}
 
                 ]
 
@@ -204,7 +203,7 @@
                     var input1=$('#username').val();
                     var input2=$('#ctype').val();
                     var input3=$('#time').val();
-                  //alert(input1+input2+input3);
+                    //alert(input1+input2+input3);
                     if (input1==""&&input2==""&&input3=="") {
                         layer.msg("请你输入内容", {icon: 5})
                     }else{
@@ -219,7 +218,15 @@
                                 curr: 1 //重新从第 1 页开始
                             }
                         });
+
+                        //自定义颜色
+                        laydate.render({
+                            elem: '#time'
+                            ,theme: '#10491a'
+                        });
+                        readerselect();
                     }
+
                     break;
             };
         });
@@ -258,40 +265,40 @@
 
 
         //监听行工具事件
-           table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
-            ,layEvent = obj.event; //获得 lay-event 对应的值
+                ,layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'detail'){
-              layer.msg('查看操作');
+                layer.msg('查看操作');
             } else if(layEvent === 'del'){
-              layer.confirm('确定继续删除行么', function(index){
-                  console.log(obj);
-                  console.log(data);
-                 $.ajax({
-                    type: "POST",
-                    url: "/carmanage/del" +
-                        "Car",
-                    data: {"cId":data.cId},
-                    dataType:"json",
-                    success: function (data) {
-                        if (data==500) {
-                            layer.msg("删除失败", {icon: 5});
-                        } else {
-                            //删除这一行
-                            obj.del();
-                            //关闭弹框
-                            layer.close(index);
-                            layer.msg("删除成功", {icon: 6});
+                layer.confirm('确定继续删除行么', function(index){
+                    console.log(obj);
+                    console.log(data);
+                    $.ajax({
+                        type: "POST",
+                        url: "/carmanage/del" +
+                            "Car",
+                        data: {"cId":data.cId},
+                        dataType:"json",
+                        success: function (data) {
+                            if (data==500) {
+                                layer.msg("删除失败", {icon: 5});
+                            } else {
+                                //删除这一行
+                                obj.del();
+                                //关闭弹框
+                                layer.close(index);
+                                layer.msg("删除成功", {icon: 6});
+                            }
+                        },
+                        error:function(){
+                            parent.layer.msg("运行异常");
                         }
-                    },
-                     error:function(){
-                         parent.layer.msg("运行异常");
-                     }
-                });
+                    });
 
-              });
+                });
             } else if(layEvent === 'edit'){
-               // alert(data.cId);
+                // alert(data.cId);
                 layer.open({
                     //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                     type: 2,
@@ -309,24 +316,19 @@
                     content: '/carmanage/look?cId='+data.cId //引用的弹出层的页面层的方式加载修改界面表单
                 });
             }
-           });
-
-
-/*        //监听单元格编辑
-        table.on('edit(demo)', function(obj){
-            var value = obj.value //得到修改后的值
-                ,data = obj.data //得到所在行所有键值
-                ,field = obj.field; //得到字段
-            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
-        });*/
-
-        //自定义颜色
-        laydate.render({
-            elem: '#time'
-            ,theme: '#160849'
         });
 
-});
+
+        /*        //监听单元格编辑
+                table.on('edit(demo)', function(obj){
+                    var value = obj.value //得到修改后的值
+                        ,data = obj.data //得到所在行所有键值
+                        ,field = obj.field; //得到字段
+                    layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+                });*/
+
+
+    });
 </script>
 </body>
 </html>
