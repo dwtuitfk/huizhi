@@ -67,12 +67,12 @@
 
                 $("[data-field='state']").children().each(function () {
                     if ($(this).text() == '1') {
-                        $(this).text("审核通过")
+                        $(this).text("审核通过").css("color" ,"#00fa9a");
                     } else if ($(this).text() == '0') {
-                        $(this).text("未审核")
+                        $(this).text("未审核");
                     }
                     else if ($(this).text() == '2') {
-                        $(this).text("审核未通过")
+                        $(this).text("审核未通过").css("color" ,"#c00");
                     }
                 });
                 /* $("[data-field='lType']").children().each(function () {

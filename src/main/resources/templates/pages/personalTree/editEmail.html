@@ -87,11 +87,14 @@
             form.on('submit(demo1)', function(data){
                 var index2 = parent.layer.getFrameIndex(window.name);
                 //用于同步编辑器内容到textarea（一般用于异步提交）
-                layedit.sync(index);
+                //layedit.sync(index);
+                var  eId = $("#eId").val();
                 var  eTitle = $("#eTitle").val();
-                //var  eSendid = $("#eSendid").val();
+                var  eSendid = $("#eSendid").val();
                 var  eAcceptid = $("#eAcceptid").val();
-                var  eContent = $("#eContent").val();
+                //var  eContent = $("#eContent").val();
+                var  eContent = layedit.getContent(index);
+                //alert(eContent);
                 if($.trim(eTitle) == ''){
                     layer.msg('去写标题');
                     return false;
@@ -103,9 +106,15 @@
                     return false;
                 }
                 $.ajax({
-                    url:"/sendEmailDraft?eState=1&eContent="+eContent,
+                    url:"/sendEmailDraft?eState=1",
                     type:"POST",
-                    data:data.field,
+                    data:{
+                        eId: eId,
+                        eTitle: eTitle
+                        , eSendid: eSendid
+                        , eAcceptid: eAcceptid
+                        , eContent: eContent
+                    },
                     dataType:"json",
                     success:function (data) {
                         if(data===500){
@@ -125,15 +134,25 @@
             //当前窗口名
             form.on('submit(demo2)', function(data){
                 var index2 = parent.layer.getFrameIndex(window.name);
-                layedit.sync(index);
+                //用于同步编辑器内容到textarea（一般用于异步提交）
+                //layedit.sync(index);
+                var  eId = $("#eId").val();
                 var  eTitle = $("#eTitle").val();
-                //var  eSendid = $("#eSendid").val();
+                var  eSendid = $("#eSendid").val();
                 var  eAcceptid = $("#eAcceptid").val();
-                var  eContent = $("#eContent").val();
+                //var  eContent = $("#eContent").val();
+                var  eContent = layedit.getContent(index);
+                //alert(eContent);
                 $.ajax({
-                    url:"/sendEmailDraft?eState=0&eContent="+eContent,
+                    url:"/sendEmailDraft?eState=0",
                     type:"POST",
-                    data:data.field,
+                    data:{
+                        eTitle: eTitle,
+                        eId: eId
+                        , eSendid: eSendid
+                        , eAcceptid: eAcceptid
+                        , eContent: eContent
+                    },
                     dataType:"json",
                     success:function (data) {
                         if(data===500){
@@ -195,7 +214,7 @@
     <!--action="/sendEmail?eState=1"-->
     <form class="layui-form layui-form-pane" name="form1" id="form1" method="post">
         <!--邮件编号-->
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="display: none">
             <label class="layui-form-label">邮件编号</label>
             <div class="layui-input-inline">
                 <input type="text" name="eId" id="eId" readonly placeholder="请输入" autocomplete="off" class="layui-input">
