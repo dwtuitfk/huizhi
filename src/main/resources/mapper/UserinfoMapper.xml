@@ -258,6 +258,7 @@ WHERE Userinfo.userId =#{userid}
     <if test="depName != null">
       and userinfo.depName = #{depName}
     </if>
+    order by userinfo.userId
   </select>
 
   <!--用户登陆验证-->

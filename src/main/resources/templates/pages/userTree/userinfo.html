@@ -207,7 +207,7 @@
                     break;
                 case 'update':
                     if(data.length === 0){
-                        layer.msg('请选择一行');
+                        layer.msg('请选择');
                     } else if(data.length > 1){
                         layer.msg('只能同时编辑一个');
                     } else {
@@ -216,9 +216,9 @@
                     break;
                 case 'delete':
                     if(data.length === 0){
-                        layer.msg('请选择一行');
+                        layer.msg('请选择');
                     } else {
-                        layer.confirm('真的删除么', function(index){
+                        layer.confirm('您确定要删除吗？', function(index){
 
                             layer.close(index);
                             //向服务端发送删除指令
@@ -290,7 +290,7 @@
             if(layEvent === 'detail'){
                 layer.msg('查看操作');
             } else if(layEvent === 'del'){
-                layer.confirm('真的删除行么', function(index){
+                layer.confirm('您确定要删除吗？', function(index){
                     console.log(obj);
                     console.log(data);
                     $.ajax({
